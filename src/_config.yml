@@ -1,0 +1,21 @@
+title: Arend Theorem Prover
+name: Arend
+description: The Arend Theorem Prover
+url: https://arend-lang.github.io
+github: [metadata]
+github_username: valis
+
+theme: minimal-mistakes-jekyll
+
+paginate: 5
+
+footer:
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/JetBrains/Arend"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter"
+      url: "https://twitter.com/ArendLang"
+
+keep_files: [.git, LICENSE, README.md]

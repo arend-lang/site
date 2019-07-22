@@ -1,0 +1,7 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+ln -sf "$DIR/pre-commit" "$DIR/../.git/hooks/pre-commit"
+ln -sf "$DIR/post-commit" "$DIR/../.git/hooks/post-commit"
+ln -sf "$DIR/pre-push" "$DIR/../.git/hooks/pre-push"

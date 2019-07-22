@@ -1,0 +1,13 @@
+main:
+    - title: "About"
+      url: /about
+    - title: "Documentation"
+      url: /documentation
+    - title: "Download"
+      url: /download
+
+about:
+  - title: "Arend features"
+    url: /arend-features
+  - title: "IntelliJ Arend features"
+    url: /intellij-features

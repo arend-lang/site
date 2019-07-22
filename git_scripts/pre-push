@@ -1,0 +1,8 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+SITE_DIR="${AREND_SITE_DIR:-$DIR/../../../Site}"
+
+cd $SITE_DIR
+git push
+exit $?

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Requires imagemagick
+
+SIZE="${2:-460x200}"
+
+NAME="${1##*/}"
+EXT=$([[ "$NAME" = *.* ]] && echo ".${NAME##*.}" || echo '')
+NAME="${NAME%.*}"
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+convert "$NAME$EXT" -background "#2b2b2b" -gravity west -extent $SIZE "$DIR/../src/assets/images/$NAME-$SIZE$EXT"
