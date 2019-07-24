@@ -9,6 +9,16 @@ theme: minimal-mistakes-jekyll
 
 paginate: 5
 
+defaults:
+  - scope:
+      path: "documentation"
+    values:
+      layout: single
+      sidebar:
+        nav: "documentation"
+      toc: true
+      toc_sticky: true
+
 footer:
   links:
     - label: "GitHub"

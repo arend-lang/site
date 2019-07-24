@@ -1,2 +1,1 @@
-# site
-Arend language website source
+# Arend language website source

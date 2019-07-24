@@ -8,6 +8,56 @@ main:
 
 about:
   - title: "Arend features"
-    url: /arend-features
+    url: /about/arend-features
   - title: "IntelliJ Arend features"
-    url: /intellij-features
+    url: /about/intellij-features
+
+documentation:
+  - title: "Getting Started"
+    url: /documentation/getting-started
+  - title: "Language Reference"
+    children:
+      - title: "Lexical structure"
+        url: /documentation/language-reference/lexical-structure
+      - title: "Definitions"
+        url: /documentation/language-reference/definitions
+        children:
+        - title: "Modules"
+          url: modules
+        - title: "Parameters"
+          url: parameters
+        - title: "Functions"
+          url: functions
+        - title: "Data"
+          url: data
+        - title: "Higher inductive types"
+          url: hits
+        - title: "Records"
+          url: records
+        - title: "Classes"
+          url: classes
+        - title: "Coercion"
+          url: coercion
+        - title: "Level"
+          url: level
+      - title: "Expressions"
+        url: /documentation/language-reference/expressions
+        children:
+        - title: "Goals"
+          url: goals
+        - title: "Universes"
+          url: universes
+        - title: "Pi types"
+          url: pi
+        - title: "Sigma types"
+          url: sigma
+        - title: "Let"
+          url: let
+        - title: "Case"
+          url: case
+        - title: "Class extensions"
+          url: class-ext
+      - title: "Prelude"
+        url: /documentation/language-reference/prelude
+  - title: "Libraries"
+    url: /documentation/libraries

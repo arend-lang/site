@@ -6,7 +6,7 @@ feature_row:
   - image_path: /assets/images/CodeCompletion-460x200.png
     title: "Code Completion"
     excerpt: "Code completion is invoked automatically by typing and shows all symbols available in the given context."
-    url: "/intellij-features/CodeCompletion.gif"
+    url: "/about/intellij-features/CodeCompletion.gif"
     id: "code-completion"
     btn_label: "Show More"
     btn_class: "btn--inverse"
@@ -15,7 +15,7 @@ feature_row:
     title: "Find Usages"
     excerpt: "To find usages of the symbol at the caret, press **Alt+F7**.
               The usages are classified by the context in which they appear."
-    url: "/intellij-features/FindUsages.gif"
+    url: "/about//intellij-features/FindUsages.gif"
     id: "find-usages"
     btn_label: "Show More"
     btn_class: "btn--inverse"
@@ -23,7 +23,7 @@ feature_row:
   - image_path: /assets/images/QuickDocumentation-460x200.png
     title: "Quick Documentation"
     excerpt: "Quick documentation is invoked by **Ctrl+Q** and shows available information for the symbol at the caret."
-    url: "/intellij-features/QuickDocumentation.gif"
+    url: "/about//intellij-features/QuickDocumentation.gif"
     id: "quick-documentation"
     btn_label: "Show More"
     btn_class: "btn--inverse"
@@ -31,7 +31,7 @@ feature_row:
   - image_path: /assets/images/ParameterHints-460x200.png
     title: "Parameter Hints"
     excerpt: "Parameter hints is invoked by **Ctrl+P** and shows types of parameters of the definition near the caret."
-    url: "/intellij-features/ParameterHints.gif"
+    url: "/about//intellij-features/ParameterHints.gif"
     id: "parameter-hints"
     btn_label: "Show More"
     btn_class: "btn--inverse"
@@ -39,7 +39,7 @@ feature_row:
   - image_path: /assets/images/ClassHierarchy-460x200.png
     title: "Class Hierarchy"
     excerpt: "Class hierarchy is invoked by **Ctrl+H** and shows subclasses and superclasses of the class at the caret."
-    url: "/intellij-features/ClassHierarchy.gif"
+    url: "/about//intellij-features/ClassHierarchy.gif"
     id: "class-hierarchy"
     btn_label: "Show More"
     btn_class: "btn--inverse"
@@ -48,7 +48,7 @@ feature_row:
     title: "Code Formatter"
     excerpt: "Code formatter helps to format the code while typing.
               It also can be invoked explicitly by pressing **Ctrl+Alt+F7** to format the whole file."
-    url: "/intellij-features/CodeFormatter.gif"
+    url: "/about//intellij-features/CodeFormatter.gif"
     id: "code-formatter"
     btn_label: "Show More"
     btn_class: "btn--inverse"
@@ -58,7 +58,7 @@ feature_row:
     excerpt: "Auto import adds missing imports.
               To invoke it, press **Ctrl+Space** on an unresolved symbol.
               It can also add unambiguous imports on the fly (this can be enabled in **Settings \\| Editor \\| General \\| Auto Import**)."
-    url: "/intellij-features/AutoImport.gif"
+    url: "/about//intellij-features/AutoImport.gif"
     id: "auto-import"
     btn_label: "Show More"
     btn_class: "btn--inverse"
@@ -67,7 +67,7 @@ feature_row:
     title: "Implement Missing Fields"
     excerpt: "IntelliJ Arend can add implementation stubs for missing fields.
               The quick fix is invoked by pressing **Alt+Enter**."
-    url: "/intellij-features/ImplementMissingFields.gif"
+    url: "/about//intellij-features/ImplementMissingFields.gif"
     id: "implement-missing-fields"
     btn_label: "Show More"
     btn_class: "btn--inverse"
@@ -77,7 +77,7 @@ feature_row:
     excerpt: "IntelliJ Arend can move a declaration to another module or file.
               It automatically fixes all references to this declaration.
               This refactoring can also move a file to another directory."
-    url: "/intellij-features/MoveRefactoring.gif"
+    url: "/about//intellij-features/MoveRefactoring.gif"
     id: "move-refactoring"
     btn_label: "Show More"
     btn_class: "btn--inverse"
@@ -86,7 +86,7 @@ feature_row:
     title: "Incremental Typechecking"
     excerpt: "IntelliJ Arend can typecheck definitions individially.
               This means that it is enough to rerun the typechecker only on the last modified definition and not the whole file."
-    url: "/intellij-features/Typechecking.gif"
+    url: "/about//intellij-features/Typechecking.gif"
     id: "typechecking"
     btn_label: "Show More"
     btn_class: "btn--inverse"

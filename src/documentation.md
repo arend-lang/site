@@ -1,9 +1,13 @@
 ---
 layout: single
 title: Documentation
+sidebar:
+  nav: "documentation"
 ---
 
-Arend documentation is available [here](https://arend.readthedocs.io/en/latest/).
+For the installation instructions, see [Getting Started](getting-started).
+Section [Language Reference](language-reference) contains a description of the Arend language.
+Section [Libraries](libraries) describes how to manage Arend libraries.
 
 ## Forum
 
