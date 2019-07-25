@@ -2,53 +2,51 @@
 title: Higher Inductive Types
 ---
 
-Higher inductive types are a generalization of ordinary 
-[inductive types](/language-reference/definitions/data).
+Higher inductive types generalize ordinary [inductive types](data).
 Various homotopy colimits of types and other constructions such as
 truncations are higher inductive types. A specific homotopy structure of a higher inductive
 type can be defined by means of _conditions_ in data definitions.
 
 ## Conditions
 
-If `con` is a constructor of an inductive type `D`, then an expression of the form
-`con a_1 ... a_n` does not reduce any further unless the definition of `D` contains _conditions_ on `con`.
+If {%ard%} con {%endard%} is a constructor of an inductive type {%ard%} D {%endard%}, then an expression of the form
+{%ard%} con a_1 ... a_n {%endard%} does not reduce any further unless the definition of {%ard%} D {%endard%} contains _conditions_ on {%ard%} con {%endard%}.
 A condition on a constructor is a rule that says how such an expression might be reduced.
 For example, one can define integers as a data type with two constructors: one for positive, and one for negative integers, and a condition on the second constructor telling positive and negative zero have to be computationally equal:
 
-```arend
+{% arend %}
 \data Int
   | pos Nat
   | neg Nat \with {
     | zero => pos zero
   }
-```
+{% endarend %}
 
-Conditions are imposed on a constructor by defining it as a function by
-[pattern matching](/language-reference/definitions/functions/#pattern-matching).
+Conditions are imposed on a constructor by defining it as a function by [pattern matching](functions/#pattern-matching).
 The only differences are that it is not required that all cases are covered and that pattern matching on constructors
-`left` and `right` of the [interval type](/language-reference/prelude) `I` is allowed.
+{%ard%} left {%endard%} and {%ard%} right {%endard%} of the [interval type](../prelude) {%ard%} I {%endard%} is allowed.
 The general syntax is the same as for ordinary pattern matching.
-Either `\with { | c_1 | ... | c_m }` or `\elim x_1, ... x_n { | c_1 | ... | c_m }` can be added after parameters
-of the constructor, where `| c_1 | ... | c_m` is a list of clauses.
+Either {%ard%} \with { | c_1 | ... | c_m } {%endard%} or {%ard%} \elim x_1, ... x_n { | c_1 | ... | c_m } {%endard%} can be added after parameters
+of the constructor, where {%ard%} | c_1 | ... | c_m {%endard%} is a list of clauses.
 
 A constructor with conditions evaluates if its arguments match the specification in the same way as a function defined by pattern matching.
 This means that a function over a data type with conditions must respect the conditions, this is checked
 by the typechecker.
-For example, a function of type `Int -> X` must map positive and negative zero to the same value.
+For example, a function of type {%ard%} Int -> X {%endard%} must map positive and negative zero to the same value.
 Thus, one cannot define the following function:
 
-```arend
+{% arend %}
 \func f (x : Int) : Nat
   | pos n => n
   | neg n => suc n
-```
+{% endarend %}
 
 ## Higher inductive types
 
-A higher inductive type is a data type with a constructor that has conditions of the form `| left => e` and `| right => e'`.
+A higher inductive type is a data type with a constructor that has conditions of the form {%ard%} | left => e {%endard%} and {%ard%} | right => e' {%endard%}.
 Let us give a few examples:
 
-```arend
+{% arend %}
 -- Circle
 \data S1
   | base
@@ -87,10 +85,12 @@ Let us give a few examples:
     | left,  _ => a
     | right, _ => a'
   }
-```
+{% endarend %}
 
-If `X` is a proposition, then, to define a function of type `Trunc A -> X`, it is enough to specify its value for `inT a`.
+If {%ard%} X {%endard%} is a proposition, then, to define a function of type {%ard%} Trunc A -> X {%endard%}, it is enough to specify its value for {%ard%} inT a {%endard%}.
 The same works for any higher inductive type and any level.
-For example, to define a function `Quotient A -> X`, it is enough to specify its value for `inQ a` and `equivQ x y r i` if `X` is a set and only for `inQ a` if it is a proposition.
+For example, to define a function {%ard%} Quotient A -> X {%endard%}, it is enough to specify its value for {%ard%} inQ a {%endard%} and {%ard%} equivQ x y r i {%endard%}
+if {%ard%} X {%endard%} is a set and only for {%ard%} inQ a {%endard%} if it is a proposition.
 This also works for several arguments.
-For example, if `X` is a set, then, to define a function `Quotient A -> Quotient A -> X`, it is enough to specify its value for `inQ a, inQ a'`, `inQ a, equivQ x y r i`, and `equivQ x y r i, inQ a`.
+For example, if {%ard%} X {%endard%} is a set, then, to define a function {%ard%} Quotient A -> Quotient A -> X {%endard%},
+it is enough to specify its value for {%ard%} inQ a, inQ a' {%endard%}, {%ard%} inQ a, equivQ x y r i {%endard%}, and {%ard%} equivQ x y r i, inQ a {%endard%}.

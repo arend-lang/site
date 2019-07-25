@@ -7,37 +7,39 @@ title: Lexical Structure
 All Arend's _keywords_ begin with `\`.
 Here's the complete list of keywords:
 
-[\open](/language-reference/definitions/modules/#open-commands) [\import](/language-reference/definitions/modules/#import-commands) [\hiding](/language-reference/definitions/modules/#open-commands) [\as](/language-reference/definitions/modules/#open-commands) [\using](/language-reference/definitions/modules/#open-commands)
-[\truncated](/language-reference/definitions/data) [\data](/language-reference/definitions/data) [\func](/language-reference/definitions/functions) [\lemma](/language-reference/definitions/functions/#lemmas) [\class](/language-reference/definitions/classes) [\record](/language-reference/definitions/records) [\field](/language-reference/definitions/records) [\property](/language-reference/definitions/records/#properties) [\extends](/language-reference/definitions/records) [\module](/language-reference/definitions/modules/#modules) [\instance](/language-reference/definitions/classes) [\use](/language-reference/definitions/coercion) [\coerce](/language-reference/definitions/coercion) [\level](/language-reference/definitions/level) 
-[\with](/language-reference/definitions/functions/#pattern-matching) [\elim](/language-reference/definitions/functions/#elim) [\cowith](/language-reference/definitions/functions/#copattern-matching) [\where](/language-reference/definitions/modules/#where-blocks)
-[\infix](/language-reference/definitions/#infix-operators) [\infixl](/language-reference/definitions/#infix-operators) [\infixr](/language-reference/definitions/#infix-operators) [\fix](/language-reference/definitions/#precedence) [\fixl](/language-reference/definitions/#precedence) [\fixr](/language-reference/definitions/#precedence)
-[\new](/language-reference/expressions/class-ext) [\this](/language-reference/definitions/records) [\Pi](/language-reference/expressions/pi) [\Sigma](/language-reference/expressions/sigma) [\lam](/language-reference/expressions/pi) [\let](/language-reference/expressions/let) [\let!](/language-reference/expressions/let) [\in]((/language-reference/expressions/let)) [\case](/language-reference/expressions/case) [\return](/language-reference/expressions/case)
-[\lp](/language-reference/expressions/universes/#level-polymorphism) [\lh](/language-reference/expressions/universes/#level-polymorphism) [\suc](/language-reference/expressions/universes/#level-polymorphism) [\max](/language-reference/expressions/universes/#level-polymorphism) [\Prop](/language-reference/expressions/universes) [\Set](/language-reference/expressions/universes) [\Type](/language-reference/expressions/universes).
+[\open](definitions/modules/#open-commands) [\import](definitions/modules/#import-commands) [\hiding](definitions/modules/#open-commands) [\as](definitions/modules/#open-commands) [\using](definitions/modules/#open-commands)
+[\truncated](definitions/data) [\data](definitions/data) [\func](definitions/functions) [\lemma](definitions/functions/#lemmas) [\class](definitions/classes) [\record](definitions/records)
+[\field](definitions/records) [\property](definitions/records/#properties) [\extends](definitions/records) [\module](definitions/modules/#modules) [\instance](definitions/classes)
+[\use](definitions/coercion) [\coerce](definitions/coercion) [\level](definitions/level) 
+[\with](definitions/functions/#pattern-matching) [\elim](definitions/functions/#elim) [\cowith](definitions/functions/#copattern-matching) [\where](definitions/modules/#where-blocks)
+[\infix](definitions/#infix-operators) [\infixl](definitions/#infix-operators) [\infixr](definitions/#infix-operators) [\fix](definitions/#precedence) [\fixl](definitions/#precedence) [\fixr](definitions/#precedence)
+[\new](expressions/class-ext) [\this](definitions/records) [\Pi](expressions/pi) [\Sigma](expressions/sigma) [\lam](expressions/pi) [\let](expressions/let) [\let!](expressions/let) [\in]((expressions/let)) [\case](expressions/case) [\return](expressions/case)
+[\lp](expressions/universes/#level-polymorphism) [\lh](expressions/universes/#level-polymorphism) [\suc](expressions/universes/#level-polymorphism) [\max](expressions/universes/#level-polymorphism)
+[\Prop](expressions/universes) [\Set](expressions/universes) [\Type](expressions/universes).
 
 ## Numerals
 
 A _positive numeral_ is a non-empty sequence of digits.
-A _negative numeral_ consists of `-` followed by a non-empty sequence of digits.
+A _negative numeral_ consists of symbol `-` followed by a non-empty sequence of digits.
 
 ## Identifiers
 
-An _identifier_ consists of a non-empty sequence of lower and upper case letters, digits, and characters from the list `~!@#$%^&*-+=<>?/|[];:_`.
-Exceptions are sequences that begin with a digit, sequences that begin with `--`, numerals, and reserved names: `->`, `=>`, `_`, `:`, and `|`.
+An _identifier_ consists of a non-empty sequence of lower and upper case letters, digits, and characters from the list `~!@#$%^&*-+=<>?/|[]:_`.
+Exceptions are sequences that begin with a digit or symbol `'`, numerals, and reserved names such as `->`, `=>`, `_`, `:`, and `|`.
 
 Examples:
 
-* Valid identifiers: `xxx`, `+`, `$^~]!005x`, `::`, `->x`, `x:Nat`, `-5b`, `-33+7`.
-* Invalid identifiers: `--xxx`, `5b`, `-33`, `->`.
+* Valid identifiers: `xxx`, `+`, `$^~]!005x`, `::`, `->x`, `x:Nat`, `-5b`, `-33+7`, `--xxx`.
+* Invalid identifiers: `5b`, `-33`, `=>`.
 
 ## Infix and postfix notation
 
 A _postfix notation_ is an identifier followed by `` ` ``.
 An _infix notation_ is an identifier surrounded by `` ` ``.
-Both of these notations are described in [this section](/language-reference/definitions).
+Both of these notations are described in [Definitions](definitions).
 
 ## Comments
 
 _Multi-line comments_ are enclosed in `{-` and `-}` and can be nested.
-_Single-line comments_ consist of `--` followed by an arbitrary text until the end of the line.
-The exception are identifiers which contain `--` in their names, but do not begin with `--`.
-To give an example, `--`, `--------`, `--|`, `--foo`, and `-------foobar` are comments but `|--`, `%--foo`, and `x------foobar` are not.
+_Single-line comments_ consist of a sequence of symbols `-` of length at least 2 followed by a whitespace followed by an arbitrary text until the end of the line.
+To give an example, `--`, `--------`, `-- foo`, and `------- foobar` are comments but `--foo`, `foo--bar`, and `------foobar` are not.

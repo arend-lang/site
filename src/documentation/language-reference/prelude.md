@@ -12,23 +12,23 @@ to actual definitions since most of them cannot be actually defined in the ordin
 
 # Nat and Int
 
-The definitions of `Nat`, `Int`, `Nat.+`, `Nat.*`, `Nat.-`, and `Int.fromNat` are actually correct,
-they could have been as well defined in an ordinary file and successfully typechecked according to normal
-Arend typechecking rules.
+The definitions of {%ard%} Nat {%endard%}, {%ard%} Int {%endard%}, {%ard%} Nat.+ {%endard%}, {%ard%} Nat.* {%endard%}, {%ard%} Nat.- {%endard%}, {%ard%} Nat.<= {%endard%}, {%ard%} Nat.div {%endard%}, {%ard%} Nat.mod {%endard%}, and {%ard%} Int.fromNat {%endard%} are actually correct,
+they could have been as well defined in an ordinary file and successfully typechecked according to normal Arend typechecking rules.
 The only difference is that these definitions from Prelude are implemented more efficiently.
+Definitions of {%ard%} Nat.divMod {%endard%}, {%ard%} Nat.divModProp {%endard%}, and {%ard%} Nat.modProp {%endard%} are omitted, but these functions also can be defined in Arend.
 
 # Interval and squeeze functions
 
-The definition of the interval type `\data I | left | right` looks like the definition of the set with two
+The definition of the interval type {%ard%} \data I | left | right {%endard%} looks like the definition of the set with two
 elements, but this is not true actually. 
-One way to think about this data type is that it has one more constructor, which connects `left` and 
-`right` and which cannot be accessed explicitly. This means that it is forbidden to define a function 
-on `I` by pattern matching. Functions from `I` can be defined by means of several auxiliary functions:
-`coe`, `coe2`, `squeeze`, `squeezeR`. Function `coe` plays the role of eliminator for `I`, it is discussed
+One way to think about this data type is that it has one more constructor, which connects {%ard%} left {%endard%} and 
+{%ard%} right {%endard%} and which cannot be accessed explicitly. This means that it is forbidden to define a function 
+on {%ard%} I {%endard%} by pattern matching. Functions from {%ard%} I {%endard%} can be defined by means of several auxiliary functions:
+{%ard%} coe {%endard%}, {%ard%} coe2 {%endard%}, {%ard%} squeeze {%endard%}, {%ard%} squeezeR {%endard%}. Function {%ard%} coe {%endard%} plays the role of eliminator for {%ard%} I {%endard%}, it is discussed
 further in this module. 
 
-Functions `squeeze` and `squeezeR` satisfy the following computational conditions:
-```arend
+Functions {%ard%} squeeze {%endard%} and {%ard%} squeezeR {%endard%} satisfy the following computational conditions:
+{% arend %}
 squeeze left j => left
 squeeze right j => j
 squeeze i left => left
@@ -38,54 +38,59 @@ squeezeR left j => j
 squeezeR right j => right
 squeezeR i left => i
 squeezeR i right => right
-```
+{% endarend %}
 
-Such functions can be defined in terms of the function `coe`,
+Such functions can be defined in terms of the function {%ard%} coe {%endard%},
 but for efficiency purposes they are defined as primitives in Arend.
 
 # Path
 
-The definition of `Path A a a'` is not correct.
-By the definition, it should consist of all functions `\Pi (i : I) -> A i`, but actually it consists of all such
-functions `f` that also satisfy computational conditions `f left => a` and `f right => a'`.
-This means that while typechecking the expression `path f` the typechecker also checks that these computational
-conditions hold and, if they don't, produces an error message.
-For example, if you write `\func test : 1 = 0 => path (\lam _ => 0)`, you will see the following error message:
+The definition of {%ard%} Path A a a' {%endard%} is not correct.
+By the definition, it should consist of all functions {%ard%} \Pi (i : I) -> A i {%endard%}, but actually it consists of all such
+functions {%ard%} f {%endard%} that also satisfy computational conditions {%ard%} f left => a {%endard%} and {%ard%} f right => a' {%endard%}.
+This means that while typechecking the expression {%ard%} path f {%endard%} the typechecker also checks that these computational conditions hold and, if they don't, produces an error message.
+For example, if you write {%ard%} \func test : 1 = 0 => path (\lam _ => 0) {%endard%}, you will see the following error message:
 
-```bash
+{% arend %}
 [ERROR] test.ard:1:23: The left path endpoint mismatch
   Expected: 1
     Actual: 0
   In: path (\lam _ => 0)
   While processing: test
-```
+{% endarend %}
 
-The homotopy level of the universe, which is the type of `Path`, is also computed differently. If -1 ≤ n and
-`A` is in a universe of (n+1)-types, then `Path A a a'` is in a universe of n-types. Otherwise, it has the same
-homotopy level as `A`.
+The homotopy level of the universe, which is the type of {%ard%} Path {%endard%}, is also computed differently. If -1 ≤ n and
+{%ard%} A {%endard%} is in a universe of (n+1)-types, then {%ard%} Path A a a' {%endard%} is in a universe of n-types. Otherwise, it has the same
+homotopy level as {%ard%} A {%endard%}.
 
-Prelude also contains an infix form of `Path` called `=` which is actually a correctly defined function.
-The definition of `@` is also correct, but the typechecker has an eta rule for this definition: 
-`path (\lam i => p @ i) = p`.
-This rule does not apply to functions `@` defined in other files.
+Prelude also contains an infix form of {%ard%} Path {%endard%} called {%ard%} = {%endard%} which is actually a correctly defined function.
+The definition of {%ard%} @ {%endard%} is also correct, but the typechecker has an eta rule for this definition:
+{% arend %}
+path (\lam i => p @ i) == p
+{% endarend %}
+This rule does not apply to functions {%ard%} @ {%endard%} defined in other files.
 
-Finally, function `Path.inProp` is not correct since it does not have a body.
-It postulates the proof irrelevance for types in `\Prop`, namely that any two elements of a type in `\Prop` are equal.
+Finally, function {%ard%} Path.inProp {%endard%} is not correct since it does not have a body.
+It postulates the proof irrelevance for types in {%ard%} \Prop {%endard%}, namely that any two elements of a type in {%ard%} \Prop {%endard%} are equal.
 
 # coe and coe2
 
-Function `coe` is an eliminator for the interval type.
-For every type over the interval, it allows to transport elements from the fiber over `left` to the fiber over an
+Function {%ard%} coe {%endard%} is an eliminator for the interval type.
+For every type over the interval, it allows to transport elements from the fiber over {%ard%} left {%endard%} to the fiber over an
 arbitrary point.
-It can be used to prove that `I` is contractible and that `=` satisfies the rules for
+It can be used to prove that {%ard%} I {%endard%} is contractible and that {%ard%} = {%endard%} satisfies the rules for
 ordinary identity types.
-The definition of `coe` is not correct since it uses pattern matching on the interval.
-This function satisfies one additional reduction rule: `coe (\lam x => A) a i => a` if `x` is not free in `A`.
+The definition of {%ard%} coe {%endard%} is not correct since it uses pattern matching on the interval.
+This function satisfies one additional reduction rule:
+{% arend %}
+coe (\lam x => A) a i => a
+{% endarend %}
+if {%ard%} x {%endard%} is not free in {%ard%} A {%endard%}.
 
-Function `coe2` is a generalization of `coe`, which allows to transport elements between any two fibers of a type
+Function {%ard%} coe2 {%endard%} is a generalization of {%ard%} coe {%endard%}, which allows to transport elements between any two fibers of a type
 over the interval.
 
 # iso
 
-The definition of `iso` is not correct since it uses pattern matching on the interval.
+The definition of {%ard%} iso {%endard%} is not correct since it uses pattern matching on the interval.
 This definition implies the univalence axiom.

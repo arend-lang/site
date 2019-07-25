@@ -1,4 +1,14 @@
 {% assign navigation = site.data.navigation[include.nav] %}
+{% assign skipped = "" %}
+{% if include.level %}
+  {% assign levels = include.level | split: '/' %}
+  {% for level in levels %}
+    {% assign level_num = level | plus: 0 %}
+    {% assign nav_item = navigation[level_num] %}
+    {% assign skipped = skipped | append: '/' | append: nav_item["url"] %}
+    {% assign navigation = nav_item["children"] %}
+  {% endfor %}
+{% endif %}
 
 <nav class="nav__list">
   {% if page.sidebar.title %}<h3 class="nav__title" style="padding-left: 0;">{{ page.sidebar.title }}</h3>{% endif %}
@@ -14,12 +24,22 @@
     {% assign page_url = page.url %}
   {% endif %}
 
-  <ul class="nav__items">
+  {% assign inline = include.inline | default: include.level != null %}
+  {% assign full = include.full | default: include.level != null %}
+  {% if inline %}
+    {% assign list_class = "nav__items_inline" %}
+  {% else %}
+    {% assign list_class = "nav__items" %}
+  {% endif %}
+
+  <ul class="{{ list_class }}">
     {% for nav in navigation %}
       <li>
         {% if nav.url %}
-          {% comment %} internal/external URL check {% endcomment %}
-          {% if nav.url contains "://" %}
+          {% assign nav_fc = nav.url | slice: 0 %}
+          {% if nav_fc != '/' %}
+              {% assign nav_url = "/" | append: include.nav | append: skipped | append: '/' | append: nav.url %}
+          {% elsif nav.url contains "://" %}
             {% assign nav_url = nav.url %}
           {% else %}
             {% assign nav_url = nav.url | relative_url %}
@@ -33,15 +53,13 @@
         {% if nav.children != null %}
         <ul>
           {% for child in nav.children %}
-            {% assign child_fc = child.url | truncate: 1, "" %}
+            {% assign child_fc = child.url | slice: 0 %}
             {% if child_fc != '/' %}
               {% assign child_url = nav_url | append: '/' | append: child.url %}
+            {% elsif child.url contains "://" %}
+              {% assign child_url = child.url %}
             {% else %}
-              {% if child.url contains "://" %}
-                {% assign child_url = child.url %}
-              {% else %}
-                {% assign child_url = child.url | relative_url %}
-              {% endif %}
+              {% assign child_url = child.url | relative_url %}
             {% endif %}
 
             {% if child_url == page_url %}
@@ -52,26 +70,28 @@
 
             <li><a href="{{ child_url }}" class="{{ active }}">{{ child.title }}</a></li>
 
-            {% for cchild in child.children %}
-              {% assign cchild_fc = cchild.url | truncate: 1, "" %}
-              {% if cchild_fc != '/' %}
-                {% assign cchild_url = child_url | append: '/' | append: cchild.url %}
-              {% else %}
-                {% if cchild.url contains "://" %}
+            {% assign child_url_size = child_url | size %}
+            {% assign page_url_sub = page_url | slice: 0, child_url_size %}
+            {% if full or page_url_sub == child_url %}
+              {% for cchild in child.children %}
+                {% assign cchild_fc = cchild.url | slice: 0 %}
+                {% if cchild_fc != '/' %}
+                  {% assign cchild_url = child_url | append: '/' | append: cchild.url %}
+                {% elsif cchild.url contains "://" %}
                   {% assign cchild_url = cchild.url %}
                 {% else %}
-                  {% assign cchild_url = cchild_url | relative_url %}
+                  {% assign cchild_url = cchild.url | relative_url %}
                 {% endif %}
-              {% endif %}
 
-              {% if cchild_url == page_url %}
-                {% assign active = "active" %}
-              {% else %}
-                {% assign active = "" %}
-              {% endif %}
+                {% if cchild_url == page_url %}
+                  {% assign active = "active" %}
+                {% else %}
+                  {% assign active = "" %}
+                {% endif %}
 
-              <li><a href="{{ cchild_url }}" class="{{ active }}">&nbsp;&nbsp;&nbsp;&nbsp;{{ cchild.title }}</a></li>
-            {% endfor %}
+                <li><a href="{{ cchild_url }}" class="{{ active }}">&nbsp;&nbsp;&nbsp;&nbsp;{{ cchild.title }}</a></li>
+              {% endfor %}
+            {% endif %}
           {% endfor %}
         </ul>
         {% endif %}

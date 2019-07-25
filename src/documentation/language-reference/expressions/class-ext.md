@@ -3,27 +3,27 @@ title: Class extensions
 toc: false
 ---
 
-A class extension is an expression of the form `C { | f_1 => e_1 ... | f_n => e_n }`, where `C` is a record,
-`f_1`, ... `f_n` are its fields of types `A_1`, ... `A_n` respectively, and `e_1`, ... `e_n` are expressions 
-such that `e_i : A_i[e_1/f_1, ... e_n/f_n]`.
-Note that `A_i` cannot depend on any field except for `f_1`, ... `f_n`.
-An expression of the form `C e_1 ... e_n` is equivalent to `C { | f_1 => e_1 ... | f_n => e_n }`, where `f_1`, ... `f_n` is the list of not implemented fields of `C` in the order of their definition.
+A class extension is an expression of the form {%ard%} C { | f_1 => e_1 ... | f_n => e_n } {%endard%}, where {%ard%} C {%endard%} is a record,
+{%ard%} f_1, ... f_n {%endard%} are its fields of types {%ard%} A_1, ... A_n {%endard%} respectively, and {%ard%} e_1, ... e_n {%endard%} are expressions 
+such that {%ard%} e_i : A_i[e_1/f_1, ... e_n/f_n] {%endard%}.
+Note that {%ard%} A_i {%endard%} cannot depend on any field except for {%ard%} f_1, ... f_n {%endard%}.
+An expression of the form {%ard%} C e_1 ... e_n {%endard%} is equivalent to {%ard%} C { | f_1 => e_1 ... | f_n => e_n } {%endard%}, where {%ard%} f_1, ... f_n {%endard%} is the list of not implemented fields of {%ard%} C {%endard%} in the order of their definition.
 
-The expression `C {}` is equivalent to `C`.
-An expression of the form `C { I }` is a subtype of `C' { I' }` if and only if `C` is a subclass of `C'` and `I'` is a subset of `I`.
-The expression `\new C { I }` is an instance of type `C { I }`, which is a subtype `C`.
-Thus, you can use this expression to create an element of type `C`.
+The expression {%ard%} C {} {%endard%} is equivalent to {%ard%} C {%endard%}.
+An expression of the form {%ard%} C { I } {%endard%} is a subtype of {%ard%} C' { I' } {%endard%} if and only if {%ard%} C {%endard%} is a subclass of {%ard%} C' {%endard%} and {%ard%} I' {%endard%} is a subset of {%ard%} I {%endard%}.
+The expression {%ard%} \new C { I } {%endard%} is an instance of type {%ard%} C { I } {%endard%}, which is a subtype {%ard%} C {%endard%}.
+Thus, you can use this expression to create an element of type {%ard%} C {%endard%}.
 
 ## New expression
 
-The expression `\new C { I }` is correct only if all fields of `C` are implemented in `C { I }`, but the typechecker can infer some implementations from the expected type of the expression.
-For example, in the following code we do not have to implement field `x` in the `\new` expression explicitly since `f` expects an element of `R 0`, so the typechecker knows that `x` must be equal to `0`.
+The expression {%ard%} \new C { I } {%endard%} is correct only if all fields of {%ard%} C {%endard%} are implemented in {%ard%} C { I } {%endard%}, but the typechecker can infer some implementations from the expected type of the expression.
+For example, in the following code we do not have to implement field {%ard%} x {%endard%} in the {%ard%} \new {%endard%} expression explicitly since {%ard%} f {%endard%} expects an element of {%ard%} R 0 {%endard%}, so the typechecker knows that {%ard%} x {%endard%} must be equal to {%ard%} 0 {%endard%}.
 
-```arend
+{% arend %}
 \record R (x y : Nat)
 \func f (r : R 0) => r.y
 \func g => f (\new R { | y => 1 })
-```
+{% endarend %}
 
-If `c` is an instance of a record `C` with fields `f_1`, ... `f_n`, then the expression `\new c` is equivalent to `\new C { | f_1 => c.f_1 ... | f_n => c.f_n }`.
-More generally, the expression `\new c { | f_{i_1} => e_1 ... | f_{i_k} => e_k }` is equivalent to `\new c` in which `c.f_{i_j}` is replaced with `e_j`.
+If {%ard%} c {%endard%} is an instance of a record {%ard%} C {%endard%} with fields {%ard%} f_1, ... f_n {%endard%}, then the expression {%ard%} \new c {%endard%} is equivalent to {%ard%} \new C { | f_1 => c.f_1 ... | f_n => c.f_n } {%endard%}.
+More generally, the expression {%ard%} \new c { | f_{i_1} => e_1 ... | f_{i_k} => e_k } {%endard%} is equivalent to {%ard%} \new c {%endard%} in which {%ard%} c.f_{i_j} {%endard%} is replaced with {%ard%} e_j {%endard%}.

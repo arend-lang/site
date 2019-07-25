@@ -10,7 +10,7 @@ class ArendLexer < Rly::Lex
     tok
   end
 
-  token(:OPERATOR, /->|=>|:|@|==|=|\+|\*|,|\||`#{id}`?/) do |tok|
+  token(:OPERATOR, /->|=>|:|@|==|=|\+|\*|\$|,|\||`#{id}`?/) do |tok|
     tok.value = "<span class=\'o\'>#{tok.value}</span>"
     tok
   end
@@ -20,7 +20,7 @@ class ArendLexer < Rly::Lex
     tok
   end
 
-  token(:GOAL, /\{\?\}?/) do |tok|
+  token(:GOAL, /\{\?(#{id})?\}/) do |tok|
     tok.value = "<span class=\'g\'>#{tok.value}</span>"
     tok
   end

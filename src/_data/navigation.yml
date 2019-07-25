@@ -8,19 +8,20 @@ main:
 
 about:
   - title: "Arend features"
-    url: /about/arend-features
+    url: arend-features
   - title: "IntelliJ Arend features"
-    url: /about/intellij-features
+    url: intellij-features
 
 documentation:
   - title: "Getting Started"
-    url: /documentation/getting-started
+    url: getting-started
   - title: "Language Reference"
+    url: language-reference
     children:
       - title: "Lexical structure"
-        url: /documentation/language-reference/lexical-structure
+        url: lexical-structure
       - title: "Definitions"
-        url: /documentation/language-reference/definitions
+        url: definitions
         children:
         - title: "Modules"
           url: modules
@@ -41,7 +42,7 @@ documentation:
         - title: "Level"
           url: level
       - title: "Expressions"
-        url: /documentation/language-reference/expressions
+        url: expressions
         children:
         - title: "Goals"
           url: goals
@@ -58,6 +59,6 @@ documentation:
         - title: "Class extensions"
           url: class-ext
       - title: "Prelude"
-        url: /documentation/language-reference/prelude
+        url: prelude
   - title: "Libraries"
-    url: /documentation/libraries
+    url: libraries

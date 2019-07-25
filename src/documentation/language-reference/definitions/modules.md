@@ -9,19 +9,19 @@ The module system allows you to provide definitions in other namespaces.
 
 A module consists of a name and a list of definitions:
 
-```arend
+{% arend %}
 \module Mod \where {
   def_1
   ...
   def_n
 }
-```
+{% endarend %}
 
-You can refer to definitions `def_1` ... `def_n` inside module `Mod` by their names.
-To refer to them outside this module, you need to use their full names `Mod.def_1` ... `Mod.def_n`.
+You can refer to definitions {%ard%} def_1 ... def_n {%endard%} inside module {%ard%} Mod {%endard%} by their names.
+To refer to them outside this module, you need to use their full names {%ard%} Mod.def_1 ... Mod.def_n {%endard%}.
 For example, consider the following code:
 
-```arend
+{% arend %}
 \func f2 => Mod.f1
 \module Mod \where {
   \func f1 => f2
@@ -29,26 +29,27 @@ For example, consider the following code:
   \func f3 => f4
 }
 \func f4 => f2
-```
+{% endarend %}
 
-You cannot refer to `f1` in `f2` without `Mod.` prefix.
-Function `f4` refers to `f2` defined on the top level.
-Function `Mod.f2` hides the top level `f2` inside module `Mod`, so `Mod.f1` refers to `Mod.f2`.
-You can refer to top level functions inside modules as shown in the example where `Mod.f3` refers to `f4`.
+You cannot refer to {%ard%} f1 {%endard%} in {%ard%} f2 {%endard%} without {%ard%} Mod. {%endard%} prefix.
+Function {%ard%} f4 {%endard%} refers to {%ard%} f2 {%endard%} defined on the top level.
+Function {%ard%} Mod.f2 {%endard%} hides the top level {%ard%} f2 {%endard%} inside module {%ard%} Mod {%endard%}, so {%ard%} Mod.f1 {%endard%} refers to {%ard%} Mod.f2 {%endard%}.
+You can refer to top level functions inside modules as shown in the example where {%ard%} Mod.f3 {%endard%} refers to {%ard%} f4 {%endard%}.
 
-If a `\where` block contains only one definition, curly braces around it can be omitted.
-```arend
+If a {%ard%} \where {%endard%} block contains only one definition, curly braces around it can be omitted.
+
+{% arend %}
 \module Mod \where
   \func f1 => 0
-```
+{% endarend %}
 
 ## Where blocks
 
 Every definition has an associated module with the same name.
-To add definitions to this module, you can write the `\where` block at the end of this definition.
+To add definitions to this module, you can write the {%ard%} \where {%endard%} block at the end of this definition.
 Definitions defined in the associated module of a definition are visible inside this definition.
 
-```arend
+{% arend %}
 \func f => g \where \func g => 0
 \func h => f.g \where
   \data D \where {
@@ -62,29 +63,31 @@ Definitions defined in the associated module of a definition are visible inside 
     }
     \data E
   }
-```
+{% endarend %}
 
-Constructors of a `\data` definition and fields of a `\class` or a `\record` definition are defined inside the module associated to the definition, but they are also visible outside this module.
-In particular, in the following example `f1` and `f2` are defined by identical expressions.
-```arend
+Constructors of a {%ard%} \data {%endard%} definition and fields of a {%ard%} \class {%endard%} or a {%ard%} \record {%endard%} definition are defined inside the module associated to the definition, but they are also visible outside this module.
+In particular, in the following example {%ard%} f1 {%endard%} and {%ard%} f2 {%endard%} are defined by identical expressions.
+
+{% arend %}
 \data d
   | a
   | b d
 
 \func f1 => b a
 \func f2 => d.b a
-```
+{% endarend %}
+
 Normally the members of a where block do not interact with the definition to which the block is attached.
-However, where blocks of `\data` and `\class` definitions may contain special instructions that do modify the type of parent definition
+However, where blocks of {%ard%} \data {%endard%} and {%ard%} \class {%endard%} definitions may contain special instructions that do modify the type of parent definition
  (or e. g. introduce an automatic type coercion for it). 
-Such instructions begin with the keyword `\use` and are discussed in greater detail [here](/language-reference/definitions/coercion) and [here](/language-reference/definitions/level).
+Such instructions begin with the keyword {%ard%} \use {%endard%} and are discussed in greater detail in [Coercion](coercion) and [Level](level).
 
 ## Open commands
 
-The contents of a given module can be added to the current scope by means of `\open` command (this is called 'opening' a module).
-The `\open` command affects all definitions in the current scope.
+The contents of a given module can be added to the current scope by means of {%ard%} \open {%endard%} command (this is called 'opening' a module).
+The {%ard%} \open {%endard%} command affects all definitions in the current scope.
 
-```arend
+{% arend %}
 \func h1 => f
 \module M \where {
   \func f => 0
@@ -92,19 +95,19 @@ The `\open` command affects all definitions in the current scope.
 }
 \open M
 \func h2 => g
-```
+{% endarend %}
 
-The command `\open M (def_1, ... def_n)` adds only definitions `def_1`, ... `def_n` to the current scope.
+The command {%ard%} \open M (def_1, ... def_n) {%endard%} adds only definitions {%ard%} def_1, ... def_n {%endard%} to the current scope.
 Other definitions must be refered to by their full names.
 
-The command `\open M \hiding (def_1, ... def_n)` adds all the definitions of `M` except for `def_1`, ... `def_n`.
+The command {%ard%} \open M \hiding (def_1, ... def_n) {%endard%} adds all the definitions of {%ard%} M {%endard%} except for {%ard%} def_1, ... def_n {%endard%}.
 These definitions still can be refered to by their full names.
 
-The command `\open M (def_1 \as def_1', ... def_n \as def_n')` adds definitions `def_1`, ... `def_n` under the names `def_1'`, ... `def_n'`, respectively.
+The command {%ard%} \open M (def_1 \as def_1', ... def_n \as def_n') {%endard%} adds definitions {%ard%} def_1, ... def_n {%endard%} under the names {%ard%} def_1', ... def_n' {%endard%}, respectively.
 
-The command `\open M \using (def_1 \as def_1', ... def_n \as def_n')` can be used to add to the current scope all of the definitions of `M` while renaming some of them.
+The command {%ard%} \open M \using (def_1 \as def_1', ... def_n \as def_n') {%endard%} can be used to add to the current scope all of the definitions of {%ard%} M {%endard%} while renaming some of them.
 
-```arend
+{% arend %}
 \module M \where {
   \func f => 0
   \func g => 1
@@ -131,32 +134,32 @@ The command `\open M \using (def_1 \as def_1', ... def_n \as def_n')` can be use
   \func k4 => M2_h2 -- this refers to M2.h2
   \func k5 => M1.h3 -- we can refer to M1.h3 only by its full name.
 }
-```
+{% endarend %}
 
-Note that if you open a module `M` inside a module `M'` and then open `M'` inside `M''`, then definitions from `M` will not be visible in `M''`.
-You need to explicitly open `M` inside `M''` to make them visible.
+Note that if you open a module {%ard%} M {%endard%} inside a module {%ard%} M' {%endard%} and then open {%ard%} M' {%endard%} inside {%ard%} M'' {%endard%}, then definitions from {%ard%} M {%endard%} will not be visible in {%ard%} M'' {%endard%}.
+You need to explicitly open {%ard%} M {%endard%} inside {%ard%} M'' {%endard%} to make them visible.
 
 ## Import commands
 
-If you have several files, you can use the `\import` command to make one of them visible in another.
-For example, suppose that we have files `A.ard`, `B.ard`, a directory `Dir`, and a file `Dir/C.ard` with the following content:
+If you have several files, you can use the {%ard%} \import {%endard%} command to make one of them visible in another.
+For example, suppose that we have files {%ard%} A.ard {%endard%}, {%ard%} B.ard {%endard%}, a directory {%ard%} Dir {%endard%}, and a file {%ard%} Dir/C.ard {%endard%} with the following content:
 
-```arend
+{% arend %}
 -- A.ard
 \func a1 => 0
 \func a2 => 0
   \where \func a3 => 0
-```
+{% endarend %}
 
-```arend
+{% arend %}
 -- Dir/C.ard
 \import A
 
 \func c1 => a1
 \func c2 => a2.a3
-```
+{% endarend %}
 
-```arend
+{% arend %}
 -- B.ard
 \import Dir.C
 
@@ -164,21 +167,21 @@ For example, suppose that we have files `A.ard`, `B.ard`, a directory `Dir`, and
 -- \func b2 => a1 -- definitions from file A are not visible
 -- \func b3 => A.a1 -- you cannot refer to definitions from file A by their full names.
 \func b4 => Dir.C.c2 -- you can refer to definitions from file Dir/C.ard by their full names.
-```
+{% endarend %}
 
-The `\import` command also opens the content of the imported file.
-You can use the same syntax as for `\open` commands to control which definitions will be opened.
-If you want only to import a file and not to open any definitions, you can write `\import X ()`.
-Then you can refer to definitions from the file `X` by their full names:
+The {%ard%} \import {%endard%} command also opens the content of the imported file.
+You can use the same syntax as for {%ard%} \open {%endard%} commands to control which definitions will be opened.
+If you want only to import a file and not to open any definitions, you can write {%ard%} \import X () {%endard%}.
+Then you can refer to definitions from the file {%ard%} X {%endard%} by their full names:
 
-```arend
+{% arend %}
 -- X.ard
 \func f => 0
-```
+{% endarend %}
 
-```arend
+{% arend %}
 -- Y.ard
 \import X()
 
 \func f => X.f
-```
+{% endarend %}

@@ -4,25 +4,25 @@ toc: false
 ---
 
 A Sigma type is a type of (dependent) tuples.
-If `p_1`, ... `p_n` are named or unnamed parameters, then `\Sigma p_1 ... p_n` is also a type.
-If `A_i` has type `\Type p_i h_i`, then the type of the Sigma type is `\Type p_max h_max`, where `p_max` is the maximum
-of `p_1`, ... `p_n` and `h_max` is the maximum of `h_1`, ... `h_n`.
+If {%ard%} p_1, ... p_n {%endard%} are named or unnamed parameters, then {%ard%} \Sigma p_1 ... p_n {%endard%} is also a type.
+If {%ard%} A_i {%endard%} has type {%ard%} \Type p_i h_i {%endard%}, then the type of the Sigma type is {%ard%} \Type p_max h_max {%endard%}, where {%ard%} p_max {%endard%} is the maximum
+of {%ard%} p_1, ... p_n {%endard%} and {%ard%} h_max {%endard%} is the maximum of {%ard%} h_1, ... h_n {%endard%}.
 
-An expression of the form `\Sigma p_1 ... p_n (x_1 ... x_k : A) q_1 ... q_m` is equivalent to
-`\Sigma p_1 ... p_n (x_1 : A) ... (x_k : A) q_1 ... q_m`.
+An expression of the form {%ard%} \Sigma p_1 ... p_n (x_1 ... x_k : A) q_1 ... q_m {%endard%} is equivalent to
+{%ard%} \Sigma p_1 ... p_n (x_1 : A) ... (x_k : A) q_1 ... q_m {%endard%}.
 
-If `a_i` is an expression of type `A_i[a_1/x_1, ... a_{i-1}/x_{i-1}]`, then `(a_1, ... a_n)` is an expression of
-type `\Sigma (x_1 : A_1) ... (x_n : A_n)`. 
+If {%ard%} a_i {%endard%} is an expression of type {%ard%} A_i[a_1/x_1, ... a_{i-1}/x_{i-1}] {%endard%}, then {%ard%} (a_1, ... a_n) {%endard%} is an expression of
+type {%ard%} \Sigma (x_1 : A_1) ... (x_n : A_n) {%endard%}. 
 Note that the typechecker often cannot infer the correct type of such an expression.
 If the typechecker does not know it already, it always tries to guess a non-dependent version.
 In case the typechecker fails to infer the type, it should be specified explicitly:
-`((a_1, ... a_n) : \Sigma (x_1 : A_1) ... (x_n : A_n))`.
-You can also explicitly specify the type of each field: `(b_1 : B_1, ... b_n : B_n)`, however in this case 
-`B_i` cannot refer to previous parameters, therefore this can only be used to define non-dependent Sigma types.
+{%ard%} ((a_1, ... a_n) : \Sigma (x_1 : A_1) ... (x_n : A_n)) {%endard%}.
+You can also explicitly specify the type of each field: {%ard%} (b_1 : B_1, ... b_n : B_n) {%endard%}, however in this case 
+{%ard%} B_i {%endard%} cannot refer to previous parameters, therefore this can only be used to define non-dependent Sigma types.
 
-If `p` is an expression of type `\Sigma (x_1 : A_1) ... (x_n : A_n)` and 1 ≤ i ≤ n, then `p.i` is an expression of
-type `A_i[p.1/x_1, ... p_{i-1}/x_{i-1}]`.
+If {%ard%} p {%endard%} is an expression of type {%ard%} \Sigma (x_1 : A_1) ... (x_n : A_n) {%endard%} and 1 ≤ i ≤ n, then {%ard%} p.i {%endard%} is an expression of
+type {%ard%} A_i[p.1/x_1, ... p_{i-1}/x_{i-1}] {%endard%}.
 
-An expression of the form `(a_1, ... a_n).i` reduces to `a_i`.
+An expression of the form {%ard%} (a_1, ... a_n).i {%endard%} reduces to {%ard%} a_i {%endard%}.
 
-An expression of the form `(p.1, ... p.n)` is equivalent to `p` (eta equivalence for Sigma types).
+An expression of the form {%ard%} (p.1, ... p.n) {%endard%} is equivalent to {%ard%} p {%endard%} (eta equivalence for Sigma types).
