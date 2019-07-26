@@ -43,7 +43,7 @@ To do this, one needs to use the keyword {%ard%} \instance {%endard%}:
   | *-assoc => {?} -- the proof is omitted
 {% endarend %}
 
-A global instance is just a function, defined by [copattern matching](functions/#copattern-matching).
+A global instance is just a function, defined by [copattern matching](functions#copattern-matching).
 It can be used as an ordinary function.
 The only difference with an ordinary function is that it can only be defined by copattern matching and must define an
 instance of a class.

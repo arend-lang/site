@@ -62,7 +62,7 @@ See [Class extensions](../expressions/class-ext) for more information about new 
 \func r5 => \new R a_1 ... a_n b_1 ... b_i { f_{i+1} => b_{i+1} ... | f_k => b_k }
 {% endarend %}
 
-The same function can also be defined using [copattern matching](functions/#copattern-matching):
+The same function can also be defined using [copattern matching](functions#copattern-matching):
 
 {% arend %}
 \func r6 : R \cowith
@@ -95,7 +95,7 @@ If {%ard%} A {%endard%} is a proposition, then {%ard%} | f : A {%endard%} is als
 normal field, which is not a property, by writing {%ard%} \field f : A {%endard%}. 
 
 Properties do not evaluate.
-Thus, they are related to fields in the same way as [lemmas](functions/#lemmas) are related to functions.
+Thus, they are related to fields in the same way as [lemmas](functions#lemmas) are related to functions.
 For example, consider the following function:
 
 {% arend %}

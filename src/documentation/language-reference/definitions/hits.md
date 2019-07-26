@@ -22,7 +22,7 @@ For example, one can define integers as a data type with two constructors: one f
   }
 {% endarend %}
 
-Conditions are imposed on a constructor by defining it as a function by [pattern matching](functions/#pattern-matching).
+Conditions are imposed on a constructor by defining it as a function by [pattern matching](functions#pattern-matching).
 The only differences are that it is not required that all cases are covered and that pattern matching on constructors
 {%ard%} left {%endard%} and {%ard%} right {%endard%} of the [interval type](../prelude) {%ard%} I {%endard%} is allowed.
 The general syntax is the same as for ordinary pattern matching.

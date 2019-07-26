@@ -38,7 +38,7 @@ Consider the following example:
 Constructor {%ard%} cons {%endard%} has three implicit parameters of types {%ard%} A {%endard%}, {%ard%} B {%endard%}, and {%ard%} C {%endard%} and two explicit parameters of types {%ard%} D {%endard%} and {%ard%} E {%endard%}.
 Constructor {%ard%} cons' {%endard%} has only two implicit parameters of types {%ard%} A {%endard%} and {%ard%} B {%endard%}.
 
-The type of a [defcall](../expressions/#defcalls) {%ard%} con_i {a_1} ... {a_n} b_1 ... b_{k_i} {%endard%} is {%ard%} D a_1 ... a_n {%endard%}.
+The type of a [defcall](../expressions#defcalls) {%ard%} con_i {a_1} ... {a_n} b_1 ... b_{k_i} {%endard%} is {%ard%} D a_1 ... a_n {%endard%}.
 The type of a defcall {%ard%} D a_1 ... a_n {%endard%} is of the form [\h-Type p](../expressions/universes).
 Levels {%ard%} h {%endard%} and {%ard%} p {%endard%} are inferred automatically and may depend on levels of {%ard%} a_1, ..., a_n {%endard%}.
 Alternatively, these levels can be fixed and specified explicitly in the definition of a data type:
@@ -139,7 +139,7 @@ Sometimes there might be a need to define a data type, which has different const
 The classical example is the data type of lists of fixed length.
 The data type {%ard%} Vec A 0 {%endard%} has only one constructor {%ard%} nil {%endard%}, the empty list.
 The data type {%ard%} Vec A (suc n) {%endard%} also has one constructor {%ard%} cons {%endard%}, a non-empty list.
-Such a data type can be defined by 'pattern-matching':
+Such a data type can be defined by 'pattern matching':
 
 {% arend %}
 \data Vec (A : \Type) (n : Nat) \elim n
@@ -147,7 +147,7 @@ Such a data type can be defined by 'pattern-matching':
   | suc n => cons A (Vec A n)
 {% endarend %}
 
-The general syntax is similar to the syntax of functions defined by [pattern-matching](functions/#pattern-matching).
+The general syntax is similar to the syntax of functions defined by [pattern matching](functions#pattern-matching).
 Either {%ard%} \elim vars {%endard%} or {%ard%} \with {%endard%} constructs can be used with the only difference that 
 {%ard%} \elim vars {%endard%} allows to match on a proper subset of parameters of data type.
 

@@ -119,7 +119,7 @@ Also, a constructor or a tuple pattern may be an _as-pattern_.
 This means that there might be an expressions of the form {%ard%} \as x : E {%endard%} after the pattern, where {%ard%} x {%endard%} is a variable and {%ard%} E {%endard%} is its type which can be omitted.
 Then {%ard%} x {%endard%} is equivalent to this pattern.
 
-Now, let us discuss how expressions of the form {%ard%} f a_1 ... a_n {%endard%} evaluate (see [Expressions](../expressions/#evaluation) for the definition of the reduction and evaluation relations).
+Now, let us discuss how expressions of the form {%ard%} f a_1 ... a_n {%endard%} evaluate (see [Expressions](../expressions#evaluation) for the definition of the reduction and evaluation relations).
 Let {%ard%} E {%endard%} be equal to {%ard%} f a_1 ... a_n {%endard%}.
 To reduce this expression, we first evaluate expressions {%ard%} a_1, ... a_n {%endard%} and match them with the patterns in the definition of {%ard%} f {%endard%} left to right, top to bottom.
 If all patterns {%ard%} p^i_1, ... p^i_n {%endard%} matches with {%ard%} a_1, ... a_n {%endard%} for some i, then {%ard%} E {%endard%} reduces to {%ard%} e_i[b_1/y_1, ... b_k/y_k] {%endard%},
@@ -257,5 +257,5 @@ See [Class extensions](../expressions/class-ext) for the description of the invo
 A _lemma_ is a function, the result type of which is a proposition and the body is considered to be a proof 
 without computational content, and, thus, it does not evaluate.
 To define a lemma use the keyword {%ard%} \lemma {%endard%} instead of {%ard%} \func {%endard%}.
-If the result type of a lemma does not belong to {%ard%} \Prop {%endard%}, but is provably a proposition, you can use the keywords [\level](level/#level-of-a-type) to define a lemma with this result type.
+If the result type of a lemma does not belong to {%ard%} \Prop {%endard%}, but is provably a proposition, you can use the keywords [\level](level#level-of-a-type) to define a lemma with this result type.
 The fact that lemmas do not evaluate may greatly improve performance of typechecking if their proofs are too lengthy.

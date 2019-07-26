@@ -14,7 +14,7 @@ The basic syntax of case expressions looks like this:
 {% endarend %}
 
 where {%ard%} e_1, ... e_n {%endard%} and {%ard%} d_1, ... d_k {%endard%} are expressions and {%ard%} p_1^1, ... p_n^k {%endard%} are patterns.
-Such an expression reduces in the same way as functions defined by pattern matching (see [Functions](../definitions/functions/#pattern-matching)).
+Such an expression reduces in the same way as functions defined by pattern matching (see [Functions](../definitions/functions#pattern-matching)).
 If the typechecker does not know the type of a case expression, it must be specified explicitly:
 {% arend %}
 \case e_1, ... e_n \return T \with { ... }

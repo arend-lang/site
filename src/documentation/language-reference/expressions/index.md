@@ -6,7 +6,7 @@ An expression denotes a value which may depend on some variables.
 The basic example of an expression is simply a variable {%ard%} x {%endard%}.
 Of course, {%ard%} x {%endard%} must be defined somewhere in order for such an expression to make sense.
 It can be either a parameter (of a [definition](../definitions/parameters), or a [lambda expression](pi), or a [pi expression](pi), or a [sigma expression](sigma)),
-a variable defined in a [let expression](let), or a variable defined in a [pattern](../definitions/functions/#pattern-matching).
+a variable defined in a [let expression](let), or a variable defined in a [pattern](../definitions/functions#pattern-matching).
 
 If {%ard%} e, e_1, ... e_n {%endard%} are expressions and {%ard%} x_1, ... x_n {%endard%} are variables, then we will write {%ard%} e[e_1/x_1, ... e_n/x_n] {%endard%} for the _substitution_ operation.
 This is a meta-operation, namely, it is a function on the set of expressions of the language and not an expression itself.
@@ -62,7 +62,7 @@ function defined by copattern matching, then {%ard%} f a_1 ... a_n {%endard%} is
 
 * If {%ard%} f {%endard%} is a function defined as {%ard%} \func f (x_1 : A_1) ... (x_n : A_n) => e {%endard%}, then {%ard%} f a_1 ... a_n {%endard%} reduces
 to {%ard%} e[a_1/x_1, ... a_n/x_n] {%endard%}. If {%ard%} f {%endard%} is a function defined by pattern matching or a constructor with conditions, then the evaluation of
-defcalls {%ard%} f a_1 ... a_n {%endard%} is described in [Functions](../definitions/functions/#pattern-matching).
-If {%ard%} f {%endard%} is an instance or a function defined by copattern matching, then the evaluation of defcalls {%ard%} f a_1 ... a_n {%endard%} is described in [Classes](../definitions/classes/#instances).
+defcalls {%ard%} f a_1 ... a_n {%endard%} is described in [Functions](../definitions/functions#pattern-matching).
+If {%ard%} f {%endard%} is an instance or a function defined by copattern matching, then the evaluation of defcalls {%ard%} f a_1 ... a_n {%endard%} is described in [Classes](../definitions/classes#instances).
 
 * If {%ard%} f {%endard%} has n parameters and k < n, an expression of the form {%ard%} f a_1 ... a_k {%endard%} is also valid and is equivalent to {%ard%} \lam a_{k+1} ... a_n => f a_1 ... a_n {%endard%}.

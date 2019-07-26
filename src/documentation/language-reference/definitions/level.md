@@ -47,8 +47,8 @@ where {%ard%} D {%endard%} is the data type (or the function, or the class), {%a
 ## Level of a type
 
 Sometimes we need to know that some type has a certain homotopy level.
-For example, the result type of a [lemma](functions/#lemmas) 
-or a [property](records/#properties) must be a proposition.
+For example, the result type of a [lemma](functions#lemmas) 
+or a [property](records#properties) must be a proposition.
 If the type does not belong to the corresponding universe, but it can be proved that it has the correct homotopy level,
 the keyword {%ard%} \level {%endard%} can be used to convince the typechecker to accept the definition.
 This keywords can be specified in the result type of a function, a lemma, a field, or a case expression.
