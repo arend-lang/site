@@ -8,7 +8,7 @@ toc_label: Arend Features
 toc_sticky: true
 ---
 
-{% include about-arend.md %}
+{% include about-arend.md place="below" %}
 
 Arend also has a simple and powerful mechanism of dealing with universe levels, see [here](#universe-levels).
 
