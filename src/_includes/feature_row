@@ -18,7 +18,7 @@
       <div class="archive__item">
         {% if f.image_path %}
           <div class="archive__item-teaser">
-            <img style="width: 460px; height: 200px;" src=
+            <img style="max-width: 460px; max-height: 200px" src=
               {% if f.image_path contains "://" %}
                 "{{ f.image_path }}"
               {% else %}
