@@ -87,7 +87,7 @@ feature_row:
     excerpt: "IntelliJ Arend can typecheck definitions individially.
               This means that it is enough to rerun the typechecker only on the last modified definition and not the whole file."
     url: "/about//intellij-features/Typechecking.gif"
-    id: "typechecking"
+    id: "incremental-typechecking"
     btn_label: "Show More"
     btn_class: "btn--inverse"
 
