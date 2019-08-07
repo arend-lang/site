@@ -14,13 +14,13 @@ Arend is available either as an [IntelliJ IDEA plugin](#intellij-idea-plugin) or
 {% include intellij-arend.md %}
 
 You can read more about IntelliJ IDEA [here](https://www.jetbrains.com/help/idea/discover-intellij-idea.html).
-To create an Arend project, follow instructions [here](/documentation/getting-started/#intellij-arend).
+To create an Arend project, follow instructions [here](/documentation/getting-started#intellij-arend).
 
 ## Console Application
 
 {% include console-application.md %}
 
-To create an Arend project, follow instructions [here](/documentation/getting-started/#console-application).
+To create an Arend project, follow instructions [here](/documentation/getting-started#console-application).
 
 ## Standard Library
 
