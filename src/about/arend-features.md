@@ -78,7 +78,7 @@ Higher constructors such as {%ard%} loop {%endard%} work like ordinary functions
 The syntax of such constructors is the same as the syntax of functions defined by pattern matching.
 
 We can also attach cells of even higher dimensions.
-For example, the 1-dimensional sphere can be defined as the data type with one point {%ard%} base2 {%endard%} and one 2-dimensional constructor {%ard%} loop2 {%endard%} attached to this point.
+For example, the 2-dimensional sphere can be defined as the data type with one point {%ard%} base2 {%endard%} and one 2-dimensional constructor {%ard%} loop2 {%endard%} attached to this point.
 Since the boundary of 2-dimensional cube consists of four 1-dimensional cubes, we need to specify four conditions on constructor {%ard%} loop2 {%endard%}:
 
 {% arend %}
