@@ -74,7 +74,7 @@ For example, the 1-dimensional sphere can be defined as the data type with one p
 {% endarend %}
 
 Higher constructors such as {%ard%} loop {%endard%} work like ordinary functions:
-{%ard%} loop left {%endard%} and {%ard%} loop left {%endard%} evaluate to {%ard%} base {%endard%}.
+{%ard%} loop left {%endard%} and {%ard%} loop right {%endard%} evaluate to {%ard%} base {%endard%}.
 The syntax of such constructors is the same as the syntax of functions defined by pattern matching.
 
 We can also attach cells of even higher dimensions.
