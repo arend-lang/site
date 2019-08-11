@@ -31,7 +31,7 @@ The proof must be written in the corresponding function, starting with keywords 
       | no e1, no e2 => path (\lam i => no (\lam x => (\case e1 x \return e1 x = e2 x \with {}) @ i))
 {% endarend %}
 
-Functions {%ard%} \use \level {%endard%} can be specified for {%ard%} \data {%endard%}, {%ard%} \class {%endard%}, and {%ard%} \func {%endard%} definitions.
+Functions {%ard%} \use \level {%endard%} can be specified for {%ard%} \data {%endard%}, {%ard%} \record {%endard%}, {%ard%} \class {%endard%}, and {%ard%} \func {%endard%} (for functions they work differently, [see below](#use-level-for-functions)) definitions.
 They must have a particular type.
 First parameters of such a function must be parameters of the data type (or the function) or (some) fields of the class.
 The rest of parameters together with the result type must prove that the data type (or the function, or the class) has some homotopy level.
@@ -57,7 +57,7 @@ Its first argument is the type and the second is the proof that it belongs to so
 For example, if {%ard%} A {%endard%} is a type such that {%ard%} p : \Pi (x y : A) -> x = y {%endard%}, then a lemma that proves {%ard%} A {%endard%} can be defined as follows:
 
 {% arend %}
-\lemma lem : \level A p => ...
+\lemma lem : \level A p => {?}
 {% endarend %}
 
 Similarly, a property of type {%ard%} A {%endard%} can be defined as follows:
@@ -87,3 +87,20 @@ Similarly, the keyword {%ard%} \level {%endard%} can be used in case expressions
   | inT a => g a
 }
 {% endarend %}
+
+## Use level for functions
+
+If a {%ard%} \use \level {%endard%} function defined for some function {%ard%} f {%endard%}, this does not change the definition of {%ard%} f {%endard%} at all.
+So, in this case, {%ard%} \use \level {%endard%} is just a syntactic sugar.
+If some function {%ard%} f {%endard%} is defined with a {%ard%} \use \level {%endard%} annotation, this does not change the type of {%ard%} f {%endard%},
+but it will be treated as a type in a lower universe in situations described in [Level of a type](#level-of-a-type).
+
+For example, we can prove that {%ard%} isProp {%endard%} is itslef a proposition and then define lemmas which prove that some type is a proposition:
+{% arend %}
+\func isProp (A : \Type) => \Pi (a a' : A) -> a = a'
+  \where \use \level proof (A : \Type) : isProp (isProp A) => {?} -- the proof is omitted
+
+\lemma lem : isProp (\Sigma (n : Nat) (n = 0)) => {?}
+{% endarend %}
+
+Without {%ard%} \use \level {%endard%} annotation it would be necessary to specify the {%ard%} proof {%endard%} in the definition of {%ard%} lem {%endard%}.
