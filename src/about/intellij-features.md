@@ -63,6 +63,16 @@ feature_row:
     btn_label: "Show More"
     btn_class: "btn--inverse"
 
+  - image_path: /assets/images/PatternGenerator-460x200.png
+    title: "Pattern Generator"
+    excerpt: "IntelliJ Arend can add missing clauses in pattern matching.
+              It also can split a variable in a pattern into available constructors.
+              The quick fix is invoked by pressing **Alt+Enter**."
+    url: "/about//intellij-features/PatternGenerator.gif"
+    id: "pattern-generator"
+    btn_label: "Show More"
+    btn_class: "btn--inverse"
+
   - image_path: /assets/images/ImplementMissingFields-460x200.png
     title: "Implement Missing Fields"
     excerpt: "IntelliJ Arend can add implementation stubs for missing fields.
@@ -83,11 +93,12 @@ feature_row:
     btn_class: "btn--inverse"
 
   - image_path: /assets/images/Typechecking-460x200.png
-    title: "Incremental Typechecking"
+    title: "Background Incremental Typechecking"
     excerpt: "IntelliJ Arend can typecheck definitions individially.
-              This means that it is enough to rerun the typechecker only on the last modified definition and not the whole file."
+              This means that it is enough to rerun the typechecker only on the last modified definition and not the whole file.
+              Also, typechecker is invoked automatically in background."
     url: "/about//intellij-features/Typechecking.gif"
-    id: "incremental-typechecking"
+    id: "typechecking"
     btn_label: "Show More"
     btn_class: "btn--inverse"
 

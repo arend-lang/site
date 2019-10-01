@@ -70,9 +70,6 @@ path (\lam i => p @ i) == p
 {% endarend %}
 This rule does not apply to functions {%ard%} @ {%endard%} defined in other files.
 
-Finally, function {%ard%} Path.inProp {%endard%} is not correct since it does not have a body.
-It postulates the proof irrelevance for types in {%ard%} \Prop {%endard%}, namely that any two elements of a type in {%ard%} \Prop {%endard%} are equal.
-
 # coe and coe2
 
 Function {%ard%} coe {%endard%} is an eliminator for the interval type.

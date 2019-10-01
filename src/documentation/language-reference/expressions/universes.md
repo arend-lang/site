@@ -20,6 +20,8 @@ Some of these universes have alternative names: the universe of propositions (-1
 (coincides with {%ard%} \-1-Type n {%endard%} for any {%ard%} n {%endard%}) and universes of sets (0-types) {%ard%} \Set n {%endard%} (coincides with {%ard%} \0-Type n {%endard%}). 
 Note that the universe {%ard%} \Prop {%endard%} is _impredicative_: it does not have predicative level. Practically, this means that
 if {%ard%} B : \Prop {%endard%}, then the type {%ard%} \Pi (x : \Prop) -> B {%endard%} is in {%ard%} \Prop {%endard%}. 
+Also, {%ard%} \Prop {%endard%} is proof irrelevant.
+This means that any two terms of a type in this universe are _definitionally_ equal.
 
 Universes with h equal to ∞ are represented in the syntax as {%ard%} \oo-Type p {%endard%}. The homotopy level can also be 
 specified after the predicative level: {%ard%} \Type p h {%endard%} is equivalent to {%ard%} \h-Type p {%endard%}.   

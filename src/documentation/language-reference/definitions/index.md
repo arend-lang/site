@@ -49,3 +49,7 @@ this is equivalent to {%ard%} f e {%endard%}.
 For example, the function that adds {%ard%} 1 {%endard%} to its argument can be written either as {%ard%} 1 + {%endard%} or as {%ard%} + 1 {%endard%}.
 The result of application of the first function to {%ard%} 2 {%endard%} is {%ard%} 1 + 2 {%endard%}, the result of application of the second one to {%ard%} 2 {%endard%}
 is {%ard%} + 1 2 {%endard%}, and as noted before these expressions are equivalent.
+
+As noted above, it is possible to use a left section of an operator, that is {%ard%} x + {%endard%} is equivalent to {%ard%} \lam y => x + y {%endard%}.
+It is also possible to use right sections:
+if a postfix notation is applied to an argument from the right as in {%ard%} `+ y {%endard%}, then such an expression is equivalent to {%ard%} \lam x => x + y {%endard%}.

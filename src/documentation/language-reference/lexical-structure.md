@@ -8,12 +8,12 @@ All Arend's _keywords_ begin with `\`.
 Here's the complete list of keywords:
 
 [\open](definitions/modules#open-commands) [\import](definitions/modules#import-commands) [\hiding](definitions/modules#open-commands) [\as](definitions/modules#open-commands) [\using](definitions/modules#open-commands)
-[\truncated](definitions/data#truncation) [\data](definitions/data) [\func](definitions/functions) [\lemma](definitions/functions#lemmas) [\class](definitions/classes) [\record](definitions/records)
+[\truncated](definitions/data#truncation) [\data](definitions/data) [\func](definitions/functions) [\lemma](definitions/functions#lemmas) [\sfunc](definitions/functions#sfunc) [\class](definitions/classes) [\record](definitions/records)
 [\field](definitions/records) [\property](definitions/records#properties) [\extends](definitions/records) [\module](definitions/modules#modules) [\instance](definitions/classes)
-[\use](definitions/coercion) [\coerce](definitions/coercion) [\level](definitions/level) 
+[\use](definitions/coercion) [\coerce](definitions/coercion) [\level](definitions/level) [\eval](definitions/functions#sfunc) [\peval](definitions/functions#sfunc)
 [\with](definitions/functions#pattern-matching) [\elim](definitions/functions#elim) [\cowith](definitions/functions#copattern-matching) [\where](definitions/modules#where-blocks)
 [\infix](definitions#infix-operators) [\infixl](definitions#infix-operators) [\infixr](definitions#infix-operators) [\fix](definitions#precedence) [\fixl](definitions#precedence) [\fixr](definitions#precedence)
-[\new](expressions/class-ext) [\this](definitions/records) [\Pi](expressions/pi) [\Sigma](expressions/sigma) [\lam](expressions/pi) [\let](expressions/let) [\let!](expressions/let) [\in]((expressions/let)) [\case](expressions/case) [\return](expressions/case)
+[\new](expressions/class-ext) [\this](definitions/records) [\Pi](expressions/pi) [\Sigma](expressions/sigma) [\lam](expressions/pi) [\let](expressions/let) [\let!](expressions/let) [\in]((expressions/let)) [\case](expressions/case) [\scase](expressions/case#scase) [\return](expressions/case)
 [\lp](expressions/universes#level-polymorphism) [\lh](expressions/universes#level-polymorphism) [\suc](expressions/universes#level-polymorphism) [\max](expressions/universes#level-polymorphism)
 [\Prop](expressions/universes) [\Set](expressions/universes) [\Type](expressions/universes).
 

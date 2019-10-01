@@ -118,6 +118,10 @@ is not valid as its result type {%ard%} Nat {%endard%} is of homotopy level of a
 Two other functions {%ard%} existsSuc {%endard%} and {%ard%} existsEq {%endard%} in the example above are correct as 
 their result types, {%ard%} Exists (n : Nat) (suc n = 4) {%endard%} and {%ard%} 0 = 0 {%endard%} respectively, are propositions.
 
+If the universe of the resulting type is greater than the universe of the data type, it is still possible to define a function by pattern matching on it if the resulting type is _provably_ belongs to the universe of the data type.
+This can be done with keyword [\level](level#level-of-a-type).
+In this case, the function should be declared as [\sfunc](functions#sfunc) since truncated data types are [squashed](level#squashed-data-types).
+
 A truncated data type is (provably) equivalent to the truncation of the untruncated version of this data type.
 Thus, this is simply a syntactic sugar that allows to define functions over a truncated data type more easily.
 

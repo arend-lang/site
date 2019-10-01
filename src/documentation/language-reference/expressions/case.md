@@ -29,3 +29,10 @@ The parts {%ard%} \as x_i {%endard%} and {%ard%} : E_i {%endard%} can be omitted
 Expressions {%ard%} E_i {%endard%} can refer to {%ard%} x_1, ... x_{i-1} {%endard%} and expression {%ard%} T {%endard%} can refer to {%ard%} x_1, ... x_n {%endard%}.
 In this case, {%ard%} e_i {%endard%} must have type {%ard%} E_i[e_1/x_1, ... e_{i-1}/x_{i-1}] {%endard%}.
 The type of the case expression is {%ard%} T[e_1/x_1, ... e_n/x_n] {%endard%}.
+
+## \scase
+
+Expression {%ard%} \scase {%endard%} is related to {%ard%} \case {%endard%} in the same way as [\sfunc](/documentation/language-reference/definitions/functions#sfunc) is related to {%ard%} \func {%endard%}.
+That is, expressions of the form {%ard%} \scase e_1, ... e_n \with { ... } {%endard%} never evaluate.
+To evaluate such an expression, you need to use keyword {%ard%} \eval {%endard%} before it.
+Similarly, {%ard%} \peval \scase e_1, ... e_n \with { ... } {%endard%} has type {%ard%} \scase e_1, ... e_n \with { ... } = \eval \scase e_1, ... e_n \with { ... } {%endard%}.

@@ -283,6 +283,9 @@ This universe is impredicative, that is it does not have the predicative level.
 Thus, if {%ard%} A {%endard%} is a set of any predicative level, then {%ard%} a = {A} a' {%endard%} belongs to {%ard%} \Prop {%endard%}.
 Also, if {%ard%} B a {%endard%} belongs to {%ard%} \Prop {%endard%}, then this is also true for {%ard%} \Pi (a : A) -> B a {%endard%} regardless of levels of {%ard%} A {%endard%}.
 
+The universe {%ard%} \Prop {%endard%} is also proof irrelevant.
+This means that any two terms of a type in this universe are _definitionally_ equal.
+
 ## Universe Polymorphism
 
 To define a polymorphic function (or any other kind of definition), we do not have to specify levels of types explicitly.

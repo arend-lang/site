@@ -259,3 +259,13 @@ without computational content, and, thus, it does not evaluate.
 To define a lemma use the keyword {%ard%} \lemma {%endard%} instead of {%ard%} \func {%endard%}.
 If the result type of a lemma does not belong to {%ard%} \Prop {%endard%}, but is provably a proposition, you can use the keywords [\level](level#level-of-a-type) to define a lemma with this result type.
 The fact that lemmas do not evaluate may greatly improve performance of typechecking if their proofs are too lengthy.
+
+## \sfunc
+
+Functions defined as {%ard%} \sfunc {%endard%} do not evaluate just as lemmas, but it is possible to evaluate such functions by using keyword {%ard%} \eval {%endard%}.
+Let `f` be an ordinary function and let {%ard%} a_1, ... a_n {%endard%} be arguments such that expression {%ard%} f a_1 ... a_n {%endard%} evaluates to `e`.
+If `f` is defined as {%ard%} \sfunc {%endard%}, then this expression won't evaluate, but expression {%ard%} \eval f a_1 ... a_n {%endard%} evaluates to `e`.
+To prove that {%ard%} f a_1 ... a_n {%endard%} equals to {%ard%} \eval f a_1 ... a_n {%endard%}, you can use keyword {%ard%} \peval {%endard%}.
+Expression {%ard%} \peval f a_1 ... a_n {%endard%} has type {%ard%} f a_1 ... a_n = \eval f a_1 ... a_n {%endard%}.
+
+Note that it is necessary to use {%ard%} \sfunc {%endard%} [in some cases](level#squashed-data-types).
