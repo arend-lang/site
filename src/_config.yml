@@ -18,6 +18,14 @@ defaults:
         nav: "documentation"
       toc: true
       toc_sticky: true
+  - scope:
+      path: "tutorial"
+    values:
+      layout: single
+      sidebar:
+        nav: "tutorial"
+      toc: true
+      toc_sticky: true
 
 footer:
   links:
