@@ -48,17 +48,27 @@ level. Consider the following example:
 \func type : \Type => \Type
 {%endarend%}
 
--- Например, в примере выше у \Type, который написан в теле функции, будет выведен уровень \lp.
--- У \Type, который написан в типе, уровень \lp не может быть, так как не верно, что \Type \lp : \Type \lp, поэтому он будет на 1 выше, то есть \suc \lp.
-\func type_ : \Type (\suc \lp) => \Type \lp
+The typechecker will infer the level {%ard%}\lp{%endard%} for {%ard%}\Type{%endard%} in the body of the function
+{%ard%}type{%endard%}. Consequently, the typechecker infers {%ard%}\suc \lp{%endard%} for the level of the universe
+in the result type of {%ard%}type{%endard%} since {%ard%}n = \suc \lp{%endard%} is minimal such that 
+{%ard%}\Type \lp : \Type n{%endard%}. Thus, the function {%ard%}type{%endard%} can be equivalently rewritten
+as follows:
 
--- На уровнях есть небольшой набор операций:
--- * Любое натуральное число является уровнем
--- * \suc l
--- * \max l1 l2
--- То есть любой уровень является либо константой, либо эквивалентен уровню вида \max (\lp + c) c', где c и c' -- константы, а \lp + c -- это уровень вида \suc (\suc ... (\suc \lp) ... ).
--- Уровень пи-типов и других конструкций над типами -- это максимум из уровней типов, входящих в эту конструкцию.
+{%arend%}
+\func type : \Type (\suc \lp) => \Type \lp
+{%endarend%}
+
+There are two operations that allow to form level expressions out of atomic ones: {%ard%}\suc l{%endard%} and
+{%ard%}\max l1 l2{%endard%}. Atomic ones, as we have seen, are just nonnegative numerals and polymorphic parameters
+{%ard%}\lp{%endard%}. Therefore any level expression is either equivalent to a constant or to an expression of the form
+{%ard%}\max (\lp + c) c'{%endard%}, where {%ard%}c, c'{%endard%} are constants and {%ard%}\lp + c{%endard%} is 
+the c-fold {%ard%}\suc{%endard%} applied to {%ard%}\lp{%endard%}.
+
+The level of a Pi-type or other type forming construction is the maximal level among all types contained in this construction:
+
+{%arend%}
 \func test0 : \Type (\max (\suc (\suc \lp)) 4) => \Type (\max \lp 3) -> \Type (\suc \lp)
+{%endarend%}
 
 -- Еще несколько примеров:
 \func test1 => id Nat 0
