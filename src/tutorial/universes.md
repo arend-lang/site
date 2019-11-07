@@ -70,45 +70,80 @@ The level of a Pi-type or other type forming construction is the maximal level a
 \func test0 : \Type (\max (\suc (\suc \lp)) 4) => \Type (\max \lp 3) -> \Type (\suc \lp)
 {%endarend%}
 
--- Еще несколько примеров:
+We now illustrate the behaviour of universes and polymorphic definitions through a bunch of examples:
+
+{%arend%}
 \func test1 => id Nat 0
 \func test2 => id \Type0 Nat
 \func test3 => id (\Type0 -> \Type1) (\lam X => X)
 \func test4 => id _ id
 \func test4' => id (\Pi (A : \Type) -> A -> A) id
+{%endarend%}
 
--- При обращении к определению можно явно указать его уровень, то есть чему будет равен параметр \lp:
-\func test5 => id (\Type \lp) Nat
--- Либо так:
+While invoking a definition it's possible to specify the value for its polymorphic level parameter {%ard%}\lp{%endard%}.
+In case the value is not a numeral, it can be passed as an ordinary first parameter:
+
+{%arend%}
+\func test5 => id (\suc \lp) (\Type \lp) Nat
+{%endarend%}
+
+Alternatively, it can be done using the construct {%ard%}\level p h{%endard%}, where {%ard%}p{%endard%} is the level
+(we ignore {%ard%}h{%endard%} for now). It is useful when the value is numeral.
+
+{%arend%}
 \func test5' => id (\level (\suc \lp) _) (\Type \lp) Nat
--- Второй вариант синтаксиса полезен когда уровень является константой:
 \func test6 => id (\level 2 _) \Type1 \Type0
--- Если при обращению к определению уровень не указан явно, он будет выведен автоматически как и в случае с \Type.
--- В большинстве случаев нет необходимости указывать уровень явно.
+{%endarend%}
 
--- Параметры \data не влияют на его уровень.
-\data Magma' (A : \Type)
+In case a definition is invoked without explicit specification for the value of its level, the level will be infered
+by the typechecker. In most cases there is no need to specify the level explicitly.
+
+The level of the universe of a data definition is the maximum among the levels of parameters of its constructors.
+Levels of parameters of the definition do not matter. 
+
+{%arend%}
+\data Magma (A : \Type)
   | con (A -> A -> A)
 
-\func test7 : \Type \lp => Magma' \lp Nat
+\data MagmaEx (A : \Type) (B : \Type5)
+  | con (A -> A -> A)
 
--- Уровень класса зависит от того, какие поля реализованы.
+\func test7 : \Type \lp => MagmaEx \lp Nat \Type4
+{%endarend%}
+
+The level of a class or a record is determined by its _non-implemented_ fields and parameters (recall that parameters are
+just fields). For example, consider the definition of Magma as a class:
+
+{%arend%}
 \class Magma (A : \Type)
   | \infixl 6 ** : A -> A -> A
+{%endarend%}
 
--- Например, уровень Magma \lp -- это \Type (\suc \lp), так как в определении Magma \lp появляется вселенная \Type \lp.
+The level of {%ard%}Magma \lp{%endard%} is {%ard%}\Type (\suc \lp){%endard%} since the definition of {%ard%}Magma \lp{%endard%}
+contains {%ard%}\Type \lp{%endard%}. But the level of {%ard%}Magma \lp Nat{%endard%} is just {%ard%}\Type0{%endard%} since
+non-implemented fields of {%ard%}Magma \lp Nat{%endard%} do not contain universes.
+
+{%arend%}
 \func test8 : \Type (\suc \lp) => Magma \lp
 
--- Но уровень Magma \lp Nat -- это просто \Type 0, так как в нереализованных полях Magma Nat не встречаются вселенные.
 \func test9 : \Type \lp => Magma \lp Nat
+{%endarend%}
 
+Consider one more example, the class {%ard%}Functor{%endard%} of functors:
+
+{%arend%}
 \class Functor (F : \Type -> \Type)
   | fmap {A B : \Type} : (A -> B) -> F A -> F B
+{%endarend%}
 
+The level of {%ard%}Functor{%endard%} will be {%ard%}\Type (\suc \lp){%endard%} even if the field {%ard%}F{%endard%} is
+implemented since {%ard%}fmap{%endard%} also refers to {%ard%}\Type \lp{%endard%}.
+
+{%arend%}
 \data Maybe (A : \Type) | nothing | just A
 
--- Уровень Functor \lp будет \Type (\suc \lp) даже если поле F реализовано, так как в поле fmap тоже появляется \Type \lp.
 \func test10 : \Type (\suc \lp) => Functor \lp Maybe
+{%endarend%}
 
 # Induction principles
 
