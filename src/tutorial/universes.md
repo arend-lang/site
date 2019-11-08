@@ -147,17 +147,25 @@ implemented since {%ard%}fmap{%endard%} also refers to {%ard%}\Type \lp{%endard%
 
 # Induction principles
 
--- Элиминатор для рекурсивного типа данных -- это просто принцип индукции для него.
--- Мы можем определять свои принципы индукции, которые удобнее использовать, чем стандартные.
--- Например, для натуральных чисел мы можем определить принцип индукции, который позволяет использовать индукционную гипотезу для любого числа, меньшего данного, а не только для числа, меньшего на 1.
+We have already seen that data types have canonical eliminators associated to them and that
+non-dependent and dependent eliminators correspond to recursion and indunction principles 
+respectively. It is also possible to define custom eliminators and, thus, custom induction
+principles that in some case are more convenient to use. For example, we can define an
+induction principle for natural numbers that allows to use induction hypothesis for _any_
+number less than the current one, not just for the number less by one:
+
+{%arend%}
 \func Nat-ind (E : Nat -> \Type)
   (r : \Pi (n : Nat) -> (\Pi (k : Nat) -> T (k < n) -> E k) -> E n)
-  (n : Nat) : E n => {?} -- Доказательство упражнение
+  (n : Nat) : E n => {?} -- prove this as an exercise
+{%endarend%}
 
 # Induction-recursion
 
--- Рекурсия-рекурсия -- это принцип, позволяющий определять взаимно рекурсивные функции.
--- Пример: функции isEven и isOdd.
+Recursion-recursion -- is a principle, allowing to define mutually recursive functions. For example,
+consider function {%ard%}isOdd{%endard%} and {%ard%}isEven{%endard%}:
+
+{%arend%}
 \func isEven (n : Nat) : Bool
   | 0 => true
   | suc n => isOdd n
@@ -165,40 +173,52 @@ implemented since {%ard%}fmap{%endard%} also refers to {%ard%}\Type \lp{%endard%
 \func isOdd (n : Nat) : Bool
   | 0 => false
   | suc n => isEven n
+{%endarend%}
 
--- Индукция-индукция -- это принцип, позволяющий определять взаимно рекурсивные типы данных.
--- Когда мы определяем взаимно рекурсивный тип данных, нужно явно указывать его тип.
--- Пример: типы IsEven и IsOdd.
+Induction-induction -- is a principle, allowing to define mutually recursive data types. In case
+a data type is a part of mutually inductive definition, its type must be specified explicitly.
+Consider the types {%ard%}IsOdd{%endard%} and {%ard%}IsEven{%endard%}:
+
+{%arend%}
 \data IsEven (n : Nat) : \Type \with
   | 0 => zero-isEven
   | suc n => suc-isEven (IsOdd n)
 
 \data IsOdd (n : Nat) : \Type \with
   | suc n => suc-isOdd (IsEven n)
+{%endarend%}
 
--- Индукция-рекурсия -- это принцип, позволяющий определять тип данных, взаимно рекурсивный с функцией.
--- Мы увидим пример такого определения ниже.
+Induction-recursion -- is a principle, allowing to define data types and functions that are mutually recursive.
+For example, this construct allows to define universes of types as data types. We will explain how it can be
+done below.
 
-# Universes
+# Universes via induction-recursion
 
--- \Type0 -- это тип, элементы которого -- это малые типы.
--- Такой тип называется вселенной.
--- Мы можем определить свою вселенную, состоящую только из определенного набора типов.
+Let's define a custom universe containing some custom set of types:
 
+{%arend%}
 \data Type
   | nat
   | list Type
   | arr Type Type
+{%endarend%}
 
--- Мы должны еще определить функцию, которая переводит элементы Type в настоящие типы.
+The type {%ard%}Type{%endard%} can be thought of as a type contains codes of types. We should also define a
+function that realizes them as actual types:
+
+{%arend%}
 \func El (t : Type) : \Type0 \elim t
   | nat => Nat
   | list t => List (El t)
   | arr t1 t2 => El t1 -> El t2
 
 \func idc (t : Type) (x : El t) : El t => x
+{%endarend%}
 
--- Если мы хотим определить вселенную, в которой у нас есть заисимые типы, то такое определение должно быть индуктивно-рекурсивным.
+The universe {%ard%}Type{%endard%} contains just non-dependent types. If we want to include also dependent types
+to the universe, we should use induction-recursion:
+
+{%arend%}
 \data Type' : \Type0
   | nat'
   | list' Type'
@@ -208,31 +228,42 @@ implemented since {%ard%}fmap{%endard%} also refers to {%ard%}\Type \lp{%endard%
   | nat' => Nat
   | list' t => List (El' t)
   | pi' t1 t2 => \Pi (a : El' t1) -> El' (t2 a)
+{%endarend%}
 
-# Completeness of specification
+# Completeness of specifications
 
--- Спецификация для некоторого значения a типа A -- это просто предикат вида P : A -> \Type.
--- То есть спецификация -- это просто свойство элемента, которое мы хотим про него доказать.
+Specification for an element of type {%ard%}A{%endard%} is simply a predicate {%ard%}P : A -> \Type{%endard%},
+describing the property of an element that we want to prove. 
 
--- Спецификация корректна, если верно P a.
--- Спецификация полна, если P x влечет x = a для любого x : A.
+A specification {%ard%}P{%endard%} is _correct_ for {%ard%}a : A{%endard%} if {%ard%}P a{%endard%} is provable.
+A specification {%ard%}P{%endard%} is _complete_ for {%ard%}a : A{%endard%} if {%ard%}P x{%endard%} implies 
+{%ard%}x=a{%endard%} for all {%ard%}x : A{%endard%}.
 
--- Например, пусть у нас есть функция, вычисляющая факториал fac : Nat -> Nat.
--- P1 -- корретная спецификация для fac, но не полная.
--- \func P1 (f : Nat -> Nat) => f 3 = 6
--- P2 -- полная, но не корректная
--- \func P2 (f : Nat -> Nat) => Empty
--- P3 -- полная и корректная спецификация для fac.
--- \func P3 (f : Nat -> Nat) => \Sigma (f 0 = 1) (\Pi (n : Nat) -> f (suc n) = suc n * f n)
+For example, assume we want to write specification for a function {%ard%}fac : Nat -> Nat{%endard%} that computes
+factorial:
 
--- Полная и корректная спецификация для функции сортировки:
--- \func P (f : List A -> List A) => \Pi (xs : List A) -> \Sigma (isSorted (f xs)) (isPerm (f xs) xs)
--- где isSorted xs верно тогда и только тогда, когда список xs отсортирован, а isPerm xs ys верно тогда и только список xs является перестановкой списка ys.
+{%arend%}
+-- P1 is correct specification for 'fac', but incomplete.
+\func P1 (f : Nat -> Nat) => f 3 = 6
+-- P2 is complete, but not correct.
+\func P2 (f : Nat -> Nat) => Empty
+-- P3 -- correct and complete specification for 'fac'.
+\func P3 (f : Nat -> Nat) => \Sigma (f 0 = 1) (\Pi (n : Nat) -> f (suc n) = suc n * f n)
+{%endarend%}
 
--- Разумеется, мы хотим, чтобы спецификация была, по крайней мере, корректной.
--- Мы можем не требовать полноты, если полную спецификацию слишком сложно проверить, и нам достаточно истинности частичной спецификации.
--- Тем не менее полезно понимать когда спецификация является полной.
+Another example -- correct and complete specification for a sort function:
 
--- Есть простое необходимое (и достаточное для корректных спецификаций) условие полноты, которое не зависит от элемента, для которого задается спецификация:
--- \Pi (x y : A) -> P x -> P y -> x = y
--- То есть должно существовать не более одного элемента, на котором предикат верен.
+{%arend%}
+\func P (f : List A -> List A) => \Pi (xs : List A) -> \Sigma (isSorted (f xs)) (isPerm (f xs) xs)
+-- where 'isSorted xs' is true iff  'xs' is sorted and
+-- 'isPerm xs ys' is true iff 'xs' is a permutation of 'ys'.
+{%endarend%}
+
+Of course, specifications must always be correct, but one may opt for working with incomplete specifications
+since sometimes it's too hard to write and prove the complete one. Nevertheless, it's useful to understand,
+when a specification is complete. One useful necessary and sufficient condition of completeness for correct
+specifications can be formulated as follows:
+
+{%arend%}
+\Pi (x y : A) -> P x -> P y -> x = y
+{%endarend%}
