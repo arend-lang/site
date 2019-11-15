@@ -441,7 +441,7 @@ it the same as the one in the abelian group of addition.
 
 TODO: finish this
 If we try to define the type of rings that extends abelian group of addition and monoid of multiplication,
-we will fail. 
+we will get into trouble. 
 
 -- Определим еще один тип абелевых групп, который не наследует моноиды.
 \class AbGroup' (A : \Type) {

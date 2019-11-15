@@ -66,17 +66,20 @@ documentation:
     url: libraries
 
 tutorial:
-  - title: "Basics"
-    url: synndef
-  - title: "Simple Examples"
-    url: datanproofs
-  - title: "Equality"
-    url: idtype
-  - title: "Equational Reasoning, J, Predicates"
-    url: equalityex
-  - title: "Classes and Records"
-    url: records
-  - title: "Case, Views, Decidable Predicates"
-    url: view
-  - title: "Universes, Induction-Recursion, Specifications"
-    url: universes
+  - title: "Part I: dependent types"
+    url: PartI
+    children:
+    - title: "Basics"
+      url: synndef
+    - title: "Simple Examples"
+      url: datanproofs
+    - title: "Equality"
+      url: idtype
+    - title: "Equational Reasoning, J, Predicates"
+      url: equalityex
+    - title: "Classes and Records"
+      url: records
+    - title: "Case, Views, Decidable Predicates"
+      url: view
+    - title: "Universes, Induction-Recursion, Specifications"
+      url: universes
