@@ -1,8 +1,11 @@
 #!/bin/bash
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-SITE_DIR="${AREND_SITE_DIR:-$DIR/../../../Site}"
+if [ -z ${NOSYNC+x} ]
+then
+    DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+    SITE_DIR="${AREND_SITE_DIR:-$DIR/../../../Site}"
 
-bundle exec jekyll build -ssrc -d$SITE_DIR
+    bundle exec jekyll build -ssrc -d$SITE_DIR
 
-exit $?
+    exit $?
+fi
