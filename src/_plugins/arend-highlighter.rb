@@ -10,7 +10,7 @@ class ArendLexer < Rly::Lex
     tok
   end
 
-  token(:OPERATOR, /->|=>|:|@|==|=|\+|\*|\$|,|\||`#{id}`?/) do |tok|
+  token(:OPERATOR, /(=>|@|==|=|\+|\*|\$)'*|->|:|,|\||`#{id}`?/) do |tok|
     tok.value = "<span class=\'o\'>#{tok.value}</span>"
     tok
   end
@@ -57,7 +57,7 @@ class ArendLexer < Rly::Lex
   token(:BRACE, /[\{\}]/)
 
   on_error do |tok|
-    puts "Illegal character: #{tok.value}"
+    puts "Illegal character: #{tok.value} at #{tok.lexer.pos}"
     tok.lexer.pos += 1
     nil
   end

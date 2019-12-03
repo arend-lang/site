@@ -176,7 +176,7 @@ the function {%ard%}v++{%endard%}:
 {%endarend%}
 
 Already the statement of associativity of {%ard%}v++{%endard%} requires some work since the types of 
-{%ard%}у (xs v++ ys) v++ zs{%endard%} and {%ard%}xs v++ (ys v++ zs){%endard%} do not coincide: the types are
+{%ard%}(xs v++ ys) v++ zs{%endard%} and {%ard%}xs v++ (ys v++ zs){%endard%} do not coincide: the types are
 {%ard%}Vec A (k + (m + n)){%endard%} and {%ard%}Vec A ((k + m) + n){%endard%} respectively. We can get over it
 by using {%ard%}transport{%endard%} since it allows to translate an element of {%ard%}Vec A x{%endard%} to an 
 element of {%ard%}Vec A y{%endard%} if {%ard%}x = y{%endard%}:

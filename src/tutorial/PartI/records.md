@@ -419,17 +419,29 @@ record, say, {%ard%}Base{%endard%}, then {%ard%}Z{%endard%} would have had three
 \record Z' \extends X', Y'
 {%endarend%}
 
-Consider an example from algebra: the type of rings. One can define this type as follows:
+Consider an example from algebra: the type of rings. Under a few simplifications, a possible definition might look as
+follows:
 
 {%arend%}
--- let's introduce the type of abelian monoids
+\class Monoid (A : \Type) {
+  | \infixl 7 * : A -> A -> A
+  | ide-left (x : A) : ide * x = x
+  | ide-right (x : A) : x * ide = x
+  | *-assoc (x y z : A) : (x * y) * z = x * (y * z)
+}
+
+\class CommMonoid \extends Monoid {
+  | comm (x y : A) : x * y = y * x
+  | ide-right x => comm x ide *> ide-left x
+}
+
 \class AbGroup \extends CommMonoid {
   | inverse : A -> A
   | inv-left (x : A) : inverse x * x = id
   | inv-right (x : A) : x * inverse x = id
 }
 
--- we omit distributivity
+-- We omit distributivity
 \class Ring \extends AbGroup
   | mulMonoid : Monoid A
 {%endarend%}
@@ -438,19 +450,30 @@ In order to distinguish the structure of addition from the structure of multipli
 but add it as a field instead. Note that we specify explicitly the underlying classifying field of {%ard%}mulMonoid{%endard%} to make
 it the same as the one in the abelian group of addition.
 
+If we try to define the type of rings that extends class AbGroup for the abelian group of addition and class Monoid for the monoid of multiplication,
+we will get into trouble: the clash of two monoidal structures. This is called the _diamond problem_.
 
-TODO: finish this
-If we try to define the type of rings that extends abelian group of addition and monoid of multiplication,
-we will get into trouble. 
+{%arend%}
+-- This is not a right way to define the class Ring:
+-- the structures of addition and multiplication coincide.
+\class Ring \extends AbGroup, Monoid
+{%endarend%}
 
--- Определим еще один тип абелевых групп, который не наследует моноиды.
+A possible way to make it work is to define another copy of AbGroup that does not extend Monoid:
+
+{%arend%}
+-- This class does not extend Monoid
 \class AbGroup' (A : \Type) {
-  -- Здесь нужно перечислить все поля из Monoid, CommMonoid и AbGroup.
+  -- Here all the fields of Monoid, CommMonoid and AbGroup 
+  -- should be repeated
 }
 
--- Если мы попытаеся определить тип колец следующим образом, то у нас ничего не получится, так как структуры сложения и умножения будут совпадать.
 \class Ring' \extends AbGroup', Monoid
-  | Monoid.A => AbGroup'.A
+  | Monoid.A => AbGroup'.A -- make sure that classifying fields coincide
+{%endarend%}
+
+This approach is adopted in Arend standard library with one small improvement: algebraic structures extend the same BaseSet class
+in order to avoid identifications as {%ard%}Monoid.A => AbGroup'.A{%endard%} above. 
 
 # Functor
 
