@@ -473,7 +473,7 @@ A possible way to make it work is to define another copy of AbGroup that does no
 {%endarend%}
 
 This approach is adopted in Arend standard library with one small improvement: algebraic structures extend the same BaseSet class
-in order to avoid identifications as {%ard%}Monoid.A => AbGroup'.A{%endard%} above. 
+in order to avoid identifications such as {%ard%}Monoid.A => AbGroup'.A{%endard%} above. 
 
 # Functor
 

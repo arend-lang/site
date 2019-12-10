@@ -16,13 +16,6 @@ Next, we turn to a several examples of datatypes. For a given type {%ard%}A{%end
 of fixed length vectors of elements of {%ard%}A{%endard%}, one of which is based on _datatypes with constructor patterns_. We conclude with a
 discussion of possible definitions of the type of all finite sets.
 
-# Remark on \elim vs \case
-
--- Функции f и f' эквивалентны, но в данной ситуации лучше использовать f', так как выражение вида f' n является нормальной формой, а выражение f n раскрывается в определение f, что менее удобно.
-
-\func f (x : Nat) : Nat => \case x \with { zero => 0 | suc n => n }
-\func f' (x : Nat) : Nat | zero => 0 | suc n => n
-\func g (n : Nat) => f' n
 
 # Insertion sort and reverse
 
@@ -142,7 +135,12 @@ is {%ard%}0{%endard%}. Such datatypes can be defined using _constructors with pa
   | fcons _ xs => xs
 {%endarend%}
 
-TODO: explain why the latter is better
+There are several reasons, why the latter definition with datatypes is preferable. Firstly,
+{%ard%}Vec{%endard%} has named constructors, so we explicitly see which constructor we are
+dealing with. Secondly, in pattern matching we can use names for parameters of constructors
+instead of mere projections {%ard%}.1{%endard%}, {%ard%}.2{%endard%}, etc. These things
+make definitions like {%ard%}Vec{%endard%} much more convenient to work with than 
+{%ard%}vec{%endard%}.
 
 Below we use double recursion on {%ard%}n{%endard%} and {%ard%}xs{%endard%} to define the 
 function {%ard%}first{%endard%} that returns the first element in a vector and the function
@@ -178,37 +176,59 @@ one can define it as a subtype of {%ard%}Nat{%endard%}:
 \func fin (n : Nat) => \Sigma (x : Nat) (T (x < n))
 {%endarend%}
 
+Or as a recursive function:
+
+{%arend%}
 \func Fin' (n : Nat) : \Set0
   | 0 => Empty
   | suc n => Maybe (Fin' n)
+{%endarend%}
 
--- Конструкторы принимают параметры типа данных в качестве неявных аргументов.
-\func emptyList => nil {Nat}
+Or as a datatype:
 
--- Еще его можно определить индуктивно:
+{%arend%}
 \data Fin (n : Nat) \with
   | suc n => { fzero | fsuc (Fin n) }
+{%endarend%}
 
+Consider several examples:
+
+{%arend%}
 -- Fin 0 -- пустой тип.
 \func absurd {A : \Type} (x : Fin 0) : A
 
 \func fin0 : Fin 3 => fzero
 \func fin1 : Fin 3 => fsuc fzero
 \func fin2 : Fin 3 => fsuc (fsuc fzero)
+-- The following does not typecheck
 -- \func fin3 : Fin 3 => fsuc (fsuc (fsuc fzero))
+{%endarend%}
 
--- В Fin 3 не более 3 элементов.
+It can be easily proven that {%ard%}Fin 3{%endard%} has not nore than three elements.
+Specifically, it can be proven that every element of {%ard%}Fin 3{%endard%} is either
+{%ard%}fin0{%endard%}, {%ard%}fin1{%endard%} or {%ard%}fin2{%endard%}:
+
+{%arend%}
 \func atMost3 (x : Fin 3) : Either (x = fin0) (Either (x = fin1) (x = fin2)) \elim x
   | fzero => inl idp
   | fsuc fzero => inr (inl idp)
   | fsuc (fsuc fzero) => inr (inr idp)
   | fsuc (fsuc (fsuc ()))
+{%endarend%}
 
+The embedding to {%ard%}Nat{%endard%} can be defined as follows:
+
+{%arend%}
 \func toNat {n : Nat} (x : Fin n) : Nat
   | {suc _}, fzero => 0
   | {suc _}, fsuc x => suc (toNat x)
+{%endarend%}
 
--- Безопасный lookup.
+The type {%ard%}Fin n{%endard%} can be particularly useful, for example, in a definition
+of a safe lookup in a vector:
+
+{%arend%}
 \func lookup {A : \Type} {n : Nat} (xs : Vec A n) (i : Fin n) : A \elim n, xs, i
   | suc _, fcons x _, fzero => x
   | suc _, fcons _ xs, fsuc i => lookup xs i
+{%endarend%}

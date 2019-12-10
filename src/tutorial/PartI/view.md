@@ -39,6 +39,22 @@ Actually, every usage of case expression can be replaced in this way with an inv
 It is just sometimes more convenient to use short case expressions instead of introducing countless
 amount of helpers.
 
+# Remark on \elim vs \case
+
+A definition of a function by pattern matching can be given either with {%ard%}\elim{%endard%} or with 
+{%ard%}\case{%endard%}. These two ways are almost equivalent, but there is one small difference:
+depending on whether {%ard%}f{%endard%} is defined via {%ard%}\case{%endard%} or via {%ard%}\elim{%endard%},
+the expression {%ard%}f x{%endard%} evaluates to the {%ard%}\case{%endard%} expression or does not evaluate 
+respectively. Consider, for example, the following two definitions: 
+
+{%arend%}
+\func f (x : Nat) : Nat => \case x \with { zero => 0 | suc n => n }
+\func f' (x : Nat) : Nat | zero => 0 | suc n => n
+{%endarend%}
+
+{%ard%}f n{%endard%} evaluates to the body of the definition, whereas the expression {%ard%}f' n{%endard%}
+is in normal form. The latter option makes normalized terms look nicer and for that reason is usually preferable.
+
 # \case in dependently typed languages
 
 Case expressions are more subtle in dependently typed languages than in languages like Haskell. Let's

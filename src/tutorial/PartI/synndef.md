@@ -380,6 +380,10 @@ By now we have discussed all the things necessary to define properly the polymor
    data List a = Nil | Cons a (List a)
 -}
 
+-- Constructors have implicit parameters for each of the parameters of datatype
+\func emptyList => nil {Nat}
+
+-- Operator 'append'
 \func \infixl 6 ++ {A : \Type} (xs ys : List A) : List A \elim xs
   | nil => ys
   | cons x xs => cons x (xs ++ ys)
@@ -388,6 +392,7 @@ By now we have discussed all the things necessary to define properly the polymor
    Nil ++ ys = ys
    cons x xs ++ ys = cons x (xs ++ ys)
 -}
+
 {%endarend%}
 
 # Tuples and Sigma-types
