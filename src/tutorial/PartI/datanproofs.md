@@ -143,7 +143,7 @@ make definitions like {%ard%}Vec{%endard%} much more convenient to work with tha
 {%ard%}vec{%endard%}.
 
 Below we use double recursion on {%ard%}n{%endard%} and {%ard%}xs{%endard%} to define the 
-function {%ard%}first{%endard%} that returns the first element in a vector and the function
+function {%ard%}first{%endard%} that returns the first element of a vector and the function
 {%ard%}append{%endard%} that appends a vector to other vector. Note that the output of
 {%ard%}first{%endard%} is not defined for the empty vector. This is typically resolved
 by using {%ard%}Maybe{%endard%} datatype as codomain:
@@ -194,7 +194,7 @@ Or as a datatype:
 Consider several examples:
 
 {%arend%}
--- Fin 0 -- пустой тип.
+-- Fin 0 -- empty type
 \func absurd {A : \Type} (x : Fin 0) : A
 
 \func fin0 : Fin 3 => fzero
@@ -204,7 +204,7 @@ Consider several examples:
 -- \func fin3 : Fin 3 => fsuc (fsuc (fsuc fzero))
 {%endarend%}
 
-It can be easily proven that {%ard%}Fin 3{%endard%} has not nore than three elements.
+It can be easily proven that {%ard%}Fin 3{%endard%} has no more than three elements.
 Specifically, it can be proven that every element of {%ard%}Fin 3{%endard%} is either
 {%ard%}fin0{%endard%}, {%ard%}fin1{%endard%} or {%ard%}fin2{%endard%}:
 

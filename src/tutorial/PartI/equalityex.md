@@ -52,10 +52,10 @@ The commutativity can now be proved as follows:
 # Equational reasoning, proof of +-comm rewritten
 
 There is one clever trick that allows to write sequences of equality proofs joining by transitivity in a
-more readable form. Namely, one can define operators {%ard%}==<{%endard%}, {%ard%}>=={%endard%} and
-{%ard%}qed{%endard%} such that it's possible to write insted of a chain of equality proofs 
-{%ard%}p1 *> ... *> pn{%endard%} an extended chain {%ard%}a1 ==< p1 >== a2 ==< p2 >== a3 ... `qed {%endard%},
-where we also specify objects equality of which is proven at each step, that is such that {%ard%}pi : ai = a(i+1){%endard%}.
+more readable form. Namely, one can define operators {%ard%}`==<`{%endard%}, {%ard%}`>==`{%endard%} and
+{%ard%}`qed`{%endard%} such that it is possible to write instead of a chain of equality proofs 
+{%ard%}p1 `*>` ... `*>` pn{%endard%} an extended chain {%ard%}a1 `==<` p1 `>==` a2 `==<` p2 `>==` a3 ... `qed {%endard%},
+where we also specify the objects equality of which is proven at each step (in other words, {%ard%}pi : ai = a(i+1){%endard%}).
 The proof {%ard%}+-comm{%endard%} rewritten in this way looks as follows:
 
 {%arend%}
@@ -115,8 +115,8 @@ for {%ard%}Nat{%endard%}:
 {%endarend%}
 
 Similarly, we can say that identity type {%ard%}={%endard%} is "generated" by reflexivity {%ard%}idp{%endard%}:
-the non-dependent version of eliminator says that if we defined the value of a function {%ard%}a = x -> B x{%endard%}
-on {%ard%}idp{%endard%}, that is some value {%ard%}b : B a{%endard%}, then we uniquely determined this function:    
+the non-dependent version of eliminator says that if we define the value of a function {%ard%}a = x -> B x{%endard%}
+on {%ard%}idp{%endard%}, that is some value {%ard%}b : B a{%endard%}, then we would uniquely determine this function:    
 
 {%arend%}
 \func transport'
@@ -138,7 +138,7 @@ a function {%ard%}\Pi (x : A) (p : a = x) -> B x p{%endard%}:
     (b : B a idp)
     {a' : A} (p : a = a')
     : B a' p
-  -- the details of definition are not important for now
+  -- the details of the definition are not important for now
   => coe (\lam i => B (p @ i) (psqueeze p i)) b right
   \where {
     \func squeeze (i j : I) => coe (\lam i => Path (\lam j => left = squeeze1 i j) (path (\lam _ => left)) (path (\lam j => squeeze1 i j))) (path (\lam _ => path (\lam _ => left))) right @ i @ j
@@ -155,13 +155,13 @@ fixed and equal to {%ard%}a{%endard%} in the definition above, then we obtain _K
     (p : a = a) : B p => {?}
 {%endarend%}
 This eliminator equivalent to the statement that every element of {%ard%}a = a{%endard%} is {%ard%}idp{%endard%}. 
-It may seem natural at first sight to add it as an exiom then to simplify things by making proofs of equalities
+It may seem natural at first sight to add it as an axiom then to simplify things by making proofs of equalities
 unique (as it implies that {%ard%}p = p'{%endard%} for any {%ard%}p, p' : a = a'{%endard%}), but actually it is
 important that these proofs are _not unique_. We will discuss it later. TODO: ref
 
 # Associativity of append for vectors
 
-Let's prove some statement that essentially requires J. A good example of such statement is associativity of the
+Let us prove some statement that essentially requires J. A good example of such statement is associativity of the
 append {%ard%}v++{%endard%} for vectors. Let's recall the definitions of the datatype {%ard%}Vec{%endard%} and
 the function {%ard%}v++{%endard%}:
 
@@ -198,22 +198,19 @@ element of {%ard%}Vec A y{%endard%} if {%ard%}x = y{%endard%}:
            p
 {%endarend%}
 
-Let's take a closer look at what's going on in this proof. First, at the inductive step we use the induction
-hypothesis {%ard%}v++-assoc xs ys zs{%endard%} and apply congruence {%ard%}pmap (vcons x){%endard%} to it
-to prove a statement about equality of vectors extended with {%ard%}x{%endard%}:
+Let us take a closer look at what is going on in this proof. First, we apply the congruence {%ard%}pmap (vcons x){%endard%} to the induction
+hypothesis {%ard%}v++-assoc xs ys zs{%endard%} so that we obtain the equality:
+{%arend%}
+vcons x (xs v++ ys) v++ zs = vcons x (transport (Vec A) (+-assoc k m n) (xs v++ (ys v++ zs))).
+{%endarend%}
+This corresponds to the following three lines of the proof:
 {%arend%}
   | 0, vnil => idp
   | suc n, vcons x xs =>
         pmap (vcons x) (v++-assoc xs ys zs)
 {%endarend%}
-
-At this point we proved the equality:
-{%arend%}
-vcons x (xs v++ ys) v++ zs = vcons x (transport (Vec A) (+-assoc k m n) (xs v++ (ys v++ zs)))
-{%endarend%}
-
-The left side of the equality is precisely what we need since {%ard%}((vcons x xs) v++ ys) v++ zs{%endard%}
-evaluates to {%ard%}vcons x ((xs v++ ys) v++ zs){%endard%}. So, we should compose this prove with a prove of
+The left side of the above equality is precisely what we need since {%ard%}((vcons x xs) v++ ys) v++ zs{%endard%}
+evaluates to {%ard%}vcons x ((xs v++ ys) v++ zs){%endard%}. So, we should compose this proof with the proof of
 
 {%arend%}
 vcons x (transport (Vec A) (+-assoc k m n) (xs v++ (ys v++ zs))) = transport (Vec A) (+-assoc k m n) (vcons x (xs v++ (ys v++ zs)))
@@ -221,10 +218,9 @@ vcons x (transport (Vec A) (+-assoc k m n) (xs v++ (ys v++ zs))) = transport (Ve
 
 And this is precisely the commutativity of {%ard%}transport{%endard%} with {%ard%}vcons{%endard%}, which we 
 prove in {%ard%}transport-vcons-comm{%endard%} lemma. 
-Note that it's important that we generalized the statement: we proved this commutativity not only for
-{%ard%}+-assoc k m n{%endard%}, but for all {%ard%}e : Nat{%endard%} and {%ard%}p : k + m + n = e{%endard%}.
-Otherwise we couldn't apply J to prove this statement. We pass the generalized statement as the first argument
-to J. The second argument is a prove in case {%ard%}p ==> idp{%endard%}, which is just reflexivity {%ard%}idp{%endard%}:
+Note that it is important that we generalize the statement and prove the commutativity not only for
+{%ard%}+-assoc k m n{%endard%} but for all {%ard%}e : Nat{%endard%} satisfying {%ard%}p : k + m + n = e{%endard%} (otherwise, we would not be able to apply J to prove this statement). We pass this generalized statement as the first argument
+to J. The second argument of J should be the proof of the statement in the special case {%ard%}p ==> idp{%endard%}, which is just reflexivity {%ard%}idp{%endard%}:
 
 {%arend%}
 J (\lam e (p : k + m + n = e) =>

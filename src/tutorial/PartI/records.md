@@ -16,7 +16,7 @@ In the previous modules we saw two ways to arrange a sequence of types {%ard%}A1
 
 For example, a type of pairs of natural numbers can be defined as {%ard%}\Sigma Nat Nat{%endard%}. 
 In this case elements of a pair {%ard%}x : \Sigma Nat Nat{%endard%} are accessed by means of projections
-{%ard%}x.1{%endard%} and {%ard%}x.2{%endard%}. Or, alternatively, one can realize this type as a datatype
+{%ard%}x.1{%endard%} and {%ard%}x.2{%endard%}. Alternatively, one can realize this type as a datatype
 {%ard%}\data NatPair{%endard%} with projections defined by pattern matching:
 
 {%arend%}
@@ -33,7 +33,7 @@ The advantage of Sigma-type option is eta-equivalence: if {%ard%}x : \Sigma Nat 
 {%ard%}(x.1, x.2) == x{%endard%}, where {%ard%}=={%endard%} is computational equality. Eta-equivalence
 doesn't hold for datatypes: {%ard%}natPair (natFst x) (natSnd x){%endard%} is not computationally equal
 to {%ard%}x{%endard%}, one should prove that they are equal and use {%ard%}transport{%endard%} every
-time one wants to replace the one with the other. 
+time one wants to replace one with the other. 
 
 Record types provide the third option:
 
@@ -125,7 +125,7 @@ is a record formed by elements of the record {%ard%}C{%endard%}, where correspon
 
 For example, {%ard%}NatPair' { | fst => 0 }{%endard%} is the type of elements of the record {%ard%}NatPair'{%endard%}, whose
 first component is {%ard%}0{%endard%}. This type is, thus, equivalent to the type {%ard%}Nat{%endard%}.
-We call such types _anonimous extensions_.
+We call such types _anonymous extensions_.
 
 {%arend%}
 \func PartialEx : \Type => NatPair' { | fst => 0 }
@@ -133,7 +133,7 @@ We call such types _anonimous extensions_.
 \func ppp : NatPair' { | fst => 0 } => \new NatPair' { | snd => 1 }
 {%endarend%}
 
-Anonimous extensions of a record are subtypes of the record. If {%ard%}p{%endard%} is of type of the form
+Anonymous extensions of a record are subtypes of the record. If {%ard%}p{%endard%} is of type of the form
 {%ard%}C { ... }{%endard%}, where the subset F of fields of {%ard%}C{%endard%} is implemented, then {%ard%}p{%endard%} is also
 of type of the form {%ard%}C { ... }{%endard%}, where fields from a subset F' of F are implemented and these implementations 
 agree with the implementations in the former case. For example:
@@ -145,7 +145,7 @@ agree with the implementations in the former case. For example:
 {%endarend%}
 
 The operator {%ard%}\new{%endard%} can be applied to any expression that evaluates to a record or its
-anonimous extension provided all fields are implemented. For example:
+anonymous extension provided all fields are implemented. For example:
 
 {%arend%}
 \func new => \new PartialEx'
@@ -255,10 +255,9 @@ We will discuss extensions in more detail below.
 
 # Classes, instances
 
-The only difference between classes and records is that for classes an instance inferrence procedure is implemented.
-This procedure is analogous to the one in Haskell.
+The only difference between classes and records is that there is an instance inference mechanism available for classes. This mechanism is analogous to the one in Haskell.
 
-Global instances of a class can be defined using keyword {%ard%}\instance{%endard%}. For example, there are two 
+Global instances of a class can be defined using {%ard%}\instance{%endard%} keyword. For example, there are two 
 natural instances of the class {%ard%}Monoid{%endard%} for natural numbers: monoid on {%ard%}+{%endard%} and
 monoid on {%ard%}*{%endard%}.
 
@@ -282,9 +281,8 @@ monoid on {%ard%}*{%endard%}.
 {%endarend%}
 
 The first explicit pararameter of a class is of special significance and is called _classifying field_ of a class.
-It plays an important role in instance inference algorithm. Basically, in case there are no local instances, the algorithm
-searchs for a first appropriate global instance, appropriate in the sense that its classifying field coincides with
-some expected type. 
+Classifying fields significantly affect the behavior of the instance inference algorithm. Basically, in case there are no local instances, the algorithm
+searches for a first appropriate global instance (appropriate in the sense that its classifying field coincides with some expected type). 
 
 Note, that the type of a class field is determined in the same way as in case of records. For example, for {%ard%}*{%endard%}:
 

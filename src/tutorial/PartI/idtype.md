@@ -77,7 +77,7 @@ In order to prove reflexivity {%ard%}idp{%endard%} we can simply take the consta
 \func idp {A : \Type} {a : A} : a = a => path (\lam _ => a)
 {%endarend%}
 
-If {%ard%}f : A -> B{%endard%} and {%ard%}g : I -> A{%endard%}, then {%ard%}g{%endard%} determins a proof of the equality 
+If {%ard%}f : A -> B{%endard%} and {%ard%}g : I -> A{%endard%}, then {%ard%}g{%endard%} determines a proof of the equality 
 {%ard%}g left = g right{%endard%} and the congruence {%ard%}pmap{%endard%} can be interpreted as simply the composition of
 {%ard%}f{%endard%} and {%ard%}g{%endard%}. This observation suggests an alternative definition of {%ard%}pmap{%endard%}: 
 
@@ -88,7 +88,7 @@ If {%ard%}f : A -> B{%endard%} and {%ard%}g : I -> A{%endard%}, then {%ard%}g{%e
 
 This definition of {%ard%}pmap{%endard%} behaves better than others with respect to computational properties. For example, 
 {%ard%}pmap id{%endard%} is computationally the same as {%ard%}id{%endard%} and {%ard%}pmap (f . g){%endard%} is
-computationally the same as {%ard%}pmap f . pmap g{%endard%}, where (.) is composition:
+computationally the same as {%ard%}pmap f . pmap g{%endard%}, where (.) is the composition:
 
 {%arend%}
 \func pmap-idp {A : \Type} {a a' : A} (p : a = a') : pmap {A} (\lam x => x) p = p

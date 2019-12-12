@@ -8,9 +8,9 @@ In this module we explain the syntax and some key constructs of the Arend langua
 writing definitions, propositions and proofs.
 
 Arend has the following kinds of definitions: functions, data definitions, classes and records. As of now, we only consider
-functions and data definitions, exposition of classes and records is defered to TODO:modref. 
+functions and data definitions, exposition of classes and records is deferred to TODO:modref. 
 
-Some of the most basic definitions are built-in the language and contained in the module Prelude. For example, Prelude
+Some of the most basic definitions are built into the language and contained in the module Prelude. For example, Prelude
 contains
 types {%ard%}Nat{%endard%} and {%ard%}Int{%endard%} of natural and integer numbers respectively and the equality
 type {%ard%}={%endard%}.   
@@ -23,7 +23,7 @@ keywords {%ard%}\func{%endard%} and {%ard%}\data{%endard%} respectively.
 Numerals, if they occur in terms, are always interpreted as elements of types {%ard%}Nat{%endard%} or {%ard%}Int{%endard%}:
 non-negative numerals are of type {%ard%}Nat{%endard%}, negative numerals are of type {%ard%}Int{%endard%}.
 
-Arend allows considerable amount of freedom in choice of identifiers. With a few exceptions, names of definition, variables
+Arend allows considerable amount of freedom in the choice of identifiers. With a few exceptions, names of definitions, variables
 etc may contain upper or lower case letters, digits and characters from the list `~!@#$%^&*-+=<>?/|[]:_`.
 
 # Functions
@@ -70,7 +70,7 @@ function as shown below:
 {% endarend %}
 
 As demonstrated in the definition of {%ard%}foo{%endard%}, if a parameter is not used, you can omit the specification
-of its name by using the symbol `_`. Also, if several consequtive parameters have the same type, they can be merged:
+of its name by using the symbol `_`. Also, if several consecutive parameters have the same type, they can be merged:
 {%ard%}(x _ : Nat){%endard%} is equivalent to {%ard%}(x : Nat) (_ : Nat){%endard%}.
 
 Note that in contrast to Haskell, types of parameters should always be specified:
@@ -169,7 +169,7 @@ For example, the empty type {%ard%}Empty{%endard%}, the one-element unit type {%
 {%endarend%}
 
 Defining a function on {%ard%}Bool{%endard%} naturally corresponds to specifying its values on {%ard%}true{%endard%}
-and {%ard%}false{%endard%} via mechanism called _pattern matching_. For example, functions {%ard%}not{%endard%} and
+and {%ard%}false{%endard%} via the mechanism called _pattern matching_. For example, functions {%ard%}not{%endard%} and
 {%ard%}if{%endard%} can be defined as follows:
 
 {%arend%}
@@ -193,12 +193,12 @@ and {%ard%}false{%endard%} via mechanism called _pattern matching_. For example,
 
 {%endarend%}
 
-Typically, inductive types have constructors with parameters. In contrast to parameters of functions, it's allowed 
+Typically, inductive types have constructors with parameters. In contrast to parameters of functions, it is allowed 
 to write {%ard%}cons T{%endard%} instead of {%ard%}cons (_ : T){%endard%}.
  
 Types of these parameters may refer to the inductive type
-itself, for example, as we will shortly see in case of the type of natural numbers. However, there is an imortant restriction:
-all occurrences of an inductive type in types of parameters of constructors must be _strictly positive_. It means that 
+itself, for example, as we will shortly see in case of the type of natural numbers. However, there is an important restriction:
+all occurrences of an inductive type in types of parameters of constructors must be _strictly positive_. This means that 
 the inductive type cannot occur to the left of ->. If such definitions were allowed, it would have been possible to
 define the type of ''all untyped lambda terms'' {%ard%}K{%endard%}. In particular, non-terminating terms
 could have been coded as elements of {%ard%}K{%endard%}.
@@ -212,7 +212,7 @@ could have been coded as elements of {%ard%}K{%endard%}.
 \func omega => k (\lam x => app x x)
 {%endarend%}
 
-Let's turn to another example: the type of natural numbers. Definitions of the type {%ard%}Nat{%endard%}
+Let us turn to another example: the type of natural numbers. Definitions of the type {%ard%}Nat{%endard%}
 and of operations {%ard%}+{%endard%}, {%ard%}*{%endard%} from Prelude can be reproduced as follows:
 
 {%arend%}
@@ -235,7 +235,7 @@ and of operations {%ard%}+{%endard%}, {%ard%}*{%endard%} from Prelude can be rep
 -}
 
 -- If n is a variable, then n + 2 evaluates to suc (suc n),
--- but 2 + n doesn't, it's already in normal form.
+-- but 2 + n does not as it is already in the normal form.
 -- This behaviour depends on the definition of +, namely,
 -- the argument chosen for pattern matching.
 
@@ -281,7 +281,7 @@ It is thus typical for theorem provers, that have Martin-Lof type theory in the 
 all functions to terminate and all recursive functions to be defined by _structural recursion_. And this also
 applies to Arend.
 
-For example, consider the division function {%ard%}div{%endard%} for natural numbers. An obvious, but not correct,
+For example, consider the division function {%ard%}div{%endard%} for natural numbers. An obvious but not correct
 definition may look like this:
 
 {%arend%}
@@ -372,7 +372,7 @@ as _implicit_ by surrounding it in curly braces. In this case the corresponding 
 
 # List, append
 
-By now we have discussed all the things necessary to define properly the polymorphic type of lists:
+By now we have discussed all the things necessary to properly define the polymorphic type of lists:
 
 {%arend%}
 \data List (A : \Type) | nil | cons A (List A)
@@ -473,7 +473,7 @@ both {%ard%}T (not (not x) == x){%endard%} and {%ard%}T (x == x){%endard%} do no
 \func not-isInvolution' (x : Bool) : T (not (not x) == x) => unit
 {%endarend%}
 
-It's not possible to prove false statements in this way (hopefully):
+It is not possible to prove false statements in this way:
 
 {%arend%}
 \func not-isIdempotent (x : Bool) : T (not (not x) == not x)
@@ -486,8 +486,8 @@ It's not possible to prove false statements in this way (hopefully):
   | false => \lam x => x -- again a proof of Empty -> Empty
 {%endarend%}
 
-Let's also prove something, involving quantification. For example, the statement 
-"for every {%ard%}x : Bool{%endard%} the exists {%ard%}y : Bool{%endard%} such that x == y":
+Let us also prove something, involving quantification. For example, the statement 
+"for every {%ard%}x : Bool{%endard%} there exists {%ard%}y : Bool{%endard%} such that x == y":
 {%arend%}
 -- Sigma-types are used to express existential quantification
 \func lemma (x : Bool) : \Sigma (y : Bool) (T (x == y)) => (x, ==-refl x)
@@ -497,7 +497,7 @@ The following is a proof of rather awkward statement "if every {%ard%}x : Bool{%
 equals {%ard%}true : Bool{%endard%}":
 
 {%arend%}
-\func higherOrderFunc (f : \Pi (x : Bool) -> T (x == x)) => f true
+\func higherOrderFunc (f : \Pi (x : Bool) -> T (x == x)) : T (true == true) => f true
 {%endarend%}
 
 # Identity type
@@ -534,7 +534,7 @@ And as before, we cannot prove false statements:
 
 # Type synonyms
 
-There is no need in type synonyms in dependently types language since we can simply define a function returning the type,
+There is no need for type synonyms in dependently types language since we can simply define a function returning the type,
 synonym of which is being defined:
 
 {%arend%}
@@ -624,7 +624,7 @@ For every definition there is a corresponding module:
 }
 {%endarend%}
 
-In case there are clashes between names of definitions in different modules, these ndefinitions can be either hidden or renamed:
+In case there are clashes between names of definitions in different modules, these definitions can be either hidden or renamed:
 
 {%arend%}
 \module M5 \where {
@@ -639,7 +639,7 @@ In case there are clashes between names of definitions in different modules, the
 {%endarend%}
 
 The command {%ard%}\import X{%endard%} makes file X visible in the current file. Moreover, {%ard%}\import{%endard%} does
-everything that \open does, all the constructs for {%ard%}\open{%endard%} are applicable to {%ard%}\import{%endard%} as well:
+everything that {%ard%}\open{%endard%} does, all the constructs for {%ard%}\open{%endard%} are applicable to {%ard%}\import{%endard%} as well:
 
 {%arend%}
 \import Test (foobar \as foobar', foobar3)
