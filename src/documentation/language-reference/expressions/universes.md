@@ -20,8 +20,10 @@ Some of these universes have alternative names: the universe of propositions (-1
 (coincides with {%ard%} \-1-Type n {%endard%} for any {%ard%} n {%endard%}) and universes of sets (0-types) {%ard%} \Set n {%endard%} (coincides with {%ard%} \0-Type n {%endard%}). 
 Note that the universe {%ard%} \Prop {%endard%} is _impredicative_: it does not have predicative level. Practically, this means that
 if {%ard%} B : \Prop {%endard%}, then the type {%ard%} \Pi (x : \Prop) -> B {%endard%} is in {%ard%} \Prop {%endard%}. 
-Also, {%ard%} \Prop {%endard%} is proof irrelevant.
-This means that any two terms of a type in this universe are _definitionally_ equal.
+
+The universe {%ard%} \Prop {%endard%} is not proof irrelevant, but some elements of propositions are definitionally equal.
+If {%ard%} A : \Prop {%endard%} and {%ard%} a, a' : A {%endard%} are such that they never evaluate to a constructor, then they are definitionally equal.
+For example, if the type is an empty data type, then this is true for any pair of its elements, so they always be definitionally equal.
 
 Universes with h equal to ∞ are represented in the syntax as {%ard%} \oo-Type p {%endard%}. The homotopy level can also be 
 specified after the predicative level: {%ard%} \Type p h {%endard%} is equivalent to {%ard%} \h-Type p {%endard%}.   
@@ -59,7 +61,7 @@ The {%ard%} \Prop {%endard%} level can be specified by the expression {%ard%} \l
 Level expressions are defined inductively:
 
 * {%ard%} \lp {%endard%} is a level expression of the predicative kind and {%ard%} \lh {%endard%} is a level expression of the homotopy kind.
-* A constant (that is, a natural number) is a level expression of both kinds. There is also constant {%ard%} \inf {%endard%} for homotopy levels.
+* A constant (that is, a natural number) is a level expression of both kinds. There is also constant {%ard%} \oo {%endard%} for homotopy levels which denotes the infinity level.
 * {%ard%} _ {%endard%} is a level expression of both kinds. Such an expression suggests the typechecker to infer the expression.
 * If {%ard%} l {%endard%} is a level expression, then {%ard%} \suc l {%endard%} is also a level expression of the same kind as {%ard%} l {%endard%}.
 * If {%ard%} l1 {%endard%} and {%ard%} l2 {%endard%} are level expressions of the same kind, then {%ard%} \max l1 l2 {%endard%} is also a level expression of the same kind as {%ard%} l1 {%endard%} and {%ard%} l2 {%endard%}.

@@ -36,3 +36,22 @@ Expression {%ard%} \scase {%endard%} is related to {%ard%} \case {%endard%} in t
 That is, expressions of the form {%ard%} \scase e_1, ... e_n \with { ... } {%endard%} never evaluate.
 To evaluate such an expression, you need to use keyword {%ard%} \eval {%endard%} before it.
 Similarly, {%ard%} \peval \scase e_1, ... e_n \with { ... } {%endard%} has type {%ard%} \scase e_1, ... e_n \with { ... } = \eval \scase e_1, ... e_n \with { ... } {%endard%}.
+
+## \elim in \case
+
+If one of the expressions {%ard%} e_1, ... e_n {%endard%} is a variable, keyword {%ard%} \elim {%endard%} can be specified before it.
+This variable will be evaluated from the context in the clauses.
+More importantly, it will be substituted in the types of other arguments and the result type of the case expression.
+Thus, the following two snippets are equivalent if {%ard%} e : E {%endard%} and the result type of the case expression is {%ard%} A {%endard%}.
+
+{% arend %}
+\case \elim x, e \with {
+  | pat, pat' => result
+}
+{% endarend %}
+
+{% arend %}
+\case x \as x, e : E \return A \with {
+  | pat, pat' => result
+}
+{% endarend %}

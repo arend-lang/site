@@ -252,6 +252,24 @@ Such a function has the same semantics as a definition of an instance, that is i
 
 See [Class extensions](../expressions/class-ext) for the description of the involved constructions.
 
+## Patterns in coclauses
+
+It is possible to implement a field using pattern matching:
+
+{% arend %}
+\func f (x_1 : A_1) ... (x_n : A_n) : C \cowith
+  ...
+  | field (y_1 : B_1) ... (y_k : B_k) : D \with {
+    | clause_1
+    ...
+    | clause_m
+  }
+  ...
+{% endarend %}
+
+Keyword {%ard%} \with {%endard%} can be replaced with {%ard%} \elim {%endard%} as usual.
+Currently, clauses in such an implementation cannot refer to parameters of the function.
+
 ## Lemmas
 
 A _lemma_ is a function, the result type of which is a proposition and the body is considered to be a proof 

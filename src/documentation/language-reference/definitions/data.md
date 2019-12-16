@@ -189,3 +189,8 @@ It is also possible to define several constructors in a single clause as follows
 
 This definition is equivalent to the previous one.
 
+## Constructor synonyms
+
+A constructor synonym is a function defined with keyword {%ard%} \cons {%endard%}.
+Such a function cannot be defined by pattern matching and it must consists only of constructors of data types.
+It can be used in patterns as a synonym for its right hand side.
