@@ -3,8 +3,6 @@ main:
       url: /about
     - title: "Documentation"
       url: /documentation
-    - title: "Tutorial"
-      url: /tutorial
     - title: "Download"
       url: /download   
 
@@ -62,24 +60,25 @@ documentation:
           url: class-ext
       - title: "Prelude"
         url: prelude
+  - title: "Tutorial"
+    url: tutorial
+    children:
+      - title: "Part I: Dependent Types"
+        url: PartI
+        children:
+        - title: "Basics"
+          url: synndef
+        - title: "Simple Examples"
+          url: datanproofs
+        - title: "Equality"
+          url: idtype
+        - title: "Equational Reasoning, J, Predicates"
+          url: equalityex
+        - title: "Classes and Records"
+          url: records
+        - title: "Case, Views, Decidable Predicates"
+          url: view
+        - title: "Universes, Induction, Specifications"
+          url: universes
   - title: "Libraries"
     url: libraries
-
-tutorial:
-  - title: "Part I: dependent types"
-    url: PartI
-    children:
-    - title: "Basics"
-      url: synndef
-    - title: "Simple Examples"
-      url: datanproofs
-    - title: "Equality"
-      url: idtype
-    - title: "Equational Reasoning, J, Predicates"
-      url: equalityex
-    - title: "Classes and Records"
-      url: records
-    - title: "Case, Views, Decidable Predicates"
-      url: view
-    - title: "Universes, Induction-Recursion, Specifications"
-      url: universes

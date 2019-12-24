@@ -1,6 +1,5 @@
 ---
 title: Equality
-toc: false
 nav: equality
 ---
 

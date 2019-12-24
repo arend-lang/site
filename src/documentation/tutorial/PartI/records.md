@@ -1,6 +1,5 @@
 ---
 title: Records and Classes
-toc: false
 nav: records
 ---
 

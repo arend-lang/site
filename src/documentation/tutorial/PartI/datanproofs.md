@@ -1,6 +1,5 @@
 ---
 title: Simple Examples
-toc: false
 nav: data-n-proofs
 ---
 

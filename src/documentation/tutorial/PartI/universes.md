@@ -1,6 +1,5 @@
 ---
-title: Universes, Induction-Recursion, Specifications
-toc: false
+title: Universes, Induction, Specifications
 nav: universes
 ---
 

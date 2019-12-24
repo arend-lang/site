@@ -1,6 +1,5 @@
 ---
 title: Basics
-toc: false
 nav: syn-n-def
 ---
 
@@ -507,13 +506,7 @@ is specific for {%ard%}Bool{%endard%}, we need to make analogous definitions for
 equivalence relation. 
 
 Instead, we define an identity type for all types at once. Its definition is located in Prelude (type {%ard%}Path{%endard%} and its
-infix form {%ard%}={%endard%}). We will not get into details for now, all that we currently need is the proof of reflexivity, 
-which we call {%ard%}idp{%endard%}: 
-
-{%arend%}
-\func idp {A : \Type} {a : A} : a = a => path (\lam _ => a)
-{%endarend%}
-
+infix form {%ard%}={%endard%}). We will not get into details for now, all that we currently need is the proof of reflexivity {%ard%}idp : a = a{%endard%}, which is also defined in Prelude.
 
 Now, all the equalities that we proved for {%ard%}=={%endard%} can similarly proved for {%ard%}={%endard%}. For example, 
 the equality {%ard%}not (not x) = x{%endard%}:

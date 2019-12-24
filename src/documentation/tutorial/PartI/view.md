@@ -1,6 +1,5 @@
 ---
 title: Case, Views, Decidable Predicates
-toc: false
 nav: view
 ---
 

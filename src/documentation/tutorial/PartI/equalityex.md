@@ -1,6 +1,5 @@
 ---
 title: Equational Reasoning, J, Predicates
-toc: false
 nav: equalityex
 ---
 
