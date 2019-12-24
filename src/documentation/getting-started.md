@@ -6,9 +6,6 @@ You need to have [JRE 8](https://docs.oracle.com/javase/8/docs/technotes/guides/
 Arend is available either as an [IntelliJ IDEA](https://www.jetbrains.com/idea) plugin (see [IntelliJ Arend](#intellij-arend) for the installation instructions)
 or as a console application (see [Console Application](#console-application) for the installation instructions).
 
-There is a standard library, containing a number of essential definitions and proofs, in particular, in constructive algebra and homotopy theory.
-It can be downloaded from [GitHub](https://github.com/JetBrains/arend-lib).
-
 # IntelliJ Arend
 
 {% include intellij-arend.md %}
@@ -40,23 +37,21 @@ Add the following line to this file:
 \func f => 0
 {% endarend %}
 
-Right click `example.ard` file and choose `Run 'Typecheck example'` in the popup menu (you can also use shortcut **Alt+Shift+F10**).
-You should see the message _All Tests Passed_, which indicates that the typechecking was successful.
+You should see a green gutter icon next to the declaration of `f`, which indicates that `f` was successfully typechecked.
 Modify the file as follows:
 
 {% arend %}
 \func f : Nat -> Nat => 0
 {% endarend %}
 
-Run the typechecking again (you can use shortcut **Shift+F10** for this).
+The gutter icon should become red.
+To go to the next error, press **F2**.
 You should see the following error message:
 
 {% arend %}
-[ERROR] example.ard:1:25: Type mismatch
+Type mismatch
   Expected type: Nat -> Nat
     Actual type: Nat
-  In: 0
-  While processing: f
 {% endarend %}
 
 You can read more about IntelliJ IDEA [here](https://www.jetbrains.com/help/idea/discover-intellij-idea.html).
@@ -81,11 +76,6 @@ Add the following line to `arend.yaml`:
 ```
 sourcesDir: src
 ```
-In case you would also like to use the standard library add the following line to `arend.yaml`:
-```
-dependencies: [arend-lib]
-```  
-You can read more about this configuration file [here](libraries).
 
 Create directory `src` which will contain source files for this project.
 Create a file `example.ard` inside `src` with the following content:
@@ -94,7 +84,8 @@ Create a file `example.ard` inside `src` with the following content:
 \func f => 0
 {% endarend %}
 
-Run `java -jar $arend $myProject`, where `$arend` is the path to `arend.jar` and `$myProject` is the path to `arend.yaml`.
+Run `java -jar $arend -L$libs $myProject`, where `$arend` is the path to `arend.jar`, `$myProject` is the path to `arend.yaml`,
+and `$libs` is the path to the directory with Arend libraries (if the project does not have dependencies, this option can be omitted).
 You should see the following output:
 ```
 [INFO] Loading library prelude
@@ -105,30 +96,8 @@ You should see the following output:
 [ ] example
 --- Done ---
 ```
+
 This means that module `example` was successfully typechecked.
-
-Now let's add something from the standard library. Change the contents of `example.ard` to the following:
-
-{% arend %}
-\import Function
-\func f => id 0
-{% endarend %}
-
-Run `java -jar $arend $myProject -L $libdir`, where `arend.jar` and `$myProject` as before and `$libdir` 
-is the path to the parent directory of the directory `arend-lib` of the standard library. You should see the following
-output:
-```
-[INFO] Loading library prelude
-[INFO] Loaded library prelude
-[INFO] Loading library myProject
-[INFO] Loading library arend-lib
-[INFO] Loaded library arend-lib
-[INFO] Loaded library myProject
---- Typechecking myProject ---
-[ ] example
---- Done ---
-```
-  
 Modify file `example.ard` as follows:
 
 {% arend %}
@@ -154,3 +123,11 @@ Number of modules with errors: 1
 ```
 
 To learn more about Arend, see the [language reference](language-reference).
+
+# Standard Library
+
+In case you would also like to use the standard library, download it as described [here](/download#standard-library) and add the following line to `arend.yaml`:
+```
+dependencies: [arend-lib]
+```
+You can read more about this configuration file [here](libraries).

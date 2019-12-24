@@ -199,3 +199,21 @@ Every field of a record {%ard%} R {%endard%} has additional implicit parameter o
 {% endarend %}
 
 The keyword {%ard%} \this {%endard%} can appear only in arguments of definitions and only in those arguments, which in turn satisfy this condition.
+
+## Override
+
+The type of a field or a property can be overridden with a subtype in a subclass using keyword {%ard%} \override {%endard%}:
+
+{% arend %}
+\record R
+
+\record S \extends R
+
+\record A {
+  | f : R
+}
+
+\record B \extends A {
+  \override f : S
+}
+{% endarend %}

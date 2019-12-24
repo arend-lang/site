@@ -104,3 +104,10 @@ For example, we can prove that {%ard%} isProp {%endard%} is itslef a proposition
 {% endarend %}
 
 Without {%ard%} \use \level {%endard%} annotation it would be necessary to specify the {%ard%} proof {%endard%} in the definition of {%ard%} lem {%endard%}.
+
+## Squashed data types
+
+A data type is marked as _squashed_ if the universe of this data type is less than the universe in which it should be.
+This happens when the data type is [\truncated](data#truncation) or when there is a [\use \level](#use-level) annotation for it.
+To use pattern matching on a squashed data type, either the universe of the resulting type should be less than or equal to the universe of the data type
+or the pattern matching should be a part of either [\sfunc](functions#sfunc), [\lemma](functions#lemmas), [\use \level](#use-level), or [\scase](../expressions/case#scase).

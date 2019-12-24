@@ -23,7 +23,6 @@ It is allowed to write {%ard%} x : S {%endard%} instead of {%ard%} x : S.E {%end
 In case an parameter of a definition or a constructor has type, which is an [extension](../expressions/class-ext) {%ard%} C { ... } {%endard%} of {%ard%} C {%endard%},
 it is marked as a _local instance_ of class {%ard%} C {%endard%}. Implicit parameter {%ard%} \this {%endard%} of a field of class {%ard%} C {%endard%} is also a local instance. 
 
-
 If the parameter {%ard%} p : C { ... } {%endard%} of {%ard%} f {%endard%} is a local instance, then the value of {%ard%} p {%endard%} in a usage of {%ard%} f {%endard%} is inferred to 
 a local instance {%ard%} v : C { ... } {%endard%}, visible in the context of the usage of {%ard%} f {%endard%}, if the expected value of the classifying
 field of {%ard%} p {%endard%} coincides with the classifying field of {%ard%} v {%endard%}. 
@@ -31,6 +30,22 @@ For instance, the function {%ard%} square {%endard%} in the example above has on
 The field {%ard%} * {%endard%} of the class {%ard%} Semigroup {%endard%} is used in the body of {%ard%} square {%endard%} and the expected type of its call in {%ard%} x * x {%endard%} is 
 {%ard%} S.E -> S.E -> {?} {%endard%}. This implies that the expected classifying field is {%ard%} S.E {%endard%}, which is the classifying field of the
 local instance {%ard%} S {%endard%}, so this instance is inferred as the implicit argument of {%ard%} * {%endard%}.
+
+## Classifying fields
+
+The classifying field can be specified explicitly with keyword {%ard%} \classifying {%endard%} as follows:
+
+{% arend %}
+\class C (A : \Set) (\classifying B : \Set)
+  | f : B -> A
+
+\func test {c : C} (x : c) => f x
+{% endarend %}
+
+Since field {%ard%} B {%endard%} is marked as classifying, the type of {%ard%} x {%endard%} is {%ard%} c.B {%endard%} and the instance for {%ard%} f {%endard%} will be successfully inferred.
+
+It is also possible to define a class without classifying fields.
+If the class has some explicit parameters, then this can be done using keyword {%ard%} \noclassifying {%endard%}, which is written after the name of the class.
 
 ## Instances
 

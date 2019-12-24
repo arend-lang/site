@@ -1,9 +1,12 @@
 #!/bin/bash
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-SITE_DIR="${AREND_SITE_DIR:-$DIR/../../../Site}"
+if [ -z ${NOSYNC+x} ]
+then
+    DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+    SITE_DIR="${AREND_SITE_DIR:-$DIR/../../../Site}"
 
-MSG=`git show -s --format=%B HEAD`
-cd $SITE_DIR
-git add .
-git commit -m"$MSG"
+    MSG=`git show -s --format=%B HEAD`
+    cd $SITE_DIR
+    git add .
+    git commit -m"$MSG"
+fi

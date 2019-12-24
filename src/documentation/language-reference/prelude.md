@@ -73,6 +73,17 @@ This rule does not apply to functions {%ard%} @ {%endard%} defined in other file
 Finally, function {%ard%} Path.inProp {%endard%} is not correct since it does not have a body.
 It postulates the proof irrelevance for types in {%ard%} \Prop {%endard%}, namely that any two elements of a type in {%ard%} \Prop {%endard%} are equal.
 
+# idp
+
+The constructor {%ard%} idp {%endard%} is not a correct definition since it is not allowed to use lambdas in constructors.
+This constructor can be used to replace the J operator with pattern matching.
+For example, we can define J itself as follows:
+
+{% arend %}
+\func J {A : \Type} {a : A} (B : \Pi (a' : A) -> a = a' -> \Type) (b : B a idp) {a' : A} (p : a = a') : B a' p \elim p
+  | idp => b
+{% endarend %}
+
 # coe and coe2
 
 Function {%ard%} coe {%endard%} is an eliminator for the interval type.
