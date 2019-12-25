@@ -84,6 +84,28 @@ For example, we can define J itself as follows:
   | idp => b
 {% endarend %}
 
+After we match {%ard%} p {%endard%} with {%ard%} idp {%endard%}, variables {%ard%} a {%endard%} and {%ard%} a' {%endard%} become equivalent.
+To be more precise, we can refer to both variables, but the latter will evaluate to the former.
+
+There are certain restrictions on this pattern matching principle.
+If we want to match {%ard%} p : e = e' {%endard%} with {%ard%} idp {%endard%}, expressions {%ard%} e {%endard%} and {%ard%} e' {%endard%} cannot be arbitrary.
+At least one of them must be a variable which does not occur in the other expression.
+Also, it should be possible to substitute the variable with this expression, which means that the free variables of the expression should be bound at each occurrence of the variable.
+
+This pattern matching principle can also be used in case-expressions.
+For example, J can be defined as follows:
+
+{% arend %}
+\func J {A : \Type} {a : A} (B : \Pi (a' : A) -> a = a' -> \Type) (b : B a idp) {a' : A} (p : a = a') : B a' p
+  => \case \elim a', \elim p \with {
+    | _, idp => b
+  }
+{% endarend %}
+
+Note that the restrictions we described above should be satisfied.
+Moreover, the expression which is matched with {%ard%} idp {%endard%} should have type {%ard%} p : e = e' {%endard%},
+where either {%ard%} e {%endard%} or {%ard%} e' {%endard%} is a variable bound in one of the arguments of the case expression.
+
 # coe and coe2
 
 Function {%ard%} coe {%endard%} is an eliminator for the interval type.

@@ -193,10 +193,10 @@ Let's consider one more example, demonstrating what we have just discussed:
 \func bar {A : \Type} (p q : A -> Bool) (a : A) (s : q a = not (p a))
   : not (q a) = p a =>
   \case p a \as x, q a \as y, s : y = not x \return not y = x \with {
-    | true, true, s' => sym s'
+    | true, true, s' => inv s'
     | true, false, _ => idp
     | false, true, _ => idp
-    | false, false, s' => sym s'
+    | false, false, s' => inv s'
   }
 
 -- helper version
@@ -204,10 +204,10 @@ Let's consider one more example, demonstrating what we have just discussed:
   : not (q a) = p a => helper (p a) (q a) s
   \where
     \func helper (x y : Bool) (s : y = not x) : not y = x \elim x, y
-      | true, true => sym s
+      | true, true => inv s
       | true, false => idp
       | false, true => idp
-      | false, false => sym s
+      | false, false => inv s
 {%endarend%}
 
 # Views
@@ -333,7 +333,7 @@ Let's define an instance for the type of natural numbers:
   \where
     \func decideEq (x y : Nat) : Decide (x = y)
       | 0, 0 => yes idp
-      | 0, suc y => no (\lam p => suc/=0 (sym p))
+      | 0, suc y => no (\lam p => suc/=0 (inv p))
       | suc x, 0 => no suc/=0
       | suc x, suc y => \case decideEq x y \with {
         | yes p => yes (pmap suc p)

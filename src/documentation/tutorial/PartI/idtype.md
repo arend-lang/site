@@ -39,7 +39,7 @@ of equality. For example, the following properties:
 
 {%arend%}
 -- symmetry
-\func sym {A : \Type} {a a' : A} (p : a = a') : a' = a
+\func inv {A : \Type} {a a' : A} (p : a = a') : a' = a
     => transport (\lam x => x = a) p idp
 
 -- transitivity

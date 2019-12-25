@@ -45,7 +45,7 @@ The commutativity can now be proved as follows:
   | 0, 0 => idp
   | suc n, 0 => pmap suc (+-comm n 0)
   | 0, suc m => pmap suc (+-comm 0 m)
-  | suc n, suc m => pmap suc (+-comm (suc n) m *> pmap suc (sym (+-comm n m)) *> +-comm n (suc m))
+  | suc n, suc m => pmap suc (+-comm (suc n) m *> pmap suc (inv (+-comm n m)) *> +-comm n (suc m))
 {%endarend%}
 
 # Equational reasoning, proof of +-comm rewritten
@@ -64,7 +64,7 @@ The proof {%ard%}+-comm{%endard%} rewritten in this way looks as follows:
   | 0, suc m => pmap suc (+-comm' 0 m)
   | suc n, suc m => pmap suc (
     suc n + m   ==< +-comm' (suc n) m >==
-    suc (m + n) ==< pmap suc (sym (+-comm' n m)) >==
+    suc (m + n) ==< pmap suc (inv (+-comm' n m)) >==
     suc (n + m) ==< +-comm' n (suc m) >==
     suc m + n   `qed
   )
@@ -84,7 +84,7 @@ These operators can be defined as follows:
 \func \infix 2 ==< {A : \Type} (a : A) {a' : A} (p : a = a') => p
 {%endarend%}
 
-# Eliminator J
+# J operator
 
 Recall that elimination principles for a datatype {%ard%}D{%endard%} specify what kind of data
 should be provided in order to define a function from {%ard%}D{%endard%} to a non-dependent or
@@ -127,7 +127,7 @@ on {%ard%}idp{%endard%}, that is some value {%ard%}b : B a{%endard%}, then we wo
   => coe (\lam i => B (p @ i)) b right
 {%endarend%}
 
-J eliminator is a dependent version of this, stating that specifying value on {%ard%}idp{%endard%} is enough to determine 
+The J operator is a dependent version of this, stating that specifying value on {%ard%}idp{%endard%} is enough to determine 
 a function {%ard%}\Pi (x : A) (p : a = x) -> B x p{%endard%}:  
 
 {%arend%}
@@ -139,11 +139,8 @@ a function {%ard%}\Pi (x : A) (p : a = x) -> B x p{%endard%}:
     : B a' p
   -- the details of the definition are not important for now
   => coe (\lam i => B (p @ i) (psqueeze p i)) b right
-  \where {
-    \func squeeze (i j : I) => coe (\lam i => Path (\lam j => left = squeeze1 i j) (path (\lam _ => left)) (path (\lam j => squeeze1 i j))) (path (\lam _ => path (\lam _ => left))) right @ i @ j
-    \func squeeze1 (i j : I) => coe (\lam x => left = x) (path (\lam _ => left)) j @ i
-    \func psqueeze  {A : \Type} {a a' : A} (p : a = a') (i : I) : a = p @ i => path (\lam j => p @ squeeze i j)
-  }
+  \where
+    \func psqueeze  {A : \Type} {a a' : A} (p : a = a') (i : I) : a = p @ i => path (\lam j => p @ I.squeeze i j)
 {%endarend%}
 
 Note that {%ard%}B a' p{%endard%} above depends on both {%ard%}a'{%endard%} and {%ard%}p{%endard%}. If we make {%ard%}a'{%endard%}
@@ -156,7 +153,29 @@ fixed and equal to {%ard%}a{%endard%} in the definition above, then we obtain _K
 This eliminator equivalent to the statement that every element of {%ard%}a = a{%endard%} is {%ard%}idp{%endard%}. 
 It may seem natural at first sight to add it as an axiom then to simplify things by making proofs of equalities
 unique (as it implies that {%ard%}p = p'{%endard%} for any {%ard%}p, p' : a = a'{%endard%}), but actually it is
-important that these proofs are _not unique_. <!-- We will discuss it later. TODO: ref -->
+important that these proofs are _not unique_. This issue will be discussed later. <!-- TODO: ref to Part II -->
+
+It is not convenient to use the J operator directly.
+For this reason, Arend has the pattern matching principle corresponding to J.
+A parameter of type {%ard%} a = a' {%endard%} can be matched with {%ard%} idp {%endard%} making {%ard%} a {%endard%} and {%ard%} a' {%endard%} equivalent.
+For example, {%ard%} transport {%endard%} can be defined as follows:
+
+{%arend%}
+\func transport {A : \Type} (B : A -> \Type) {a a' : A} (p : a = a') (b : B a) : B a' \elim p
+  | idp => b
+{%endarend%}
+
+See [Prelude](/documentation/language-reference/prelude#idp) for more information about this pattern matching principle.
+
+<!-- TODO
+
+Как так?
+С одной стороны мы говорим, что в {%ard%} a = a' {%endard%} может быть больше одного элемента, а с другой позовляем матчится с idp, что, казалось бы, в точности означает, что в нем только один элемент.
+Всё просто: на самом деле мы матчимся не на одной переменной {%ard%} p : a = a' {%endard%}, а сразу на двух {%ard%} p : a = a' {%endard%} и {%ard%} a' {%endard%}.
+Собственно, из-за этого и есть все эти ограничения, которые обсуждаются в [Prelude](/documentation/language-reference/prelude#idp).
+Таким образом, по сути, мы матчимся не на типе {%ard%} a = a' {%endard%}, а на типе пар {%ard%} \Sigma (a' : A) (a = a') {%endard%}, который действительно является одноэлементным.
+
+-->
 
 # Associativity of append for vectors
 
@@ -185,16 +204,19 @@ element of {%ard%}Vec A y{%endard%} if {%ard%}x = y{%endard%}:
   : (xs v++ ys) v++ zs = transport (Vec A) (+-assoc k m n) (xs v++ (ys v++ zs)) \elim n, xs
   | 0, vnil => idp
   | suc n, vcons x xs =>
-    pmap (vcons x) (v++-assoc xs ys zs) *>
-    sym (transport-vcons-comm (+-assoc k m n) x (xs v++ (ys v++ zs)))
+      pmap (vcons x) (v++-assoc xs ys zs) *>
+      inv (transport-vcons-comm (+-assoc k m n) x (xs v++ (ys v++ zs)))
   \where
     -- transport commutes with all constructors
     -- here is the proof that it commutes with vcons
     \func transport-vcons-comm {A : \Type} {n m : Nat} (p : n = m) (x : A) (xs : Vec A n)
       : transport (Vec A) (pmap suc p) (vcons x xs) = vcons x (transport (Vec A) p xs)
+      | idp => idp
+      {- This function can be defined with J as follows:
       => J (\lam m' p' => transport (Vec A) (pmap suc p') (vcons x xs) = vcons x (transport (Vec A) p' xs))
            idp
            p
+      -}
 {%endarend%}
 
 Let us take a closer look at what is going on in this proof. First, we apply the congruence {%ard%}pmap (vcons x){%endard%} to the induction
@@ -218,16 +240,7 @@ vcons x (transport (Vec A) (+-assoc k m n) (xs v++ (ys v++ zs))) = transport (Ve
 And this is precisely the commutativity of {%ard%}transport{%endard%} with {%ard%}vcons{%endard%}, which we 
 prove in {%ard%}transport-vcons-comm{%endard%} lemma. 
 Note that it is important that we generalize the statement and prove the commutativity not only for
-{%ard%}+-assoc k m n{%endard%} but for all {%ard%}e : Nat{%endard%} satisfying {%ard%}p : k + m + n = e{%endard%} (otherwise, we would not be able to apply J to prove this statement). We pass this generalized statement as the first argument
-to J. The second argument of J should be the proof of the statement in the special case {%ard%}p ==> idp{%endard%}, which is just reflexivity {%ard%}idp{%endard%}:
-
-{%arend%}
-J (\lam e (p : k + m + n = e) =>
-        vcons x (transport (Vec A) p (xs v++ (ys v++ zs))) =
-        transport (Vec A) (pmap suc p) (vcons x (xs v++ (ys v++ zs))))
-  idp
-  (+-assoc k m n)
-{%endarend%}
+{%ard%}+-assoc k m n{%endard%} but for all {%ard%}e : Nat{%endard%} satisfying {%ard%}p : k + m + n = e{%endard%} (otherwise, we would not be able to use pattern mathing or the J operator to prove this statement).
 
 <!-- TODO
 
