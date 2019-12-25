@@ -6,9 +6,10 @@ sidebar:
   nav: "documentation"
 ---
 
-For the installation instructions, see [Getting Started](/documentation/getting-started).
-Section [Language Reference](/documentation/language-reference) contains a description of the Arend language.
-Section [Libraries](/documentation/libraries) describes how to manage Arend libraries.
+* For the installation instructions, see [Getting Started](/documentation/getting-started).
+* [Language Reference](/documentation/language-reference) contains a description of the Arend language.
+* [Tutorial](/documentation/tutorial) contains a more gentle introduction to the Arend language.
+* [Libraries](/documentation/libraries) describes how to manage Arend libraries.
 
 ## Forum
 

@@ -3,7 +3,7 @@ title: Case, Views, Decidable Predicates
 nav: view
 ---
 
-TODO: intro
+<!-- TODO: intro -->
 
 # filter via \case and via helper
 

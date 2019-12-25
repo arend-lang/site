@@ -115,6 +115,8 @@ of the theory. For example, if we add the axiom of excluded middle {%ard%}lem{%e
 \func ugly_num : Nat => \case lem Nat \with { | Left => 0 | Right => 1 }
 {%endarend%}
 
+<!-- TODO
+
 # Eliminators
 
 -- Элиминатор для Nat
@@ -196,3 +198,4 @@ of the theory. For example, if we add the axiom of excluded middle {%ard%}lem{%e
   | left => ti
 -}
 
+-->

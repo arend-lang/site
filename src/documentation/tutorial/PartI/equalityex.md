@@ -156,7 +156,7 @@ fixed and equal to {%ard%}a{%endard%} in the definition above, then we obtain _K
 This eliminator equivalent to the statement that every element of {%ard%}a = a{%endard%} is {%ard%}idp{%endard%}. 
 It may seem natural at first sight to add it as an axiom then to simplify things by making proofs of equalities
 unique (as it implies that {%ard%}p = p'{%endard%} for any {%ard%}p, p' : a = a'{%endard%}), but actually it is
-important that these proofs are _not unique_. We will discuss it later. TODO: ref
+important that these proofs are _not unique_. <!-- We will discuss it later. TODO: ref -->
 
 # Associativity of append for vectors
 
@@ -229,6 +229,8 @@ J (\lam e (p : k + m + n = e) =>
   (+-assoc k m n)
 {%endarend%}
 
+<!-- TODO
+
 # Predicates
 
 -- Есть несколько способов определять предикаты над некоторым типом A:
@@ -275,3 +277,5 @@ J (\lam e (p : k + m + n = e) =>
 \data LessOrEq'' (n m : Nat) \elim m
   | suc m => <=-step (LessOrEq'' n m)
   | m => <=-refl (n = m)
+
+-->

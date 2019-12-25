@@ -7,7 +7,7 @@ In this module we explain the syntax and some key constructs of the Arend langua
 writing definitions, propositions and proofs.
 
 Arend has the following kinds of definitions: functions, data definitions, classes and records. As of now, we only consider
-functions and data definitions, exposition of classes and records is deferred to TODO:modref. 
+functions and data definitions, exposition of classes and records is deferred to [Records and Classes](records). 
 
 Some of the most basic definitions are built into the language and contained in the module Prelude. For example, Prelude
 contains
@@ -96,11 +96,11 @@ Equivalently, parameters of a function can be moved from the signature to the bo
 
 In the examples above we specified the bodies of functions by simply writing a term after the symbol {%ard%}=>{%endard%}.
 Of course, there are more sophisticated ways to define the body of a function, for example, in case the function is recursive.
-Namely, functions can also be defined by _pattern matching_, we will consider such functions below in the section Data Definitions TODO:ref. 
+Namely, functions can also be defined by _pattern matching_, we will consider such functions [below](#data-definitions). 
 
 # Infix operators
 
-TODO: illustrate the concepts by giving an example of an expression and explaining how it is parsed
+<!-- TODO: illustrate the concepts by giving an example of an expression and explaining how it is parsed -->
 
 By default all binary operators, just as normal functions, are prefix. In order to define an infix operator one should specify before the name
 of the operator one of the keywords 
@@ -358,6 +358,8 @@ as _implicit_ by surrounding it in curly braces. In this case the corresponding 
 \func id'Test' => id' {Nat} 0 -- implicit arguments can be specifyed explicitly
 {%endarend%}
 
+<!-- TODO
+
 -- В данном случае лучше n не делать неявным, так как тайпчекер не сможет его вывести из типа p, так как n встречается только внутри вызова функции.
 -- Например, если мы вызовем example' pp, где pp : 8 = 3, то тайпчекер не может вывести, что n должно равняться 4.
 \func example' {n : Nat} (p : n + n = 3) => 0
@@ -368,6 +370,8 @@ as _implicit_ by surrounding it in curly braces. In this case the corresponding 
 -- Так как 8 = suc 7 и suc инъективен, то он понимает, что n должно равняться 7.
 \func example'' {n m : Nat} (p : suc n = m) => 0
 \func example''Test (pp : 8 = 3) => example'' pp
+
+-->
 
 # List, append
 

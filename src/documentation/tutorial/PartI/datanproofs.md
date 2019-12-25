@@ -53,7 +53,7 @@ its argument {%ard%}xs{%endard%}. This specification of correctness of {%ard%}so
 
 It is possible to write definitions of the predicates and a proof for {%ard%}sort-isCorrect{%endard%} with the arsenal of language
 constructs that we have introduced by now. However, as we will see in the subsequent modules, there are better ways to do this, and 
-for that reason we omit the details here. A proper proof will be given in the module TODO: ref.
+for that reason we omit the details here. <!-- A proper proof will be given in the module TODO: ref. -->
 
 Consider another, simpler, operation on lists: reversion. We define the function {%ard%}reverse{%endard%} that reverses 
 a list {%ard%}xs{%endard%} via an auxiliary function that accumulates reversed sublists in the extra parameter {%ard%}acc{%endard%}:
