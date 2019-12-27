@@ -20,16 +20,15 @@ Let us consider an example:
 
 It is allowed to write {%ard%} x : S {%endard%} instead of {%ard%} x : S.E {%endard%} since {%ard%} S {%endard%} is implicitly coerced to an element of type {%ard%} \Set {%endard%}, that is {%ard%} S.E {%endard%}.
 
-In case an parameter of a definition or a constructor has type, which is an [extension](../expressions/class-ext) {%ard%} C { ... } {%endard%} of {%ard%} C {%endard%},
+In case a parameter of a definition has type, which is an [extension](../expressions/class-ext) {%ard%} C { ... } {%endard%} of {%ard%} C {%endard%},
 it is marked as a _local instance_ of class {%ard%} C {%endard%}. Implicit parameter {%ard%} \this {%endard%} of a field of class {%ard%} C {%endard%} is also a local instance. 
 
-If the parameter {%ard%} p : C { ... } {%endard%} of {%ard%} f {%endard%} is a local instance, then the value of {%ard%} p {%endard%} in a usage of {%ard%} f {%endard%} is inferred to 
-a local instance {%ard%} v : C { ... } {%endard%}, visible in the context of the usage of {%ard%} f {%endard%}, if the expected value of the classifying
-field of {%ard%} p {%endard%} coincides with the classifying field of {%ard%} v {%endard%}. 
+If a parameter {%ard%} p : C { ... } {%endard%} of a definition {%ard%} f {%endard%} is a local instance, then the corresponding implicit argument of {%ard%} f {%endard%} can be inferred by the instance inference algorithm.
+It looks for the first available instance {%ard%} v : C { ... } {%endard%} such that the expected value of the classifying field coincides with the value of the classifying field in {%ard%} v {%endard%}. 
 For instance, the function {%ard%} square {%endard%} in the example above has one local instance {%ard%} S {%endard%} of the class {%ard%} Semigroup {%endard%}.
 The field {%ard%} * {%endard%} of the class {%ard%} Semigroup {%endard%} is used in the body of {%ard%} square {%endard%} and the expected type of its call in {%ard%} x * x {%endard%} is 
-{%ard%} S.E -> S.E -> {?} {%endard%}. This implies that the expected classifying field is {%ard%} S.E {%endard%}, which is the classifying field of the
-local instance {%ard%} S {%endard%}, so this instance is inferred as the implicit argument of {%ard%} * {%endard%}.
+{%ard%} S.E -> S.E -> {?} {%endard%}. This implies that the expected value of the classifying field is {%ard%} S.E {%endard%},
+which coincides with the value of the classifying field in {%ard%} S {%endard%}, so this instance is inferred as the implicit argument of {%ard%} * {%endard%}.
 
 ## Classifying fields
 
