@@ -3,7 +3,7 @@ title: Simple Examples
 nav: data-n-proofs
 ---
 
-In this module we illustrate the concepts that we discussed in the previous module through a bunch of examples of definitions and proofs.
+In this module we illustrate the concepts that we discussed in the previous modules through a bunch of examples of definitions and proofs.
 
 We define the function {%ard%}sort{%endard%} that sorts lists by insertion sort and the function {%ard%}reverse{%endard%} that reverses
 them. 
@@ -14,7 +14,6 @@ is associative.
 Next, we turn to a several examples of datatypes. For a given type {%ard%}A{%endard%}, we exhibit two possible definitions of the type
 of fixed length vectors of elements of {%ard%}A{%endard%}, one of which is based on _datatypes with constructor patterns_. We conclude with a
 discussion of possible definitions of the type of all finite sets.
-
 
 # Insertion sort and reverse
 

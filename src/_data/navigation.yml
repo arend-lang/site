@@ -68,6 +68,8 @@ documentation:
         children:
         - title: "Basics"
           url: synndef
+        - title: "Propositions and Proofs"
+          url: propsnproofs
         - title: "Simple Examples"
           url: datanproofs
         - title: "Equality"

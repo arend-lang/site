@@ -11,8 +11,7 @@ together with some specific for this semantics elements of the language are disc
 
 The [Part I](PartI) is an introduction to the actual practices of working with dependent types in Arend. It contains
 example-based Arend-specific exposition of efficient ways of working with propositions and proofs, inductive types, classes and records,
-type universes, etc. We assume that the reader is familiar with related theoretical concepts, most importantly with Martin-Lof type theory
-and Curry-Howard correspondence.
+type universes, etc.
 
 The Part II is a practical introduction to homotopy type theory in the context of Arend. This part of the tutorial is currently missing, it will
 be uploaded in the nearest future. Themes discussed here include datatypes with conditions (higher inductive types) and homotopy levels of
