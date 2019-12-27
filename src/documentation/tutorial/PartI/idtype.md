@@ -115,11 +115,17 @@ of the theory. For example, if we add the axiom of excluded middle {%ard%}lem{%e
 \func ugly_num : Nat => \case lem Nat \with { | Left => 0 | Right => 1 }
 {%endarend%}
 
-<!-- TODO
-
 # Eliminators
 
--- Элиминатор для Nat
+Elimination principles for a datatype {%ard%}D{%endard%} specify what kind of data
+should be provided in order to define a function from {%ard%}D{%endard%} to a non-dependent or
+dependent type. And, essentially, the principles say that it is enough to show how "generators" 
+(that is constructors) of {%ard%}D{%endard%} are mapped to a type {%ard%}A{%endard%} and
+that would uniquely determine a function {%ard%}D -> A{%endard%}. For example, eliminators 
+for {%ard%}Nat{%endard%} and {%ard%}Bool{%endard%}:
+
+{%arend%}
+-- Dependent eliminator for Nat (induction).
 \func Nat-elim (P : Nat -> \Type)
                (z : P zero)
                (s : \Pi (n : Nat) -> P n -> P (suc n))
@@ -127,7 +133,7 @@ of the theory. For example, if we add the axiom of excluded middle {%ard%}lem{%e
   | zero => z
   | suc n => s n (Nat-elim P z s n)
 
--- Рекурсор для Nat
+-- Non-dependent eliminator for Nat (recursion).
 \func Nat-rec (P : \Type)
               (z : P)
               (s : Nat -> P -> P)
@@ -135,13 +141,16 @@ of the theory. For example, if we add the axiom of excluded middle {%ard%}lem{%e
   | zero => z
   | suc n => s n (Nat-rec P z s n)
 
--- Элиминатор для Bool (рекурсор для Bool -- это просто if).
+-- Dependent eliminator for Bool (recursor for Bool is just 'if').
 \func Bool-elim (P : Bool -> \Type)
                 (t : P true)
                 (f : P false)
                 (x : Bool) : P x \elim x
   | true => t
   | false => f
+{%endarend%}
+
+<!--
 
 {-
 \func coe (P : I -> \Type)
@@ -149,6 +158,7 @@ of the theory. For example, if we add the axiom of excluded middle {%ard%}lem{%e
           (i : I) : P i \elim i
   | left => a
 -}
+
 
 # left = right
 

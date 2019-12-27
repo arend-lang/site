@@ -86,32 +86,10 @@ These operators can be defined as follows:
 
 # J operator
 
-Recall that elimination principles for a datatype {%ard%}D{%endard%} specify what kind of data
-should be provided in order to define a function from {%ard%}D{%endard%} to a non-dependent or
-dependent type. And, essentially, the principles say that it's enough to show how "generators" 
-(that is constructors) of {%ard%}D{%endard%} are mapped to a type {%ard%}A{%endard%} and
-that would uniquely determine a function {%ard%}D -> A{%endard%}. Recall, for example, eliminators 
-for {%ard%}Nat{%endard%}:
-
-{%arend%}
--- non-dependent version:
-\func Nat-rec (B : \Type)
-    (z : B)
-    (s : Nat -> B -> B)
-    (n : Nat)
-    : B \elim n
-    | 0 => z
-    | suc n => s n (Nat-rec B z s n)
-
--- dependent version:
-\func Nat-elim (B : Nat -> \Type)
-    (z : B 0)
-    (s : \Pi (k : Nat) -> B k -> B (suc k))
-    (n : Nat)
-    : B n \elim n
-    | 0 => z
-    | suc n => s n (Nat-elim B z s n)
-{%endarend%}
+Recall from [Eliminators](/documentation/tutorial/PartI/idtype#Eliminators) that elimination
+principles for a datatype {%ard%}D{%endard%} say that functions from {%ard%}D{%endard%} are
+determined by their values on the constructors of {%ard%}D{%endard%}, that is that {%ard%}D{%endard%}
+is "generated" by its constructors. 
 
 Similarly, we can say that identity type {%ard%}={%endard%} is "generated" by reflexivity {%ard%}idp{%endard%}:
 the non-dependent version of eliminator says that if we define the value of a function {%ard%}a = x -> B x{%endard%}
@@ -242,53 +220,61 @@ prove in {%ard%}transport-vcons-comm{%endard%} lemma.
 Note that it is important that we generalize the statement and prove the commutativity not only for
 {%ard%}+-assoc k m n{%endard%} but for all {%ard%}e : Nat{%endard%} satisfying {%ard%}p : k + m + n = e{%endard%} (otherwise, we would not be able to use pattern mathing or the J operator to prove this statement).
 
-<!-- TODO
 
 # Predicates
 
--- Есть несколько способов определять предикаты над некоторым типом A:
--- * Выразить из через уже существующие (например равенство) и различные логические связки. Например, предикат isEven можно выразить как \lam n => \Sigma (k : Nat) (n = 2 * k).
--- * Рекурсивно. Этот способ работает только если A -- тип данных.
--- * Индуктивно.
+A predicate on a type {%ard%}A{%endard%} is by definition a function from {%ard%}A{%endard%} to a type of propositions.
+In particular, in propositions-as-types logic predicates are functions {%ard%}A->\Type{%endard%}.
 
-\data Unit | unit
+There are several ways to define a predicate over a type {%ard%}A{%endard%}:
 
-\data Empty
+* By combining existing predicates (for example, equality) by means of logical connectives. For example, 
+{%ard%}isEven{%endard%} can be defined as {%ard%}\lam n => \Sigma (k : Nat) (n = 2 * k){%endard%}.
+* By recursion, but only if {%ard%}A{%endard%} is a datatype.
+* By induction.
 
--- Определение <= через равенство.
+We now illustrate all these ways in case of the predicate <= for natural numbers.
+
+{%arend%}
+-- Definition of <= via equality.
 \func LessOrEq''' (n m : Nat) => \Sigma (k : Nat) (k + n = m)
 
--- Рекурсивное определение предиката <=
+-- Recursive definition of <=.
 \func lessOrEq (n m : Nat) : \Type
   | 0, _ => Unit
   | suc _, 0 => Empty
   | suc n, suc m => lessOrEq n m
 
--- Первое индуктивное определение <=
+-- First inductive definition of <=.
 \data LessOrEq (n m : Nat) \with
   | 0, m => z<=n
   | suc n, suc m => s<=s (LessOrEq n m)
 
 \func test11 : LessOrEq 0 100 => z<=n
 \func test12 : LessOrEq 3 67 => s<=s (s<=s (s<=s z<=n))
+-- Of course, there is no proof of 1 <= 0.
 -- \func test10 : LessOrEq 1 0 => ....
 
--- Второе индуктивное определение -- это модификация первого, где вместо паттерн матчинга в \data мы используем равенство.
+-- Second inductive definition of <=.
+-- This is a modification of the first inductive definition,
+-- where we avoid constructor patterns.
 \data LessOrEq' (n m : Nat)
   | z<=n' (n = 0)
   | s<=s' {n' m' : Nat} (n = suc n') (m = suc m') (LessOrEq' n' m')
+{%endarend%}
 
--- Один и тот же предикат можно определить индуктивно различными способами.
--- Когда мы хотим задать предикат индуктивно, нам нужно просто написать набор правил, которые верны для данного предиката и при этом пораждают его.
--- Например, в LessOrEq у нас два правила: 0 <= m для любого m и, если n <= m, то suc n <= suc m. Любое неравенство можно получить из этих двух правил.
+There are usually many ways to choose constructors for inductive definitions. To define a predicate inductively, we need to
+come up with a set of axioms that characterise the predicate. 
 
--- Но это не единственный набор правил, который пораждает <=.
--- Например, мы можем взять следующий набор: n <= n для всех n и, если n <= m, то n <= suc m.
--- Этот набор реализован в LessOrEq''.
+For example, for {%ard%}LessOrEq{%endard%} we chose two axioms:
+1) 0 <= m for all m, 2) if n <= m, then suc n <= suc m for all n, m. Every inequality can be derived from these axioms.
+But this is not the only way to characterise {%ard%}LessOrEq{%endard%}. For example, we could use the following two axioms:
+1) n <= n for all n, 2) if n <= m, then n <= suc m for all n, m:
 
--- Третье индуктивное определение <=
+{%arend%}
+-- Third inductive definition of <=.
 \data LessOrEq'' (n m : Nat) \elim m
   | suc m => <=-step (LessOrEq'' n m)
   | m => <=-refl (n = m)
+{%endarend%}
 
--->
