@@ -4,7 +4,7 @@ nav: syn-n-def
 ---
 
 In this module we explain how to formulate and prove propositions in Arend.
-We show how to express various logical connectives and demonstrate that they satisfy required properties.
+We show how to express various logical connectives and demonstrate that they satisfy the required properties.
 
 # Curry-Howard correspondence
 
@@ -25,7 +25,7 @@ that False implies everything by constructing an element of any type from an ele
 \func absurd {A : \Type} (e : Empty) : A
 -- There are no patterns since Empty does not have constructors.
 
--- This can be expressed more explicitly by means the absurd patterns.
+-- This can be expressed more explicitly by means of the absurd patterns.
 -- This pattern indicates that the data type of the corresponding variable does not have constructors.
 -- If such a pattern is used, the right hand side of the clause can (and should) be omitted.
 \func absurd' {A : \Type} (e : Empty) : A \elim e
@@ -155,7 +155,7 @@ as the proposition True (type {%ard%}Unit{%endard%}) and {%ard%}false : Bool{%en
   | false => Empty
 {%endarend%}
 
-Now let's prove some statements about the two-element type {%ard%}Bool{%endard%} defined earlier.
+Now let us prove some statements about the two-element type {%ard%}Bool{%endard%} defined earlier.
 We formulate some properties of {%ard%}Bool{%endard%}, expressable in terms of equality predicate for {%ard%}Bool{%endard%}:
 
 {%arend%}
@@ -198,7 +198,7 @@ It is not possible to prove false statements in this way:
   | false => \lam x => x -- again a proof of Empty -> Empty
 {%endarend%}
 
-Let us also prove something, involving quantification. For example, the statement 
+Let us also prove something involving quantification. For example, the statement 
 "for every {%ard%}x : Bool{%endard%} there exists {%ard%}y : Bool{%endard%} such that x == y":
 {%arend%}
 -- Sigma-types are used to express existential quantification
@@ -216,12 +216,12 @@ equals {%ard%}true : Bool{%endard%}":
 
 The way how we defined equality {%ard%}=={%endard%} for {%ard%}Bool{%endard%} above is not actually satisfactory. Its definition
 is specific for {%ard%}Bool{%endard%}, we need to make analogous definitions for all other types and each time prove, say, that it is
-equivalence relation. 
+an equivalence relation. 
 
 Instead, we define an identity type for all types at once. Its definition is located in Prelude (type {%ard%}Path{%endard%} and its
 infix form {%ard%}={%endard%}). We will not get into details for now, all that we currently need is the proof of reflexivity {%ard%}idp : a = a{%endard%}, which is also defined in Prelude.
 
-Now, all the equalities that we proved for {%ard%}=={%endard%} can similarly proved for {%ard%}={%endard%}. For example, 
+Now, all the equalities that we proved for {%ard%}=={%endard%} can similarly be proved for {%ard%}={%endard%}. For example, 
 the equality {%ard%}not (not x) = x{%endard%}:
 
 {%arend%}
