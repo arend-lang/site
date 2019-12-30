@@ -145,15 +145,13 @@ For example, {%ard%} transport {%endard%} can be defined as follows:
 
 See [Prelude](/documentation/language-reference/prelude#idp) for more information about this pattern matching principle.
 
-<!-- TODO
-
-Как так?
-С одной стороны мы говорим, что в {%ard%} a = a' {%endard%} может быть больше одного элемента, а с другой позовляем матчится с idp, что, казалось бы, в точности означает, что в нем только один элемент.
-Всё просто: на самом деле мы матчимся не на одной переменной {%ard%} p : a = a' {%endard%}, а сразу на двух {%ard%} p : a = a' {%endard%} и {%ard%} a' {%endard%}.
-Собственно, из-за этого и есть все эти ограничения, которые обсуждаются в [Prelude](/documentation/language-reference/prelude#idp).
-Таким образом, по сути, мы матчимся не на типе {%ard%} a = a' {%endard%}, а на типе пар {%ard%} \Sigma (a' : A) (a = a') {%endard%}, который действительно является одноэлементным.
-
--->
+The pattern matching on {%ard%}idp{%endard%} may look confusing at first sight. On one hand we claim that {%ard%}a = a'{%endard%}
+can have more than one element, but on the other hand we allow pattern matching on {%ard%}idp{%endard%}, which means that
+{%ard%}a = a'{%endard%} has one element. This seeming contradiction is resolved by observing that in reality we pattern
+match simultaneously on _two_ variables {%ard%} p : a = a' {%endard%} and {%ard%} a' {%endard%}, instead of just one
+{%ard%} p : a = a' {%endard%}. In other words, we _do not_ match on the type {%ard%} a = a' {%endard%}, but match on the
+type {%ard%} \Sigma (a' : A) (a = a') {%endard%} of pairs instead, which is one-element type.
+Precisely this fact is the source of all the restrictions discussed in [Prelude](/documentation/language-reference/prelude#idp). 
 
 # Associativity of append for vectors
 

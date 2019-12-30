@@ -86,7 +86,7 @@ A proof of {%ard%} P | Q {%endard%} is either a proof of {%ard%} P {%endard%} or
 The type corresponding to this principle is the sum type:
 
 {%arend%}
-\data \infixr 2 | (P Q : \Type)
+\data \infixr 2 || (P Q : \Type)
   | inl P
   | inr Q
 {%endarend%}
@@ -94,14 +94,14 @@ The type corresponding to this principle is the sum type:
 It is easy to prove disjunction axioms:
 
 {%arend%}
--- This function proves that P -> (P | Q)
-\func |-intro1 {P Q : \Type} (p : P) : P | Q => inl p
+-- This function proves that P -> (P || Q)
+\func ||-intro1 {P Q : \Type} (p : P) : P || Q => inl p
 
--- This function proves that Q -> (P | Q)
-\func |-intro2 {P Q : \Type} (q : Q) : P | Q => inr q
+-- This function proves that Q -> (P || Q)
+\func ||-intro2 {P Q : \Type} (q : Q) : P || Q => inr q
 
--- This function proves that (P -> R) -> (Q -> R) -> (P | Q) -> R
-\func |-elim {P Q R : \Type} (l : P -> R) (r : Q -> R) (x : P | Q) : R \elim x
+-- This function proves that (P -> R) -> (Q -> R) -> (P || Q) -> R
+\func ||-elim {P Q R : \Type} (l : P -> R) (r : Q -> R) (x : P || Q) : R \elim x
   | inl p => l p
   | inr q => r q
 {%endarend%}

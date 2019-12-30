@@ -86,7 +86,7 @@ Equivalently, parameters of a function can be moved from the signature to the bo
 {%arend%}
  -- types of parameters cannot be infered as before
 \func foo' => \lam (x _ : Nat) (_ : Int) => x
--- but parameters can be omitted if the type is specified explicitly
+-- but types of parameters can be omitted if the result type is specified explicitly
 \func foo'' : Nat -> Nat -> Int -> Nat => \lam x _ _ => x  
 {- Haskell:
    foo'' :: Nat -> Nat -> Int -> Nat
@@ -533,7 +533,7 @@ The command {%ard%}\import X{%endard%} makes file X visible in the current file.
 everything that {%ard%}\open{%endard%} does, all the constructs for {%ard%}\open{%endard%} are applicable to {%ard%}\import{%endard%} as well:
 
 {%arend%}
-\import Test (foobar \as foobar', foobar3)
+\import Test (foobar \as foobar', foobar2)
 \import TestDir.Test
 -- if you want to make file visible, but do not want to make \open, you can write the fllowing:
 \import TestDir.Test2()
