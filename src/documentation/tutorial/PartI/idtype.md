@@ -12,7 +12,7 @@ recall the general concept of eliminator.
 
 # Symmetry, transitivity, Leibniz principle 
 
-First of all, we show that the identity type satisfies some basic properties of equality: it is equivalence relation and 
+First of all, we show that the identity type satisfies some basic properties of equality: it is an equivalence relation and 
 it satisfies the Leibniz principle.
 
 The Leibniz principle says that if {%ard%}a{%endard%} and {%ard%}a'{%endard%} satisfy the same properties, then they are
@@ -24,7 +24,7 @@ equal. It can be easily proven that {%ard%}={%endard%} satisfies this principle:
   => (f (\lam x => a = x)).1 idp
 {%endarend%}
 
-The inverse Leibniz principle (which we will call merely Leibnitz principle as well) says that if {%ard%}a = a'{%endard%}, then
+The inverse Leibniz principle (which we will call merely Leibniz principle as well) says that if {%ard%}a = a'{%endard%}, then
 {%ard%}a{%endard%} and {%ard%}a'{%endard%} satisfy the same properties, that is if {%ard%}P a{%endard%} is true, then 
 {%ard%}P a'{%endard%} is true. The proof of this is easy, but requires some constructs that will be introduced very shortly
 further in this module: 
@@ -55,7 +55,7 @@ of equality. For example, the following properties:
 
 The central ingredient of the definition of the identity type is the _interval type_ {%ard%}I{%endard%} contained in Prelude.
 The type {%ard%}I{%endard%} looks like a two-element datatype with constructors {%ard%}left{%endard%} and {%ard%}right{%endard%},
-but actually it's not: these constructors are made equal (by means of {%ard%}coe{%endard%}). Of course, pattern matching on
+but actually it is not: these constructors are made equal (by means of {%ard%}coe{%endard%}). Of course, pattern matching on
 {%ard%}I{%endard%} is prohibited since it can be used to derive {%ard%}Empty = Unit{%endard%}.  
 
 The equality {%ard%}left = right{%endard%} implies that some {%ard%}a : A{%endard%} and {%ard%}a' : A{%endard%} are equal if and only if
@@ -119,9 +119,9 @@ of the theory. For example, if we add the axiom of excluded middle {%ard%}lem{%e
 
 Elimination principles for a datatype {%ard%}D{%endard%} specify what kind of data
 should be provided in order to define a function from {%ard%}D{%endard%} to a non-dependent or
-dependent type. And, essentially, the principles say that it is enough to show how "generators" 
+dependent type. And, essentially, these principles say that it is enough to show how "generators" 
 (that is constructors) of {%ard%}D{%endard%} are mapped to a type {%ard%}A{%endard%} and
-that would uniquely determine a function {%ard%}D -> A{%endard%}. For example, eliminators 
+that that would uniquely determine a function {%ard%}D -> A{%endard%}. For example, eliminators 
 for {%ard%}Nat{%endard%} and {%ard%}Bool{%endard%}:
 
 {%arend%}
@@ -195,7 +195,7 @@ Denote {%ard%}\lam i => B (p @ i){%endard%} as {%ard%}B'{%endard%}. Then {%ard%}
 In order to prove that {%ard%}true{%endard%} is not equal to {%ard%}false{%endard%} it is enough to define a
 function {%ard%}T : Bool -> \Type{%endard%} such that {%ard%}T true{%endard%} is the unit type and 
 {%ard%}T false{%endard%} is the empty type. Then the contradiction can be easily derived from 
-{%ard%}true = false{%endard%} be means of {%ard%}transport{%endard%}:
+{%ard%}true = false{%endard%} by means of {%ard%}transport{%endard%}:
 
 {%arend%}
 \func true/=false (p : true = false) : Empty => T-absurd (transport T p tt)
