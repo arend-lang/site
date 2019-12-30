@@ -280,6 +280,8 @@ monoid on {%ard%}*{%endard%}.
 {%endarend%}
 
 The first explicit pararameter of a class is of special significance and is called _classifying field_ of a class.
+The classifying field of a class is typically a carrier, on top of which all other fields of the class define some structure.
+Thus the type of the classifying field is often {%ard%}\Type{%endard%} or {%ard%}\Set{%endard%}.
 Classifying fields significantly affect the behavior of the instance inference algorithm. Basically, in case there are no local instances, the algorithm
 searches for a first appropriate global instance (appropriate in the sense that its classifying field coincides with some expected type). 
 
