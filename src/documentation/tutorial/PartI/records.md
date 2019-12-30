@@ -370,7 +370,7 @@ Consider the following example:
 \func hhh : Int => 0
 {%endarend%}
 
-# Class and record extensions, diamond problem
+# Extensions, diamond problem
 
 Records and classes can extend other classes. The list of records and classes extended by a given class can be specifyed 
 after the keyword {%ard%}\extends{%endard%} as shown in the following example:
@@ -451,7 +451,7 @@ If we try to define the type of rings that extends class AbGroup for the abelian
 we will get into trouble: the clash of two monoidal structures. This is called the _diamond problem_.
 
 {%arend%}
--- This is not a right way to define the class Ring:
+-- This is not a correct way to define the class Ring:
 -- the structures of addition and multiplication coincide.
 \class Ring \extends AbGroup, Monoid
 {%endarend%}
@@ -472,9 +472,103 @@ A possible way to make it work is to define another copy of AbGroup that does no
 This approach is adopted in Arend standard library with one small improvement: algebraic structures extend the same BaseSet class
 in order to avoid identifications such as {%ard%}Monoid.A => AbGroup'.A{%endard%} above. 
 
+# Definitions inside classes
+
+It is possible to define functions and data structures inside classes.
+For example, we can modify the definition of rings as follows:
+
+{%arend%}
+\class Ring {
+  ...
+
+  \func two => ide + ide
+  \func square (x : A) => x * x
+}
+{%endarend%}
+
+Note that functions are defined inside the class (not in its {%ard%}\where{%endard%} block).
+The system adds one implicit parameter of type {%ard%}Ring{%endard%} to such functions.
+Thus, the definition above is equivalent to the following:
+
+{%arend%}
+\class Ring {
+  ...
+} \where {
+  \func two {this : Ring} => ide + ide
+  \func square {this : Ring} (x : A) => x * x
+}
+{%endarend%}
+
+# Classes without classifying fields
+
+It is often necessary to have a group of functions with a common set of parameters.
+For example, consider the following snippet that defines injective, surjective, and bijective functions and proves their properties:
+{%arend%}
+-- Implementations are omitted
+
+\func isInj {A B : \Type} (f : A -> B) : \Type => {?}
+
+\func isSur {A B : \Type} (f : A -> B) : \Type => {?}
+
+\func isBij {A B : \Type} (f : A -> B) : \Type => {?}
+
+\func IsInj+isSur=>isBij {A B : \Type} (f : A -> B) (p : isInj f) (q : isInj f) : isBij f => {?}
+
+\func IsBij=>isInj {A B : \Type} (f : A -> B) (p : isBij f) : isInj f => {?}
+
+\func IsBij=>isSur {A B : \Type} (f : A -> B) (p : isBij f) : isSur f => {?}
+{%endarend%}
+
+Functions above have 3 common parameters: `A`, `B`, and `f`.
+Classes without classifying fields can be used to extract these parameters so that we do not have to type in them for every function.
+A class without classifying fields can be defined in two ways: as a class without explicit parameters, or as a class with the keyword {%ard%} \noclassifying {%endard%}.
+
+The example above can be rewritten as follows:
+{%arend%}
+\class Map \noclassifying {A B : \Type} (f : A -> B) {
+  \func isInj : \Type => {?}
+
+  \func isSur : \Type => {?}
+
+  \func isBij : \Type => {?}
+
+  \func isInj+isSur=>isBij (p : isInj) (q : isInj) : isBij => {?}
+
+  \func isBij=>isInj (p : isBij) : isInj => {?}
+
+  \func isBij=>isSur (p : isBij) : isSur => {?}
+}
+{%endarend%}
+
+Since {%ard%} Map {%endard%} is a class without classifying fields, the system will infer the first available instance of this class whenever one the functions above is invoked:
+{%arend%}
+\func isInj+isSur<=>isBij (m : Map) : \Sigma (isBij -> \Sigma isInj isSur) (\Sigma isInj isSur -> isBij)
+  => ((\lam p => (isBij=>isInj p, isBij=>isInj p)), (\lam p => isInj+isSur=>isBij p.1 p.2))
+  \where \open Map
+{%endarend%}
+
+Of course, a function from the class {%ard%} Map {%endard%} can also be invoked with an explicitly specified instance:
+{%arend%}
+\func id-isInj {A : \Type} : Map.isInj {\new Map (\lam (a : A) => a)} => {?}
+{%endarend%}
+
+Of courses, classes without classifying fields can also be extended.
+For example, if we want to define a few functions about endomorphisms, we can extend the class {%ard%} Map {%endard%} as follows:
+{%arend%}
+\class Endo \extends Map {
+  | B => A
+
+  \func isIdem => \Pi (x : A) -> f (f x) = f x
+
+  \func isInv => \Pi (x : A) -> f (f x) = x
+
+  \func isIdem+isInv=>id (p : isIdem) (q : isInv) : f = (\lam x => x) => {?}
+}
+{%endarend%}
+
 # Functor
 
-We conclude by demontrating another important example: the class of functors.
+We conclude by demonstrating another example: the class of functors.
 
 {%arend%}
 \class Functor (F : \Type -> \Type)
