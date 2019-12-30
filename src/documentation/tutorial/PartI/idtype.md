@@ -150,62 +150,69 @@ for {%ard%}Nat{%endard%} and {%ard%}Bool{%endard%}:
   | false => f
 {%endarend%}
 
-<!--
+The function {%ard%}coe{%endard%} thus defines dependent eliminator for {%ard%}I{%endard%},
+it says that in order to define {%ard%}f : \Pi (i : I) -> P i{%endard%} for some {%ard%}P : I -> \Type{%endard%}
+it is enough to specify {%ard%}f left{%endard%}:
 
-{-
+{%arend%}
 \func coe (P : I -> \Type)
           (a : P left)
           (i : I) : P i \elim i
   | left => a
--}
+{%endarend%}
 
 
 # left = right
 
--- Чтобы доказать, что в I действительно только один элемент, нам нужно использовать функцию coe, определенную в прелюдии.
--- О ней можно думать как об элиминаторе для I.
--- Она говорит, что для определения функции над I достаточно определить ее для left.
--- Для сравнения элиминатор для Bool говорит, что для определения функции над Bool достаточно определить ее для true и false.
+With the use of the function {%ard%}coe{%endard%}, we now prove that {%ard%}I{%endard%} has one 
+element:
 
--- Используя coe, легко доказать, что любой i : I равен left.
+{%arend%}
 \func left=i (i : I) : left = i
   -- | left => idp
   => coe (\lam i => left = i) idp i
 
--- В частности left = right.
+-- In particular left = right.
 \func left=right : left = right => left=i right
+{%endarend%}
 
 # coe and transport
 
--- Функция coe тесно связана с transport.
--- Мы определили transport через coe.
+Functions {%ard%}coe{%endard%} and {%ard%}transport{%endard%} are closely related. Recall the
+definition of {%ard%}transport{%endard%} given earlier in this module:
 
--- \func transport {A : \Type} (B : A -> \Type) {a a' : A} (p : a = a') (b : B a) : B a'
---     => coe (\lam i => B (p @ i)) b right
--- Пусть B' == \lam i => B (p @ i).
--- Тогда
--- B' : I -> \Type
--- B' left == B a
--- B' right == B a'
---
--- \lam x => coe B' x right : B' left -> B' right
+{%arend%}
+\func transport {A : \Type} (B : A -> \Type) {a a' : A} (p : a = a') (b : B a) : B a'
+     => coe (\lam i => B (p @ i)) b right
+{%endarend%}
 
--- В ДЗ нужно будет показать, что через transport определеяется частный случай coe.
+Denote {%ard%}\lam i => B (p @ i){%endard%} as {%ard%}B'{%endard%}. Then {%ard%}B' : I -> \Type{%endard%},
+{%ard%}B' left ==> B a{%endard%}, {%ard%}B' right ==> B a'{%endard%} and 
+{%ard%}\lam x => coe B' x right : B' left -> B' right{%endard%}.
 
 # Proofs of non-equalities
 
--- Чтобы доказать, что true не равно false, достаточно определить функцию T : Bool -> \Type, которая на true равна населенному типу, а на false пустому.
--- Тогда из true = false легко вывести противоречие, используя transport.
-\func true/=false (p : true = false) : Empty => T-absurd (transport T p tt)
+In order to prove that {%ard%}true{%endard%} is not equal to {%ard%}false{%endard%} it is enough to define a
+function {%ard%}T : Bool -> \Type{%endard%} such that {%ard%}T true{%endard%} is the unit type and 
+{%ard%}T false{%endard%} is the empty type. Then the contradiction can be easily derived from 
+{%ard%}true = false{%endard%} be means of {%ard%}transport{%endard%}:
 
--- Мы не можем доказать, что left не равно right, так как мы не можем определить такую функцию для I ни рекурсивно, ни через \data.
-{-
+{%arend%}
+\func true/=false (p : true = false) : Empty => T-absurd (transport T p tt)
+{%endarend%}
+
+Note that it is not possible to prove that {%ard%}left{%endard%} is not equal to {%ard%}right{%endard%} 
+since such {%ard%}T{%endard%} cannot be defined neither recursively nor inductively:
+
+{%arend%}
+-- This function does not typecheck!
 \func TI (b : I)
   | left => \Sigma
   | right => Empty
 
+-- This is the best we can do.
 \data TI' (b : I) \with
   | left => ti
--}
+{%endarend%}
 
--->
+
