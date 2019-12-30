@@ -8,7 +8,7 @@ nav: view
 # filter via \case and via helper
 
 Case expressions, like in Haskell, can be used for pattern matching on arbitrary expressions. For example,
-let's define the function {%ard%}filter{%endard%} that removes from a list {%ard%}xs : List A{%endard%} all
+let us define the function {%ard%}filter{%endard%} that removes from a list {%ard%}xs : List A{%endard%} all
 elements that do not satisfy some predicate {%ard%}p : A -> Bool{%endard%}:
 
 {%arend%}
@@ -56,10 +56,10 @@ is in normal form. The latter option makes normalized terms look nicer and for t
 
 # \case in dependently typed languages
 
-Case expressions are more subtle in dependently typed languages than in languages like Haskell. Let's
+Case expressions are more subtle in dependently typed languages than in languages like Haskell. Let us
 assume, for example, we want to prove that {%ard%}p a = not (not (p a)){%endard%} for some predicate
 {%ard%}p : A -> Bool{%endard%} and {%ard%}a : A{%endard%}. Of course, this statement can be proved as 
-a consequence of a generalized statement {%ard%}x = not (not (x)){%endard%}, and that's the right
+a consequence of a generalized statement {%ard%}x = not (not (x)){%endard%}, and that is the right
 way to do it, but we would like to show how it can be proven with {%ard%}\case{%endard%}:
 
 {%arend%}
@@ -117,7 +117,7 @@ We can pattern match on several expressions in {%ard%}\case{%endard%}. For examp
 
 # Proof of a fact about filter via \case
 
-Let's consider one more example of a proof via {%ard%}\case{%endard%}: let's prove
+Let us consider one more example of a proof via {%ard%}\case{%endard%}: let us prove
 that the length of a filtered list {%ard%}filter xs{%endard%} is at most the 
 length of the original list {%ard%}xs{%endard%}:
 
@@ -154,7 +154,7 @@ length of the original list {%ard%}xs{%endard%}:
 # Matching on idp in \case 
 
 When we pattern match on some expression {%ard%}e{%endard%}, the connection of this expression with the 
-result of the pattern matching gets lost. For example, we can't even prove in {%ard%}expr{%endard%} inside an expression
+result of the pattern matching gets lost. For example, we can not even prove in {%ard%}expr{%endard%} inside an expression
 of the form {%ard%}\case e \with { | pattern => expr }{%endard%} that {%ard%}e{%endard%} equals {%ard%}pattern{%endard%}.
 
 Sometimes such connections are necessary. In these cases we can use the following trick: double pattern matching
@@ -187,7 +187,7 @@ And a helper version again:
 
 # One more example of \case
 
-Let's consider one more example, demonstrating what we have just discussed:
+Let us consider one more example, demonstrating what we have just discussed:
 
 {%arend%}
 \func bar {A : \Type} (p q : A -> Bool) (a : A) (s : q a = not (p a))
@@ -215,10 +215,10 @@ Let's consider one more example, demonstrating what we have just discussed:
 Views -- is a techique that allows to define some kind of custom pattern matching for datatypes.
 For example, {%ard%}Nat{%endard%} has constructors {%ard%}zero{%endard%} and {%ard%}suc{%endard%}
 and by default we pattern match on them whenever we define a function from {%ard%}Nat{%endard%}.
-But we can also define a cumstom pattern matching for {%ard%}Nat{%endard%} as if {%ard%}Nat{%endard%}
+But we can also define a custom pattern matching for {%ard%}Nat{%endard%} as if {%ard%}Nat{%endard%}
 had constructors, say, {%ard%}even{%endard%} and {%ard%}odd{%endard%}.
 
-Let's define a datatype parameterised by the datatype we are defining custom pattern matching for
+Let us define a datatype parameterised by the datatype we are defining custom pattern matching for
 ({%ard%}Nat{%endard%} in our example). The constructors of this datatype will correspond to
 the constructors that we want to use for our custom pattern matching ({%ard%}even{%endard%} and 
 {%ard%}odd{%endard%} in our example). Each constructor should have a parameter of the form {%ard%}n = expr{%endard%},
@@ -242,7 +242,7 @@ Next, we define a function that converts elements of {%ard%}Nat{%endard%} to ele
 {%endarend%}
 
 Now, in order to pattern match on {%ard%}n : Nat{%endard%} we should invoke {%ard%}\case{%endard%}
-on {%ard%}parity n{%endard%}. For example, let's define division by 2:
+on {%ard%}parity n{%endard%}. For example, let us define division by 2:
 
 {%arend%}
 \func div2 (n : Nat) : Nat => \case parity n \with {
@@ -270,7 +270,7 @@ This notion of decidability is related to decidability in computability theory:
 if a predicate is decidable in this sense, then there exists an algorithm that for every {%ard%}x : A{%endard%}
 decides whether {%ard%}P x{%endard%} or not {%ard%}P x{%endard%}.
 
-In particular, there exist undecisable predicates.
+In particular, there exist undecidable predicates.
 For example, we can define the following predicate {%ard%}P : Nat -> \Type{%endard%}: {%ard%}P n{%endard%} encodes
 the statement "Turing machine with number n halts at the input n". A simpler example -- the predicate on pairs of
 functions {%ard%}Nat -> Nat{%endard%}, saying that they are equal.
@@ -289,11 +289,11 @@ An example of decidable predicate:
 {%endarend%}
 
 The above properties of decidability hold as long as our logic is intuitionistic. If we have the Law of Excluded
-Middle, then all predicates are decidable, and, in fact, the opposite direction is also true.
+Middle, then all predicates are decidable, and, in fact, the opposite implication is also true.
 
 # Decidable equality
 
-Let's consider the predicate {%ard%}DecEq A{%endard%}, saying that type {%ard%}A{%endard%} has decidable equality on it: 
+Let us consider the predicate {%ard%}DecEq A{%endard%}, saying that type {%ard%}A{%endard%} has decidable equality on it: 
 
 {%arend%}
 \func DecEq (A : \Type) => \Pi (a a' : A) -> Decide (a = a')
@@ -321,7 +321,7 @@ not necessarily having anything to do with equality.
 }
 {%endarend%}
 
-Let's define an instance for the type of natural numbers:
+Let us define an instance for the type of natural numbers:
 
 {%arend%}
 \func pred (n : Nat) : Nat
@@ -347,7 +347,7 @@ Let's define an instance for the type of natural numbers:
 # Decidable predicates and functions A -> Bool
 
 Decidable predicates {%ard%}A -> \Type{%endard%} correspond precisely to functions {%ard%}A -> Bool{%endard%}.
-Let's define the convertion functions:
+Let us define the conversion functions:
 
 {%arend%}
 \func FromBoolToDec {A : \Type} (p : A -> Bool) : \Sigma (P : A -> \Type) (DecPred P)
