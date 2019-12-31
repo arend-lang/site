@@ -421,14 +421,20 @@ is equivalent to the datatype defined as follows:
 {%endarend%}
 
 More generally, for any family of types {%ard%}A1{%endard%}, ..., {%ard%}An{%endard%} one can form the type 
-{%ard%}\Sigma A1 ... An{%endard%} of tuples {%ard%}(a1, ..., an){%endard%}, where {%ard%}ai : Ai{%endard%}. Moreover, 
-the tuples can be dependent in the sense that {%ard%}Ai{%endard%} can depend on {%ard%}a1{%endard%}, ..., {%ard%}a{i-1}{%endard%}.
-
+{%ard%}\Sigma A1 ... An{%endard%} of tuples {%ard%}(a1, ..., an){%endard%}, where {%ard%}ai : Ai{%endard%}.
 A trivial example -- the type {%ard%}\Sigma{%endard%}, which is equivalemt to the one-element type {%ard%}Unit{%endard%}.
 
-More interesting example -- the type {%ard%}\Sigma (n : Nat) (\Sigma (k : Nat) (n = k * k)){%endard%} of natural numbers {%ard%}n{%endard%}
-that are full squares: its elements are pairs {%ard%}(n, p){%endard%}, where {%ard%}n{%endard%} is a natural number and 
-{%ard%}p : \Sigma (k : Nat) (n = k * k){%endard%} is a proof that {%ard%}n{%endard%} is a square. 
+The tuples can be dependent in the sense that {%ard%}Ai{%endard%} can depend on {%ard%}a1{%endard%}, ..., {%ard%}a{i-1}{%endard%}.
+Let us give a few examples of dependent {%ard%}\Sigma{%endard%}-types:
+* The type {%ard%}\Sigma (A : \Type) (A -> A){%endard%} consists of pairs {%ard%}(A,f){%endard%}, where {%ard%}A{%endard%} is a type and {%ard%}f{%endard%} is a function of type {%ard%} A -> A {%endard%}.
+* The type {%ard%}\Sigma (b : Bool) (if b Nat Bool){%endard%} consists of pairs {%ard%}(b,e){%endard%}, where {%ard%}b{%endard%} is a boolean value and the type of {%ard%}e{%endard%} is {%ard%}if b Nat Bool{%endard%}.
+  In particular, pairs {%ard%}(true,7){%endard%} and {%ard%}(false,true){%endard%} belong to this type, but pairs {%ard%}(false,7){%endard%} and {%ard%}(true,true){%endard%} do not.
+* We will see that, for every pair of natural numbers {%ard%}n,m : Nat{%endard%}, there is a type {%ard%}n < m{%endard%} of proofs that one of them is less than the other.
+  Then we can define the type {%ard%}\Sigma (n : Nat) (n <= 10){%endard%} which consists of natural numbers less than {%ard%}10{%endard%}.
+  To be more precise, it consists of pairs {%ard%}(n,p){%endard%}, where {%ard%}n{%endard%} is a natural number and {%ard%}p{%endard%} is a proof that it less than {%ard%}10{%endard%}.
+* More interesting example -- the type {%ard%}\Sigma (n : Nat) (\Sigma (k : Nat) (n = k * k)){%endard%} of natural numbers {%ard%}n{%endard%}
+  that are full squares: its elements are pairs {%ard%}(n, p){%endard%}, where {%ard%}n{%endard%} is a natural number and 
+  {%ard%}p : \Sigma (k : Nat) (n = k * k){%endard%} is a proof that {%ard%}n{%endard%} is a square. 
 
 If {%ard%}x{%endard%} is an element of type {%ard%}\Sigma A1 ... An{%endard%}, i-th component of {%ard%}x{%endard%}, where
 i is a numeral, can be accessed by the projection operator {%ard%}x.i{%endard%}. Note that eta equivalence holds for 
