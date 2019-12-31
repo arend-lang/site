@@ -315,10 +315,6 @@ function can be stated as follows:
    id x = x
 -}
 
--- the syntax A -> B is used for types of functions, 
---                         the codomain of which does not depend on the argument   
--- for example, (id Nat) has type Nat -> Nat
--- Pi-types generalize them, allowing codomain to depend on the argument
 \func idType : \Pi (A : \Type) (a : A) -> A => id
 {- Haskell:
    idType :: a -> a
@@ -326,13 +322,19 @@ function can be stated as follows:
 -}
 {%endarend%}
 
-Note that {%ard%}\Type{%endard%} is not a genuine type: the famous Girard's paradox states that intensional Martin-Lof's
-type theory is inconsistent with the type of all types. In reality, {%ard%}\Type{%endard%} is a syntactic sugar for
-the cumulative hierarchy of universes of types {%ard%}\Type 0{%endard%} < ... <  {%ard%}\Type p{%endard%} < ...,
-parameterized by the _predicative level_ {%ard%}p{%endard%}, where {%ard%}\Type p{%endard%} is roughly the type of all 
-types that _do not_ refer in their definitions to universes with predicative level {%ard%}p{%endard%} and higher. Fortunately,
-the user does not need to care about these levels, which are automatically inferred and hidden from the user, unless
-he or she uses forbidden circularities, in which case typechecker will generate an error.    
+The type {%ard%} \Pi (a : A) -> B {%endard%} is the type of dependent functions, which generalizes the type of ordinary functions {%ard%} A -> B {%endard%}.
+The codomain of a dependent function may vary dependening on the argument.
+For example, the type {%ard%} \Pi (b : Bool) -> if b Nat Bool {%endard%} is the type of functions which accept an argument of type {%ard%} Bool {%endard%} and return either a natural number or a boolean value, depending its argument.
+If we pass {%ard%} true {%endard%} to such a function, it returns an element of {%ard%} Nat {%endard%}; otherwise, it returns an element of {%ard%} Bool {%endard%}.
+
+The type {%ard%} \Pi (A : \Type) (a : A) -> A {%endard%} can be equivalently written as {%ard%} \Pi (A : \Type) -> A -> A {%endard%} since its codomain does not depend on the second argument.
+This is the type functions which accept a type {%ard%} A {%endard%} and return a function of type {%ard%} A -> A {%endard%}.
+
+Note that {%ard%}\Type{%endard%} is not a type of _all_ types: the famous Girard's paradox states that intensional Martin-Lof's
+type theory is inconsistent with the type of all types.
+This problem is solved with a hierarchy of universes, which will be discussed [later](universes).
+Fortunately, the user does not need to care about these levels for the most part.
+Levels are inferred automatically and hidden from the user, unless he or she uses forbidden circularities, in which case typechecker will generate an error.
 
 # Implicit arguments
 

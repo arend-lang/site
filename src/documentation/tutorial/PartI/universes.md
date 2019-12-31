@@ -12,7 +12,7 @@ We conclude with remarks on writing specifications for functions.
 
 # Hierarchies of universes, polymorphism
 
-As we mentioned earlier <!-- (TODO: ref) --> there is no actual type of all types in Arend. 
+As we mentioned [earlier](synndef#polymorphism) there is no actual type of all types in Arend. 
 The type {%ard%}\Type{%endard%} behaves pretty much like the one, but not quite, and the difference
 is precisely that {%ard%}\Type{%endard%} cannot be used for contradictory circular definitions.
 This is so because {%ard%}\Type{%endard%} actually hides the hierarchy of unverses {%ard%}\Type0{%endard%},
