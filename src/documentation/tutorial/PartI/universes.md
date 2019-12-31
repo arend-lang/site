@@ -269,9 +269,7 @@ specifications can be formulated as follows:
 
 # Sorting algorithm
 
-We now finally prove the correctness of the insertion sort algorithm, defined in [Simple Examples](datanproofs).
-<!-- TODO: explain! -->
-
+We now finally prove the correctness of the insertion sort algorithm, defined in [Simple Examples](datanproofs):
 {%arend%}
 \func sort {A : TotalPreorder} (xs : List A) : List A
   | nil => nil
@@ -283,66 +281,185 @@ We now finally prove the correctness of the insertion sort algorithm, defined in
         | inl _ => cons x (insert a xs)
         | inr _ => cons a (cons x xs)
       }
+{%endarend%}
 
+The full specification of the sort function consists of two properties:
+* {%ard%}sort xs{%endard%} is a sorted list.
+* {%ard%}sort xs{%endard%} is a permutation of {%ard%}xs{%endard%}.
+We begin with the latter property.
+It can be defined in several different (but equivalent) ways.
+We will use an interesting option: instead of giving its definition from the start, we begin with an empty data type and add more constructors as needed:
+{%arend%}
+\data Perm {A : \Type} (xs ys : List A)
+{%endarend%}
+
+Of course, the proof proceeds by induction on the list:
+{%arend%}
+\func sort-perm {A : TotalPreorder} (xs : List A) : Perm xs (sort xs) \elim xs
+  | nil => {?}
+  | cons a l => {?}
+{%endarend%}
+In the first goal, we need to show that the empty list is a permutation of itself.
+To do this, we need to add the first constructor to {%ard%} Perm {%endard%}:
+{%arend%}
+\data Perm {A : \Type} (xs ys : List A) \elim xs, ys
+  | nil, nil => perm-nil
+{%endarend%}
+
+In the second goal, we need to show that {%ard%} cons a l {%endard%} is a permutation of {%ard%} insert a (sort l) {%endard%}.
+Clearly, we need to use the induction hypothesis and we also need to prove some lemma about {%ard%} insert {%endard%} function.
+There is an obvious property of this function related to permutation:
+{%arend%}
+\func insert-perm {A : TotalPreorder} (a : A) (xs : List A) : Perm (cons a xs) (sort.insert a xs) => {?}
+{%endarend%}
+This lemma implies that {%ard%} insert a (sort l) {%endard%} is a permutation of {%ard%} cons a (sort l) {%endard%}.
+We can combine this property with the induction hypothesis to obtain the required result.
+To do this, we need to know the following facts:
+* Permutations are closed under {%ard%} cons a {%endard%} so that we can conclude that {%ard%} cons a (sort l) {%endard%} is a permutation of {%ard%} cons a l {%endard%},
+* {%ard%} Perm {%endard%} is a transitive relation so that we can combine two proofs.
+We add two new constructors to {%ard%} Perm {%endard%} which reflect these properties.
+At this point, our proof looks like this:
+{%arend%}
 \data Perm {A : \Type} (xs ys : List A) \elim xs, ys
   | nil, nil => perm-nil
   | cons x xs, cons y ys => perm-cons (x = y) (Perm xs ys)
   | xs, ys => perm-trans {zs : List A} (Perm xs zs) (Perm zs ys)
-  | cons x (cons x' xs), cons y (cons y' ys) => perm-perm (x = y') (x' = y) (xs = ys)
-
-\func perm-refl {A : \Type} {xs : List A} : Perm xs xs \elim xs
-  | nil => perm-nil
-  | cons a l => perm-cons idp perm-refl
 
 \func sort-perm {A : TotalPreorder} (xs : List A) : Perm xs (sort xs) \elim xs
   | nil => perm-nil
   | cons a l => perm-trans (perm-cons idp (sort-perm l)) (insert-perm a (sort l))
   \where
-    \func insert-perm {A : TotalPreorder} (a : A) (xs : List A) : Perm (cons a xs) (sort.insert a xs) \elim xs
-      | nil => perm-cons idp perm-nil
-      | cons b l => \case totality b a \as r \return
-                                              Perm (cons a (cons b l)) (\case r \with {
-                                                | inl _ => cons b (sort.insert a l)
-                                                | inr _ => cons a (cons b l)
-                                              }) \with {
-        | inl b<=a => perm-trans (perm-perm idp idp idp) (perm-cons idp (insert-perm a l))
-        | inr a<=b => perm-refl
-      }
+    \func insert-perm {A : TotalPreorder} (a : A) (xs : List A) : Perm (cons a xs) (sort.insert a xs) => {?}
+{%endarend%}
 
+The proof of {%ard%} insert-perm {%endard%} also proceeds by induction on the list.
+The {%ard%} nil {%endard%} case is easy: we just need to show that {%ard%} cons a nil {%endard%} is a permutation of itself.
+In the {%ard%} cons {%endard%} case, we need to decide whether {%ard%} b <= a {%endard%} or {%ard%} a <= b {%endard%}.
+We can do this using {%ard%} \case {%endard%}:
+{%arend%}
+\func insert-perm {A : TotalPreorder} (a : A) (xs : List A) : Perm (cons a xs) (sort.insert a xs) \elim xs
+  | nil => perm-cons idp perm-nil
+  | cons b l => \case totality b a \as r \return
+                                          Perm (cons a (cons b l)) (\case r \with {
+                                            | inl _ => cons b (sort.insert a l)
+                                            | inr _ => cons a (cons b l)
+                                          }) \with {
+    | inl b<=a => {?}
+    | inr a<=b => {?}
+  }
+{%endarend%}
+
+The second subgoal is easy: we need to prove that {%ard%} cons a (cons b l) {%endard%} is a permutation of itself.
+We can show that {%ard%} Perm {%endard%} is reflexive using constructors that we already added:
+{%arend%}
+\func perm-refl {A : \Type} {xs : List A} : Perm xs xs \elim xs
+  | nil => perm-nil
+  | cons a l => perm-cons idp perm-refl
+{%endarend%}
+
+In the first subgoal, we need to prove that {%ard%} cons a (cons b l) {%endard%} is a permutation of {%ard%} cons b (insert a l) {%endard%}.
+By the induction hypothesis and transitivity of {%ard%} Perm {%endard%}, we can reduce this problem to the problem of showing that {%ard%} cons a (cons b l) {%endard%} is a permutation of {%ard%} cons b (cons a l) {%endard%}.
+To prove this, we need to add yet another constructor to {%ard%} Perm {%endard%}:
+
+{%arend%}
+\data Perm {A : \Type} (xs ys : List A) \elim xs, ys
+  | nil, nil => perm-nil
+  | cons x xs, cons y ys => perm-cons (x = y) (Perm xs ys)
+  | xs, ys => perm-trans {zs : List A} (Perm xs zs) (Perm zs ys)
+  | cons x (cons x' xs), cons y (cons y' ys) => perm-perm (x = y') (x' = y) (xs = ys)
+{%endarend%}
+
+Now, we can finish the proof of {%ard%} insert-perm {%endard%}:
+
+{%arend%}
+\func insert-perm {A : TotalPreorder} (a : A) (xs : List A) : Perm (cons a xs) (sort.insert a xs) \elim xs
+  | nil => perm-cons idp perm-nil
+  | cons b l => \case totality b a \as r \return
+                                          Perm (cons a (cons b l)) (\case r \with {
+                                            | inl _ => cons b (sort.insert a l)
+                                            | inr _ => cons a (cons b l)
+                                          }) \with {
+    | inl b<=a => perm-trans (perm-perm idp idp idp) (perm-cons idp (insert-perm a l))
+    | inr a<=b => perm-refl
+  }
+{%endarend%}
+
+Our definition of {%ard%} Perm {%endard%} might look like cheating, but it is a perfectly valid definition of this predicate.
+It might happen that we already have some fixed definition {%ard%} Perm' {%endard%} of this predicate and we want to prove that our sort function satisfies the required property with respect to {%ard%} Perm' {%endard%}.
+In this case, we just need to prove that {%ard%} Perm xs ys {%endard%} implies {%ard%} Perm' xs ys {%endard%}.
+It is easy to do this: we just need to show that {%ard%} Perm' {%endard%} satisfies 4 properties corresponding to 4 constructors of {%ard%} Perm {%endard%}.
+We can even omit the intermediate step and replace {%ard%} Perm {%endard%} with {%ard%} Perm' {%endard%} and constructors of {%ard%} Perm {%endard%} with the proofs of corresponding properties.
+
+Now, let us prove the remaining property of the sort function.
+We will define predicate {%ard%} IsSorted {%endard%} inductively.
+The empty list is always sorted and {%ard%} cons x xs {%endard%} is sorted if {%ard%} xs {%endard%} is sorted and {%ard%} x {%endard%} is less than or equal to the head of {%ard%} xs {%endard%}.
+The problem is that {%ard%} xs {%endard%} might be empty, in which case the last property does not make sense.
+We can consider three cases instead of two and define {%ard%} IsSorted {%endard%} as follows:
+{%arend%}
+\data IsSorted {A : Preorder} (xs : List A) \with
+  | nil => nil-sorted
+  | cons _ nil => single-sorted
+  | cons x (cons y _ \as xs) => cons-sorted (x <= y) (IsSorted xs)
+{%endarend%}
+
+It turns out that this definition is not very convenient because we need to consider more cases when proof things about sorted list.
+There is another option: we can define the {%ard%} head {%endard%} that returns some default value when the list is empty:
+{%arend%}
 \func head {A : \Type} (def : A) (xs : List A) : A \elim xs
   | nil => def
   | cons a _ => a
+{%endarend%}
 
+Now, we can define predicate {%ard%} IsSorted {%endard%} as follows:
+{%arend%}
 \data IsSorted {A : Preorder} (xs : List A) \elim xs
   | nil => nil-sorted
   | cons x xs => cons-sorted (x <= head x xs) (IsSorted xs)
+{%endarend%}
 
+If {%ard%} xs {%endard%} is not empty, then condition {%ard%} x <= head x xs {%endard%} asserts that {%ard%} x {%endard%} is less than or equal to the head of {%ard%} xs {%endard%}.
+If {%ard%} xs {%endard%} is empty, then condition {%ard%} x <= head x xs {%endard%} is always true by reflexivity of {%ard%} <= {%endard%}.
+
+The rest of the proof is straightforward.
+We formulate an obvious lemma about {%ard%} insert {%endard%} function and prove the required property by induction:
+{%arend%}
 \func sort-sorted {A : TotalPreorder} (xs : List A) : IsSorted (sort xs) \elim xs
   | nil => nil-sorted
   | cons a l => insert-sorted a (sort-sorted l)
   \where {
-    \func insert-lem {A : TotalPreorder} (a x : A) (l : List A) (a<=x : a <= x) (a<=l : a <= head a l) : a <= head a (sort.insert x l) \elim l
-      | nil => a<=x
-      | cons b l => \case totality b x \as r \return
-                                              a <= head a (\case r \with {
-                                                | inl _ => cons b (sort.insert x l)
-                                                | inr _ => cons x (cons b l)
-                                              }) \with {
-        | inl _ => a<=l
-        | inr _ => a<=x
-      }
-
-    \func insert-sorted {A : TotalPreorder} (x : A) {xs : List A} (xs-sorted : IsSorted xs) : IsSorted (sort.insert x xs) \elim xs
-      | nil => cons-sorted <=-refl nil-sorted
-      | cons a l => \case totality a x \as r \return
-                                              IsSorted (\case r \with {
-                                                | inl _ => cons a (sort.insert x l)
-                                                | inr _ => cons x (cons a l)
-                                              }) \with {
-        | inl a<=x => \case xs-sorted \with {
-          | cons-sorted a<=l l-sorted => cons-sorted (insert-lem a x l a<=x a<=l) (insert-sorted x l-sorted)
-        }
-        | inr x<=a => cons-sorted x<=a xs-sorted
-      }
+    \func insert-sorted {A : TotalPreorder} (x : A) {xs : List A} (xs-sorted : IsSorted xs) : IsSorted (sort.insert x xs) => {?}
   }
 {%endarend%}
+
+The proof of the lemma is also a straightforward induction:
+{%arend%}
+\func insert-sorted {A : TotalPreorder} (x : A) {xs : List A} (xs-sorted : IsSorted xs) : IsSorted (sort.insert x xs) \elim xs
+  | nil => cons-sorted <=-refl nil-sorted
+  | cons a l => \case totality a x \as r \return
+                                          IsSorted (\case r \with {
+                                            | inl _ => cons a (sort.insert x l)
+                                            | inr _ => cons x (cons a l)
+                                          }) \with {
+    | inl a<=x => \case xs-sorted \with {
+      | cons-sorted a<=l l-sorted => cons-sorted (insert-lem a x l a<=x a<=l) (insert-sorted x l-sorted)
+    }
+    | inr x<=a => cons-sorted x<=a xs-sorted
+  }
+{%endarend%}
+
+In the case {%ard%} inl a<=x {%endard%}, we need another auxiliary lemma with a simple proof by case analysis:
+{%arend%}
+\func insert-lem {A : TotalPreorder} (a x : A) (l : List A) (a<=x : a <= x) (a<=l : a <= head a l) : a <= head a (sort.insert x l) \elim l
+  | nil => a<=x
+  | cons b l => \case totality b x \as r \return
+                                          a <= head a (\case r \with {
+                                            | inl _ => cons b (sort.insert x l)
+                                            | inr _ => cons x (cons b l)
+                                          }) \with {
+    | inl _ => a<=l
+    | inr _ => a<=x
+  }
+{%endarend%}
+
+This completes the proof of correctness of {%ard%} sort {%endard%}.
+The full proof can be found [here](code/sort.ard).
