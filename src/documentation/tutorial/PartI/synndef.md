@@ -96,7 +96,28 @@ Equivalently, parameters of a function can be moved from the signature to the bo
 
 In the examples above we specified the bodies of functions by simply writing a term after the symbol {%ard%}=>{%endard%}.
 Of course, there are more sophisticated ways to define the body of a function, for example, in case the function is recursive.
-Namely, functions can also be defined by _pattern matching_, we will consider such functions [below](#data-definitions). 
+Namely, functions can also be defined by _pattern matching_, we will consider such functions [below](#data-definitions).
+
+**Exercise:** Define in Arend analogues of the following functions, written in Haskell:
+{: .notice--info}
+
+{%arend%}
+{- Haskell:
+   second :: Nat -> Nat -> Nat -> Nat
+   second _ y _ = y
+
+   apply :: (Nat -> Nat) -> Nat -> Nat
+   apply f x = f x
+
+   compose :: (Nat -> Nat) -> (Nat -> Nat) -> Nat -> Nat
+   compose f g x = f (g x)
+
+   flip :: (Nat -> Nat -> Nat) -> Nat -> Nat -> Nat
+   flip f x y = f y x
+
+   second' = flip (second 0)
+-}
+{%endarend%}
 
 # Infix operators
 
@@ -140,6 +161,20 @@ Any infix operator can also be used in the prefix from:
    pp_test = (%%) 3 7
 -}
 {%endarend%}
+
+**Exercise:** Define priorities of the functions f1, f2, f3, f4, f5 and f6 so that the function 'test' typechecks.
+{: .notice--info}
+{%arend%}
+\func f1 (x y : Nat) => x
+\func f2 : Nat => 0
+\func f3 (f : Nat -> Nat) (z : Nat) : Int => 0
+\func f4 : Nat => 0
+\func f5 => f1
+\func f6 => f4
+
+\func test => f1 f2 f3 f4 f5 f6
+{%endarend%}
+
 
 # Data definitions
 
@@ -262,6 +297,39 @@ Efficiency-wise this definition is obviously much better. However, it is much le
 induction, than the definition of {%ard%}Nat{%endard%} above. And actually the type {%ard%}Nat{%endard%} from Prelude
 is efficient as well, because actual implementations of arithmetic operations differ from those above and
 efficiently hard coded in ad hoc way.
+
+**Exercise:** Define in Arend the function 'if', analogous to the following function:
+{: .notice--info}
+{%arend%}
+{- Haskell:
+   if :: Bool -> a -> a -> a
+   if True t _ = t
+   if False _ e = e
+-}
+{%endarend%}
+
+**Exercise:** Define \|\| via 'if'. 
+{: .notice--info}
+{%arend%}
+\func \infixr 2 || (x y : Bool) : Bool => {?}
+{%endarend%}
+
+**Exercise:** Define the power and the factorial functions for natural numbers. 
+{: .notice--info}
+{%arend%}
+\func \infixr 8 ^ (x y : Nat) => {?}
+
+\func fac (x : Nat) => {?}
+{%endarend%}
+
+**Exercise:** Define gcd and mod. 
+{: .notice--info}
+{%arend%}
+\func mod (x y : Nat) => {?}
+
+\func gcd (x y : Nat) => {?}
+{%endarend%}
+
 
 # Termination, div
 
@@ -409,6 +477,10 @@ By now we have discussed all the things necessary to properly define the polymor
 -}
 
 {%endarend%}
+
+**Exercise:** Define (polymorphic) reverse for List. 
+{: .notice--info}
+
 
 # Tuples and Sigma-types
 

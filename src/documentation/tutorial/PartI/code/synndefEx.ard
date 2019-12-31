@@ -1,0 +1,58 @@
+-- 1. Install Arend, following instructions on the page https://arend-lang.github.io/download
+
+-- 2. Define in Arend analogues of the following functions, written in Haskell:
+{- Haskell:
+   second :: Nat -> Nat -> Nat -> Nat
+   second _ y _ = y
+
+   apply :: (Nat -> Nat) -> Nat -> Nat
+   apply f x = f x
+
+   compose :: (Nat -> Nat) -> (Nat -> Nat) -> Nat -> Nat
+   compose f g x = f (g x)
+
+   flip :: (Nat -> Nat -> Nat) -> Nat -> Nat -> Nat
+   flip f x y = f y x
+
+   second' = flip (second 0)
+-}
+
+-- 3. Define priorities of the functions f1, f2, f3, f4, f5 and f6 so that the function 'test' typechecks.
+
+\import synndef
+
+\func f1 (x y : Nat) => x
+\func f2 : Nat => 0
+\func f3 (f : Nat -> Nat) (z : Nat) : Int => 0
+\func f4 : Nat => 0
+\func f5 => f1
+\func f6 => f4
+
+\func test => f1 f2 f3 f4 f5 f6
+
+-- 4. Define in Arend the function 'if', analogous to the following function:
+{- Haskell:
+   if :: Bool -> a -> a -> a
+   if True t _ = t
+   if False _ e = e
+-}
+
+-- 5. Define || via 'if'.
+
+\func \infixr 2 || (x y : Bool) : Bool => {?}
+
+-- 6. Define the power and the factorial functions for natural numbers.
+
+\func \infixr 8 ^ (x y : Nat) => {?}
+
+\func fac (x : Nat) => {?}
+
+-- 4. Define mod and gcd.
+
+\func mod (x y : Nat) => {?}
+
+\func gcd (x y : Nat) => {?}
+
+-- 5. Define (polymorphic) reverse for List.
+
+-- 6. Implement arbitrary (but choose wisely) sorting algorithm. Comparator function can be passed as an argument.

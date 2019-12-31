@@ -1,0 +1,60 @@
+\import propsnproofs
+\import synndef
+
+-- 1. Prove associativity of && and ||.
+
+\func \infixl 6 && (a b : Bool) : Bool \elim a, b
+  | true, true => true
+  | true, false => false
+  | false, _ => false
+
+\func \infixl 4 || (a b : Bool) : Bool \elim a, b
+  | true, _ => true
+  | _, true => true
+  | false, false => false
+
+\func &&-assoc (x y z : Bool) : (x && y) && z = x && (y && z) => {?}
+
+\func ||-assoc (x y z : Bool) : (x || y) || z = x || (y || z) => {?}
+
+-- 2. Prove that (fac 3) equals 6.
+
+-- 3. Prove the following propositional tautologies.
+
+-- t1 : (P and Q -> R) -> P -> Q -> R
+\func t1 {P Q R : \Type} (f : \Sigma P Q -> R) (p : P) (q : Q) : R => {?}
+
+\data \fixr 2 Either (A B : \Type)
+  | inl A
+  | inr B
+
+-- t2 : (P -> R) -> (Q -> R) -> P or Q -> R
+\func t2 {P Q R : \Type} (f : P -> R) (g : Q -> R) (h : Either P Q) : R => {?}
+
+-- t3 : ((P -> Q -> R) -> P) -> (P -> R) -> R
+\func t3 {P Q R : \Type} (f : (P -> Q -> R) -> P) (g : P -> R) : R => {?}
+
+-- 4. Formulate and prove the following propositional tautologies:
+
+-- t4 : (P -> Q -> R) -> P and Q -> R
+-- t5 : (P or Q -> P and Q) -> (P -> Q) and (Q -> P)
+-- t6 : ((((P -> Q) -> P) -> P) -> Q) -> Q
+
+-- 5. Prove the following propositions
+
+-- s1 : If for every x : Nat holds P(x), then there exists x : Nat such that P(x) holds.
+\func s1 (P : Nat -> \Type) (h : \Pi (x : Nat) -> P x) : \Sigma (x : Nat) (P x) => {?}
+
+-- s2 : If there is no x : Nat such that P(x) hold, then P(3) does not hold.
+\func s2 (P : Nat -> \Type) (h : \Sigma (x : Nat) (P x) -> Empty) : P 3 -> Empty => {?}
+
+-- 6. Formulate and prove the following propositions:
+
+-- s3 : If for every x : Nat  P(x) implies Q(x) and there exists x : Nat such that P(x), then there exists x : Nat
+-- such that Q(x) holds.
+
+-- s4 : If for every x : Nat either P(x) not ture or Q(x) not ture, then P(3) implies that Q(3) does not hold.
+
+-- 7. Prove associativity of ++.
+
+\func ++-assoc {A : \Type} (xs ys zs : List A) : (xs ++ ys) ++ zs = xs ++ (ys ++ zs) => {?}
