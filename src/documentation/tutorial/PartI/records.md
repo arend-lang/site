@@ -328,11 +328,11 @@ Arend classes can be used as typeclasses in Haskell. For example, {%ard%}Eq{%end
 
 # Coercions
 
-Classifying field of a class has a number of nice properties. For example, if in some place an element of type 
+The classifying field of a class has a number of nice properties. For example, if in some place an element of type 
 {%ard%}X{%endard%} is expected and {%ard%}X{%endard%} is the type of the classifying field of a class {%ard%}C{%endard%},
-then any object of type {%ard%}C{%endard%} can be used in this place. The classifying field will be inserted automatically.
+then any object of type {%ard%}C{%endard%} can be used in this place (the field accessor {%ard%}.X{%endard%} of the classifying field will be added implicitly).
 
-In the following example {%ard%}M.A{%endard%} will be inserted instead of {%ard%}M{%endard%} in {%ard%}(x : M){%endard%} since
+In the following example {%ard%}M{%endard%} in the right-hand side of {%ard%}(x : M){%endard%} is understood as {%ard%}M.A{%endard%} since
 an element of type {%ard%}\Type{%endard%} is expected:
 
 {%arend%}
@@ -374,7 +374,7 @@ Consider the following example:
 
 # Extensions, diamond problem
 
-Records and classes can extend other classes. The list of records and classes extended by a given class can be specifyed 
+Records and classes can extend other classes. The list of records and classes extended by a given class can be specified 
 after the keyword {%ard%}\extends{%endard%} as shown in the following example:
 
 {%arend%}
@@ -400,7 +400,7 @@ after the keyword {%ard%}\extends{%endard%} as shown in the following example:
 \func zzzz (z : Z) => Base'.A {z}
 {%endarend%}
 
-This means that the set of fields of a given class (or record) contain all fields declared in the class plus all the 
+This means that the set of fields of a given class (or record) contains all fields declared in the class plus all the 
 fields from the classes and records that it extends.
 
 The record {%ard%}Z{%endard%} in the example above has four fields: {%ard%}Base.A{%endard%}, {%ard%}Base'.A{%endard%},
@@ -418,7 +418,7 @@ record, say, {%ard%}Base{%endard%}, then {%ard%}Z{%endard%} would have had three
 \record Z' \extends X', Y'
 {%endarend%}
 
-Consider an example from algebra: the type of rings. Under a few simplifications, a possible definition might look as
+Consider an example from algebra: the type of rings. With a few simplifications, a possible definition might look as
 follows:
 
 {%arend%}
@@ -446,8 +446,8 @@ follows:
 {%endarend%}
 
 In order to distinguish the structure of addition from the structure of multiplication we do not extend {%ard%}Monoid{%endard%},
-but add it as a field instead. Note that we specify explicitly the underlying classifying field of {%ard%}mulMonoid{%endard%} to make
-it the same as the one in the abelian group of addition.
+but add it as a field instead. Note that we explicitly specify the underlying classifying field of {%ard%}mulMonoid{%endard%} 
+so that it matches with the carrier of the ring's additive group structure.
 
 If we try to define the type of rings that extends class AbGroup for the abelian group of addition and class Monoid for the monoid of multiplication,
 we will get into trouble: the clash of two monoidal structures. This is called the _diamond problem_.
@@ -477,7 +477,7 @@ in order to avoid identifications such as {%ard%}Monoid.A => AbGroup'.A{%endard%
 # Definitions inside classes
 
 It is possible to define functions and data structures inside classes.
-For example, we can modify the definition of rings as follows:
+For example, we can modify the definition of a ring as follows:
 
 {%arend%}
 \class Ring {
@@ -554,7 +554,7 @@ Of course, a function from the class {%ard%} Map {%endard%} can also be invoked 
 \func id-isInj {A : \Type} : Map.isInj {\new Map (\lam (a : A) => a)} => {?}
 {%endarend%}
 
-Of courses, classes without classifying fields can also be extended.
+Of course, classes without classifying fields can also be extended.
 For example, if we want to define a few functions about endomorphisms, we can extend the class {%ard%} Map {%endard%} as follows:
 {%arend%}
 \class Endo \extends Map {

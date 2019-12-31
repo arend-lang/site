@@ -12,13 +12,13 @@ We conclude with remarks on writing specifications for functions.
 
 # Hierarchies of universes, polymorphism
 
-As we mentioned earlier <!-- (TODO: ref) --> there is no the actual type of all types in Arend. 
+As we mentioned earlier <!-- (TODO: ref) --> there is no actual type of all types in Arend. 
 The type {%ard%}\Type{%endard%} behaves pretty much like the one, but not quite, and the difference
 is precisely that {%ard%}\Type{%endard%} cannot be used for contradictory circular definitions.
 This is so because {%ard%}\Type{%endard%} actually hides the hierarchy of unverses {%ard%}\Type0{%endard%},
 {%ard%}\Type1{%endard%}, ... as we explain below.
 
-The type {%ard%}\Type n{%endard%}, where the natural number {%ard%}n{%endard%} is called _predicative level_
+The type {%ard%}\Type n{%endard%}, where the natural number {%ard%}n{%endard%} is called _the predicative level_
 of the universe, contains all types that do not refer to universes or refer to universes {%ard%}\Type i{%endard%}
 of lower predicative level i < n. 
 
@@ -26,14 +26,14 @@ of lower predicative level i < n.
 \func tt : \Type2 => \Type0 -> \Type1
 {%endarend%}
 
-In order to see how {%ard%}\Type{%endard%} works let's consider a polymorphic definition:
+In order to see how {%ard%}\Type{%endard%} works let us consider a polymorphic definition:
 
 {%arend%}
 \func id (A : \Type) (a : A) => a
 {%endarend%}
 
 This definition is implicitly polymorphic by the level of the universe of {%ard%}A{%endard%}, that is
-it has implicit parameter {%ard%}\lp{%endard%} for the level. The function {%ard%}id{%endard%} above
+it has an implicit parameter {%ard%}\lp{%endard%} for the level. The function {%ard%}id{%endard%} above
 can equivalently be defined as follows:
 
 {%arend%}
@@ -79,7 +79,7 @@ We now illustrate the behaviour of universes and polymorphic definitions through
 \func test4' => id (\Pi (A : \Type) -> A -> A) id
 {%endarend%}
 
-While invoking a definition it's possible to specify the value for its polymorphic level parameter {%ard%}\lp{%endard%}.
+While invoking a definition it is possible to specify the value for its polymorphic level parameter {%ard%}\lp{%endard%}.
 In case the value is not a numeral, it can be passed as an ordinary first parameter:
 
 {%arend%}
@@ -87,7 +87,7 @@ In case the value is not a numeral, it can be passed as an ordinary first parame
 {%endarend%}
 
 Alternatively, it can be done using the construct {%ard%}\level p h{%endard%}, where {%ard%}p{%endard%} is the level
-(we ignore {%ard%}h{%endard%} for now). It is useful when the value is numeral.
+(we ignore {%ard%}h{%endard%} for now). It is useful when the value is a numeral.
 
 {%arend%}
 \func test5' => id (\level (\suc \lp) _) (\Type \lp) Nat
@@ -146,7 +146,7 @@ implemented since {%ard%}fmap{%endard%} also refers to {%ard%}\Type \lp{%endard%
 
 # Induction principles
 
-We have already seen that data types have canonical eliminators associated to them and that
+We have already seen that data types have canonical eliminators associated with them and that
 non-dependent and dependent eliminators correspond to recursion and indunction principles 
 respectively. It is also possible to define custom eliminators and, thus, custom induction
 principles that in some case are more convenient to use. For example, we can define an
@@ -193,7 +193,7 @@ done below.
 
 # Universes via induction-recursion
 
-Let's define a custom universe containing some custom set of types:
+Let us define a custom universe containing some custom set of types:
 
 {%arend%}
 \data Type
@@ -239,7 +239,7 @@ A specification {%ard%}P{%endard%} is _complete_ for {%ard%}a : A{%endard%} if {
 {%ard%}x=a{%endard%} for all {%ard%}x : A{%endard%}.
 
 For example, assume we want to write specification for a function {%ard%}fac : Nat -> Nat{%endard%} that computes
-factorial:
+the factorial of a number:
 
 {%arend%}
 -- P1 is correct specification for 'fac', but incomplete.
@@ -250,7 +250,7 @@ factorial:
 \func P3 (f : Nat -> Nat) => \Sigma (f 0 = 1) (\Pi (n : Nat) -> f (suc n) = suc n * f n)
 {%endarend%}
 
-Another example -- correct and complete specification for a sort function:
+Another example of a correct and complete specification for a sort function:
 
 {%arend%}
 \func P (f : List A -> List A) => \Pi (xs : List A) -> \Sigma (isSorted (f xs)) (isPerm (f xs) xs)
@@ -259,7 +259,7 @@ Another example -- correct and complete specification for a sort function:
 {%endarend%}
 
 Of course, specifications must always be correct, but one may opt for working with incomplete specifications
-since sometimes it's too hard to write and prove the complete one. Nevertheless, it's useful to understand,
+since sometimes it is too hard to write and prove a complete one. Nevertheless, it is useful to understand,
 when a specification is complete. One useful necessary and sufficient condition of completeness for correct
 specifications can be formulated as follows:
 
