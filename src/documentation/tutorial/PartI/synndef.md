@@ -360,20 +360,30 @@ as _implicit_ by surrounding it in curly braces. In this case the corresponding 
 \func id'Test' => id' {Nat} 0 -- implicit arguments can be specifyed explicitly
 {%endarend%}
 
-<!-- TODO
+Of course, the argument inference algorithm is limited and it cannot do too fancy things. Consider, for instance, the following
+example:
 
--- В данном случае лучше n не делать неявным, так как тайпчекер не сможет его вывести из типа p, так как n встречается только внутри вызова функции.
--- Например, если мы вызовем example' pp, где pp : 8 = 3, то тайпчекер не может вывести, что n должно равняться 4.
+{%arend%}
 \func example' {n : Nat} (p : n + n = 3) => 0
+{%endarend%}
 
--- В данном случае n и m можно сделать неявнымы, так как они встречается только под \data (= определено через Path, который является \data) и конструктором (suc).
--- \data и конструкторы являются инъективными, поэтому тайпчекер всегда может вывести n и m в таких случаях.
--- Например, если мы вызовем example'' pp, где pp : 8 = 3, то тайпчекер понимает, что m должно равняться 3, а suc n должно равняться 8.
--- Так как 8 = suc 7 и suc инъективен, то он понимает, что n должно равняться 7.
+In this case the inference algorithm will fail to infer {%ard%}n{%endard%} from the type of {%ard%}p{%endard%} since 
+{%ard%}n{%endard%} occurs only inside the invocation of the function {%ard%}+{%endard%}. For example, in the invocation
+{%ard%}example' pp{%endard%}, where {%ard%}pp : 8 = 3{%endard%}, the algorithm will not infer that {%ard%}n{%endard%}
+is {%ard%}4{%endard%}.
+
+On the other hand, the algorithm will be able infer {%ard%}n{%endard%} and {%ard%}m{%endard%} in the following example:
+
+{%arend%}
 \func example'' {n m : Nat} (p : suc n = m) => 0
 \func example''Test (pp : 8 = 3) => example'' pp
+{%endarend%}
 
--->
+The difference is that in this case {%ard%}n{%endard%} and {%ard%}m{%endard%} occur in invocations of {%ard%}\data{%endard%}
+({%ard%}={%endard%} is defined via {%ard%}Path{%endard%}, which is a datatype) and the constructor {%ard%}suc{%endard%}.
+Since {%ard%}\data{%endard%} and constructors are injective, the algorithm can always infer {%ard%}n{%endard%} and {%ard%}m{%endard%}
+in such cases. For example, in the invocation {%ard%}example'' pp{%endard%}, where {%ard%}pp : 8 = 3{%endard%}, the algorithm
+will infer that {%ard%}m{%endard%} must be {%ard%}3{%endard%} and {%ard%}n{%endard%} must be {%ard%}7{%endard%}.
 
 # List, append
 

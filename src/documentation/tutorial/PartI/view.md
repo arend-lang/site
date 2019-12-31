@@ -3,7 +3,19 @@ title: Case, Views, Decidable Predicates
 nav: view
 ---
 
-<!-- TODO: intro -->
+In this module we discuss three themes.
+
+Firstly, we discuss case expressions and alternatives to them in the form of the helper
+functions. We also compare {%ard%}\case{%endard%} to {%ard%}\elim{%endard%}, point
+out at peculiarities of using case expressions in a dependently typed language and 
+explain pattern matching on {%ard%}idp{%endard%} in {%ard%}\case{%endard%}.
+
+Secondly, we explain a technique of _views_, allowing to define custom pattern matching
+principles.
+
+Finally, we discuss an important class of predicates: _decidable predicates_, which are precisely
+the predicates {%ard%}P : A -> \Type{%endard%} such that for every {%ard%}x : A{%endard%}
+either {%ard%}P x{%endard%} or the negation of {%ard%}P x{%endard%} is provable.
 
 # filter via \case and via helper
 

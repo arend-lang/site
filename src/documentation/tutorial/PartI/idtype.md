@@ -111,7 +111,7 @@ of the theory. For example, if we add the axiom of excluded middle {%ard%}lem{%e
 {%ard%}ugly_num : Nat{%endard%} that does not evaluate to any concrete natural number:   
 
 {%arend%}
-\func lem : \Pi (X : \Type) -> Either X (X -> Empty)
+\func lem : \Pi (X : \Type) -> Either X (X -> Empty) => {?}
 \func ugly_num : Nat => \case lem Nat \with { | Left => 0 | Right => 1 }
 {%endarend%}
 
@@ -198,7 +198,7 @@ function {%ard%}T : Bool -> \Type{%endard%} such that {%ard%}T true{%endard%} is
 {%ard%}true = false{%endard%} by means of {%ard%}transport{%endard%}:
 
 {%arend%}
-\func true/=false (p : true = false) : Empty => T-absurd (transport T p tt)
+\func true/=false (p : true = false) : Empty => transport T p unit
 {%endarend%}
 
 Note that it is not possible to prove that {%ard%}left{%endard%} is not equal to {%ard%}right{%endard%} 
@@ -209,10 +209,6 @@ since such {%ard%}T{%endard%} cannot be defined neither recursively nor inductiv
 \func TI (b : I)
   | left => \Sigma
   | right => Empty
-
--- This is the best we can do.
-\data TI' (b : I) \with
-  | left => ti
 {%endarend%}
 
 

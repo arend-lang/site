@@ -187,7 +187,7 @@ element of {%ard%}Vec A y{%endard%} if {%ard%}x = y{%endard%}:
     -- here is the proof that it commutes with vcons
     \func transport-vcons-comm {A : \Type} {n m : Nat} (p : n = m) (x : A) (xs : Vec A n)
       : transport (Vec A) (pmap suc p) (vcons x xs) = vcons x (transport (Vec A) p xs)
-      | idp => idp
+      | idp, _, _ => idp
       {- This function can be defined with J as follows:
       => J (\lam m' p' => transport (Vec A) (pmap suc p') (vcons x xs) = vcons x (transport (Vec A) p' xs))
            idp
