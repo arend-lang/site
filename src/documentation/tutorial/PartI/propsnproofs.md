@@ -38,7 +38,7 @@ Of course, we can also prove that {%ard%} Unit {%endard%} corresponds to the log
 \func Unit-isTrue : Unit => unit
 {%endarend%}
 
-To formulate more complicated propositions, we need to define various logical connectives such as conjunction {%ard%} & {%endard%}, disjunction {%ard%} | {%endard%}, implication {%ard%} -> {%endard%}, and negation {%ard%} Neg {%endard%}.
+To formulate more complicated propositions, we need to define various logical connectives such as conjunction {%ard%} && {%endard%}, disjunction {%ard%} || {%endard%}, implication {%ard%} -> {%endard%}, and negation {%ard%} Not {%endard%}.
 Let us begin with the implication.
 If {%ard%} P -> Q {%endard%} is true, then the truth of {%ard%} P {%endard%} implies the truth of {%ard%} Q {%endard%}.
 Thus, we can think of a proof of {%ard%} P -> Q {%endard%} as a function that transforms a proof of {%ard%} P {%endard%} into a proof of {%ard%} Q {%endard%}.
@@ -55,34 +55,34 @@ The composition function {%ard%} \lam g f x => g (f x) {%endard%} proves {%ard%}
 **Exercise:** Prove that {%ard%} ((P -> Q -> R) -> P) -> (P -> R) -> R {%endard%}.
 {: .notice--info}
 
-Since {%ard%} P & Q {%endard%} is true if and only if {%ard%} P {%endard%} and {%ard%} Q {%endard%} are true,
-we can say that a proof of {%ard%} P & Q {%endard%} is just a pair consisting of a proof of {%ard%} P {%endard%} and a proof of {%ard%} Q {%endard%}.
-That is, the type corresponding to {%ard%} P & Q {%endard%} is simply the type of pairs:
+Since {%ard%} P && Q {%endard%} is true if and only if {%ard%} P {%endard%} and {%ard%} Q {%endard%} are true,
+we can say that a proof of {%ard%} P && Q {%endard%} is just a pair consisting of a proof of {%ard%} P {%endard%} and a proof of {%ard%} Q {%endard%}.
+That is, the type corresponding to {%ard%} P && Q {%endard%} is simply the type of pairs:
 
 {%arend%}
-\func \infixr 3 & (P Q : \Type) => \Sigma P Q
+\func \infixr 3 && (P Q : \Type) => \Sigma P Q
 {%endarend%}
 
 It is easy to prove conjunction axioms:
 
 {%arend%}
--- This function proves that P -> Q -> (P & Q)
-\func &-intro {P Q : \Type} (p : P) (q : Q) : \Sigma P Q => (p, q)
+-- This function proves that P -> Q -> (P && Q)
+\func &&-intro {P Q : \Type} (p : P) (q : Q) : \Sigma P Q => (p, q)
 
--- This function proves that (P & Q) -> P
-\func &-elim1 {P Q : \Type} (t : \Sigma P Q) : P => t.1
+-- This function proves that (P && Q) -> P
+\func &&-elim1 {P Q : \Type} (t : \Sigma P Q) : P => t.1
 
--- This function proves that (P & Q) -> Q
-\func &-elim2 {P Q : \Type} (t : \Sigma P Q) : Q => t.2
+-- This function proves that (P && Q) -> Q
+\func &&-elim2 {P Q : \Type} (t : \Sigma P Q) : Q => t.2
 {%endarend%}
 
-**Exercise:** Prove that {%ard%} ((P & Q) -> R) -> P -> Q -> R {%endard%}.
+**Exercise:** Prove that {%ard%} ((P && Q) -> R) -> P -> Q -> R {%endard%}.
 {: .notice--info}
 
-**Exercise:** Prove that {%ard%} (P -> Q -> R) -> (P & Q) -> R {%endard%}.
+**Exercise:** Prove that {%ard%} (P -> Q -> R) -> (P && Q) -> R {%endard%}.
 {: .notice--info}
 
-A proof of {%ard%} P | Q {%endard%} is either a proof of {%ard%} P {%endard%} or a proof of {%ard%} Q {%endard%}.
+A proof of {%ard%} P || Q {%endard%} is either a proof of {%ard%} P {%endard%} or a proof of {%ard%} Q {%endard%}.
 The type corresponding to this principle is the sum type:
 
 {%arend%}
@@ -106,14 +106,14 @@ It is easy to prove disjunction axioms:
   | inr q => r q
 {%endarend%}
 
-**Exercise:** Prove that {%ard%} ((P | Q) -> (P & Q)) -> ((P -> Q) & (Q -> P)) {%endard%}.
+**Exercise:** Prove that {%ard%} ((P || Q) -> (P && Q)) -> ((P -> Q) && (Q -> P)) {%endard%}.
 {: .notice--info}
 
-The negation {%ard%} Neg P {%endard%} can be defined in terms of the implication as {%ard%} P -> Empty {%endard%}.
+The negation {%ard%} Not P {%endard%} can be defined in terms of the implication as {%ard%} P -> Empty {%endard%}.
 
 **Remark:** The logic of Arend is intuitionistic. This means that the law of excluded middle, the double negation elimination, and other classically valid principles are not provable in Arend.
-In particular, it is not true that the conjunction {%ard%} P & Q {%endard%} can be expressed as {%ard%} Neg (Neg P | Neg Q) {%endard%}.
-Similarly, the disjunction {%ard%} P | Q {%endard%} cannot be expressed as {%ard%} Neg (Neg P & Neg Q) {%endard%} and the implication {%ard%} P -> Q {%endard%} cannot be expressed as {%ard%} Neg P | Q {%endard%}.
+In particular, it is not true that the conjunction {%ard%} P && Q {%endard%} can be expressed as {%ard%} Not (Not P || Not Q) {%endard%}.
+Similarly, the disjunction {%ard%} P || Q {%endard%} cannot be expressed as {%ard%} Not (Not P && Not Q) {%endard%} and the implication {%ard%} P -> Q {%endard%} cannot be expressed as {%ard%} Not P || Q {%endard%}.
 {: .notice--warning}
 
 **Exercise:** Russell's paradox shows that there is no set of all sets. If such a set exists, then we can form the set `B` of sets which are not members of themselves.
