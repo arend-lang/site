@@ -163,13 +163,48 @@ length of the original list {%ard%}xs{%endard%}:
   }
 {%endarend%}
 
-# Matching on idp in \case 
+# \elim in \case
 
-When we pattern match on some expression {%ard%}e{%endard%}, the connection of this expression with the 
-result of the pattern matching gets lost. For example, we can not even prove in {%ard%}expr{%endard%} inside an expression
-of the form {%ard%}\case e \with { | pattern => expr }{%endard%} that {%ard%}e{%endard%} equals {%ard%}pattern{%endard%}.
+Suppose we want to prove that {%ard%} && {%endard%} is associative using {%ard%} \case {%endard%}:
+{%arend%}
+\func \infixr 3 && (x y : Bool) : Bool \elim x
+  | true => y
+  | false => false
 
-Sometimes such connections are necessary. In these cases we can use the following trick: double pattern matching
+\func &&-assoc (x y z : Bool) : (x && y) && z = x && (y && z) => \case x \with {
+  | true => {?}
+  | false => {?}
+}
+{%endarend%}
+
+This will not work since {%ard%} x {%endard%} will not be replaced with the corresponding pattern in each of the cases above.
+To make this work, we need to bind {%ard%} x {%endard%} again and explicitly specify the result type of the {%ard%}\case{%endard%}-expression:
+{%arend%}
+\func &&-assoc (x y z : Bool) : (x && y) && z = x && (y && z) => \case x \as x' \return (x' && y) && z = x' && (y && z) \with {
+  | true => idp
+  | false => idp
+}
+{%endarend%}
+
+This is a common pattern.
+In such cases, we can use keyword {%ard%}\elim{%endard%} to simplify the {%ard%}\case{%endard%} expression.
+It can be written before a variable in a {%ard%}\case{%endard%} expression.
+Then this variable will be replaced with corresponding patterns in each of the cases in the result type.
+Thus, we can rewrite the example above as follows:
+{%arend%}
+\func &&-assoc (x y z : Bool) : (x && y) && z = x && (y && z) => \case \elim x \with {
+  | true => idp
+  | false => idp
+}
+{%endarend%}
+
+# Matching on idp in \case
+
+When we match on some expression {%ard%}e{%endard%}, the connection between this expression and the 
+result of the pattern matching gets lost. For example, we cannot even prove that {%ard%}expr{%endard%} equals {%ard%}pattern{%endard%}
+inside an expression of the form {%ard%}\case expr \with { | pattern => {?} }{%endard%}.
+Sometimes we need to remember such a connection.
+In these cases we can use the following trick: double pattern matching
 on the original expression {%ard%}e{%endard%} and on {%ard%}idp{%endard%} with explicitly written type depending on
 {%ard%}e{%endard%}. Consider an example:
 
@@ -196,6 +231,9 @@ And a helper version again:
       | true => transport B q pt -- here q : true = p a
       | false => transport B q pf -- here q : false = p a
 {%endarend%}
+
+**Exercise:** Prove that, for every function {%ard%} f : Bool -> Bool {%endard%} and every {%ard%} x : Bool {%endard%}, it is true that {%ard%} f (f (f x)) = f x {%endard%}
+{: .notice--info}
 
 # One more example of \case
 
@@ -294,7 +332,7 @@ An example of decidable predicate:
  
 -- the predicate \lam n => n = 0 is decidable
 \func decide0 : DecPred (\lam (n : Nat) => n = 0) => \lam n =>
-  \case n \as x \return Decide (x = 0) \with {
+  \case n \as n' \return Decide (n' = 0) \with {
     | 0 => yes idp
     | suc _ => no suc/=0
   }
