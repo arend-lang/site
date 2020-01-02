@@ -3,6 +3,10 @@ title: Basics
 nav: syn-n-def
 ---
 
+The source code for this module: [Basics.ard](code/Basics.ard) \\
+The source code for the exercises: [BasicsEx.ard](code/BasicsEx.ard)
+{: .notice--success}
+
 In this module we explain the syntax and some key constructs of the Arend language, required to get started with
 writing definitions, propositions and proofs.
 
@@ -44,7 +48,7 @@ The body of {%ard%}f{%endard%} is just the numeral {%ard%}0{%endard%} of type {%
 {%ard%}Nat{%endard%} of {%ard%}f{%endard%} in this case is inferred by the typechecker, but it can also be specified explicitly:
 
 {% arend %}
-\func f : Nat => 0 -- constant with explicit type
+\func f' : Nat => 0 -- constant with explicit type
 {- Haskell:
    f :: Nat
    f = 0
@@ -75,7 +79,7 @@ of its name by using the symbol `_`. Also, if several consecutive parameters hav
 Note that in contrast to Haskell, types of parameters should always be specified:
 
 {% arend %}
-\func id'' x => x -- this definition is not correct!
+-- \func id'' x => x -- this definition is not correct!
 {- Haskell:
    id'' x = x
 -}
@@ -97,27 +101,6 @@ Equivalently, parameters of a function can be moved from the signature to the bo
 In the examples above we specified the bodies of functions by simply writing a term after the symbol {%ard%}=>{%endard%}.
 Of course, there are more sophisticated ways to define the body of a function, for example, in case the function is recursive.
 Namely, functions can also be defined by _pattern matching_, we will consider such functions [below](#data-definitions).
-
-**Exercise:** Define in Arend analogues of the following functions, written in Haskell:
-{: .notice--info}
-
-{%arend%}
-{- Haskell:
-   second :: Nat -> Nat -> Nat -> Nat
-   second _ y _ = y
-
-   apply :: (Nat -> Nat) -> Nat -> Nat
-   apply f x = f x
-
-   compose :: (Nat -> Nat) -> (Nat -> Nat) -> Nat -> Nat
-   compose f g x = f (g x)
-
-   flip :: (Nat -> Nat -> Nat) -> Nat -> Nat -> Nat
-   flip f x y = f y x
-
-   second' = flip (second 0)
--}
-{%endarend%}
 
 # Infix operators
 
@@ -162,7 +145,7 @@ Any infix operator can also be used in the prefix from:
 -}
 {%endarend%}
 
-**Exercise:** Define priorities of the functions f1, f2, f3, f4, f5 and f6 so that the function 'test' typechecks.
+**Exercise 1:** Define priorities of the functions f1, f2, f3, f4, f5 and f6 so that the function 'test' typechecks.
 {: .notice--info}
 {%arend%}
 \func f1 (x y : Nat) => x
@@ -174,7 +157,6 @@ Any infix operator can also be used in the prefix from:
 
 \func test => f1 f2 f3 f4 f5 f6
 {%endarend%}
-
 
 # Data definitions
 
@@ -298,23 +280,13 @@ induction, than the definition of {%ard%}Nat{%endard%} above. And actually the t
 is efficient as well, because actual implementations of arithmetic operations differ from those above and
 efficiently hard coded in ad hoc way.
 
-**Exercise:** Define in Arend the function 'if', analogous to the following function:
+**Exercise 2:** Define the function 'if', which takes a boolean value b and two elements of an arbitrary type A and return the first element when b equals to true and the second one otherwise.
 {: .notice--info}
-{%arend%}
-{- Haskell:
-   if :: Bool -> a -> a -> a
-   if True t _ = t
-   if False _ e = e
--}
-{%endarend%}
 
-**Exercise:** Define \|\| via 'if'. 
+**Exercise 3:** Define \|\| via 'if'. 
 {: .notice--info}
-{%arend%}
-\func \infixr 2 || (x y : Bool) : Bool => {?}
-{%endarend%}
 
-**Exercise:** Define the power and the factorial functions for natural numbers. 
+**Exercise 4:** Define the power and the factorial functions for natural numbers. 
 {: .notice--info}
 {%arend%}
 \func \infixr 8 ^ (x y : Nat) => {?}
@@ -322,14 +294,8 @@ efficiently hard coded in ad hoc way.
 \func fac (x : Nat) => {?}
 {%endarend%}
 
-**Exercise:** Define gcd and mod. 
+**Exercise 5:** Define mod and gcd. 
 {: .notice--info}
-{%arend%}
-\func mod (x y : Nat) => {?}
-
-\func gcd (x y : Nat) => {?}
-{%endarend%}
-
 
 # Termination, div
 
@@ -478,9 +444,11 @@ By now we have discussed all the things necessary to properly define the polymor
 
 {%endarend%}
 
-**Exercise:** Define (polymorphic) reverse for List. 
+**Exercise 6:** Define the map function.
 {: .notice--info}
 
+**Exercise 7:** Define the transpose function. It takes a list of lists considered as a matrix and returns a list of lists which represents the transposed matrix.
+{: .notice--info}
 
 # Tuples and Sigma-types
 
@@ -623,6 +591,9 @@ The command {%ard%}\import X{%endard%} makes file X visible in the current file.
 everything that {%ard%}\open{%endard%} does, all the constructs for {%ard%}\open{%endard%} are applicable to {%ard%}\import{%endard%} as well:
 
 {%arend%}
+-- The sources directory should contain a file named Test.ard (which contains definitions foobar and foobar2)
+-- and a directory named TestDir with files Test.ard and Test2.ard in it.
+
 \import Test (foobar \as foobar', foobar2)
 \import TestDir.Test
 -- if you want to make file visible, but do not want to make \open, you can write the fllowing:

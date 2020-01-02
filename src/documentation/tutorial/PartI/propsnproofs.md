@@ -3,6 +3,10 @@ title: Propositions and Proofs
 nav: syn-n-def
 ---
 
+The source code for this module: [proofs.zip](code/proofs.zip).
+To open this project in IntelliJ IDEA, unpack the archive, select **File \| New \| Project from Existing Sources**, choose the unpacked directory, and select **Create project from existing sources**.
+{: .notice--success}
+
 In this module we explain how to formulate and prove propositions in Arend.
 We show how to express various logical connectives and demonstrate that they satisfy the required properties.
 
@@ -49,10 +53,10 @@ For example, the identity function proves that {%ard%} P -> P {%endard%} holds f
 The constant function {%ard%} \lam x y => x {%endard%} proves {%ard%} P -> Q -> P {%endard%}.
 The composition function {%ard%} \lam g f x => g (f x) {%endard%} proves {%ard%} (Q -> S) -> (P -> Q) -> P -> S {%endard%}.
 
-**Exercise:** Prove that {%ard%} (P -> Q -> S) -> (P -> Q) -> P -> S {%endard%}.
+**Exercise 1:** Prove that {%ard%} (P -> Q -> R) -> (P -> Q) -> P -> R {%endard%}.
 {: .notice--info}
 
-**Exercise:** Prove that {%ard%} ((P -> Q -> R) -> P) -> (P -> R) -> R {%endard%}.
+**Exercise 2:** Prove that {%ard%} ((P -> Q -> R) -> P) -> (P -> R) -> R {%endard%}.
 {: .notice--info}
 
 Since {%ard%} P && Q {%endard%} is true if and only if {%ard%} P {%endard%} and {%ard%} Q {%endard%} are true,
@@ -76,10 +80,10 @@ It is easy to prove conjunction axioms:
 \func &&-elim2 {P Q : \Type} (t : \Sigma P Q) : Q => t.2
 {%endarend%}
 
-**Exercise:** Prove that {%ard%} ((P && Q) -> R) -> P -> Q -> R {%endard%}.
+**Exercise 3:** Prove that {%ard%} ((P && Q) -> R) -> P -> Q -> R {%endard%}.
 {: .notice--info}
 
-**Exercise:** Prove that {%ard%} (P -> Q -> R) -> (P && Q) -> R {%endard%}.
+**Exercise 4:** Prove that {%ard%} (P -> Q -> R) -> (P && Q) -> R {%endard%}.
 {: .notice--info}
 
 A proof of {%ard%} P || Q {%endard%} is either a proof of {%ard%} P {%endard%} or a proof of {%ard%} Q {%endard%}.
@@ -106,7 +110,10 @@ It is easy to prove disjunction axioms:
   | inr q => r q
 {%endarend%}
 
-**Exercise:** Prove that {%ard%} ((P || Q) -> (P && Q)) -> ((P -> Q) && (Q -> P)) {%endard%}.
+**Exercise 5:** Prove that {%ard%} (P -> R) -> (Q -> R) -> P || Q -> R {%endard%}.
+{: .notice--info}
+
+**Exercise 6:** Prove that {%ard%} ((P || Q) -> (P && Q)) -> ((P -> Q) && (Q -> P)) {%endard%}.
 {: .notice--info}
 
 The negation {%ard%} Not P {%endard%} can be defined in terms of the implication as {%ard%} P -> Empty {%endard%}.
@@ -116,7 +123,7 @@ In particular, it is not true that the conjunction {%ard%} P && Q {%endard%} can
 Similarly, the disjunction {%ard%} P || Q {%endard%} cannot be expressed as {%ard%} Not (Not P && Not Q) {%endard%} and the implication {%ard%} P -> Q {%endard%} cannot be expressed as {%ard%} Not P || Q {%endard%}.
 {: .notice--warning}
 
-**Exercise:** Russell's paradox shows that there is no set of all sets. If such a set exists, then we can form the set `B` of sets which are not members of themselves.
+**Exercise 7:** Russell's paradox shows that there is no set of all sets. If such a set exists, then we can form the set `B` of sets which are not members of themselves.
 Then `B` belongs to itself if and only if it is not.
 This implies a contradiction.
 Cantor's theorem states that there is no set `X` with a surjection from `X` onto the set of subsets of `X`.
@@ -130,17 +137,17 @@ Thus, this proposition corresponds to the type of dependent functions {%ard%} \P
 A proof of {%ard%} exists (x : A). P(x) {%endard%} consists of an element {%ard%} a : A {%endard%} and a proof of {%ard%} P(a) {%endard%}.
 Thus, this proposition corresponds to the type of dependent pairs {%ard%} \Sigma (x : A) (P x) {%endard%}.
 
-**Exercise:** Prove that if, for every {%ard%} x : Nat {%endard%}, {%ard%} P x {%endard%} is true, then there is an element {%ard%} x : Nat {%endard%} such that {%ard%} P x {%endard%} is true.
+**Exercise 8:** Prove that if, for every {%ard%} x : Nat {%endard%}, {%ard%} P x {%endard%} is true, then there exists {%ard%} x : Nat {%endard%} such that {%ard%} P x {%endard%} is true.
 {: .notice--info}
 
-**Exercise:** Prove that if there is no {%ard%} x : Nat {%endard%} such that {%ard%} P x {%endard%} is true, then {%ard%} P 3 {%endard%} is false.
+**Exercise 9:** Prove that if there is no {%ard%} x : Nat {%endard%} such that {%ard%} P x {%endard%} holds, then {%ard%} P 3 {%endard%} is false.
 {: .notice--info}
 
-**Exercise:** Prove that if, for every {%ard%} x : Nat {%endard%}, it is true that {%ard%} P x {%endard%} implies {%ard%} Q x {%endard%},
+**Exercise 10:** Prove that if, for every {%ard%} x : Nat {%endard%}, {%ard%} P x {%endard%} implies {%ard%} Q x {%endard%},
 then the existence of an element {%ard%} x : Nat {%endard%} for which {%ard%} P x {%endard%} is true implies the existence of an element {%ard%} x : Nat {%endard%} for which {%ard%} Q x {%endard%} is true.
 {: .notice--info}
 
-**Exercise:** Prove that if, for every {%ard%} x : Nat {%endard%} either {%ard%} P x {%endard%} is false or {%ard%} Q x {%endard%} is false, then {%ard%} P 3 {%endard%} implies that {%ard%} Q 3 {%endard%} is false.
+**Exercise 11:** Prove that if, for every {%ard%} x : Nat {%endard%}, either {%ard%} P x {%endard%} is false or {%ard%} Q x {%endard%} is false, then {%ard%} P 3 {%endard%} implies that {%ard%} Q 3 {%endard%} is false.
 {: .notice--info}
 
 # Examples of propositions and proofs
@@ -237,3 +244,12 @@ And as before, we cannot prove false statements:
   | true => {?} -- goal expression, non-existing proof of true = false is expected
   | false => {?} -- goal expression, non-existing proof of false = true is expected
 {%endarend%}
+
+**Exercise 12:** Prove associativity of `and` and `or`.
+{: .notice--info}
+
+**Exercise 13:** Prove that 2 * 2 equals to 4.
+{: .notice--info}
+
+**Exercise 14:** Prove associativity of the list concatenation.
+{: .notice--info}
