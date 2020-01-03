@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -z ${NOSYNC+x} ]
+if [ -z ${NOSYNC+x} ] && [ `git rev-parse --abbrev-ref HEAD` = "master" ]
 then
     DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
     SITE_DIR="${AREND_SITE_DIR:-$DIR/../../../Site}"
