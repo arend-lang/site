@@ -267,7 +267,7 @@ specifications can be formulated as follows:
 \Pi (x y : A) -> P x -> P y -> x = y
 {%endarend%}
 
-# Sorting algorithm
+# Correctness of Insertion Sort
 
 We now finally prove the correctness of the insertion sort algorithm, defined in [Simple Examples](datanproofs):
 {%arend%}
@@ -317,6 +317,7 @@ We can combine this property with the induction hypothesis to obtain the require
 To do this, we need to know the following facts:
 * Permutations are closed under {%ard%} cons a {%endard%} so that we can conclude that {%ard%} cons a (sort l) {%endard%} is a permutation of {%ard%} cons a l {%endard%},
 * {%ard%} Perm {%endard%} is a transitive relation so that we can combine two proofs.
+
 We add two new constructors to {%ard%} Perm {%endard%} which reflect these properties.
 At this point, our proof looks like this:
 {%arend%}
@@ -335,7 +336,7 @@ At this point, our proof looks like this:
 The proof of {%ard%} insert-perm {%endard%} also proceeds by induction on the list.
 The {%ard%} nil {%endard%} case is easy: we just need to show that {%ard%} cons a nil {%endard%} is a permutation of itself.
 In the {%ard%} cons {%endard%} case, we need to decide whether {%ard%} b <= a {%endard%} or {%ard%} a <= b {%endard%}.
-We can do this using {%ard%} \case {%endard%}:
+We can do this by using {%ard%} \case {%endard%}:
 {%arend%}
 \func insert-perm {A : TotalPreorder} (a : A) (xs : List A) : Perm (cons a xs) (sort.insert a xs) \elim xs
   | nil => perm-cons idp perm-nil

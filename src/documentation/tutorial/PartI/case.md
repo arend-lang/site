@@ -1,6 +1,6 @@
 ---
-title: Case, Views, Decidable Predicates
-nav: view
+title: Case Expression
+nav: case
 ---
 
 In this module we discuss three themes.

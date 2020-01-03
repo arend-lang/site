@@ -1,5 +1,5 @@
 ---
-title: Equational Reasoning, J, Predicates
+title: Proofs of Equality
 nav: equalityex
 ---
 

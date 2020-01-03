@@ -74,12 +74,12 @@ documentation:
           url: datanproofs
         - title: "Equality"
           url: idtype
-        - title: "Equational Reasoning, J, Predicates"
+        - title: "Proofs of Equality"
           url: equalityex
         - title: "Classes and Records"
           url: records
-        - title: "Case, Views, Decidable Predicates"
-          url: view
+        - title: "Case Expression"
+          url: case
         - title: "Universes, Induction, Specifications"
           url: universes
   - title: "Libraries"
