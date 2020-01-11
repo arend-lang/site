@@ -3,6 +3,9 @@ title: Equality
 nav: equality
 ---
 
+The source code for this module: [equality.zip](code/equality.zip).
+{: .notice--success}
+
 In the previous modules we treated the identity type {%ard%}={%endard%} in a rather hand-wavy manner as in most of the cases
 we needed just reflexivity {%ard%}idp {A : \Type} {a : A} : a = a{%endard%}. Here we will get into details of the definition
 of the identity type and explain some key aspects of it, which will be important for writing more advanced proofs. Along the
@@ -51,6 +54,14 @@ of equality. For example, the following properties:
     => transport (\lam x => f a = f x) p idp
 {%endarend%}
 
+**Exercise 1:** Define congruence for functions with two arguments via transport.
+It is allowed to use any functions defined via transport.
+{: .notice--info}
+
+**Exercise 2:** Prove that {%ard%}transport{%endard%} can be defined via {%ard%}pmap{%endard%} and {%ard%}repl{%endard%} and vice versa.
+The function {%ard%}repl{%endard%} says that if two types are equal then there exists a function between them.
+{: .notice--info}
+
 # Definition of =
 
 The central ingredient of the definition of the identity type is the _interval type_ {%ard%}I{%endard%} contained in Prelude.
@@ -76,6 +87,9 @@ In order to prove reflexivity {%ard%}idp{%endard%} we can simply take the consta
 \func idp {A : \Type} {a : A} : a = a => path (\lam _ => a)
 {%endarend%}
 
+**Exercise 3:** Prove that {%ard%}left = right{%endard%} without using {%ard%}transport{%endard%} or {%ard%}coe{%endard%}.
+{: .notice--info}
+
 If {%ard%}f : A -> B{%endard%} and {%ard%}g : I -> A{%endard%}, then {%ard%}g{%endard%} determines a proof of the equality 
 {%ard%}g left = g right{%endard%} and the congruence {%ard%}pmap{%endard%} can be interpreted as simply the composition of
 {%ard%}f{%endard%} and {%ard%}g{%endard%}. This observation suggests an alternative definition of {%ard%}pmap{%endard%}: 
@@ -93,6 +107,12 @@ computationally the same as {%ard%}pmap f . pmap g{%endard%}, where (.) is the c
 \func pmap-idp {A : \Type} {a a' : A} (p : a = a') : pmap {A} (\lam x => x) p = p
     => idp
 {%endarend%}
+
+**Exercise 4:** Prove that {%ard%}a = {A} a'{%endard%} and {%ard%}b = {B} b'{%endard%} implies {%ard%}(a,b) = {\Sigma A B} (a',b'){%endard%} without using {%ard%}transport{%endard%}.
+{: .notice--info}
+
+**Exercise 5:** Prove that {%ard%}p = {\Sigma (x : A) (B x)} p'{%endard%} implies {%ard%}p.1 = {A} p'.1{%endard%} without using {%ard%}transport{%endard%}.
+{: .notice--info}
 
 # Functional extensionality
 
@@ -114,6 +134,9 @@ of the theory. For example, if we add the axiom of excluded middle {%ard%}lem{%e
 \func lem : \Pi (X : \Type) -> Either X (X -> Empty) => {?}
 \func ugly_num : Nat => \case lem Nat \with { | Left => 0 | Right => 1 }
 {%endarend%}
+
+**Exercise 6:** Prove that {%ard%}(\lam x => not (not x)) = (\lam x => x){%endard%}.
+{: .notice--info}
 
 # Eliminators
 
@@ -141,6 +164,12 @@ for {%ard%}Nat{%endard%} and {%ard%}Bool{%endard%}:
   | zero => z
   | suc n => s n (Nat-rec P z s n)
 
+**Exercise 7:** Define factorial via Nat-rec (i.e., without recursion and pattern matching).
+{: .notice--info}
+
+**Exercise 8:** Prove associativity of Nat.+ via Nat-elim (i.e., without recursion and pattern matching).
+{: .notice--info}
+
 -- Dependent eliminator for Bool (recursor for Bool is just 'if').
 \func Bool-elim (P : Bool -> \Type)
                 (t : P true)
@@ -149,6 +178,12 @@ for {%ard%}Nat{%endard%} and {%ard%}Bool{%endard%}:
   | true => t
   | false => f
 {%endarend%}
+
+**Exercise 9:** Define recursor and eliminator for {%ard%} \data D | con1 Nat | con2 D D | con3 (Nat -> D) {%endard%}.
+{: .notice--info}
+
+**Exercise 10:** Define recursor and eliminator for {%ard%}List{%endard%}.
+{: .notice--info}
 
 The function {%ard%}coe{%endard%} thus defines dependent eliminator for {%ard%}I{%endard%},
 it says that in order to define {%ard%}f : \Pi (i : I) -> P i{%endard%} for some {%ard%}P : I -> \Type{%endard%}
@@ -161,11 +196,18 @@ it is enough to specify {%ard%}f left{%endard%}:
   | left => a
 {%endarend%}
 
+**Exercise 11:** We defined {%ard%}transport{%endard%} via {%ard%}coe{%endard%}.
+It is possible to define a special case of {%ard%}coe{%endard%} via {%ard%}transport{%endard%}.
+Define {%ard%} coe0 (A : I -> \Type) (a : A left) : A right {%endard%} via {%ard%}transport{%endard%}.
+Is it possible to define {%ard%}transport{%endard%} via {%ard%}coe0{%endard%}?
+{: .notice--info}
+
+**Exercise 12:** Define a function {%ard%} B right -> B left {%endard%}.
+{: .notice--info}
 
 # left = right
 
-With the use of the function {%ard%}coe{%endard%}, we now prove that {%ard%}I{%endard%} has one 
-element:
+With the use of the function {%ard%}coe{%endard%}, we now prove that {%ard%}I{%endard%} has one element:
 
 {%arend%}
 \func left=i (i : I) : left = i
@@ -211,4 +253,8 @@ since such {%ard%}T{%endard%} cannot be defined neither recursively nor inductiv
   | right => Empty
 {%endarend%}
 
+**Exercise 13:** Prove that {%ard%}0{%endard%} does not equal to {%ard%}suc x{%endard%}.
+{: .notice--info}
 
+**Exercise 14:** Prove that {%ard%}fac{%endard%} does not equal to {%ard%}suc{%endard%}.
+{: .notice--info}
