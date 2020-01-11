@@ -14,5 +14,5 @@ example-based Arend-specific exposition of efficient ways of working with propos
 type universes, etc. We assume that the reader is familiar with basic concepts from ML-like languages (such as Haskell, Agda, or Coq/Gallina).
 
 The Part II is a practical introduction to homotopy type theory in the context of Arend. This part of the tutorial is currently missing, it will
-be uploaded in the nearest future. Themes discussed here include datatypes with conditions (higher inductive types) and homotopy levels of
+be uploaded in the nearest future. Themes discussed here include data types with conditions (higher inductive types) and homotopy levels of
 universes.

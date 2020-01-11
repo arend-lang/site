@@ -11,11 +11,11 @@ We also discuss the mechanism of coercions.
 
 In the previous modules we saw two ways to arrange a sequence of types {%ard%}A1{%endard%}, ...,
 {%ard%}An{%endard%} into a composite type of tuples: Sigma-types 
-{%ard%}\Sigma A1 ... An{%endard%} and datatypes {%ard%}\data Tuples | tuple A1 ... An{%endard%}.
+{%ard%}\Sigma A1 ... An{%endard%} and data types {%ard%}\data Tuples | tuple A1 ... An{%endard%}.
 
 For example, a type of pairs of natural numbers can be defined as {%ard%}\Sigma Nat Nat{%endard%}. 
 In this case elements of a pair {%ard%}x : \Sigma Nat Nat{%endard%} are accessed by means of projections
-{%ard%}x.1{%endard%} and {%ard%}x.2{%endard%}. Alternatively, one can realize this type as a datatype
+{%ard%}x.1{%endard%} and {%ard%}x.2{%endard%}. Alternatively, one can realize this type as a data type
 {%ard%}\data NatPair{%endard%} with projections defined by pattern matching:
 
 {%arend%}
@@ -30,7 +30,7 @@ In this case elements of a pair {%ard%}x : \Sigma Nat Nat{%endard%} are accessed
 
 The advantage of Sigma-type option is eta-equivalence: if {%ard%}x : \Sigma Nat Nat{%endard%}, then
 {%ard%}(x.1, x.2) == x{%endard%}, where {%ard%}=={%endard%} is computational equality. Eta-equivalence
-doesn't hold for datatypes: {%ard%}natPair (natFst x) (natSnd x){%endard%} is not computationally equal
+doesn't hold for data types: {%ard%}natPair (natFst x) (natSnd x){%endard%} is not computationally equal
 to {%ard%}x{%endard%}, one should prove that they are equal and use {%ard%}transport{%endard%} every
 time one wants to replace one with the other. 
 
@@ -340,7 +340,7 @@ an element of type {%ard%}\Type{%endard%} is expected:
 {%endarend%}
 
 This kind of substitutions are called _coercions_, we say that a class can be coerced to its classifying field. The mechanism
-of coercions in Arend allows also to define coercions between datatypes, classes and records. In order to be able to use
+of coercions in Arend allows also to define coercions between data types, classes and records. In order to be able to use
 elements of type {%ard%}A{%endard%}, where elements of type {%ard%}B{%endard%} are expected, one should define a function
 {%ard%}f : A -> B{%endard%} in the {%ard%}\where{%endard%}-block of either {%ard%}A{%endard%} or {%ard%}B{%endard%} as a coercion
 by using keywords {%ard%}\use \coerce{%endard%}. Elements {%ard%}a{%endard%} of type {%ard%}A{%endard%} will then be replaced

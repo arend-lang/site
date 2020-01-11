@@ -1,7 +1,10 @@
 ---
-title: Simple Examples
+title: Indexed Data Types
 nav: data-n-proofs
 ---
+
+The source code for this module: [indexed.zip](code/indexed.zip).
+{: .notice--success}
 
 In this module we illustrate the concepts that we discussed in the previous modules through a bunch of examples of definitions and proofs.
 
@@ -11,8 +14,8 @@ them.
 We discuss two more examples of proofs: we prove that {%ard%}reverse{%endard%} is an involution and that {%ard%}+ : Nat -> Nat -> Nat{%endard%}
 is associative. 
 
-Next, we turn to a several examples of datatypes. For a given type {%ard%}A{%endard%}, we exhibit two possible definitions of the type
-of fixed length vectors of elements of {%ard%}A{%endard%}, one of which is based on _datatypes with constructor patterns_. We conclude with a
+Next, we turn to a several examples of data types. For a given type {%ard%}A{%endard%}, we exhibit two possible definitions of the type
+of fixed length vectors of elements of {%ard%}A{%endard%}, one of which is based on _data types with constructor patterns_. We conclude with a
 discussion of possible definitions of the type of all finite sets.
 
 # Insertion sort and reverse
@@ -42,17 +45,17 @@ In case the predicate {%ard%}less{%endard%} defines a linear order, the result o
 its argument {%ard%}xs{%endard%}. This specification of correctness of {%ard%}sort{%endard%} can be phrased in Arend as follows:
 
 {%arend%}
-\func isLinOrder {A : \Type} (pred : A -> A -> Bool) : Bool => {?}
-\func isSorted {A : \Type} (xs : List A) : Bool => {?}
+\func isLinOrder {A : \Type} (lessOrEq : A -> A -> Bool) : \Type => {?}
+\func isSorted {A : \Type} (lessOrEq : A -> A -> Bool) (xs : List A) : \Type => {?}
 -- isPerm says that xs' is permutation of xs
-\func isPerm {A : \Type} (xs xs' : List A) : Bool => {?}
-\func sort-isCorrect {A : \Type} (less : A -> A -> Bool) (xs : List A)
-       : T (isLinOrder less) -> T (isSorted (sort less xs) && isPerm xs (sort less xs)) => {?}
+\func isPerm {A : \Type} (xs xs' : List A) : \Type => {?}
+\func sort-isCorrect {A : \Type} (lessOrEq : A -> A -> Bool) (p : isLinOrder lessOrEq) (xs : List A)
+       : \Sigma (isSorted lessOrEq (sort lessOrEq xs)) (isPerm xs (sort lessOrEq xs)) => {?}
 {%endarend%}
 
 It is possible to write definitions of the predicates and a proof for {%ard%}sort-isCorrect{%endard%} with the arsenal of language
 constructs that we have introduced by now. However, as we will see in the subsequent modules, there are better ways to do this, and 
-for that reason we omit the details here. <!-- A proper proof will be given in the module TODO: ref. -->
+for that reason we omit the details here. A proper proof will be given [later](universes#correctness-of-insertion-sort).
 
 Consider another, simpler, operation on lists: reversion. We define the function {%ard%}reverse{%endard%} that reverses 
 a list {%ard%}xs{%endard%} via an auxiliary function that accumulates reversed sublists in the extra parameter {%ard%}acc{%endard%}:
@@ -100,9 +103,18 @@ we defined {%ard%}+{%endard%} by recursion on the right argument, we should choo
 -- x + (y + suc z) => x + suc (y + z) => suc (x + (y + z))
 {%endarend%}
 
-# Vectors of fixed length
+# Lists of fixed length
 
-Assume we want to define a type of _vectors_, that is of lists, whose length is fixed and
+Suppose we want to implement a function that takes a list and a natural number and returns the element in the list at the given index.
+It is impossible to do this in general since the index may be greater than the length of the list.
+One way to fix this problem is to pass a proof that the index is less than the length of the list:
+
+**Exercise 1:** Implement the function {%ard%}lookup{%endard%}, which takes a list {%ard%}xs{%endard%} and a natural number {%ard%}n{%endard%} and returns the {%ard%}n{%endard%}-th element in the list.
+The function should also take a proof that {%ard%}n{%endard%} is in the right range: {%ard%}T (n < length xs){%endard%}.
+{: .notice--info}
+
+There is another way to fix this problem.
+We could use a type of _vectors_, that is of lists, whose length is fixed and
 parameterized by {%ard%}n : Nat{%endard%}. One way to do this is by writing recursive function
 with codomain {%ard%}\Type{%endard%}: 
 
@@ -116,10 +128,10 @@ with codomain {%ard%}\Type{%endard%}:
 \func tail {A : \Type} (n : Nat) (xs : vec A (suc n)) => xs.2
 {%endarend%}
 
-Alternatively, we can realize this type as a datatype. It is a bit tricky since the datatype
+Alternatively, we can implement this type as a data type. It is a bit tricky since the data type
 {%ard%}Vec (A : \Type) (n : Nat){%endard%} has constructor {%ard%}fcons A (Vec A m){%endard%}
 if {%ard%}n{%endard%} is {%ard%}suc m{%endard%} and constructor {%ard%}fnil{%endard%} if {%ard%}n{%endard%}
-is {%ard%}0{%endard%}. Such datatypes can be defined using _constructors with patterns_:
+is {%ard%}0{%endard%}. Such data types can be defined using _constructors with patterns_:
 
 {%arend%}
 \data Vec (A : \Type) (n : Nat) \elim n
@@ -133,7 +145,7 @@ is {%ard%}0{%endard%}. Such datatypes can be defined using _constructors with pa
   | fcons _ xs => xs
 {%endarend%}
 
-There are several reasons, why the latter definition with datatypes is preferable. Firstly,
+There are several reasons, why the latter definition with data types is preferable. Firstly,
 {%ard%}Vec{%endard%} has named constructors, so we explicitly see which constructor we are
 dealing with. Secondly, in pattern matching we can use names for parameters of constructors
 instead of mere projections {%ard%}.1{%endard%}, {%ard%}.2{%endard%}, etc. These things
@@ -144,7 +156,7 @@ Below we use double recursion on {%ard%}n{%endard%} and {%ard%}xs{%endard%} to d
 function {%ard%}first{%endard%} that returns the first element of a vector and the function
 {%ard%}append{%endard%} that appends a vector to other vector. Note that the output of
 {%ard%}first{%endard%} is not defined for the empty vector. This is typically resolved
-by using {%ard%}Maybe{%endard%} datatype as codomain:
+by using {%ard%}Maybe{%endard%} data type as codomain:
 
 {%arend%}
 \data Maybe (A : \Type) | nothing | just A
@@ -158,8 +170,16 @@ by using {%ard%}Maybe{%endard%} datatype as codomain:
   | suc _ , fcons x xs => fcons x (append xs ys)
 {%endarend%}
 
-Implicit arguments in Arend make possible to define rather useless, exotic function
-that computes the length of a vector:
+**Exercise 2:** Implement function replicate for 'vec' and 'Vec' (this function creates the list of a given length filled with a given element).
+{: .notice--info}
+
+**Exercise 3:** Implement function 'map' for 'vec' and 'Vec'.
+{: .notice--info}
+
+**Exercise 4:** Implement function 'zipWith' for 'vec' and 'Vec'. The function must take lists of equal lengths.
+{: .notice--info}
+
+Implicit arguments in Arend make possible to define rather useless function that computes the length of a vector:
 
 {%arend%}
 \func length {A : \Type} {n : Nat} (xs : Vec A n) => n
@@ -182,7 +202,7 @@ Or as a recursive function:
   | suc n => Maybe (Fin' n)
 {%endarend%}
 
-Or as a datatype:
+Or as a data type:
 
 {%arend%}
 \data Fin (n : Nat) \with
@@ -230,3 +250,20 @@ of a safe lookup in a vector:
   | suc _, fcons x _, fzero => x
   | suc _, fcons _ xs, fsuc i => lookup xs i
 {%endarend%}
+
+**Exercise 5:** Functions Fin n -> A correspond to lists of length n with elements in A.
+Implement the function that converts an element of Fin n -> A to element of Vec A n.
+{: .notice--info}
+
+**Exercise 6:** Define the type of matrices and a number of functions for them:
+the diagonal matrix, transpose, addition and multiplication of matrices.
+{: .notice--info}
+
+**Exercise 7:** Define the type CTree A n of (complete and full) binary trees of height precisely n, which store elements in internal nodes, but not in leaves.
+The height of a leaf is 0.
+{: .notice--info}
+
+**Exercise 8:** Define the type Tree A n of binary trees of height at most n, which store elements in internal nodes, but not in leaves.
+The height of a leaf is 0.
+Define the function that computes the height of a tree.
+{: .notice--info}

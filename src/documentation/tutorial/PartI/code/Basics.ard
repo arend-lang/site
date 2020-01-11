@@ -220,7 +220,7 @@
    data List a = Nil | Cons a (List a)
 -}
 
--- Constructors have implicit parameters for each of the parameters of datatype
+-- Constructors have implicit parameters for each of the parameters of data type
 \func emptyList => nil {Nat}
 
 -- Operator 'append'

@@ -70,7 +70,7 @@ documentation:
           url: synndef
         - title: "Propositions and Proofs"
           url: propsnproofs
-        - title: "Simple Examples"
+        - title: "Indexed Data Types"
           url: datanproofs
         - title: "Equality"
           url: idtype

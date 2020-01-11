@@ -54,7 +54,7 @@ of equality. For example, the following properties:
 # Definition of =
 
 The central ingredient of the definition of the identity type is the _interval type_ {%ard%}I{%endard%} contained in Prelude.
-The type {%ard%}I{%endard%} looks like a two-element datatype with constructors {%ard%}left{%endard%} and {%ard%}right{%endard%},
+The type {%ard%}I{%endard%} looks like a two-element data type with constructors {%ard%}left{%endard%} and {%ard%}right{%endard%},
 but actually it is not: these constructors are made equal (by means of {%ard%}coe{%endard%}). Of course, pattern matching on
 {%ard%}I{%endard%} is prohibited since it can be used to derive {%ard%}Empty = Unit{%endard%}.  
 
@@ -117,7 +117,7 @@ of the theory. For example, if we add the axiom of excluded middle {%ard%}lem{%e
 
 # Eliminators
 
-Elimination principles for a datatype {%ard%}D{%endard%} specify what kind of data
+Elimination principles for a data type {%ard%}D{%endard%} specify what kind of data
 should be provided in order to define a function from {%ard%}D{%endard%} to a non-dependent or
 dependent type. And, essentially, these principles say that it is enough to show how "generators" 
 (that is constructors) of {%ard%}D{%endard%} are mapped to a type {%ard%}A{%endard%} and

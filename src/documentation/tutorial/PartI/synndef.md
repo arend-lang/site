@@ -414,7 +414,7 @@ On the other hand, the algorithm will be able infer {%ard%}n{%endard%} and {%ard
 {%endarend%}
 
 The difference is that in this case {%ard%}n{%endard%} and {%ard%}m{%endard%} occur in invocations of {%ard%}\data{%endard%}
-({%ard%}={%endard%} is defined via {%ard%}Path{%endard%}, which is a datatype) and the constructor {%ard%}suc{%endard%}.
+({%ard%}={%endard%} is defined via {%ard%}Path{%endard%}, which is a data type) and the constructor {%ard%}suc{%endard%}.
 Since {%ard%}\data{%endard%} and constructors are injective, the algorithm can always infer {%ard%}n{%endard%} and {%ard%}m{%endard%}
 in such cases. For example, in the invocation {%ard%}example'' pp{%endard%}, where {%ard%}pp : 8 = 3{%endard%}, the algorithm
 will infer that {%ard%}m{%endard%} must be {%ard%}3{%endard%} and {%ard%}n{%endard%} must be {%ard%}7{%endard%}.
@@ -429,7 +429,7 @@ By now we have discussed all the things necessary to properly define the polymor
    data List a = Nil | Cons a (List a)
 -}
 
--- Constructors have implicit parameters for each of the parameters of datatype
+-- Constructors have implicit parameters for each of the parameters of data type
 \func emptyList => nil {Nat}
 
 -- Operator 'append'
@@ -454,7 +454,7 @@ By now we have discussed all the things necessary to properly define the polymor
 
 Given two types {%ard%}A{%endard%} and {%ard%}B{%endard%}, one can construct the type {%ard%}\Sigma A B{%endard%}
 of pairs {%ard%}(a, b){%endard%}, where {%ard%}a : A{%endard%} and {%ard%}b : B{%endard%}. The type {%ard%}\Sigma A B{%endard%}
-is equivalent to the datatype defined as follows:
+is equivalent to the data type defined as follows:
 
 {%arend%}
 \data Pair | pair A B

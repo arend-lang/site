@@ -262,14 +262,14 @@ Let us consider one more example, demonstrating what we have just discussed:
 
 # Views
 
-Views -- is a techique that allows to define some kind of custom pattern matching for datatypes.
+Views -- is a techique that allows to define some kind of custom pattern matching for data types.
 For example, {%ard%}Nat{%endard%} has constructors {%ard%}zero{%endard%} and {%ard%}suc{%endard%}
 and by default we pattern match on them whenever we define a function from {%ard%}Nat{%endard%}.
 But we can also define a custom pattern matching for {%ard%}Nat{%endard%} as if {%ard%}Nat{%endard%}
 had constructors, say, {%ard%}even{%endard%} and {%ard%}odd{%endard%}.
 
-Let us define a datatype parameterised by the datatype we are defining custom pattern matching for
-({%ard%}Nat{%endard%} in our example). The constructors of this datatype will correspond to
+Let us define a data type parameterized by the data type we are defining custom pattern matching for
+({%ard%}Nat{%endard%} in our example). The constructors of this data type will correspond to
 the constructors that we want to use for our custom pattern matching ({%ard%}even{%endard%} and 
 {%ard%}odd{%endard%} in our example). Each constructor should have a parameter of the form {%ard%}n = expr{%endard%},
 where {%ard%}expr{%endard%} represents the custom pattern. In our example we have the following:

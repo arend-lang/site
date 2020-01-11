@@ -87,7 +87,7 @@ These operators can be defined as follows:
 # J operator
 
 Recall from [Eliminators](/documentation/tutorial/PartI/idtype#Eliminators) that elimination
-principles for a datatype {%ard%}D{%endard%} say that functions from {%ard%}D{%endard%} are
+principles for a data type {%ard%}D{%endard%} say that functions from {%ard%}D{%endard%} are
 determined by their values on the constructors of {%ard%}D{%endard%}, that is that {%ard%}D{%endard%}
 is "generated" by its constructors. 
 
@@ -156,7 +156,7 @@ Precisely this fact is the source of all the restrictions discussed in [Prelude]
 # Associativity of append for vectors
 
 Let us prove some statement that essentially requires J. A good example of such statement is associativity of the
-append {%ard%}v++{%endard%} for vectors. Let's recall the definitions of the datatype {%ard%}Vec{%endard%} and
+append {%ard%}v++{%endard%} for vectors. Let's recall the definitions of the data type {%ard%}Vec{%endard%} and
 the function {%ard%}v++{%endard%}:
 
 {%arend%}
@@ -228,7 +228,7 @@ There are several ways to define a predicate over a type {%ard%}A{%endard%}:
 
 * By combining existing predicates (for example, equality) by means of logical connectives. For example, 
 {%ard%}isEven{%endard%} can be defined as {%ard%}\lam n => \Sigma (k : Nat) (n = 2 * k){%endard%}.
-* By recursion, but only if {%ard%}A{%endard%} is a datatype.
+* By recursion, but only if {%ard%}A{%endard%} is a data type.
 * By induction.
 
 We now illustrate all these ways in case of the predicate <= for natural numbers.
