@@ -35,7 +35,7 @@ Examples:
 
 ## Infix and postfix notation
 
-A _postfix notation_ is an identifier followed by `` ` ``.
+A _postfix notation_ is an identifier which follows `` ` ``.
 An _infix notation_ is an identifier surrounded by `` ` ``.
 Both of these notations are described in [Definitions](definitions).
 
