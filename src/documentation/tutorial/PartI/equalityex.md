@@ -124,16 +124,6 @@ a function {%ard%}\Pi (x : A) (p : a = x) -> B x p{%endard%}:
     \func psqueeze  {A : \Type} {a a' : A} (p : a = a') (i : I) : a = p @ i => path (\lam j => p @ I.squeeze i j)
 {%endarend%}
 
-**Exercise 1:** The operator {%ard%}J{%endard%} has a different form, which we denote {%ard%}Jalt{%endard%}. Prove that
-{%ard%}J{%endard%} and {%ard%}Jalt{%endard%} are equivalent, i.e.
-define {%ard%}J{%endard%} in terms of {%ard%}Jalt{%endard%} and vice versa. 
-{: .notice--info}
-{%arend%}
-\func Jalt {A : \Type} (B : \Pi (a a' : A) -> a = a' -> \Type)
-           (b : \Pi (a : A) -> B a a idp)
-           {a a' : A} (p : a = a') : B a a' p => {?}
-{%endarend%}
-
 Note that {%ard%}B a' p{%endard%} above depends on both {%ard%}a'{%endard%} and {%ard%}p{%endard%}. If we make {%ard%}a'{%endard%}
 fixed and equal to {%ard%}a{%endard%} in the definition above, then we obtain _K eliminator_: 
 {%arend%}
@@ -156,6 +146,7 @@ For example, {%ard%} transport {%endard%} can be defined as follows:
   | idp => b
 {%endarend%}
 
+Similarly, {%ard%} J {%endard%} can be defined in this way.
 See [Prelude](/documentation/language-reference/prelude#idp) for more information about this pattern matching principle.
 
 The pattern matching on {%ard%}idp{%endard%} may look confusing at first sight. On one hand we claim that {%ard%}a = a'{%endard%}
@@ -165,6 +156,16 @@ match simultaneously on _two_ variables {%ard%} p : a = a' {%endard%} and {%ard%
 {%ard%} p : a = a' {%endard%}. In other words, we _do not_ match on the type {%ard%} a = a' {%endard%}, but match on the
 type {%ard%} \Sigma (a' : A) (a = a') {%endard%} of pairs instead, which is one-element type.
 Precisely this fact is the source of all the restrictions discussed in [Prelude](/documentation/language-reference/prelude#idp). 
+
+The operator {%ard%}J{%endard%} has a different form, which we denote {%ard%}Jalt{%endard%}:
+{%arend%}
+\func Jalt {A : \Type} (B : \Pi (a a' : A) -> a = a' -> \Type)
+           (b : \Pi (a : A) -> B a a idp)
+           {a a' : A} (p : a = a') : B a a' p => {?}
+{%endarend%}
+
+**Exercise 1:** Prove that {%ard%}J{%endard%} and {%ard%}Jalt{%endard%} are equivalent, i.e. define {%ard%}J{%endard%} in terms of {%ard%}Jalt{%endard%} and vice versa. 
+{: .notice--info}
 
 # Associativity of append for vectors
 
@@ -181,9 +182,6 @@ the function {%ard%}v++{%endard%}:
   | 0, vnil => ys
   | suc n, vcons x xs => vcons x (xs v++ ys)
 {%endarend%}
-
-**Exercise 2:** Prove that {%ard%}vnil{%endard%} is identity for the operation {%ard%}v++{%endard%}.
-{: .notice--info}
 
 Already the statement of associativity of {%ard%}v++{%endard%} requires some work since the types of 
 {%ard%}(xs v++ ys) v++ zs{%endard%} and {%ard%}xs v++ (ys v++ zs){%endard%} do not coincide: the types are
@@ -234,6 +232,8 @@ prove in {%ard%}transport-vcons-comm{%endard%} lemma.
 Note that it is important that we generalize the statement and prove the commutativity not only for
 {%ard%}+-assoc k m n{%endard%} but for all {%ard%}e : Nat{%endard%} satisfying {%ard%}p : k + m + n = e{%endard%} (otherwise, we would not be able to use pattern mathing or the J operator to prove this statement).
 
+**Exercise 2:** Prove that {%ard%}vnil{%endard%} is identity for the operation {%ard%}v++{%endard%}.
+{: .notice--info}
 
 # Predicates
 

@@ -253,7 +253,7 @@ The universe {%ard%}Type{%endard%} contains just non-dependent types. If we want
 to the universe, we should use induction-recursion:
 
 {%arend%}
-\data Type' : \Type0
+\data Type' : \Set0 -- \Set0 is almost the same as \Type0, we will discuss the difference later
   | nat'
   | list' Type'
   | pi' (a : Type') (El' a -> Type')
@@ -506,3 +506,6 @@ In the case {%ard%} inl a<=x {%endard%}, we need another auxiliary lemma with a 
 
 This completes the proof of correctness of {%ard%} sort {%endard%}.
 The full proof can be found [here](code/sort.ard).
+
+**Exercise:** Implement another sorting algorithm and prove its correctness.
+{: .notice--info}
