@@ -76,7 +76,7 @@ documentation:
           url: idtype
         - title: "Proofs of Equality"
           url: equalityex
-        - title: "Classes and Records"
+        - title: "Records and Classes"
           url: records
         - title: "Case Expression"
           url: case
