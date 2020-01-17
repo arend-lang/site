@@ -3,6 +3,9 @@ title: Records and Classes
 nav: records
 ---
 
+The source code for this module: [records.zip](code/records.zip).
+{: .notice--success}
+
 In this module we introduce very useful kinds of definitions: records and classes.
 
 We also discuss the mechanism of coercions.
@@ -115,6 +118,16 @@ _copattern matching_ using the keyword {%ard%}\cowith{%endard%}:
   | snd => 0
 {%endarend%}
 
+**Exercise 1:** Define the function {%ard%}swap{%endard%}, which swaps components in pairs, 
+in several ways: a) using
+{%ard%}\cowith{%endard%} and field access, b) using {%ard%}\new{%endard%} and pattern matching, 
+c) using {%ard%}\new{%endard%} and field access.
+{: .notice--info}
+
+**Exercise 2:** Prove that {%ard%}swap (swap p) = p{%endard%}.
+{: .notice--info}
+
+
 # Partial implementation
 
 Given a record, it is possible to form new records out of it via _partial implementation_, that is
@@ -220,6 +233,14 @@ For example, the set of positive natural numbers { n : Nat | T (isPos n) } can b
 
 \record PosNat (n : Nat) (p : T (isPos n))
 {%endarend%}
+
+**Exercise 3:** Prove that the type {%ard%}PosNat 0{%endard%} is empty, but the type {%ard%}PosNat 1{%endard%} is not. 
+{: .notice--info}
+
+**Exercise 4:** Define the {%ard%}\record{%endard%} consisting of pairs of coprime natural numbers.
+Define the type of natural numbers that are coprime with 60.
+{: .notice--info}
+
 
 # Monoid
 
@@ -579,3 +600,19 @@ We conclude by demonstrating another example: the class of functors.
   | fmap-comp {A B C : \Type} (f : A -> B) (g : B -> C) (y : F A)
     : fmap (\lam x => g (f x)) y = fmap g (fmap f y)
 {%endarend%}
+
+**Exercise 5:** Define the class of monads, which extends the class of functors {%ard%}Functor{%endard%}.
+Define {%ard%}\instance{%endard%} of this class for {%ard%}Maybe{%endard%}.
+{: .notice--info}
+
+**Exercise 6:** Define instances for the class of monads for {%ard%}State{%endard%} and {%ard%}State'{%endard%}.
+{: .notice--info}
+{%arend%}
+\record State (S A : \Type)
+  | state : S -> \Sigma S A
+
+\data State' (S A : \Type)
+  | state' (S -> \Sigma S A)
+{%endarend%}
+
+

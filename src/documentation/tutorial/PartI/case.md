@@ -3,6 +3,10 @@ title: Case Expression
 nav: case
 ---
 
+The source code for this module: [case.zip](code/case.zip).
+{: .notice--success}
+
+
 In this module we discuss three themes.
 
 Firstly, we discuss case expressions and alternatives to them in the form of the helper
@@ -49,6 +53,12 @@ we could introduce a helper function, defined by pattern matching, and invoke it
 Actually, every usage of case expression can be replaced in this way with an invocation of a helper function. 
 It is just sometimes more convenient to use short case expressions instead of introducing countless
 amount of helpers.
+
+**Exercise 1:** Implement any sorting algorithm using \case for pattern matching on the result of comparison of elements
+of a list.
+{: .notice--info}
+
+
 
 # Remark on \elim vs \case
 
@@ -111,6 +121,8 @@ As we said, we could use a helper function:
       | false => idp
 {%endarend%}
 
+
+
 # \case with several arguments
 
 We can pattern match on several expressions in {%ard%}\case{%endard%}. For example:
@@ -162,6 +174,11 @@ length of the original list {%ard%}xs{%endard%}:
     | false => <=-helper (filter-lem p xs)
   }
 {%endarend%}
+
+**Exercise 2:** Define {%ard%}filter{%endard%} via {%ard%}if{%endard%} not using {%ard%}\case{%endard%}.
+Prove the lemma {%ard%}filter-lem{%endard%} for this version of {%ard%}filter{%endard%}.
+{: .notice--info}
+
 
 # \elim in \case
 
@@ -232,7 +249,7 @@ And a helper version again:
       | false => transport B q pf -- here q : false = p a
 {%endarend%}
 
-**Exercise:** Prove that, for every function {%ard%} f : Bool -> Bool {%endard%} and every {%ard%} x : Bool {%endard%}, it is true that {%ard%} f (f (f x)) = f x {%endard%}
+**Exercise 3:** Prove that, for every function {%ard%} f : Bool -> Bool {%endard%} and every {%ard%} x : Bool {%endard%}, it is true that {%ard%} f (f (f x)) = f x {%endard%}
 {: .notice--info}
 
 # One more example of \case
@@ -301,6 +318,11 @@ on {%ard%}parity n{%endard%}. For example, let us define division by 2:
   }
 {%endarend%}
 
+**Exercise 4:** Define the view, which represents a natural number as a pair of the quotient and the remainder of
+division by a positive {%ard%}m{%endard%}. Implement the division function.
+{: .notice--info}
+
+
 # Decidable predicates
 
 Here we will discuss predicates in propositions-as-types logic, that is functions {%ard%}P : A -> \Type{%endard%}.
@@ -340,6 +362,10 @@ An example of decidable predicate:
 
 The above properties of decidability hold as long as our logic is intuitionistic. If we have the Law of Excluded
 Middle, then all predicates are decidable, and, in fact, the opposite implication is also true.
+
+**Exercise 5:** Prove that the predicate 'isEven' is decidable. 
+{: .notice--info}
+
 
 # Decidable equality
 
@@ -394,6 +420,15 @@ Let us define an instance for the type of natural numbers:
 \func test2 : (0 == 1) = false => idp
 {%endarend%}
 
+**Exercise 6:** Prove that if equality of elements of a type {%ard%}A{%endard%} is decidable, then eqiality of elements if {%ard%}List A{%endard%} is
+also decidable.
+{: .notice--info}
+
+**Exercise 7:** Prove that if equality of elements of a type {%ard%}A{%endard%} is decidable, then every list of elements of {%ard%}A{%endard%} is either empty,
+consists of repetitions of one element or there exist two different elements in {%ard%}A{%endard%}. 
+{: .notice--info}
+
+
 # Decidable predicates and functions A -> Bool
 
 Decidable predicates {%ard%}A -> \Type{%endard%} correspond precisely to functions {%ard%}A -> Bool{%endard%}.
@@ -412,3 +447,18 @@ Let us define the conversion functions:
     | no _ => false
   }
 {%endarend%}
+
+**Exercise 8:** Prove that the functions 'FromBoolToDec' and 'FromDecToBool' are inverse to each other.
+{: .notice--info}
+{%arend%}
+\func bdb {A : \Type} (p : A -> Bool) : FromDecToBool (FromBoolToDec p) = p => {?}
+
+-- We cannot prove that 'FromBoolToDec (FromDecToBool P) = P', but we can prove a weaker statement:
+-- these predicates are logically equivalent.
+
+-- Equivalence of predicates
+\func \infix 4 <-> {A : \Type} (P Q : A -> \Type) => \Pi (x : A) -> \Sigma (P x -> Q x) (Q x -> P x)
+
+\func dbd {A : \Type} (P : \Sigma (P : A -> \Type) (DecPred P)) : (FromBoolToDec (FromDecToBool P)).1 <-> P.1 => {?}
+{%endarend%}
+

@@ -3,6 +3,9 @@ title: Universes, Induction, Specifications
 nav: universes
 ---
 
+The source code for this module: [universes.zip](code/universes.zip).
+{: .notice--success}
+
 In this module we take a closer look at the structure of the hierarchy of universes and
 explain how polymorphism works.
 
@@ -144,6 +147,20 @@ implemented since {%ard%}fmap{%endard%} also refers to {%ard%}\Type \lp{%endard%
 \func test10 : \Type (\suc \lp) => Functor \lp Maybe
 {%endarend%}
 
+**Exercise 1:** Calculate levels in each of the the invocations of {%ard%}id''{%endard%} below.
+Specify explicitly result types for all idTest*.
+{: .notice--info}
+{%arend%}
+\func id'' {A : \Type} (a : A) => a
+
+\func idTest1 => id'' (id'' id)
+\func idTest2 => id'' Maybe
+\func idTest3 => id'' Functor
+\func idTest4 => id'' (Functor Maybe)
+\func idTest5 (f : \Pi {A B : \Type} -> (A -> B) -> Maybe A -> Maybe B) => id'' (Functor Maybe f)
+{%endarend%}
+
+
 # Induction principles
 
 We have already seen that data types have canonical eliminators associated with them and that
@@ -158,6 +175,24 @@ number less than the current one, not just for the number less by one:
   (r : \Pi (n : Nat) -> (\Pi (k : Nat) -> T (k < n) -> E k) -> E n)
   (n : Nat) : E n => {?} -- prove this as an exercise
 {%endarend%}
+
+**Exercise 2:** Define {%ard%}div{%endard%} via {%ard%}Nat-ind{%endard%}.
+{: .notice--info}	
+{%arend%}
+\func div (n k : Nat) (p : T (0 < k)) : Nat => {?}
+{%endarend%}
+
+
+**Exercise 3:** Prove the following induction principle for lists:
+{: .notice--info}
+{%arend%}
+\func List-ind
+  {A : \Type}
+  (E : List A -> \Type)
+  (r : \Pi (xs : List A) -> (\Pi (ys : List A) -> T (length ys < length xs) -> E ys) -> E xs)
+  (xs : List A) : E xs => {?}
+{%endarend%}
+
 
 # Induction-recursion
 
@@ -266,6 +301,13 @@ specifications can be formulated as follows:
 {%arend%}
 \Pi (x y : A) -> P x -> P y -> x = y
 {%endarend%}
+
+**Exercise 4:** Implement function {%ard%}filter{%endard%} and prove that it is correct, that is that the following holds:
+ a) {%ard%}filter p xs{%endard%} is a sublist of {%ard%}xs{%endard%},
+ b) All elements of {%ard%}filter p xs{%endard%} satisfy the predicate {%ard%}p{%endard%},
+ c) Any sublist of {%ard%}xs{%endard%} with property (b) is a sublist of {%ard%}filter p xs{%endard%}.
+{: .notice--info}
+
 
 # Correctness of Insertion Sort
 

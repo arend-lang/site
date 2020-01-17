@@ -3,6 +3,9 @@ title: Proofs of Equality
 nav: equalityex
 ---
 
+The source code for this module: [eqproofs.zip](code/eqproofs.zip).
+{: .notice--success}
+
 In this module we give a number of examples, demonstrating techniques used in more advanced proofs of equalities.
 We introduce a convention for writing more readable equality proofs called _equational reasoning_. 
 We argue that {%ard%}transport{%endard%} is insufficient in some cases and introduce its generalization
@@ -121,6 +124,16 @@ a function {%ard%}\Pi (x : A) (p : a = x) -> B x p{%endard%}:
     \func psqueeze  {A : \Type} {a a' : A} (p : a = a') (i : I) : a = p @ i => path (\lam j => p @ I.squeeze i j)
 {%endarend%}
 
+**Exercise 1:** The operator {%ard%}J{%endard%} has a different form, which we denote {%ard%}Jalt{%endard%}. Prove that
+{%ard%}J{%endard%} and {%ard%}Jalt{%endard%} are equivalent, i.e.
+define {%ard%}J{%endard%} in terms of {%ard%}Jalt{%endard%} and vice versa. 
+{: .notice--info}
+{%arend%}
+\func Jalt {A : \Type} (B : \Pi (a a' : A) -> a = a' -> \Type)
+           (b : \Pi (a : A) -> B a a idp)
+           {a a' : A} (p : a = a') : B a a' p => {?}
+{%endarend%}
+
 Note that {%ard%}B a' p{%endard%} above depends on both {%ard%}a'{%endard%} and {%ard%}p{%endard%}. If we make {%ard%}a'{%endard%}
 fixed and equal to {%ard%}a{%endard%} in the definition above, then we obtain _K eliminator_: 
 {%arend%}
@@ -168,6 +181,9 @@ the function {%ard%}v++{%endard%}:
   | 0, vnil => ys
   | suc n, vcons x xs => vcons x (xs v++ ys)
 {%endarend%}
+
+**Exercise 2:** Prove that {%ard%}vnil{%endard%} is identity for the operation {%ard%}v++{%endard%}.
+{: .notice--info}
 
 Already the statement of associativity of {%ard%}v++{%endard%} requires some work since the types of 
 {%ard%}(xs v++ ys) v++ zs{%endard%} and {%ard%}xs v++ (ys v++ zs){%endard%} do not coincide: the types are
@@ -251,7 +267,7 @@ We now illustrate all these ways in case of the predicate <= for natural numbers
 \func test11 : LessOrEq 0 100 => z<=n
 \func test12 : LessOrEq 3 67 => s<=s (s<=s (s<=s z<=n))
 -- Of course, there is no proof of 1 <= 0.
--- \func test10 : LessOrEq 1 0 => ....
+-- \func test10 : LessOrEq 1 0 => ...
 
 -- Second inductive definition of <=.
 -- This is a modification of the first inductive definition,
@@ -275,4 +291,29 @@ But this is not the only way to characterise {%ard%}LessOrEq{%endard%}. For exam
   | suc m => <=-step (LessOrEq'' n m)
   | m => <=-refl (n = m)
 {%endarend%}
+
+**Exercise 3:** Prove that all definitions of <= given above are equivalent.
+{: .notice--info}
+
+**Exercise 4:** Define the membership predicate {%ard%}In{%endard%} for lists.
+{: .notice--info}
+
+**Exercise 5:** Define reflexive and transitive closure of a relation.
+That is {%ard%}ReflTransClosure R{%endard%} -- is the minimal reflexive and transitive relation containing {%ard%}R{%endard%}.
+{: .notice--info}
+
+**Exercise 6:** Prove that if {%ard%}R{%endard%} is already reflexive and transitive then {%ard%}ReflTransClosure R{%endard%}
+is equivalent to {%ard%}R{%endard%}.
+{: .notice--info}
+
+**Exercise 7:** Define the predicate {%ard%}xs <= ys{%endard%} for lists, which says "the list {%ard%}xs{%endard%} is a 
+sublist of {%ard%}ys{%endard%}".
+{: .notice--info}
+
+**Exercise 8:** Prove that {%ard%}filter xs <= xs{%endard%} for any list {%ard%}xs{%endard%}.
+{: .notice--info}
+
+
+
+
 
