@@ -82,5 +82,10 @@ documentation:
           url: case
         - title: "Universes, Induction, Specifications"
           url: universes
+      - title: "Part II: Homotopy Type Theory"
+        url: PartII
+        children:
+        - title: "H-propositions"
+          url: hprops
   - title: "Libraries"
     url: libraries
