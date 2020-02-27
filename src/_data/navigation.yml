@@ -85,7 +85,9 @@ documentation:
       - title: "Part II: Homotopy Type Theory"
         url: PartII
         children:
-        - title: "H-propositions"
+        - title: "Mere propositions"
           url: hprops
+        - title: "Homotopy levels"
+          url: hom-levels
   - title: "Libraries"
     url: libraries

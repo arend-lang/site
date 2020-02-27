@@ -1,7 +1,17 @@
 ---
-title: H-propositions
+title:  Mere propositions
 nav: hprops
 ---
+
+Recall that under Curry-Howard correspondence there is no difference between propositions and types:
+all types are propositions and vice versa. In this module we discuss and justify an alternative view,
+according to which propositions are only some types, namely those types, all elements of which are equal.
+These types are called _mere propositions_ since they have at most one element, which, if it exists, 
+usually does not contain any data and is merely a proof of the proposition. It is standard in 
+homotopy type theory to use the term "proposition" for mere propositions.
+
+Subsequently we discuss another important subclass of types, consisting of those types that can be
+idenified with sets.
 
 # Subsets, injective functions
 
@@ -17,8 +27,8 @@ function {%ard%}B -> A{%endard%}. For example, the subset above corresponds to t
 by means of the function:
 {%arend%}\lam t => t.1 : \Sigma (x : A) (P x) -> A{%endarend%}
 as long as this function is an injection. As we will see further in this module, this function
-is always an injection if the range of {%ard%}P{%endard%} is restricted to a class of types called 
-_h-propositions_.
+is always an injection if the range of {%ard%}P{%endard%} is restricted to a certain class of
+types. This class is precisely the class of all mere propositions.
 
 Consider an example: the subtype of {%ard%}Nat{%endard%} consisting of even natural numbers.
 
@@ -125,92 +135,134 @@ This is so because for some {%ard%}n{%endard%}, namely for those that are divisi
 by both 3 and 5, there are several non-equal proofs of {%ard%}(mod3 n = 0) `Either` (mod5 n = 0){%endard%}.
 Thus {%ard%}MultipleOf3Or5{%endard%} is not a subtype of {%ard%}Nat{%endard%}.
 
-# h-propositions
+# Mere propositions
 
 As the two examples above illustrate, a predicate defining a subtype should have the range
 consisting of types, all elements of which are equal. The types satisfying these conditions are
-called _h-propositions_.
+called _mere propositions_ or just propositions.
 
-<!--
-
-
--- 3. Утверждения
-
--- Проблемы в предыдущем примере не возникло, если бы тип, определяющий подмножество, был утверждением, то есть любые его два элемента были бы равны.
+{%arend%}
 \func isProp (A : \Type) => \Pi (x y : A) -> x = y
+{%endarend%}
 
--- Пример не утверждения.
+For example, according to this definition {%ard%}Bool{%endard%} is not a proposition.
+
+{%arend%}
 \func BoolIsNotProp (p : isProp Bool) : Empty => transport T (p true false) ()
+{%endarend%}
 
--- 4. Какие предикаты являются настоящими предикатами (то есть возвращают утверждения)?
---    ⊤, ⊥, ∧, ∨, →, ∀, ∃, =, рекурсвиные предикаты, индуктивные предикаты.
+Propositions can be formed using logical operations ⊤, ⊥, ∧, →, ∀ the same as
+in the Curry-Howard correspondence. Operations ∨, ∃ and the predicate = can, of course,
+also be defined, but in general require additional language constructs, which we 
+introduce later. One can use recursion and induction to define predicates in this logic
+as usual.
 
--- Пустой тип является утверждением.
-\func Empty-isProp : isProp Empty => \lam x y => absurd x
+Consider several examples. The unit type {%ard%}Unit{%endard%} is proposition
+corresponding to the proposition "True":
 
--- Одноэлементный тип является утверждением.
+{%arend%}
 \func Unit => \Sigma
 
 \func Unit-isProp : isProp Unit => \lam x y => idp
+{%endarend%}
 
--- Если A и B являются утверждениями, то их произведение (конъюнкция) тоже является утверждением.
+The empty type {%ard%}Empty{%endard%} is the proposition "False":
+
+{%arend%}
+\func Empty-isProp : isProp Empty => \lam x y => absurd x
+{%endarend%}
+
+The product (conjunction) of propositions is proposition:
+
+{%arend%}
 \func Sigma-isProp {A B : \Type} (pA : isProp A) (pB : isProp B)
   : isProp (\Sigma A B) => \lam p q => prodEq p q (pA p.1 q.1) (pB p.2 q.2)
+{%endarend%}
 
--- Это не верно для сумм типов, то есть у нас нет (пока) дизъюнкций.
--- \func Either-isProp {A B : \Type} (pA : isProp A) (pB : isProp B)
---   : isProp (Either A B) =>
---   {?}
+The function type (implication) between propositions is poposition:
 
+{%arend%}
 \func funcExt {A : \Type} (B : A -> \Type) (f g : \Pi (x : A) -> B x)
               (p : \Pi (x : A) -> f x = g x) : f = g =>
   path (\lam i x => p x @ i)
 
--- У нас есть импликации.
+
 \func Impl-isProp {A B : \Type} {- (pA : isProp A) -} (pB : isProp B) : isProp (A -> B)
   => \lam f g =>
       -- path (\lam i x => pB (f x) (g x) @ i)
       funcExt (\lam _ => B) f g (\lam x => pB (f x) (g x))
+{%endarend%}
 
--- И квантор всеобщности.
+Propositions are closed under Pi-types (universal quantification):
+
+{%arend%}
 \func forall-isProp {A : \Type} (B : A -> \Type) (pB : \Pi (x : A) -> isProp (B x))
   : isProp (\Pi (x : A) -> B x)
   => \lam f g => funcExt B f g (\lam x => pB x (f x) (g x))
+{%endarend%}
 
-{- Но квантора существования у нас (пока) нет.
+However, the logic of propositions is not closed in general under sum types
+{%ard%}Either A B{%endard%} (Curry-Howard disjunctions),
+sigma types {%ard%}\Sigma (x : A) (B x){%endard%} (Curry-Howard existential quantifier)
+and the equality type.
+
+<!-- TODO: prove the nagation or leave as exercise -->
+{%arend%}
+\func Either-isProp {A B : \Type} (pA : isProp A) (pB : isProp B)
+   : isProp (Either A B) =>
+   {?}
+
 \func exists-isProp {A : \Type} (B : A -> \Type)
                     (pB : \Pi (x : A) -> isProp (B x))
   : isProp (\Sigma (x : A) (B x)) =>
   {?}
--}
 
--- Равенство тоже в общем случае не является утверждением.
--- \func equality-isProp {A : \Type} (a a' : A) : isProp (a = a') => {?}
+\func equality-isProp {A : \Type} (a a' : A) : isProp (a = a') => {?}
+{%endarend%}
 
--- Но для многих типов это верно.
--- Мы будем называть такие типы множествами.
--- Позже мы увидим, что большинство типов являются множествами.
+For now we cannot define disjunctions, existential quantifiers and equality. But later
+we will introduce a way to project appropriately any type {%ard%}A{%endard%} to the class
+of propositions, and this projection will be applied to the types above to get 
+corresponding logical operations.
+
+Although, as we have just seen, equality of elements of a type {%ard%}A{%endard%} is not
+a proposition in general, it holds for many types {%ard%}A{%endard%}. Such types are
+called _sets_.
+
+{%arend%}
 \func isSet (A : \Type) => \Pi (a a' : A) -> isProp (a = a')
 
--- По определению равенство между элементами множества является утверждением.
+-- By definition equality is mere porosition for sets
 \func equality-isProp {A : \Type} (p : isSet A) (a a' : A) : isProp (a = a') => p a a'
+{%endarend%}
 
-{- Рекурсивно определенный предикат является утверждением, если ... являются таковыми
+We conclude with several remarks on definitions of predicates in the logic of
+mere propositions. 
+
+A recursive definition defines a predicate valued in propositions if all its
+clauses are propositions. For example, the following defines a predicate in the logic
+of mere propositions if expressions {%ard%}E-zero{%endard%} and {%ard%}E-suc{%endard%} are propositions:
+
+{%arend%}
 \func pred (n : Nat) : \Type
-  | 0 => ...
-  | suc n => ...
--}
+  | 0 => E-zero
+  | suc n => E-suc
+{%endarend%}
 
--- Индуктивно определенный предикат может быть утверждением, а может и не быть им.
+Inductive definitions can be also used to define predicates. One should be careful with
+inductive definitions since a predicate can often have several inductive definitions,
+some of which are valued in propositions and some of them are not. For example:
 
--- Является утверждением
+{%arend%}
+-- Defines predicate valued in propositions
 \data \infix 4 <=' (n m : Nat) \with
   | 0, _ => zero<=_
   | suc n, suc m => suc<=suc (n <=' m)
 
--- Не является утверждением
+-- Does not define a predicate valued in propositions
 \data \infix 4 <='' (n m : Nat) \elim m
   | m => <=-refl (n = m)
   | 1 => zero<=one (n = 0)
   | suc m => <=-step (n <='' m)
--->
+
+{%endarend%}
