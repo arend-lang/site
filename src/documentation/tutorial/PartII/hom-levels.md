@@ -16,11 +16,34 @@ This means that there exist functions in both directions between {%ard%}\Prop{%e
 subuniverse {%ard%}\Sigma (A : \Type) (isProp A){%endard%} of {%ard%}\Type{%endard%}, consisting of
 all propositions in {%ard%}\Type{%endard%}. We denote the latter universe as {%ard%}PropInType{%endard%}.
 
-Let us first construct a function from {%ard%}\Prop{%endard%} to {%ard%}PropInType{%endard%}. Since the
-universe {%ard%}\Prop{%endard%} is by definition a subuniverse of {%ard%}\Type{%endard%}, that is
-{%ard%}P : \Prop{%endard%} implies {%ard%}P : \Type{%endard%}, we show that for every {%ard%}P : \Prop{%endard%}
-{%ard%}isProp P{%endard%} holds.
+By definition {%ard%}\Prop{%endard%} embeds into {%ard%}PropInType{%endard%}. Firstly,
+{%ard%}\Prop{%endard%} is a subuniverse of {%ard%}\Type{%endard%}, that is 
+{%ard%}P : \Prop{%endard%} implies {%ard%}P : \Type{%endard%}. Secondly, every {%ard%}P : \Prop{%endard%}
+is a proposition by an axiom {%ard%}Path.inProp P{%endard%} located in Prelude.
 
+The construction of a function in the opposite direction from {%ard%}PropInType{%endard%} to
+{%ard%}\Prop{%endard%} is also simple, but requires an additional language construct 
+{%ard%}\use \level{%endard%}. We will discuss this construct in full generality a bit later, here
+we use it as a means to place a data definition {%ard%}D A_1 ... A_n{%endard%} in the universe {%ard%}\Prop{%endard%}
+as long as there is a proof of {%ard%}\Pi (a_1 : A_1) ... (a_n : A_n) -> isProp (D a_1 ... a_n){%endard%}:
+
+{%arend%}
+\data PropInType-to-Prop (A : \Type) (p : isProp A)
+  | inc A
+  \where {
+    -- Here we prove that 'PropInType-to-Prop' satisfies 'isProp'.
+    -- This results in 'PropInType-to-Prop A p : \Prop' for all 'A' and 'p'.
+    -- Without '\use \level' 'PropInType-to-Prop A p' would not be in '\Prop'
+    --   unless 'A' is in '\Prop'.
+    \use \level dataIsProp {A : \Type} {p : isProp A} 
+                     (d1 d2 : PropInType-to-Prop A p) : d1 = d2 \elim d1, d2
+      | inc a1, inc a2 => pmap inc (p a1 a2)
+  }
+{%endarend%}
+
+The embedding of {%ard%}\Prop{%endard%} into {%ard%}PropInType{%endard%} is inverse to the map
+{%ard%}PropInType-to-Prop{%endard%}, but we have not yet introduced constructs necessary to prove that.
+<!--TODO:ref-->
 
 # The universe \Set
 
