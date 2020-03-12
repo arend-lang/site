@@ -225,19 +225,7 @@ we will introduce a way to project appropriately any type {%ard%}A{%endard%} to 
 of propositions, and this projection will be applied to the types above to get 
 corresponding logical operations.
 
-Although, as we have just seen, equality of elements of a type {%ard%}A{%endard%} is not
-a proposition in general, it holds for many types {%ard%}A{%endard%}. Such types are
-called _sets_.
-
-{%arend%}
-\func isSet (A : \Type) => \Pi (a a' : A) -> isProp (a = a')
-
--- By definition equality is mere porosition for sets
-\func equality-isProp {A : \Type} (p : isSet A) (a a' : A) : isProp (a = a') => p a a'
-{%endarend%}
-
-We conclude with several remarks on definitions of predicates in the logic of
-mere propositions. 
+We now make several remarks on definitions of predicates.
 
 A recursive definition defines a predicate valued in propositions if all its
 clauses are propositions. For example, the following defines a predicate in the logic
@@ -251,7 +239,7 @@ of mere propositions if expressions {%ard%}E-zero{%endard%} and {%ard%}E-suc{%en
 
 Inductive definitions can be also used to define predicates. One should be careful with
 inductive definitions since a predicate can often have several inductive definitions,
-some of which are valued in propositions and some of them are not. For example:
+some of which are valued in propositions and some of which are not. For example:
 
 {%arend%}
 -- Defines predicate valued in propositions
@@ -266,3 +254,131 @@ some of which are valued in propositions and some of them are not. For example:
   | suc m => <=-step (n <='' m)
 
 {%endarend%}
+
+# Sets
+
+Although, as we have just seen, equality of elements of a type {%ard%}A{%endard%} is not
+a proposition in general, it holds for many types {%ard%}A{%endard%}. Such types are
+called _sets_.
+
+{%arend%}
+\func isSet (A : \Type) => \Pi (a a' : A) -> isProp (a = a')
+
+-- By definition equality is mere porosition for sets
+\func equality-isProp {A : \Type} (p : isSet A) (a a' : A) : isProp (a = a') => p a a'
+{%endarend%}
+
+This can be interated further: we may consider types {%ard%}A{%endard%} such that 
+{%ard%}a=a'{%endard%} are sets for all {%ard%}a a' : A{%endard%} and so on. Define
+the _homotopy level_ of a type inductively as follows:
+
+* Mere propositions are of homotopy level -1.
+* A type {%ard%}A{%endard%} has homotopy level {%ard%}suc n{%endard%} iff
+{%ard%}a=a'{%endard%} is of homotopy level {%ard%}n{%endard%}.
+ 
+The predicate {%ard%}hasLevel A suc-l{%endard%}, saying that {%ard%}A{%endard%} has homotopy level 
+{%ard%}suc-l - 1{%endard%}, can be defined as follows:
+
+{%arend%}
+\func hasLevel (A : \Type) (suc-l : Nat) : \Type \elim suc-l
+  | 0 => isProp A
+  | suc suc-l => \Pi (x y : A) -> (x = y) `hasLevel` suc-l
+{%endarend%}
+
+The sets are thus precisely all the types of homotopy level 0. This is a large class of types, 
+which includes, for example, {%ard%}Nat{%endard%}, {%ard%}Unit{%endard%}, {%ard%}Bool{%endard%}, 
+lists of sets and so on. All set-theoretic reasoning can be done entirely in the levels of sets
+and propositions.
+
+Let us consider several types and prove that they are sets. First of all, the empty type is trivially
+a set:
+
+{%arend%}
+\func Empty-isSet : isSet Empty => \lam x y _ _ => \case x \with {}
+{%endarend%}
+
+
+
+<!--
+
+ -- 5. Примеры множеств: Unit, \Sigma.
+
+
+\func retract-isProp {A B : \Type} (pB : isProp B) (f : A -> B) (g : B -> A)
+  (h : \Pi (x : A) -> g (f x) = x)
+  : isProp A
+  => \lam x y => sym (h x) *> pmap g (pB (f x) (f y)) *> h y
+
+\func Unit-isSet : isSet (\Sigma) => \lam x y => retract-isProp {x = y} Unit-isProp
+  (\lam _ => ()) (\lam _ => idp)
+  (\lam p => \case \elim y, \elim p \with { | _, idp => idp })
+
+\data Unit | unit
+
+\func Unit'-isProp (x y : Unit) : x = y
+  | unit, unit => idp
+
+\func Unit'-isSet : isSet Unit => \lam x y => retract-isProp {x = y} Unit-isProp
+  (\lam _ => ()) (\lam _ => Unit'-isProp x y)
+  (\lam p => \case \elim x, \elim y, \elim p \with { | unit, _, idp => idp })
+
+\func Sigma'-isProp {A : \Type} (B : A -> \Type)
+                    (pA : isProp A) (pB : \Pi (x : A) -> isProp (B x))
+  : isProp (\Sigma (x : A) (B x)) => \lam p q => sigmaEq B p q (pA _ _) (pB _ _ _)
+
+\func retract'-isProp {A B : \Type} (pB : isProp B) (g : B -> A)
+                      (H : \Pi (x : A) -> \Sigma (y : B) (g y = x))
+  : isProp A
+  => \lam x y => sym (H x).2 *> pmap g (pB (H x).1 (H y).1) *> (H y).2
+
+\func Sigma-isSet {A : \Type} (B : A -> \Type)
+                  (pA : isSet A) (pB : \Pi (x : A) -> isSet (B x))
+  : isSet (\Sigma (x : A) (B x))
+  => \lam t t' => retract'-isProp
+      {t = t'}
+      {\Sigma (p : t.1 = t'.1) (transport B p t.2 = t'.2)}
+      (Sigma'-isProp (\lam p => transport B p t.2 = t'.2) (pA _ _) (\lam _ => pB _ _ _))
+      (\lam s => sigmaEq B t t' s.1 s.2)
+      (\lam p => \case \elim t', \elim p \with { | _, idp => ((idp,idp),idp) })
+
+
+-- 6. Свойства операций над =.
+
+\func isGpd (A : \Type) => \Pi (x y : A) -> isSet (x = y)
+
+
+-- Так как равенства могут быть нетривиальными типами, то различные операции над ними могут быть нетривиальными функциями, а не просто доказательствами импликаций.
+-- Например, функция, доказывающая транзитивность, примененная к \Set задает композицию биекций.
+-- \func \infixr 5 *> {A : \Type} {a a' a'' : A} (p : a = a') (q : a' = a'') : a = a''
+--  \elim q
+--  | idp => p
+
+-- Мы можем доказывать различные свойства этой функции.
+-- Например, idp является единицей справа и слева для *.
+\func idp-right {A : \Type} {x y : A} (p : x = y) : p *> idp = p => idp
+
+\func idp-left {A : \Type} {x y : A} (p : x = y) : idp *> p = p \elim p
+  | idp => idp
+
+-- * ассоциативна.
+\func *-assoc {A : \Type} {x y z w : A} (p : x = y) (q : y = z) (r : z = w)
+  : (p *> q) *> r = p *> (q *> r) \elim r
+  | idp => idp
+
+-- sym возвращает обратный элемент.
+\func sym-left {A : \Type} {x y : A} (p : x = y) : sym p *> p = idp
+  \elim p
+  | idp => idp
+
+\func sym-right {A : \Type} {x y : A} (p : x = y) : p *> sym p = idp
+  \elim p
+  | idp => idp
+
+-- То есть * похожа на операцию в группе.
+-- Мы можем доказать различные равенства, верные в группах.
+-- Например, мы можем доказать, что можно сокращать слева на элемент.
+\func cancelLeft {A : \Type} {x y z : A}
+                 (p : x = y) (q r : y = z) (s : p *> q = p *> r) : q = r
+  \elim p, r
+  | idp, idp => sym (idp-left q) *> s
+-->

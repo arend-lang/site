@@ -42,47 +42,49 @@ as long as there is a proof of {%ard%}\Pi (a_1 : A_1) ... (a_n : A_n) -> isProp 
 {%endarend%}
 
 The embedding of {%ard%}\Prop{%endard%} into {%ard%}PropInType{%endard%} is inverse to the map
-{%ard%}PropInType-to-Prop{%endard%}, but we have not yet introduced constructs necessary to prove that.
+{%ard%}PropInType-to-Prop{%endard%}, but we have not yet introduced all the tools necessary to prove that.
 <!--TODO:ref-->
 
 # The universe \Set
+
+Recall that in the previous module we noted that the equality {%ard%}x=y{%endard%} is not always a proposition
+and defined sets as those types {%ard%}A{%endard%}, for which equality {%ard%}a=a'{%endard%} between any two 
+elements {%ard%}a a' : A{%endard%} is a propoposition:
+
+{%arend%}
+\func isSet (A : \Type) => \Pi (x y : A) -> isProp (x = y)
+{%endarend%}
+
+There is a universe {%ard%}\Set{%endard%} of all sets. Just as the universe {%ard%}\Type{%endard%} is not
+a single universe, but a hierarchy of universes {%ard%}\Type n{%endard%} parameterized by the predicative
+level {%ard%}n{%endard%}, {%ard%}\Set{%endard%} is also a predicative hierarchy {%ard%}\Set n{%endard%}.
+
+The universe {%ard%}\Set n{%endard%} is equivalent to the subuniverse {%ard%}\Sigma (A : \Type n) (isSet A){%endard%}
+of {%ard%}\Type n{%endard%}. Denote {%ard%}\Sigma (A : \Type) (isSet A){%endard%} as {%ard%}SetInType{%endard%}. 
+
+Let us construct a function from {%ard%}\Set{%endard%} to {%ard%}SetInType{%endard%}. Such a construction relies on 
+the following property of the universe {%ard%}\Set{%endard%}: for every set {%ard%}A{%endard%}
+in {%ard%}\Set{%endard%} its equality type lies in the universe {%ard%}\Prop{%endard%}. We can thus 
+use {%ard%}Path.inProp{%endard%} to prove {%ard%}isSet A{%endard%} for sets in {%ard%}\Set{%endard%}:
+
+{%arend%}
+\func Set-to-SetInType (A : \Set) : \Sigma (A : \Type n) (isSet A) =>
+       (A, \lam x y => Path.inProp (x = y))
+{%endarend%}
+
+The inverse function can be constructed with the use of {%ard%}\use \level{%endard%} in the similar way as the function
+{%ard%}PropInType-to-Prop{%endard%}. The general syntax and semantics of {%ard%}\use \level{%endard%} will
+become clear as soon as we introduce homotopy levels further in this module. See <!-- TODO: ref -->[] for 
+technical details.
 
 # Homotopy levels
 
 <!--
 
--- 1. Вселенная \Prop и ее эквивалентность с подвселенной \Type.
-
--- У нас естьспециальная вселенная \Prop, состоящая из типов, удовлетворяющих предикату isProp, то есть из утверждений.
-\func isProp (A : \Type) => \Pi (x y : A) -> x = y
-
--- Мы можем построить функции между \Prop и \Sigma (A : \Type) (isProp A).
-\func Prop1 => \Prop
-\func Prop2 => \Sigma (A : \Type) (isProp A)
-
-\func pathInProp {A : \Prop} : isProp A => \lam _ _ => idp
-
--- В одну сторону легко построить функцию, так как любой элемент \Prop является типом и в прелюдии объявленая функция, утверждающая, что любой такой тип является утверждением.
-\func Prop1-to-Prop2 (P : \Prop) : Prop2 => (P, pathInProp)
-
--- Чтобы определить функция в обратную сторону, нам понадобится новая конструкция.
-\data Prop2-to-Prop1' (A : \Type) (p : isProp A)
-  | inc A
-  \where {
     -- Когда мы пишем \use \level, после этого нужно определить функцию, доказывающую утверждение вида \Pi (a_1 : A_1) ... (a_n : A_n) -> D a_1 ... a_n `hasLevel` n для некоторого n,
     -- где D -- это тип данных или класс, для которого это утверждение доказывется (\use \level должен находиться в \where-блоке D), а A_1 ... A_n -- типы его параметров.
     -- Если D -- это класс, то A_1 .. A_n -- это типы любого набора полей D.
     -- После этого гомотопический уровень D становится равным n.
-
-    -- Здесь мы доказываем, что Prop2-to-Prop1' удовлетворяет предикату isProp.
-    -- Таким образом, верно, что Prop2-to-Prop1' A p : \Prop для всех A и p.
-    -- Без этой функции тип Prop2-to-Prop1' A p будет иметь тот же уровень, что и A.
-    \use \level dataIsProp {A : \Type} {p : isProp A} (d1 d2 : Prop2-to-Prop1' A p) : d1 = d2 \elim d1, d2
-      | inc a1, inc a2 => pmap inc (p a1 a2)
-  }
-
--- Функции Prop1-to-Prop2 и Prop2-to-Prop1 взаимно обратны, но мы пока не можем доказать этого.
-\func Prop2-to-Prop1 (P : Prop2) : \Prop => Prop2-to-Prop1' P.1 P.2
 
 -- 2. Вселенная \Set и ее эквивалентность с подвселенной \Type.
 
