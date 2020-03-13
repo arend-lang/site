@@ -297,32 +297,41 @@ a set:
 \func Empty-isSet : isSet Empty => \lam x y _ _ => \case x \with {}
 {%endarend%}
 
+Let us prove that the unit type is a set. We will need a lemma saying that if {%ard%}B{%endard%}
+is a proposition and {%ard%}A{%endard%} is a retract of {%ard%}B{%endard%}, then {%ard%}A{%endard%}
+is also a proposition. Recall that {%ard%}A{%endard%} is called a retract of {%ard%}B{%endard%}
+if there exist functions {%ard%}f : A -> B{%endard%} and {%ard%}g : B -> A{%endard%} such that
+the composition {%ard%}g `o` f {%endard%} is identity.
 
-
-<!--
-
- -- 5. Примеры множеств: Unit, \Sigma.
-
-
+{%arend%}
 \func retract-isProp {A B : \Type} (pB : isProp B) (f : A -> B) (g : B -> A)
   (h : \Pi (x : A) -> g (f x) = x)
   : isProp A
   => \lam x y => sym (h x) *> pmap g (pB (f x) (f y)) *> h y
 
-\func Unit-isSet : isSet (\Sigma) => \lam x y => retract-isProp {x = y} Unit-isProp
-  (\lam _ => ()) (\lam _ => idp)
-  (\lam p => \case \elim y, \elim p \with { | _, idp => idp })
+{%endarend%}
 
+By this lemma we reduce proving that {%ard%}isProp (x=y){%endard%} for all {%ard%}x y : Unit{%endard%} to proving
+that {%ard%}x=y{%endard%} is a retract of {%ard%}\Sigma{%endard%} and using {%ard%}Unit-isProp{%endard%}:
+
+{%arend%}
 \data Unit | unit
 
-\func Unit'-isProp (x y : Unit) : x = y
+\func Unit-isProp (x y : Unit) : x = y
   | unit, unit => idp
 
-\func Unit'-isSet : isSet Unit => \lam x y => retract-isProp {x = y} Unit-isProp
-  (\lam _ => ()) (\lam _ => Unit'-isProp x y)
+\func Unit-isSet : isSet Unit => \lam x y => retract-isProp {x = y} Unit-isProp
+  (\lam _ => unit) (\lam _ => Unit-isProp x y)
   (\lam p => \case \elim x, \elim y, \elim p \with { | unit, _, idp => idp })
+{%endarend%}
 
-\func Sigma'-isProp {A : \Type} (B : A -> \Type)
+Consider another example: the type {%ard%}\Sigma (x : A) (B x){%endard%} of dependent pairs is a set
+if {%ard%}A{%endard%} is a set and {%ard%}B x{%endard%} is a set for all {%ard%}x{%endard%}. Before we
+prove this, we prove two lemmas: the first one is the same statement with the word "set" replaced 
+with "proposition", and the second one is another variant of retract lemma:
+
+{%arend%}
+\func Sigma-isProp {A : \Type} (B : A -> \Type)
                     (pA : isProp A) (pB : \Pi (x : A) -> isProp (B x))
   : isProp (\Sigma (x : A) (B x)) => \lam p q => sigmaEq B p q (pA _ _) (pB _ _ _)
 
@@ -330,16 +339,25 @@ a set:
                       (H : \Pi (x : A) -> \Sigma (y : B) (g y = x))
   : isProp A
   => \lam x y => sym (H x).2 *> pmap g (pB (H x).1 (H y).1) *> (H y).2
+{%endarend%}
 
+We can now prove that dependent pairs of sets is a set as follows:
+
+{%arend%}
 \func Sigma-isSet {A : \Type} (B : A -> \Type)
                   (pA : isSet A) (pB : \Pi (x : A) -> isSet (B x))
   : isSet (\Sigma (x : A) (B x))
   => \lam t t' => retract'-isProp
       {t = t'}
       {\Sigma (p : t.1 = t'.1) (transport B p t.2 = t'.2)}
-      (Sigma'-isProp (\lam p => transport B p t.2 = t'.2) (pA _ _) (\lam _ => pB _ _ _))
+      (Sigma-isProp (\lam p => transport B p t.2 = t'.2) (pA _ _) (\lam _ => pB _ _ _))
       (\lam s => sigmaEq B t t' s.1 s.2)
       (\lam p => \case \elim t', \elim p \with { | _, idp => ((idp,idp),idp) })
+{%endarend%}
+
+# Properties of operations on =
+
+<!-- 
 
 
 -- 6. Свойства операций над =.
