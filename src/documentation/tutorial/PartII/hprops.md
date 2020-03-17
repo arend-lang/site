@@ -326,9 +326,9 @@ that {%ard%}x=y{%endard%} is a retract of {%ard%}\Sigma{%endard%} and using {%ar
 {%endarend%}
 
 Consider another example: the type {%ard%}\Sigma (x : A) (B x){%endard%} of dependent pairs is a set
-if {%ard%}A{%endard%} is a set and {%ard%}B x{%endard%} is a set for all {%ard%}x{%endard%}. Before we
-prove this, we prove two lemmas: the first one is the same statement with the word "set" replaced 
-with "proposition", and the second one is another variant of retract lemma:
+if {%ard%}A{%endard%} is a set and {%ard%}B x{%endard%} is a set for all {%ard%}x{%endard%}. 
+We need two lemmas to prove this: the first one is the same statement with the word "set" replaced 
+with "proposition", and the second one is another variant of the retract lemma:
 
 {%arend%}
 \func Sigma-isProp {A : \Type} (B : A -> \Type)
@@ -355,35 +355,47 @@ We can now prove that dependent pairs of sets is a set as follows:
       (\lam p => \case \elim t', \elim p \with { | _, idp => ((idp,idp),idp) })
 {%endarend%}
 
-# Properties of operations on =
+# Groupoid structure on types
 
-<!-- 
+We conclude with description of a structure that characterizes types of higher homotopy levels. 
+The types of homotopy level 1, or 1-types for short, have structure of what is called a _groupoid_:
 
-
--- 6. Свойства операций над =.
-
+{%arend%}
 \func isGpd (A : \Type) => \Pi (x y : A) -> isSet (x = y)
+{%endarend%}
 
+A groupoid is a categorical generalization of the notion of a group: it is a category, where
+every morphism is invertible. In particular, all endomorphisms
+of any object in a groupoid is a group with composition as the group operation. In the groupoid
+of a 1-type {%ard%}A{%endard%} the set of morphisms between objects {%ard%}x y : A{%endard%} is given
+by elements of {%ard%}x=y{%endard%}. The identity morphism is {%ard%}idp{%endard%} and the composition
+is given by transitivity {%ard%}*>{%endard%} of equality, which turnes out to be in this case a nontrivial
+function rather than mere implication:
 
--- Так как равенства могут быть нетривиальными типами, то различные операции над ними могут быть нетривиальными функциями, а не просто доказательствами импликаций.
--- Например, функция, доказывающая транзитивность, примененная к \Set задает композицию биекций.
--- \func \infixr 5 *> {A : \Type} {a a' a'' : A} (p : a = a') (q : a' = a'') : a = a''
---  \elim q
---  | idp => p
+{%arend%}
+\func \infixr 5 *> {A : \Type} {a a' a'' : A} (p : a = a') (q : a' = a'') : a = a''
+  \elim q
+  | idp => p
+{%endarend%}
 
--- Мы можем доказывать различные свойства этой функции.
--- Например, idp является единицей справа и слева для *.
+For example, the universe {%ard%}\Set{%endard%} of sets is 1-type and {%ard%}*>{%endard%} in this case
+defines the composition of bijections between sets.
+
+We can prove that {%ard%}*>{%endard%} and {%ard%}idp{%endard%} satisfy the required properties:
+
+{%arend%}
+-- 'idp' is left and right identity
 \func idp-right {A : \Type} {x y : A} (p : x = y) : p *> idp = p => idp
 
 \func idp-left {A : \Type} {x y : A} (p : x = y) : idp *> p = p \elim p
   | idp => idp
 
--- * ассоциативна.
+-- * is associative
 \func *-assoc {A : \Type} {x y z w : A} (p : x = y) (q : y = z) (r : z = w)
   : (p *> q) *> r = p *> (q *> r) \elim r
   | idp => idp
 
--- sym возвращает обратный элемент.
+-- 'sym' is inverse 
 \func sym-left {A : \Type} {x y : A} (p : x = y) : sym p *> p = idp
   \elim p
   | idp => idp
@@ -391,12 +403,20 @@ We can now prove that dependent pairs of sets is a set as follows:
 \func sym-right {A : \Type} {x y : A} (p : x = y) : p *> sym p = idp
   \elim p
   | idp => idp
+{%endarend%}
 
--- То есть * похожа на операцию в группе.
--- Мы можем доказать различные равенства, верные в группах.
--- Например, мы можем доказать, что можно сокращать слева на элемент.
+The function {%ard%}*>{%endard%} is thus similar to a group operation. For example, we can
+prove the left cancelation property for it:
+
+{%arend%}
 \func cancelLeft {A : \Type} {x y z : A}
                  (p : x = y) (q r : y = z) (s : p *> q = p *> r) : q = r
   \elim p, r
   | idp, idp => sym (idp-left q) *> s
--->
+{%endarend%}
+
+We can generalize this structure and define inductively n-groupoid as a category, where morphisms
+form (n-1)-groupoid. This is precisely the structure corresponding to homotopy level n, where n>=-1 
+is an integer. The types
+with infinite homotopy level correspond to infinity-groupoids, which are not necessarily merely
+limits of n-groupoids and should be defined in a special way.
