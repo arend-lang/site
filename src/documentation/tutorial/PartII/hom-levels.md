@@ -221,33 +221,75 @@ For functions defined by pattern matching the minimal appropriate universe is in
 
 # Propositions ∨ and ∃
 
+We are now ready to define propositional operations "or" and "exists", which were left undefined in the 
+previous module. Types {%ard%}Either{%endard%} and {%ard%}\Sigma{%endard%}, the Curry-Howard "or" and "exists"
+respectively, are not propositions even if they are applied to propositions, but we can fix it by applying propositional
+truncation. "or" can be equivalently defined either as a truncation of {%ard%}Either{%endard%} or as a 
+{%ard%}\truncated \data{%endard%}:
+
+{%arend%}
+\data Either (A B : \Type) | inl A | inr B
+
+\truncated \data \fixr 2 Or (A B : \Type) : \Prop
+  | inl A
+  | inr B
+
+\func \fixr 2 Or' (A B : \Type) : \Prop => Trunc (Either A B)
+{%endarend%}
+
+It is easy to see that {%ard%}Or{%endard%} satisfies the required properties: {%ard%}A -> A `Or` B{%endard%}
+(constructor {%ard%}inl{%endard%}), {%ard%}B -> A `Or` B{%endard%} (constructor {%ard%}inr{%endard%}) and
+for any proposition {%ard%}C{%endard%} and all types {%ard%}A{%endard%}, {%ard%}B{%endard%} if 
+{%ard%}A -> C{%endard%} and {%ard%}B -> C{%endard%}, then {%ard%}A `Or` B -> C{%endard%}. The latter is
+the recursor for {%ard%}Or{%endard%}:
+
+{%arend%}
+\func Or-rec {A B C : \Prop} (f : A -> C) (g : B -> C) (p : A `Or` B) : C \elim p
+  | inl a => f a
+  | inr b => g b
+{%endarend%}
+
+Similarly, "exists" is the propositional truncation of {%ard%}\Sigma{%endard%}:
+
+{%arend%}
+\func exists (A : \Type) (B : A -> \Prop) => Trunc (\Sigma (x : A) (B x))
+{%endarend%}
+
+Note that the predicate "A is nonempty" defined via {%ard%}exists{%endard%} as 
+{%ard%}exists A (\lam _ => Unit){%endard%} ("there exists a : A such that True is true") is equivalent to
+{%ard%}Trunc A{%endard%}.
+
+We can use this definition of "exists", for example, to give a proper definition of the 
+image of a function:
+
+{%arend%}
+\func image {A B : \Type} (f : A -> B) => \Sigma (b : B) (Trunc (\Sigma (a : A) (f a = b)))
+{%endarend%}
+
+Note that the definition without truncation is not correct:
+
+{%arend%}
+\func image' {A B : \Type} (f : A -> B) => \Sigma (b : B) (\Sigma (a : A) (f a = b))
+
+-- image {Nat} {\Sigma} (\lam _ => ()) == \Sigma
+-- image' {Nat} {\Sigma} (\lam _ => ()) == Nat
+{%endarend%}
+
+# Equality of types, 'iso'
+
 <!--
 
-if (argument instanceof ReferenceExpression && ((ReferenceExpression)argument).getBinding() instanceof TypedBinding) {
-      System.out.println("bad binding!");
-    }
 
-if (expr.getArgument() instanceof ReferenceExpression) {
-      ReferenceExpression arg = (ReferenceExpression) expr.getArgument();
-      if (arg.getBinding().isHidden()) {
-        return makeReference(expr);
-      }
-    }
 
 -- 4. Или, существует.
 
 -- Теперь мы можем определить операции "или" и "существует" над утверждениями.
 -- Мы можем определить "или" как обрезание Either, либо через \truncated \data.
--- \data Either (A B : \Type) | inl A | inr B
--- \func \fixr 2 Or (A B : \Prop) : \Prop => Trunc (Either A B)
 
 --  | Either Nat Nat | = | Nat |
 
 --  | Or Nat Nat | = 1
 
-\truncated \data \fixr 2 Or (A B : \Type) : \Prop
-  | inl A
-  | inr B
 
 \func sigmaOr (x : \Sigma) : Or Nat Nat => inl 0
 
@@ -262,12 +304,8 @@ if (expr.getArgument() instanceof ReferenceExpression) {
 -- 2. B -> A `Or` B
 -- 3. Для любого утверждения C если A -> C и B -> C, то A `Or` B -> C.
 -- Первые два свойства -- это просто конструкторы Or, а последнее -- это просто его рекурсор:
-\func Or-rec {A B C : \Prop} (f : A -> C) (g : B -> C) (p : A `Or` B) : C \elim p
-  | inl a => f a
-  | inr b => g b
 
 -- "Существует" тоже легко определяется через Trunc:
-\func exists (A : \Type) (B : A -> \Prop) => Trunc (\Sigma (x : A) (B x))
 
 -- 5. Предикат "тип не пуст".
 
@@ -284,10 +322,8 @@ if (expr.getArgument() instanceof ReferenceExpression) {
 
 \func image' {A B : \Type} (f : A -> B) => \Sigma (b : B) (\Sigma (a : A) (f a = b))
 -- image' {A} {B} f == A
--- image' {Nat} {\Sigma} (\lam _ => ()) == Nat
 
 \func image {A B : \Type} (f : A -> B) => \Sigma (b : B) (Trunc (\Sigma (a : A) (f a = b)))
--- image {Nat} {\Sigma} (\lam _ => ()) == \Sigma
 
 -- true, (\lam x => x) true : Bool
 -- false : Bool
