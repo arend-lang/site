@@ -23,9 +23,19 @@ is a proposition by an axiom {%ard%}Path.inProp P{%endard%} located in Prelude.
 
 The construction of a function in the opposite direction from {%ard%}PropInType{%endard%} to
 {%ard%}\Prop{%endard%} is also simple, but requires an additional language construct 
-{%ard%}\use \level{%endard%}. We will discuss this construct in full generality a bit later, here
+{%ard%}\use \level{%endard%}. 
+
+The {%ard%}\use \level{%endard%} construct allows to place a data definition {%ard%}D A_1 ... A_n{%endard%}
+in the universe {%ard%}\Prop{%endard%} as long as there is a proof of 
+{%ard%}\Pi (a_1 : A_1) ... (a_n : A_n) -> isProp (D a_1 ... a_n){%endard%}. In order to do that one 
+should write a function with corresponding result type in the \where-block of {%ard%}D{%endard%} and
+with {%ard%}\use \level{%endard%} keywords instead of {%ard%}\func{%endard%}.  
+
+<!--
+We will discuss this construct in full generality a bit later, here
 we use it as a means to place a data definition {%ard%}D A_1 ... A_n{%endard%} in the universe {%ard%}\Prop{%endard%}
 as long as there is a proof of {%ard%}\Pi (a_1 : A_1) ... (a_n : A_n) -> isProp (D a_1 ... a_n){%endard%}:
+-->
 
 {%arend%}
 \data PropInType-to-Prop (A : \Type) (p : isProp A)
@@ -40,6 +50,10 @@ as long as there is a proof of {%ard%}\Pi (a_1 : A_1) ... (a_n : A_n) -> isProp 
       | inc a1, inc a2 => pmap inc (p a1 a2)
   }
 {%endarend%}
+
+As we will discuss below, there are universes {%ard%}\Set{%endard%} of all sets and, in general,
+{%ard%}\n-Type{%endard%} of all types of homotopy level n. The {%ard%}\use \level{%endard%} construct
+can be used similarly in these cases, see <!-- TODO:ref --> for details.
 
 The embedding of {%ard%}\Prop{%endard%} into {%ard%}PropInType{%endard%} is inverse to the map
 {%ard%}PropInType-to-Prop{%endard%}, but we have not yet introduced all the tools necessary to prove that.
@@ -68,117 +82,157 @@ in {%ard%}\Set{%endard%} its equality type lies in the universe {%ard%}\Prop{%en
 use {%ard%}Path.inProp{%endard%} to prove {%ard%}isSet A{%endard%} for sets in {%ard%}\Set{%endard%}:
 
 {%arend%}
-\func Set-to-SetInType (A : \Set) : \Sigma (A : \Type n) (isSet A) =>
+\func Set-to-SetInType (A : \Set \lp) : \Sigma (A : \Type \lp) (isSet A) =>
        (A, \lam x y => Path.inProp (x = y))
 {%endarend%}
 
 The inverse function can be constructed with the use of {%ard%}\use \level{%endard%} in the similar way as the function
-{%ard%}PropInType-to-Prop{%endard%}. The general syntax and semantics of {%ard%}\use \level{%endard%} will
-become clear as soon as we introduce homotopy levels further in this module. See <!-- TODO: ref -->[] for 
-technical details.
+{%ard%}PropInType-to-Prop{%endard%}.
 
-# Homotopy levels
+ 
+# Universes \n-Type
 
-<!--
+Universes {%ard%}\Prop{%endard%} and {%ard%}\Set{%endard%} are particular instances of universes of all types of 
+a given homotopy level. In general, we have a hierarchy {%ard%}\n-Type{%endard%} of universes parameterized by
+homotopy level n. The homotopy level can be specified as the second argument to {%ard%}\Type{%endard%} (after 
+predicative level) or before {%ard%}Type{%endard%}:
 
-    -- Когда мы пишем \use \level, после этого нужно определить функцию, доказывающую утверждение вида \Pi (a_1 : A_1) ... (a_n : A_n) -> D a_1 ... a_n `hasLevel` n для некоторого n,
-    -- где D -- это тип данных или класс, для которого это утверждение доказывется (\use \level должен находиться в \where-блоке D), а A_1 ... A_n -- типы его параметров.
-    -- Если D -- это класс, то A_1 .. A_n -- это типы любого набора полей D.
-    -- После этого гомотопический уровень D становится равным n.
-
--- 2. Вселенная \Set и ее эквивалентность с подвселенной \Type.
-
--- Вселенная \Set n эквивалентна \Sigma (A : \Type n) (isSet A).
-\func isSet (A : \Type) => \Pi (x y : A) -> isProp (x = y)
-
--- Аналогичное функции можно определить для \Set, но мы определим только функцию в одну сторону.
-\func Set1 => \Set
-\func Set2 => \Sigma (A : \Type) (isSet A)
-
--- Для равенств есть следующее правило.
--- Если A : \(n+1)-Type и a,a' : A, то a = a' : \n-Type
-
--- Таким оразом, мы можем доказать, что любой элемент \Set удовлетворяет предикату isSet при помощи Path.inProp следующим образом.
--- Многие индуктивные определения попадают во вселенную \Set.
--- Таким образом, мы можем доказать, что они удовлетворяют isSet, при помощи Path.inProp.
--- Именно таким образом мы доказывали, что Nat удовлетворяет ему, в предыдущей лекции.
-\func Set1-to-Set2 (P : \Set) : Set2 => (P, \lam x y => pathInProp {x = y})
-
--- 3. Гомотопический уровень.
-
--- Типы параметризованы двумя уровнями.
--- Про первый мы уже говорили раньше.
--- Мы будем называть его предикативным уровнем.
--- Второй называется гомотопическим уровнем.
-
--- Его можно указывать вторым аргументом к \Type или перед Type.
+{%arend%}
 \func bak => \Type 30 66
 \func bak' => \66-Type 30
+-- With predicative level omitted.
+\func bak'' => \66-Type
+{%endarend%}
 
--- Гомотопический уровень начинается не с 0, а с -1, но вселенная с этим уровнем обозначается просто \Prop.
--- У этой вселенной нет предикативного уровня.
-\func foo => \Prop
+There are two equivalent ways to refer to the universe of sets: as {%ard%}\Set{%endard%} or as {%ard%}\0-Type{%endard%}. 
+For every predicative level n the universe {%ard%}\Set n{%endard%} is the same as {%ard%}\0-Type n{%endard%}.
+The universe of propositions, however, can only be referred to as {%ard%}\Prop{%endard%}, it is not allowed to write
+{%ard%}\\(-1)-Type{%endard%}. The universe {%ard%}\Prop{%endard%} is slightly aside since it is impredicative, that is
+it does not have predicative level.
 
--- У всех остальных вселенных есть оба уровня.
--- Для вселенных, имеющих гомотопический уровень 0, есть специальный синтаксис.
--- Вместо \Type n 0 можно писать \Set n.
-\func bar => \Type 30 0
-\func bar' => \Set 30
+The universes form a hierarchy according to the following rule: {%ard%}A : \Type n m{%endard%} implies 
+{%ard%}A : \Type (n+1) (m+1){%endard%}. In particular, {%ard%}A : \Prop{%endard%} implies {%ard%}A : \Type n m{%endard%}.
 
--- Вселенные вкладываются друг в большие вселенные.
--- A : \Type n m => A : \Type (n+1) (m+1)
--- В частности \Prop является наименьшей вселенной.
--- A : \Prop => A : \Type n m
+Recall the definition of {%ard%}hasLevel{%endard%} from the previous module:
 
--- Мы можем определить n-уровень индуктивным образом:
-\func hasLevel (A : \Type) (n : Nat) : \Type \elim n
+{%arend%}
+-- The predicate saying "A has level suc-l - 1"
+\func hasLevel (A : \Type) (suc-l : Nat) : \Type \elim suc-l
   | 0 => isProp A
-  | suc n => \Pi (x y : A) -> (x = y) `hasLevel` n
+  | suc suc-l => \Pi (x y : A) -> (x = y) `hasLevel` suc-l
+{%endarend%}
 
--- Таким образом, isProp A -- это A `hasLevel` 0, а isSet A -- это A `hasLevel` 1.
-\func baz => Nat `hasLevel` 1
+For any natural number n>0, the equivalence between {%ard%}\\(n-1)-Type{%endard%} and the subuniverse 
+{%ard%}\Sigma (A : \Type) (A `hasLevel` n){%endard%} can be constructed in the same way as for
+{%ard%}\Set{%endard%}.
 
--- Еще одно полезное свойство гомотопических уровней -- это то, что гомотопический уровень \Pi-типа равен уровню кодомена.
--- A : \Type n m
--- B : A -> \Type n' m'
--- (\Pi (x : A) -> B x) : \Type (\max n n') m'
+The computation of homotopy levels of types is in many respects similar to the computation of predicative
+levels. There are two important distinctions of homotopy levels. Firstly, the level of {%ard%}\Pi{%endard%} is equal
+to the level of its codomain: if {%ard%}A : \Type n m{%endard%} and {%ard%}B : A -> \Type n' m'{%endard%}, then 
+{%ard%}(\Pi (x : A) -> B x) : \Type (\max n n') m'{%endard%}. Secondly, if {%ard%}A : \\(n+1)-Type{%endard%},
+then {%ard%}a=a' : \n-Type{%endard%} for all {%ard%}a a' : A{%endard%}.
 
--- 4. \truncated \data, пропозициональное обрезание.
+# Truncated data, propositional truncation
 
--- Еще одна новая конструкция: \truncated \data.
--- Она позволяет поместить \data в любой гомотопический уровень.
--- У типа данных, объявленного таким образом, есть одно ограничение.
--- Когда определяется рекурсивная фунция над ним, ее кодомен должен лежать в указанной вселенной.
+As we have seen, by means of {%ard%}\use \level{%endard%} a data definition {%ard%}D{%endard%} can be placed in the universe of
+homotopy level n in case {%ard%}D{%endard%} can be proven to be of homotopy level n. A data definition can be also _enforced_
+to be in the universe of a given homotopy level by using the keyword {%ard%}\truncated{%endard%}. In that case the universe
+of the data definition must, of course, be specified explicitly. For example, the projection of types to propositions, which is called
+_propositional truncation_, is a truncated data:
+
+{%arend%}
+-- Proposition 'Trunc A' says "A is nonempty".
 \truncated \data Trunc (A : \Type) : \Prop
   | trunc A
 
-\func H {A : \Type} {B : \Prop} (f : A -> B) (a : Trunc A) : B \elim a
-  | trunc a => f a
-  -- H (trunc a) === f a
+-- Example: 'Trunc Nat'.
+\func truncNat : trunc 0 = trunc 1 => Path.inProp (trunc 0) (trunc 1)
 
--- Например, мы не можем определить функцию ex1, так как Nat не лежит во вселенной \Prop.
--- \func ex1 (t : Trunc Nat) : Nat
---   | trunc n => n
-
--- Но мы можем определить ex2, так как 0 = 0 лежит во вселенной \Prop.
-\func ex2 (t : Trunc Nat) : 0 = 0
-  | trunc n => idp
-
--- Trunc A называется (пропозициональным) обрезанием A.
--- Trunc A -- это утверждение, верное тогда и только тогда, когда тип A населен.
--- Если A населен, то очевидно и Trunc A населен.
-
--- Докажем, что Trunc Empty пуст.
--- Это легко сделать, так как Empty является утверждением.
+-- We can prove the negation of "Empty is nonempty".
 \func Trunc-Empty (t : Trunc Empty) : Empty \elim t
   | trunc a => a
+{%endarend%}
 
--- Тип данных будет находится во вселенной \Prop, если у него максимум один конструктор и типы всех параметры этого конструктора лежат в \Prop.
--- Например, T лежит в \Prop.
--- \data T (b : Bool) \with
---   | true => tt
+Truncating a data has one crucial consequence: any function defined by recursion over a truncated data must have the 
+codomain lying in the universe of the data. For example, the following function does not typecheck:
+
+{%arend%}
+-- This does not typecheck!
+\func ex1 (t : Trunc Nat) : Nat
+  | trunc n => n
+
+-- But we can define 'ex2' since 0 = 0 is in \Prop.
+\func ex2 (t : Trunc Nat) : 0 = 0
+  | trunc n => idp
+{%endarend%}
+
+Elimination principle for {%ard%}Trunc A{%endard%} is restricted to propositions. It says that if {%ard%}B{%endard%}
+is a proposition and there is a function {%ard%}A -> B{%endard%}, then {%ard%}Trunc A{%endard%} implies {%ard%}B{%endard%}:
+
+{%arend%}
+\func Trunc-elim {A : \Type} {B : \Prop} (f : A -> B) (a : Trunc A) : B \elim a
+  | trunc a => f a
+-- The eliminator computes on constructor:
+-- Trunc-elim f (trunc a) ===> f a
+{%endarend%}
+
+Note that we can alternatively define the propositional truncation as a function reflecting this elimination
+principle. Recall, that in this way we can define, say, Church-style natural numbers:
+
+{%arend%}
+\func Nat-church => \Pi (X : \Type) -> (X -> X) -> X -> X
+
+\func zero-church : Nat-church => \lam X f x => x
+\func one-church : Nat-church => \lam X f x => f x
+-- ...
+{%endarend%}
+
+In case of the propositional translation we have the following:
+
+{%arend%}
+\func Trunc' (A : \Type) : \Prop => \Pi (X : \Prop) -> (A -> X) -> X
+
+\func trunc' {A : \Type} (a : A) : Trunc' A => \lam X f => f a
+
+\func Trunc'-elim {A : \Type} {B : \Prop} (f : A -> B) (a : Trunc' A) : B
+  => a B f
+{%endarend%}
+
+In some simple cases there is no need to truncate the data or to use {%ard%}\use \level{%endard%} since
+the data is placed in the universe automatically. For example, a data is placed in {%ard%}\Prop{%endard%}
+if it has at most one constructor and types of all the parameters of the constructor are in {%ard%}\Prop{%endard%}:
+
+{%arend%}
+\data T (b : Bool) \with
+   | true => tt
 
 \func T-test (b : Bool) : \Prop => T b
+{%endarend%}
+
+For functions defined by pattern matching the minimal appropriate universe is inferred:
+
+{%arend%}
+\func T' (b : Bool) : \Type
+  | true => \Sigma
+  | false => Empty
+
+\func T'-test (b : Bool) : \Prop => T' b
+{%endarend%}
+
+# Propositions ∨ and ∃
+
+<!--
+
+if (argument instanceof ReferenceExpression && ((ReferenceExpression)argument).getBinding() instanceof TypedBinding) {
+      System.out.println("bad binding!");
+    }
+
+if (expr.getArgument() instanceof ReferenceExpression) {
+      ReferenceExpression arg = (ReferenceExpression) expr.getArgument();
+      if (arg.getBinding().isHidden()) {
+        return makeReference(expr);
+      }
+    }
 
 -- 4. Или, существует.
 
@@ -187,9 +241,21 @@ technical details.
 -- \data Either (A B : \Type) | inl A | inr B
 -- \func \fixr 2 Or (A B : \Prop) : \Prop => Trunc (Either A B)
 
-\truncated \data \fixr 2 Or (A B : \Prop) : \Prop
+--  | Either Nat Nat | = | Nat |
+
+--  | Or Nat Nat | = 1
+
+\truncated \data \fixr 2 Or (A B : \Type) : \Prop
   | inl A
   | inr B
+
+\func sigmaOr (x : \Sigma) : Or Nat Nat => inl 0
+
+\func orSigma (x : Or Nat Nat) : \Sigma => ()
+
+\func sigmaOrSigma (x : \Sigma) : orSigma (sigmaOr x) = x => idp
+
+\func orSigmaOr (x : Or Nat Nat) : sigmaOr (orSigma x) = x => Path.inProp _ _
 
 -- "Или" должен удовлетворять трем свойствам:
 -- 1. A -> A `Or` B
@@ -214,4 +280,140 @@ technical details.
 -- Но у нас есть более простой вариант (который эквивалентен предыдущему определению):
 \func isInhabited (A : \Type) : \Prop => Trunc A
 
+-- 6. Образ функции.
+
+\func image' {A B : \Type} (f : A -> B) => \Sigma (b : B) (\Sigma (a : A) (f a = b))
+-- image' {A} {B} f == A
+-- image' {Nat} {\Sigma} (\lam _ => ()) == Nat
+
+\func image {A B : \Type} (f : A -> B) => \Sigma (b : B) (Trunc (\Sigma (a : A) (f a = b)))
+-- image {Nat} {\Sigma} (\lam _ => ()) == \Sigma
+
+-- true, (\lam x => x) true : Bool
+-- false : Bool
+
+-- 7. Равенство типов, iso.
+
+-- Мы раньше задавались вопросом когда равны два элемента некоторого типа.
+-- Например, мы видели, что две пары равны тогда и только тогда, когда они равны покомпонентно.
+-- Две функции равны тогда и только тогда, когда они равны поточечно.
+-- Мы можем предложить такую характеризацию для всех типов кроме \Type.
+
+-- Посмотрим на примеры равенств между типами.
+-- Можем ли мы доказать, что следующие равенства верны или ложны?
+-- ? : Maybe Unit = Bool
+-- ? : (\Sigma Nat Nat) = Nat
+-- ? : Bool = Nat
+-- Для первых двух мы ничего не можем доказать, а про последнее мы можем доказать, что оно ложно.
+-- Причина заключается в том, что A = B влечет, что между A и B есть биекция, а между Bool и Nat не может быть биекции.
+
+-- Таким образом, естественно сказать, что два типа равны, если между ними есть биекция.
+-- Мы будем использовавть слово "биекция" только для множеств, а для произвольных типов мы будем говорить "эквивалентность", но определение этого понятия такое же.
+
+\func Equiv (A B : \Type) => \Sigma (f : A -> B)
+                                    (g : B -> A)
+                                    (\Pi (x : A) -> g (f x) = x)
+                                    (\Pi (y : B) -> f (g y) = y)
+
+-- p : A = B
+-- transport (\lam X => X) p : A -> B
+
+-- Мы можем показать, что если A = B, то между ними есть эквивалентность.
+\func equality=>equivalence (A B : \Type) (p : A = B) : Equiv A B =>
+  transport (Equiv A) p (\lam x => x, \lam x => x, \lam x => idp, \lam x => idp)
+
+-- Функция iso, определенная в прелюдии, говорит, что верно и обратное.
+\func equivalence=>equality (A B : \Type) (e : Equiv A B) : A = B =>
+  path (iso e.1 e.2 e.3 e.4)
+
+-- Если у нас есть эквивалентность f : A -> B, то мы можем написать следующую функцию:
+-- \lam a => coe (iso f g p q) a right : A -> B
+-- Равна ли эта функция исходной f?
+-- Ответ: да, так как для coe есть следующее правило:
+-- coe (iso f g p q) a right == a
+
+\func transport {A : \Type} (B : A -> \Type) {a a' : A} (p : a = a') (b : B a) : B a'
+  => coe (\lam i => B (p @ i)) b right
+
+-- Мы можем переписать это правило через transport вместо coe:
+\func test (A B : \Type) (e : Equiv A B)
+  : transport (\lam X => X) (equivalence=>equality A B e) = e.1
+  => idp
+
+-- Мы хотим не только, чтобы Equiv A B -> A = B, но и чтобы тип A = B был эквивалентен типу функций, являющимися эквивалентностями.
+-- Правило, описанное выше позволяет доказать эту эквивалентность в одну сторону.
+-- Ее можно доказать и в обратную (почти), но это доказательство я приводить не буду.
+-- Так как эта аксиома потребуется в ДЗ, я приведу ее без доказательства (но только для множеств, т.к. для произвольных типов ее нужно немного модифицировать).
+
+\func UA (A B : \Set) : Equiv (A = B) (Equiv A B) => (equality=>equivalence A B, equivalence=>equality A B, LRL A B, RLR A B)
+  \where {
+    \func LRL (A B : \Set) (p : A = B) : equivalence=>equality A B (equality=>equivalence A B p) = p => {?}
+    \func RLR (A B : \Set) (e : Equiv A B) : equality=>equivalence A B (equivalence=>equality A B e) = e => {?}
+  }
+
+-- 8. Пример применения унивалентности.
+
+-- Пусть у нас есть некоторый предикат
+-- P : (A -> B) -> \Type
+-- Пусть у нас есть две функции f и g, которые равны поточечно.
+-- Правда ли, что если верно P f, то верно и P g?
+-- ? : P f -> P g
+
+-- Так как у нас есть функциональная экстенсиональность, то поточечное равенство функций влечет, что они равны, а следовательно для них верны одни и те же свойства.
+-- Если бы у нас ее не было, мы не могли бы доказать этот факт.
+
+-- Для типов можно задать аналогичный вопрос.
+-- Унивалентность позволяет нам, доказав какое-то утверждение для одного типа, получить его доказателсьтво для любого равномощного ему.
+-- Например, мы знаем, что равенство на Nat разрешимо.
+-- Отсюда следует, что равенство на любой счетном множестве тоже разрешимо.
+-- Мы можем доказать это и без унивалентности, но доказательство будет сложнее и для каждого предиката нужно выписывать своё доказательство, и существуют предкаты, для которых это вообще не верно без унивалентности.
+
+\data Dec (E : \Type)
+  | yes E
+  | no (Not E)
+
+\func DecEq (A : \Type) => \Pi (x y : A) -> Dec (x = y)
+
+\func NatDecEq : DecEq Nat => {?} -- Мы это доказывали ранее.
+
+\func isCountable (X : \Type) => Equiv Nat X
+
+\func countableDecEq (X : \Type) (p : isCountable X) : DecEq X =>
+  transport DecEq (equivalence=>equality Nat X p) NatDecEq
+
+-- 8. Пропозициональная экстенсиональность.
+
+-- Частный случай унивалентности -- это экстенсиональность для утверждений.
+-- Чтобы доказать, что два утверждения равны, достаточно доказать, что одно влечет второе, и второе влечет первое.
+
+\func propExt {A B : \Prop} (f : A -> B) (g : B -> A) : A = B =>
+  equivalence=>equality A B (f, g, \lam x => Path.inProp _ _, \lam y => Path.inProp _ _)
+
+-- 9. \Prop является множеством
+
+-- Это можно доказать, но мы не будем этого делать.
+\func prop-isSet : isSet \Prop => \lam P Q => {?}
+
+-- 10. \Set не является множеством.
+
+-- Равенства между двумя множествами -- это просто биекции между ними.
+-- Следовательно тип таких равенств не является утверждением, так как существуют множества с двумя различными биекциями между ними.
+-- Другими словами, \Set не является множеством.
+
+\func not-not (b : Bool) : not (not b) = b
+  | true => idp
+  | false => idp
+
+\func true/=false (p : true = false) : Empty => absurd (transport T p ())
+
+\func Set-isNotSet (p : isSet \Set) : Empty =>
+  \let -- Сначала мы определяем равенство между idp и равенством, соответствующим not.
+       | idp=not => p Bool Bool
+                      idp -- : Bool = Bool
+                      (equivalence=>equality Bool Bool (not, not, not-not, not-not)) -- : Bool = Bool
+       -- Теперь легко показать, что биекции, соответствующие этим двум равенствам, равны.
+       -- То есть, что тождественная функция равна not.
+       | id=not : (\lam x => x) = not => pmap (transport (\lam X => X)) idp=not
+       -- Теперь легко получить противоречие.
+  \in true/=false (pmap (\lam f => f true) id=not)
 -->
