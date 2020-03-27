@@ -277,7 +277,23 @@ Note that the definition if the image without truncation is not correct:
 
 # Equality of types, 'iso'
 
+Consider the following question: given any type, when are its elements equal? 
+We have already seen, say, that two pairs are equal iff their components are equal, two functions
+are equal iff they are equal pointwise and so on. By now we can offer a characterization of equality
+for all types, except {%ard%}\Type{%endard%} and other universes.
 
+Consider several examples of equalities between types:
+
+{%arend%}
+\func eq1 : Maybe Unit = Bool => {?}
+\func eq2 : (\Sigma Nat Nat) = Nat => {?}
+\func eq3 : Bool = Nat => {?}
+{%endarend%}
+
+In the first two cases we can prove neither the equalities {%ard%}eq1{%endard%} and {%ard%}eq2{%endard%} nor
+their negations. However, the last equality {%ard%}eq3{%endard%} can certainly be disproved: 
+{%ard%}Bool = Nat{%endard%} implies that there is a bijection between {%ard%}Bool{%endard%} and
+{%ard%}Nat{%endard%}, the assertion which is clearly refutable.
 
 <!--
 
