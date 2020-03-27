@@ -266,7 +266,7 @@ image of a function:
 \func image {A B : \Type} (f : A -> B) => \Sigma (b : B) (Trunc (\Sigma (a : A) (f a = b)))
 {%endarend%}
 
-Note that the definition without truncation is not correct:
+Note that the definition if the image without truncation is not correct:
 
 {%arend%}
 \func image' {A B : \Type} (f : A -> B) => \Sigma (b : B) (\Sigma (a : A) (f a = b))
@@ -277,56 +277,9 @@ Note that the definition without truncation is not correct:
 
 # Equality of types, 'iso'
 
+
+
 <!--
-
-
-
--- 4. Или, существует.
-
--- Теперь мы можем определить операции "или" и "существует" над утверждениями.
--- Мы можем определить "или" как обрезание Either, либо через \truncated \data.
-
---  | Either Nat Nat | = | Nat |
-
---  | Or Nat Nat | = 1
-
-
-\func sigmaOr (x : \Sigma) : Or Nat Nat => inl 0
-
-\func orSigma (x : Or Nat Nat) : \Sigma => ()
-
-\func sigmaOrSigma (x : \Sigma) : orSigma (sigmaOr x) = x => idp
-
-\func orSigmaOr (x : Or Nat Nat) : sigmaOr (orSigma x) = x => Path.inProp _ _
-
--- "Или" должен удовлетворять трем свойствам:
--- 1. A -> A `Or` B
--- 2. B -> A `Or` B
--- 3. Для любого утверждения C если A -> C и B -> C, то A `Or` B -> C.
--- Первые два свойства -- это просто конструкторы Or, а последнее -- это просто его рекурсор:
-
--- "Существует" тоже легко определяется через Trunc:
-
--- 5. Предикат "тип не пуст".
-
-\data Unit | unit
-
--- В логике первого порядка утверждение о том, что множество A населено, определяется как "существует a : A такой, что верно истинное утверждение".
--- Мы можем повторить это определение:
-\func isInhabited' (A : \Type) : \Prop => exists A (\lam _ => Unit)
-
--- Но у нас есть более простой вариант (который эквивалентен предыдущему определению):
-\func isInhabited (A : \Type) : \Prop => Trunc A
-
--- 6. Образ функции.
-
-\func image' {A B : \Type} (f : A -> B) => \Sigma (b : B) (\Sigma (a : A) (f a = b))
--- image' {A} {B} f == A
-
-\func image {A B : \Type} (f : A -> B) => \Sigma (b : B) (Trunc (\Sigma (a : A) (f a = b)))
-
--- true, (\lam x => x) true : Bool
--- false : Bool
 
 -- 7. Равенство типов, iso.
 
