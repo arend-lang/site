@@ -164,12 +164,6 @@ for {%ard%}Nat{%endard%} and {%ard%}Bool{%endard%}:
   | zero => z
   | suc n => s n (Nat-rec P z s n)
 
-**Exercise 7:** Define factorial via Nat-rec (i.e., without recursion and pattern matching).
-{: .notice--info}
-
-**Exercise 8:** Prove associativity of Nat.+ via Nat-elim (i.e., without recursion and pattern matching).
-{: .notice--info}
-
 -- Dependent eliminator for Bool (recursor for Bool is just 'if').
 \func Bool-elim (P : Bool -> \Type)
                 (t : P true)
@@ -178,6 +172,12 @@ for {%ard%}Nat{%endard%} and {%ard%}Bool{%endard%}:
   | true => t
   | false => f
 {%endarend%}
+
+**Exercise 7:** Define factorial via Nat-rec (i.e., without recursion and pattern matching).
+{: .notice--info}
+
+**Exercise 8:** Prove associativity of Nat.+ via Nat-elim (i.e., without recursion and pattern matching).
+{: .notice--info}
 
 **Exercise 9:** Define recursor and eliminator for {%ard%} \data D | con1 Nat | con2 D D | con3 (Nat -> D) {%endard%}.
 {: .notice--info}

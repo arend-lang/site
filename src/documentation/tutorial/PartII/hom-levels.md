@@ -1,5 +1,5 @@
 ---
-title: Homotopy levels
+title: Stratified Universes and Univalence
 nav: hom-levels
 ---
 
@@ -127,7 +127,7 @@ For any natural number n>0, the equivalence between {%ard%}\\(n-1)-Type{%endard%
 {%ard%}\Set{%endard%}.
 
 The computation of homotopy levels of types is in many respects similar to the computation of predicative
-levels. There are two important distinctions of homotopy levels. Firstly, the level of {%ard%}\Pi{%endard%} is equal
+levels. However, there are two important distinctions of homotopy levels. Firstly, the level of {%ard%}\Pi{%endard%} is equal
 to the level of its codomain: if {%ard%}A : \Type n m{%endard%} and {%ard%}B : A -> \Type n' m'{%endard%}, then 
 {%ard%}(\Pi (x : A) -> B x) : \Type (\max n n') m'{%endard%}. Secondly, if {%ard%}A : \\(n+1)-Type{%endard%},
 then {%ard%}a=a' : \n-Type{%endard%} for all {%ard%}a a' : A{%endard%}.
@@ -279,8 +279,9 @@ Note that the definition if the image without truncation is not correct:
 
 Consider the following question: given any type, when are its elements equal? 
 We have already seen, say, that two pairs are equal iff their components are equal, two functions
-are equal iff they are equal pointwise and so on. By now we can offer a characterization of equality
-for all types, except {%ard%}\Type{%endard%} and other universes.
+are equal iff they are equal pointwise and so on. By now we can offer such a characterization of equality
+for almost all the types. The only exception is the type {%ard%}\Type{%endard%} and other universes: we
+do not have any mechanism to prove structural equalities between types.
 
 Consider several examples of equalities between types:
 
@@ -293,57 +294,61 @@ Consider several examples of equalities between types:
 In the first two cases we can prove neither the equalities {%ard%}eq1{%endard%} and {%ard%}eq2{%endard%} nor
 their negations. However, the last equality {%ard%}eq3{%endard%} can certainly be disproved: 
 {%ard%}Bool = Nat{%endard%} implies that there is a bijection between {%ard%}Bool{%endard%} and
-{%ard%}Nat{%endard%}, the assertion which is clearly refutable.
+{%ard%}Nat{%endard%}, the assertion which is clearly refutable. 
 
-<!--
+Thus we can prove negations of equalities for non-isomorphic types, and yet we can prove no interesting equalities
+between types. This suggests to fill the gap by making the assertion that two types are equal iff there
+exists a bijection between them. We will typically use the term "bijection" only for sets and use the
+term "equivalence" instead while talking about arbitrary types.
 
--- 7. Равенство типов, iso.
-
--- Мы раньше задавались вопросом когда равны два элемента некоторого типа.
--- Например, мы видели, что две пары равны тогда и только тогда, когда они равны покомпонентно.
--- Две функции равны тогда и только тогда, когда они равны поточечно.
--- Мы можем предложить такую характеризацию для всех типов кроме \Type.
-
--- Посмотрим на примеры равенств между типами.
--- Можем ли мы доказать, что следующие равенства верны или ложны?
--- ? : Maybe Unit = Bool
--- ? : (\Sigma Nat Nat) = Nat
--- ? : Bool = Nat
--- Для первых двух мы ничего не можем доказать, а про последнее мы можем доказать, что оно ложно.
--- Причина заключается в том, что A = B влечет, что между A и B есть биекция, а между Bool и Nat не может быть биекции.
-
--- Таким образом, естественно сказать, что два типа равны, если между ними есть биекция.
--- Мы будем использовавть слово "биекция" только для множеств, а для произвольных типов мы будем говорить "эквивалентность", но определение этого понятия такое же.
-
+{%arend%}
 \func Equiv (A B : \Type) => \Sigma (f : A -> B)
                                     (g : B -> A)
                                     (\Pi (x : A) -> g (f x) = x)
                                     (\Pi (y : B) -> f (g y) = y)
+{%endarend%}
 
--- p : A = B
--- transport (\lam X => X) p : A -> B
+We can easily prove that if two types are equal, then they are equivalent:
 
--- Мы можем показать, что если A = B, то между ними есть эквивалентность.
+{%arend%}
 \func equality=>equivalence (A B : \Type) (p : A = B) : Equiv A B =>
   transport (Equiv A) p (\lam x => x, \lam x => x, \lam x => idp, \lam x => idp)
+{%endarend%}
 
--- Функция iso, определенная в прелюдии, говорит, что верно и обратное.
+The function {%ard%}iso{%endard%} postulated in Prelude says that the converse is also
+true:
+
+{%arend%}
 \func equivalence=>equality (A B : \Type) (e : Equiv A B) : A = B =>
   path (iso e.1 e.2 e.3 e.4)
+{%endarend%}
 
--- Если у нас есть эквивалентность f : A -> B, то мы можем написать следующую функцию:
--- \lam a => coe (iso f g p q) a right : A -> B
--- Равна ли эта функция исходной f?
--- Ответ: да, так как для coe есть следующее правило:
--- coe (iso f g p q) a right == a
+Note that if {%ard%}f : A -> B{%endard%} is equivalence, then we can define the function 
+{%ard%}f' : A -> B{%endard%} using {%ard%}iso{%endard%} and {%ard%}coe{%endard%}:
 
-\func transport {A : \Type} (B : A -> \Type) {a a' : A} (p : a = a') (b : B a) : B a'
-  => coe (\lam i => B (p @ i)) b right
+{%arend%}
+\func f' : A -> B => \lam a => coe (iso f g p q) a right
+{%endarend%}
 
--- Мы можем переписать это правило через transport вместо coe:
+We have the rule {%ard%}coe (iso f g p q) a right ==> f a{%endard%}, which implies that 
+{%ard%}f'{%endard%} is the same function as {%ard%}f{%endard%}. Therefore the following equality
+holds by reflexivity:
+ 
+{%arend%}
 \func test (A B : \Type) (e : Equiv A B)
   : transport (\lam X => X) (equivalence=>equality A B e) = e.1
   => idp
+{%endarend%}
+
+The property {%ard%}equavalence=>equality{%endard%} does not still fully characterize equalities
+between types: the type {%ard%}A = B{%endard%} should be equivalent to the type {%ard%}Equiv A B{%endard%}.
+The computational rule for {%ard%}iso{%endard%} mentioned above allows to prove that 
+the composition of {%ard%}equivalence=>equality{%endard%} and  {%ard%}equality=>equivalence{%endard%}
+equals the identity on {%ard%}Equiv A B{%endard%}.
+It is also possible to prove, although a bit less straightforwardly, that the opposite composition of the
+maps gives the identity on {%ard%}A = B{%endard%}.
+
+<!--
 
 -- Мы хотим не только, чтобы Equiv A B -> A = B, но и чтобы тип A = B был эквивалентен типу функций, являющимися эквивалентностями.
 -- Правило, описанное выше позволяет доказать эту эквивалентность в одну сторону.
@@ -356,55 +361,64 @@ their negations. However, the last equality {%ard%}eq3{%endard%} can certainly b
     \func RLR (A B : \Set) (e : Equiv A B) : equality=>equivalence A B (equivalence=>equality A B e) = e => {?}
   }
 
--- 8. Пример применения унивалентности.
+-->
 
--- Пусть у нас есть некоторый предикат
--- P : (A -> B) -> \Type
--- Пусть у нас есть две функции f и g, которые равны поточечно.
--- Правда ли, что если верно P f, то верно и P g?
--- ? : P f -> P g
+# An example of application of univalence
 
--- Так как у нас есть функциональная экстенсиональность, то поточечное равенство функций влечет, что они равны, а следовательно для них верны одни и те же свойства.
--- Если бы у нас ее не было, мы не могли бы доказать этот факт.
+Let {%ard%}P : (A -> B) -> \Type{%endard%} be a predicate on functions. Assume 
+{%ard%}f g : A -> B{%endard%} are two functions, which are equal pointwise. Because
+of function extensionality we know that such functions are equal and therefore
+whenever if we prove {%ard%}P f{%endard%} we will obtain also a proof of {%ard%}P g{%endard%}
+for free.
 
--- Для типов можно задать аналогичный вопрос.
--- Унивалентность позволяет нам, доказав какое-то утверждение для одного типа, получить его доказателсьтво для любого равномощного ему.
--- Например, мы знаем, что равенство на Nat разрешимо.
--- Отсюда следует, что равенство на любой счетном множестве тоже разрешимо.
--- Мы можем доказать это и без унивалентности, но доказательство будет сложнее и для каждого предиката нужно выписывать своё доказательство, и существуют предкаты, для которых это вообще не верно без унивалентности.
+Because of the univalence the analogous property holds for types: if we prove that a proposition 
+holds for some type, we will automatically get proofs of this proposition for all equivalent
+types. For example, we know that equality of {%ard%}Nat{%endard%} is decidable. By univalence
+we immediately conclude that all countable sets are also decidable. 
 
+{%arend%}
 \data Dec (E : \Type)
   | yes E
   | no (Not E)
 
 \func DecEq (A : \Type) => \Pi (x y : A) -> Dec (x = y)
 
-\func NatDecEq : DecEq Nat => {?} -- Мы это доказывали ранее.
+-- We proved this earlier.
+\func NatDecEq : DecEq Nat => {?} 
 
 \func isCountable (X : \Type) => Equiv Nat X
 
 \func countableDecEq (X : \Type) (p : isCountable X) : DecEq X =>
   transport DecEq (equivalence=>equality Nat X p) NatDecEq
+{%endarend%}
 
--- 8. Пропозициональная экстенсиональность.
+In this particular case there exist alternative proofs without univalence, however
+any such proof is much more complex. There are also examples of properties of types,
+which are provable for a type {%ard%}A{%endard%}, but not provable without univalence
+for some {%ard%}B{%endard%} equivalent to {%ard%}A{%endard%}.
 
--- Частный случай унивалентности -- это экстенсиональность для утверждений.
--- Чтобы доказать, что два утверждения равны, достаточно доказать, что одно влечет второе, и второе влечет первое.
+# Implications of univalence for \Prop and \Set
 
+One of the consequences of univalence is _extensionality for propositions_: whenever
+two propositions {%ard%}A{%endard%} and {%ard%}B{%endard%} are logically equivalent 
+({%ard%}A -> B{%endard%} and {%ard%}B -> A{%endard%}) they are equal.
+
+{%arend%}
 \func propExt {A B : \Prop} (f : A -> B) (g : B -> A) : A = B =>
   equivalence=>equality A B (f, g, \lam x => Path.inProp _ _, \lam y => Path.inProp _ _)
+{%endarend%} 
 
--- 9. \Prop является множеством
+Another consequence of univalence is that the universe {%ard%}\Prop{%endard%} is a set.
+Quite expectedly, {%ard%}\Set{%endard%} is _not_ a set, but a 1-type. The universe
+{%ard%}\Set{%endard%} is provably not a set only in presence of univalence.
 
--- Это можно доказать, но мы не будем этого делать.
-\func prop-isSet : isSet \Prop => \lam P Q => {?}
+For example, let us show how to prove that {%ard%}\Set{%endard%} is not a set using univalence.
+Recall that univalence says that equalities between two sets are precisely bijections between them.
+Thus the claim would follow if we prove that there exists a set with two different automorphisms.
+The simplest example is the set {%ard%}Bool{%endard%} and the automorphisms {%ard%}id{%endard%}
+and {%ard%}not{%endard%}:
 
--- 10. \Set не является множеством.
-
--- Равенства между двумя множествами -- это просто биекции между ними.
--- Следовательно тип таких равенств не является утверждением, так как существуют множества с двумя различными биекциями между ними.
--- Другими словами, \Set не является множеством.
-
+{%arend%}
 \func not-not (b : Bool) : not (not b) = b
   | true => idp
   | false => idp
@@ -412,13 +426,17 @@ their negations. However, the last equality {%ard%}eq3{%endard%} can certainly b
 \func true/=false (p : true = false) : Empty => absurd (transport T p ())
 
 \func Set-isNotSet (p : isSet \Set) : Empty =>
-  \let -- Сначала мы определяем равенство между idp и равенством, соответствующим not.
-       | idp=not => p Bool Bool
-                      idp -- : Bool = Bool
-                      (equivalence=>equality Bool Bool (not, not, not-not, not-not)) -- : Bool = Bool
-       -- Теперь легко показать, что биекции, соответствующие этим двум равенствам, равны.
-       -- То есть, что тождественная функция равна not.
+  \let 
+  -- We first prove equality between 'idp' and 
+  -- the equality, corresponding to 'not'.
+       | idp=not => 
+          p Bool Bool
+          idp -- : Bool = Bool
+          (equivalence=>equality Bool Bool (not, not, not-not, not-not)) -- : Bool = Bool
+  -- Now we can prove the equality between the two bijections 
+  -- corresponding to 'idp' and 'not', that is that 'id'
+  -- equals 'not'.
        | id=not : (\lam x => x) = not => pmap (transport (\lam X => X)) idp=not
-       -- Теперь легко получить противоречие.
+  -- The contradiction follows easily.
   \in true/=false (pmap (\lam f => f true) id=not)
--->
+{%endarend%}

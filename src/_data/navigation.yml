@@ -85,9 +85,11 @@ documentation:
       - title: "Part II: Homotopy Type Theory"
         url: PartII
         children:
-        - title: "Mere propositions"
+        - title: "Propositions and Sets"
           url: hprops
-        - title: "Homotopy levels"
+        - title: "Stratified Universes and Univalence"
           url: hom-levels
+        - title: "Basic Set Theory"
+          url: sets
   - title: "Libraries"
     url: libraries

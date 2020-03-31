@@ -1,5 +1,5 @@
 ---
-title:  Mere propositions
+title:  Propositions and Sets
 nav: hprops
 ---
 
