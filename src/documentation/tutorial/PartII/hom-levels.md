@@ -466,7 +466,7 @@ and {%ard%}not{%endard%}:
   \in true/=false (pmap (\lam f => f true) id=not)
 {%endarend%}
 
-**Exercise 7:** Prove that {%ard%}\Prop{%endard%} is a set.
+**Exercise 7:** Prove that (Bool = Bool) = Bool.
 {: .notice--info}
 
 **Exercise 8:** Prove that (n+m)-element set is a disjoint union of n- and m-element sets.
