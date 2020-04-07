@@ -3,6 +3,11 @@ title: Stratified Universes and Univalence
 nav: hom-levels
 ---
 
+The source code for this module: [homLevels.zip](code/homLevels.zip).
+{: .notice--success}
+
+<!-- TODO: write intro -->
+
 # The universe \Prop
 
 The universe {%ard%}\Prop{%endard%} consists of all propositions, that is of all types 
@@ -31,12 +36,6 @@ in the universe {%ard%}\Prop{%endard%} as long as there is a proof of
 should write a function with corresponding result type in the \where-block of {%ard%}D{%endard%} and
 with {%ard%}\use \level{%endard%} keywords instead of {%ard%}\func{%endard%}.  
 
-<!--
-We will discuss this construct in full generality a bit later, here
-we use it as a means to place a data definition {%ard%}D A_1 ... A_n{%endard%} in the universe {%ard%}\Prop{%endard%}
-as long as there is a proof of {%ard%}\Pi (a_1 : A_1) ... (a_n : A_n) -> isProp (D a_1 ... a_n){%endard%}:
--->
-
 {%arend%}
 \data PropInType-to-Prop (A : \Type) (p : isProp A)
   | inc A
@@ -54,6 +53,15 @@ as long as there is a proof of {%ard%}\Pi (a_1 : A_1) ... (a_n : A_n) -> isProp 
 As we will discuss below, there are universes {%ard%}\Set{%endard%} of all sets and, in general,
 {%ard%}\n-Type{%endard%} of all types of homotopy level n. The {%ard%}\use \level{%endard%} construct
 can be used similarly in these cases, see <!-- TODO:ref --> for details.
+
+**Exercise 1:** The type {%ard%}Dec A{%endard%} below is by default placed in {%ard%}\Set0{%endard%}. Place it
+in {%ard%}\Prop{%endard%} be means of {%ard%}\use \level{%endard%}.
+{: .notice--info}
+{%arend%}
+\data Dec (A : \Prop)
+  | yes A
+  | no (A -> Empty)
+{%endarend%}
 
 The embedding of {%ard%}\Prop{%endard%} into {%ard%}PropInType{%endard%} is inverse to the map
 {%ard%}PropInType-to-Prop{%endard%}, but we have not yet introduced all the tools necessary to prove that.
@@ -83,7 +91,7 @@ use {%ard%}Path.inProp{%endard%} to prove {%ard%}isSet A{%endard%} for sets in {
 
 {%arend%}
 \func Set-to-SetInType (A : \Set \lp) : \Sigma (A : \Type \lp) (isSet A) =>
-       (A, \lam x y => Path.inProp (x = y))
+       (A, \lam x y => Path.inProp {x = y})
 {%endarend%}
 
 The inverse function can be constructed with the use of {%ard%}\use \level{%endard%} in the similar way as the function
@@ -176,6 +184,9 @@ is a proposition and there is a function {%ard%}A -> B{%endard%}, then {%ard%}Tr
 -- Trunc-elim f (trunc a) ===> f a
 {%endarend%}
 
+**Exercise 2:** Prove that if {%ard%}A : \Prop{%endard%}, then {%ard%}Trunc A{%endard%} is equivalent to {%ard%}A{%endard%}.
+{: .notice--info}
+
 Note that we can alternatively define the propositional truncation as a function reflecting this elimination
 principle. Recall, that in this way we can define, say, Church-style natural numbers:
 
@@ -249,6 +260,16 @@ the recursor for {%ard%}Or{%endard%}:
   | inr b => g b
 {%endarend%}
 
+**Exercise 3:** Prove the following de Morgan's law:
+{: .notice--info}
+{%arend%}
+\func deMorgan (A B C : \Prop) : (\Sigma A (B `Or` C)) <-> ((\Sigma A B) `Or` (\Sigma A C)) => {?}
+{%endarend%}
+
+**Exercise 4:** Define eliminator for {%ard%}Or{%endard%} via {%ard%}Or-rec{%endard%} not using pattern matching
+on {%ard%}Or{%endard%}.
+{: .notice--info}
+
 Similarly, "exists" is the propositional truncation of {%ard%}\Sigma{%endard%}:
 
 {%arend%}
@@ -274,6 +295,12 @@ Note that the definition if the image without truncation is not correct:
 -- image {Nat} {\Sigma} (\lam _ => ()) == \Sigma
 -- image' {Nat} {\Sigma} (\lam _ => ()) == Nat
 {%endarend%}
+
+**Exercise 5:** A type {%ard%}C{%endard%} is called cogenerator if for every sets {%ard%}A{%endard%} and {%ard%}B{%endard%}
+ and all functions {%ard%}f,g : A -> B{%endard%} whenever {%ard%}h `o` f = h `o` g{%endard%} holds for all {%ard%}h : B -> C{%endard%},
+ then {%ard%}f = g{%endard%}. Prove that {%ard%}\Prop{%endard%} is cogenerator.
+{: .notice--info}
+
 
 # Equality of types, 'iso'
 
@@ -327,7 +354,7 @@ Note that if {%ard%}f : A -> B{%endard%} is equivalence, then we can define the 
 {%ard%}f' : A -> B{%endard%} using {%ard%}iso{%endard%} and {%ard%}coe{%endard%}:
 
 {%arend%}
-\func f' : A -> B => \lam a => coe (iso f g p q) a right
+\let f' : A -> B => \lam a => coe (iso f g p q) a right
 {%endarend%}
 
 We have the rule {%ard%}coe (iso f g p q) a right ==> f a{%endard%}, which implies that 
@@ -346,22 +373,16 @@ The computational rule for {%ard%}iso{%endard%} mentioned above allows to prove 
 the composition of {%ard%}equivalence=>equality{%endard%} and  {%ard%}equality=>equivalence{%endard%}
 equals the identity on {%ard%}Equiv A B{%endard%}.
 It is also possible to prove, although a bit less straightforwardly, that the opposite composition of the
-maps gives the identity on {%ard%}A = B{%endard%}.
+maps gives the identity on {%ard%}A = B{%endard%}. This principle is called _the univalence axiom_ or
+just _univalence_. We simply assume it as an axiom, although it is possible to prove it:
 
-<!--
-
--- Мы хотим не только, чтобы Equiv A B -> A = B, но и чтобы тип A = B был эквивалентен типу функций, являющимися эквивалентностями.
--- Правило, описанное выше позволяет доказать эту эквивалентность в одну сторону.
--- Ее можно доказать и в обратную (почти), но это доказательство я приводить не буду.
--- Так как эта аксиома потребуется в ДЗ, я приведу ее без доказательства (но только для множеств, т.к. для произвольных типов ее нужно немного модифицировать).
-
+{%arend%}
 \func UA (A B : \Set) : Equiv (A = B) (Equiv A B) => (equality=>equivalence A B, equivalence=>equality A B, LRL A B, RLR A B)
   \where {
     \func LRL (A B : \Set) (p : A = B) : equivalence=>equality A B (equality=>equivalence A B p) = p => {?}
     \func RLR (A B : \Set) (e : Equiv A B) : equality=>equivalence A B (equivalence=>equality A B e) = e => {?}
   }
-
--->
+{%endarend%}
 
 # An example of application of univalence
 
@@ -409,6 +430,10 @@ two propositions {%ard%}A{%endard%} and {%ard%}B{%endard%} are logically equival
 {%endarend%} 
 
 Another consequence of univalence is that the universe {%ard%}\Prop{%endard%} is a set.
+
+**Exercise 6:** Prove that {%ard%}\Prop{%endard%} is a set.
+{: .notice--info}
+
 Quite expectedly, {%ard%}\Set{%endard%} is _not_ a set, but a 1-type. The universe
 {%ard%}\Set{%endard%} is provably not a set only in presence of univalence.
 
@@ -440,3 +465,18 @@ and {%ard%}not{%endard%}:
   -- The contradiction follows easily.
   \in true/=false (pmap (\lam f => f true) id=not)
 {%endarend%}
+
+**Exercise 7:** Prove that {%ard%}\Prop{%endard%} is a set.
+{: .notice--info}
+
+**Exercise 8:** Prove that (n+m)-element set is a disjoint union of n- and m-element sets.
+{: .notice--info}
+
+**Exercise 9:** We say that a type {%ard%}X{%endard%} is injective if for any function 
+{%ard%}f : A -> X{%endard%} and any injection {%ard%}i : A -> B{%endard%}
+    there exists a function {%ard%}l : B -> X{%endard%} such that {%ard%}l `o` i = f{%endard%}.
+    Prove that {%ard%}\Prop{%endard%} is injective.
+{: .notice--info}
+
+
+

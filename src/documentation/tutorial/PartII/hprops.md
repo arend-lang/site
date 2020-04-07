@@ -3,6 +3,9 @@ title:  Propositions and Sets
 nav: hprops
 ---
 
+The source code for this module: [hprops.zip](code/hprops.zip).
+{: .notice--success}
+
 Recall that under Curry-Howard correspondence there is no difference between propositions and types:
 all types are propositions and vice versa. In this module we discuss and justify an alternative view,
 according to which propositions are only some types, namely those types, all elements of which are equal.
@@ -98,6 +101,11 @@ that {%ard%}Even-inc{%endard%} is injective:
   \lam x y p => sigmaEq (\lam n => T (isEven n)) x y p T-lem
 {%endarend%}
 
+**Exercise 1:** Let {%ard%}f : A -> B{%endard%} and {%ard%}g : B -> C{%endard%} be some functions.
+ Prove that if {%ard%}f{%endard%} and {%ard%}g{%endard%} are injective, then {%ard%}g `o` f{%endard%}
+ is also injective. Prove that if {%ard%}g `o` f{%endard%} is injective, then {%ard%}f{%endard%} is also injective.
+{: .notice--info}
+
 Consider one more example. Define functions computing residuals modulo 3 and 5 and define the type
 of all natural numbers that are divisible by 3 or 5:
 
@@ -135,6 +143,10 @@ This is so because for some {%ard%}n{%endard%}, namely for those that are divisi
 by both 3 and 5, there are several non-equal proofs of {%ard%}(mod3 n = 0) `Either` (mod5 n = 0){%endard%}.
 Thus {%ard%}MultipleOf3Or5{%endard%} is not a subtype of {%ard%}Nat{%endard%}.
 
+**Exercise 2:** Define the predicate "divisible by 3 or by 5" in such a way that it is a proposition.
+    Prove that {%ard%}MultipleOf3Or5{%endard%} embeds in {%ard%}Nat{%endard%}.
+{: .notice--info}
+
 # Mere propositions
 
 As the two examples above illustrate, a predicate defining a subtype should have the range
@@ -150,6 +162,11 @@ For example, according to this definition {%ard%}Bool{%endard%} is not a proposi
 {%arend%}
 \func BoolIsNotProp (p : isProp Bool) : Empty => transport T (p true false) ()
 {%endarend%}
+
+**Exercise 3:** We say that a type {%ard%}A{%endard%} is trivial if there exists an element in {%ard%}A{%endard%}
+ such that it is equal to any other element in {%ard%}A{%endard%}. Prove that {%ard%}A{%endard%} is trivial iff
+ {%ard%}A{%endard%} is proposition and there is an element in {%ard%}A{%endard%}.
+{: .notice--info}
 
 Propositions can be formed using logical operations ⊤, ⊥, ∧, →, ∀ the same as
 in the Curry-Howard correspondence. Operations ∨, ∃ and the predicate = can, of course,
@@ -220,6 +237,12 @@ and the equality type.
 \func equality-isProp {A : \Type} (a a' : A) : isProp (a = a') => {?}
 {%endarend%}
 
+**Exercise 4:** Prove that {%ard%}Either{%endard%} is not a proposition in general.
+{: .notice--info}
+
+**Exercise 5:** Prove that {%ard%}\Sigma (x : A) (B x){%endard%} preserves propositions.
+{: .notice--info}
+
 For now we cannot define disjunctions, existential quantifiers and equality. But later
 we will introduce a way to project appropriately any type {%ard%}A{%endard%} to the class
 of propositions, and this projection will be applied to the types above to get 
@@ -243,17 +266,44 @@ some of which are valued in propositions and some of which are not. For example:
 
 {%arend%}
 -- Defines predicate valued in propositions
-\data \infix 4 <=' (n m : Nat) \with
+\data \infix 4 <= (n m : Nat) \with
   | 0, _ => zero<=_
-  | suc n, suc m => suc<=suc (n <=' m)
+  | suc n, suc m => suc<=suc (n <= m)
 
 -- Does not define a predicate valued in propositions
-\data \infix 4 <='' (n m : Nat) \elim m
+\data \infix 4 <=' (n m : Nat) \elim m
   | m => <=-refl (n = m)
   | 1 => zero<=one (n = 0)
-  | suc m => <=-step (n <='' m)
-
+  | suc m => <=-step (n <=' m)
 {%endarend%}
+
+**Exercise 6:** Prove that {%ard%}<={%endard%} and {%ard%}<=''{%endard%}
+are predicates. It is allowed to use the fact that {%ard%}Nat{%endard%} is a set
+without a proof.
+{: .notice--info}
+{%arend%}
+\data <='' (n m : Nat) : \Set0 \elim m
+  | suc m => <=-step (<='' n m)
+  | m => <=-refl (n = m)
+{%endarend%}
+
+**Exercise 7:** Prove that {%ard%}ReflClosure <={%endard%} is not a predicate, but
+{%ard%}ReflClosure (\lam x y => T (x < y)){%endard%} is a predicate.
+{: .notice--info}
+{%arend%}
+\func \infix 4 < (n m : Nat) : Bool
+  | _, 0 => false
+  | 0, suc _ => true
+  | suc n, suc m => n < m
+
+\data ReflClosure (R : Nat -> Nat -> \Type) (x y : Nat)
+  | refl (x = y)
+  | inc (R x y)
+{%endarend%}
+
+**Exercise 8:** Prove that if {%ard%}A{%endard%} embeds in {%ard%}B{%endard%} and 
+{%ard%}B{%endard%} is a proposition, then {%ard%}A{%endard%} is proposition.
+{: .notice--info}
 
 # Sets
 
@@ -355,6 +405,21 @@ We can now prove that dependent pairs of sets is a set as follows:
       (\lam p => \case \elim t', \elim p \with { | _, idp => ((idp,idp),idp) })
 {%endarend%}
 
+**Exercise 9:** Prove that a type with decidable equality is a set. Note that this implies that
+{%ard%}Nat{%endard%} is a set since we have already proved that {%ard%}Nat{%endard%} has decidable
+equality.
+{: .notice--info}
+
+**Exercise 10:** Prove that if {%ard%}A{%endard%} and {%ard%}B{%endard%} are sets, then
+{%ard%}A `Or` B{%endard%} is also a set.
+{: .notice--info}
+
+**Exercise 11:** Prove that if {%ard%}B x{%endard%} is a set, then {%ard%}\Pi (x : A) -> B x{%endard%} is a set.
+{: .notice--info}
+
+**Exercise 12:** Prove that if {%ard%}A{%endard%} is a set, then {%ard%}List A{%endard%} is a set.
+{: .notice--info}
+
 # Groupoid structure on types
 
 We conclude with description of a structure that characterizes types of higher homotopy levels. 
@@ -420,3 +485,9 @@ form (n-1)-groupoid. This is precisely the structure corresponding to homotopy l
 is an integer. The types
 with infinite homotopy level correspond to infinity-groupoids, which are not necessarily merely
 limits of n-groupoids and should be defined in a special way.
+
+**Exercise 13:** Prove that n-types are closed under \Pi-types.
+Hint: Proof by induction. For the induction step 'suc n' one should prove that if {%ard%}f,g : \Pi (x : A) -> B x{%endard%},
+then {%ard%}f = g{%endard%} is equivalent to {%ard%}\Pi (x : A) -> f x = g x{%endard%}.
+{: .notice--info}
+
