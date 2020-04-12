@@ -102,6 +102,32 @@ feature_row:
     btn_label: "Show More"
     btn_class: "btn--inverse"
 
+  - image_path: /assets/images/ShowTypes-460x200.png
+    title: "Show Types"
+    excerpt: "IntelliJ Arend can show types of (sub)expressions.
+              To invoke it press **Ctrl+Shift+P** on an expression."
+    url: "/about//intellij-features/ShowTypes.gif"
+    id: "show-types"
+    btn_label: "Show More"
+    btn_class: "btn--inverse"
+
+  - image_path: /assets/images/ShowExpr-460x200.png
+    title: "Show Expression"
+    excerpt: "IntelliJ Arend can show (normalized) representation of an arbitrary expression.
+              To invoke it press **Ctrl+Shift+O** on an expression."
+    url: "/about//intellij-features/ShowExpr.gif"
+    id: "show-expr"
+    btn_label: "Show More"
+    btn_class: "btn--inverse"
+
+  - image_path: /assets/images/NormalizeExpr-460x200.png
+    title: "Normalize Expression"
+    excerpt: "IntelliJ Arend can replace an expression with its normalized result."
+    url: "/about//intellij-features/NormalizeExpr.gif"
+    id: "normalize-expr"
+    btn_label: "Show More"
+    btn_class: "btn--inverse"
+
 ---
 
 # IntelliJ Arend Features
