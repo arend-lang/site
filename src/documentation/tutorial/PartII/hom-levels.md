@@ -6,7 +6,17 @@ nav: hom-levels
 The source code for this module: [homLevels.zip](code/homLevels.zip).
 {: .notice--success}
 
-<!-- TODO: write intro -->
+In this module we introduce additional universes and explain the principles that allow to prove non-trivial
+equalities between elements of universes, that is between types.
+
+Firstly, we show that the stratification of types according to their homotopy level is reflected in the structure of universes. 
+Apart from the universe {%ard%}\Type{%endard%} of all types there are more specific 
+universes: the universe {%ard%}\Prop{%endard%} of all propositions, the universe {%ard%}\Set{%endard%}
+of all sets and more generally the universe {%ard%}\n-Type{%endard%} of all types of homotopy level
+{%ard%}n{%endard%}.
+
+Secondly, we introduce the _univalence axiom_ saying that equalities between types are precisely the equivalences
+between them.
 
 # The universe \Prop
 
@@ -52,10 +62,10 @@ with {%ard%}\use \level{%endard%} keywords instead of {%ard%}\func{%endard%}.
 
 As we will discuss below, there are universes {%ard%}\Set{%endard%} of all sets and, in general,
 {%ard%}\n-Type{%endard%} of all types of homotopy level n. The {%ard%}\use \level{%endard%} construct
-can be used similarly in these cases, see <!-- TODO:ref --> for details.
+can be used similarly in these cases, see []<!-- TODO:ref --> for details.
 
 **Exercise 1:** The type {%ard%}Dec A{%endard%} below is by default placed in {%ard%}\Set0{%endard%}. Place it
-in {%ard%}\Prop{%endard%} be means of {%ard%}\use \level{%endard%}.
+in {%ard%}\Prop{%endard%} by means of {%ard%}\use \level{%endard%}.
 {: .notice--info}
 {%arend%}
 \data Dec (A : \Prop)
@@ -437,7 +447,7 @@ Another consequence of univalence is that the universe {%ard%}\Prop{%endard%} is
 Quite expectedly, {%ard%}\Set{%endard%} is _not_ a set, but a 1-type. The universe
 {%ard%}\Set{%endard%} is provably not a set only in presence of univalence.
 
-For example, let us show how to prove that {%ard%}\Set{%endard%} is not a set using univalence.
+Let us show how to prove that {%ard%}\Set{%endard%} is not a set using univalence.
 Recall that univalence says that equalities between two sets are precisely bijections between them.
 Thus the claim would follow if we prove that there exists a set with two different automorphisms.
 The simplest example is the set {%ard%}Bool{%endard%} and the automorphisms {%ard%}id{%endard%}

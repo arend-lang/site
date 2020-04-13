@@ -143,7 +143,7 @@ This is so because for some {%ard%}n{%endard%}, namely for those that are divisi
 by both 3 and 5, there are several non-equal proofs of {%ard%}(mod3 n = 0) `Either` (mod5 n = 0){%endard%}.
 Thus {%ard%}MultipleOf3Or5{%endard%} is not a subtype of {%ard%}Nat{%endard%}.
 
-**Exercise 2:** Define the predicate "divisible by 3 or by 5" in such a way that it is a proposition.
+**Exercise 2:** Define the predicate "divisible by 3 or by 5" in such a way that it becomes a proposition.
     Prove that {%ard%}MultipleOf3Or5{%endard%} embeds in {%ard%}Nat{%endard%}.
 {: .notice--info}
 
