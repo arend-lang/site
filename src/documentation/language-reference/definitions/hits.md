@@ -69,7 +69,7 @@ Let us give a few examples:
   | inT A
   | truncT (x y : Trunc A) (i : I) \elim i {
     | left => x
-    | right => x
+    | right => y
   }
 
 -- Set quotient
@@ -89,8 +89,8 @@ Let us give a few examples:
 
 If {%ard%} X {%endard%} is a proposition, then, to define a function of type {%ard%} Trunc A -> X {%endard%}, it is enough to specify its value for {%ard%} inT a {%endard%}.
 The same works for any higher inductive type and any level.
-For example, to define a function {%ard%} Quotient A -> X {%endard%}, it is enough to specify its value for {%ard%} inQ a {%endard%} and {%ard%} equivQ x y r i {%endard%}
+For example, to define a function {%ard%} Quotient A R -> X {%endard%}, it is enough to specify its value for {%ard%} inQ a {%endard%} and {%ard%} equivQ x y r i {%endard%}
 if {%ard%} X {%endard%} is a set and only for {%ard%} inQ a {%endard%} if it is a proposition.
 This also works for several arguments.
-For example, if {%ard%} X {%endard%} is a set, then, to define a function {%ard%} Quotient A -> Quotient A -> X {%endard%},
+For example, if {%ard%} X {%endard%} is a set, then, to define a function {%ard%} Quotient A R -> Quotient A R -> X {%endard%},
 it is enough to specify its value for {%ard%} inQ a, inQ a' {%endard%}, {%ard%} inQ a, equivQ x y r i {%endard%}, and {%ard%} equivQ x y r i, inQ a {%endard%}.
