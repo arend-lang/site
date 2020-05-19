@@ -73,7 +73,7 @@ The equality {%ard%}left = right{%endard%} implies that some {%ard%}a : A{%endar
 there exists a function {%ard%}f : I -> A{%endard%} such that {%ard%}f left ==> a{%endard%} and {%ard%}f right ==> a'{%endard%}
 (where {%ard%}==>{%endard%} denotes computational equality). The type {%ard%}a = {A} a'{%endard%} is defined simply as the type
 of all functions {%ard%}f : I -> A{%endard%} satisfying this property. The constructor {%ard%}path (f : I -> A) : f left = f right{%endard%}
-allows to construct equality proofs out of such functions and the function {%ard%}@ (p : a = a') (i : I) : A{%endard%} makes the
+allows to construct equality proofs out of such functions and the function {%ard%}@ (p : a = a') (i : I) : A{%endard%} does the
 inverse operation:
 
 {%arend%}

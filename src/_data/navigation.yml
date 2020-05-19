@@ -91,5 +91,7 @@ documentation:
           url: hom-levels
         - title: "Basic Set Theory"
           url: sets
+        - title: "Spaces and Homotopy Theory"
+          url: hits
   - title: "Libraries"
     url: libraries
