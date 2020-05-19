@@ -100,23 +100,23 @@ Consider the following example:
 
 {-
 -- This function will not typecheck.
-\func extract (p : Exists (n : Nat) (n = 3)) : Nat
+\func extract (p : Exists Nat (\lam n => n = 3)) : Nat
   | witness a b => a
 -}
 
-\func existsSuc (p : Exists (n : Nat) (n = 3)) : Exists (n : Nat) (suc n = 4)
+\func existsSuc (p : Exists Nat (\lam n => n = 3)) : Exists Nat (\lam n => suc n = 4)
   | witness n p => witness (suc n) (path (\lam i => suc (p @ i)))
 
 
-\func existsEq (p : Exists (n : Nat) (n = 3)) : 0 = 0
+\func existsEq (p : Exists Nat (\lam n => n = 3)) : 0 = 0
   | witness n p => path (\lam _ => 0)
 {% endarend %}
 
 The data type {%ard%} Exists {%endard%} defines a proposition of the form 'There is an {%ard%} a : A {%endard%} such that {%ard%} B a {%endard%}'.
-Note that a function like {%ard%} extract {%endard%}, which extracts {%ard%} n : Nat {%endard%} out of a proof of {%ard%} Exists (n : Nat) (n = 3) {%endard%},
+Note that a function like {%ard%} extract {%endard%}, which extracts {%ard%} n : Nat {%endard%} out of a proof of {%ard%} Exists Nat (\lam n => n = 3) {%endard%},
 is not valid as its result type {%ard%} Nat {%endard%} is of homotopy level of a set (h = 0), which is greater than the homotopy level of a proposition (h = -1).
 Two other functions {%ard%} existsSuc {%endard%} and {%ard%} existsEq {%endard%} in the example above are correct as 
-their result types, {%ard%} Exists (n : Nat) (suc n = 4) {%endard%} and {%ard%} 0 = 0 {%endard%} respectively, are propositions.
+their result types, {%ard%} Exists Nat (\lam n => suc n = 4) {%endard%} and {%ard%} 0 = 0 {%endard%} respectively, are propositions.
 
 If the universe of the resulting type is greater than the universe of the data type, it is still possible to define a function by pattern matching on it if the resulting type is _provably_ belongs to the universe of the data type.
 This can be done with keyword [\level](level#level-of-a-type).
