@@ -3,7 +3,8 @@ title: Basic Set Theory
 nav: set-theory
 ---
 
-The source code for this module: [sets.zip](code/sets.zip).
+The source code for this module: [PartII/Sets.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartII/src/Sets.ard) \\
+The source code for the exercises: [PartII/SetsEx.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartII/src/Exercises/SetsEx.ard)
 {: .notice--success}
 
 The types, which are sets according to the view adopted in the last modules, behave like sets in set theory.
@@ -53,7 +54,6 @@ Note that the definition of surjection requires the propositional truncation.
 We now give an obvious definition of a bijection and prove that bijectivity
 is a conjuction of injectivity and surjectivity.
 
-<!-- TODO: add comments -->
 {%arend%}
 \func isBij {A B : \Set} (f : A -> B) => \Sigma (g : B -> A) (\Pi (x : A) -> g (f x) = x) (\Pi (y : B) -> f (g y) = y)
 

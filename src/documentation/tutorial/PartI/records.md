@@ -3,7 +3,8 @@ title: Records and Classes
 nav: records
 ---
 
-The source code for this module: [records.zip](code/records.zip).
+The source code for this module: [PartI/Records.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartI/src/Records.ard) \\
+The source code for the exercises: [PartI/RecordsEx.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartI/src/Exercises/RecordsEx.ard)
 {: .notice--success}
 
 In this module we introduce very useful kinds of definitions: records and classes.

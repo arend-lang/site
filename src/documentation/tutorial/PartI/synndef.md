@@ -3,8 +3,8 @@ title: Basics
 nav: syn-n-def
 ---
 
-The source code for this module: [Basics.ard](code/Basics.ard) \\
-The source code for the exercises: [BasicsEx.ard](code/BasicsEx.ard)
+The source code for this module: [PartI/Basics.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartI/src/Basics.ard) \\
+The source code for the exercises: [PartI/BasicsEx.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartI/src/Exercises/BasicsEx.ard)
 {: .notice--success}
 
 In this module we explain the syntax and some key constructs of the Arend language, required to get started with

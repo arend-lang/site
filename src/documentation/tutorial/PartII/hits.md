@@ -3,6 +3,10 @@ title: Spaces and Homotopy Theory
 nav: hits
 ---
 
+The source code for this module: [PartII/Spaces.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartII/src/Spaces.ard) \\
+The source code for the exercises: [PartII/SpacesEx.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartII/src/Exercises/SpacesEx.ard)
+{: .notice--success}
+
 By now we have been mostly living in the world of propositions and sets, where the structure of the type
 {%ard%}x = y{%endard%} is degenerate so that we could think of it either as a mere propositional equality type or as a set
 of bijections between {%ard%}x{%endard%} and {%ard%}y{%endard%} if {%ard%}x y : \Set{%endard%} are sets (by univalence). 
@@ -22,7 +26,7 @@ the category of groups.
 
 # Types as spaces
 
-In Part I we defined the equality type {%ard%}x = y{%endard%}, where {%ard%}x y : A{%endard%}, as the
+In [Part I](/documentation/tutorial/PartI) we defined the equality type {%ard%}x = y{%endard%}, where {%ard%}x y : A{%endard%}, as the
 type {%ard%}I -> A{%endard%} of functions {%ard%}f{%endard%} such that {%ard%}f left ==> x{%endard%}
 and {%ard%}f right ==> y{%endard%}. We showed that this type behaves as you would expect equality
 to behave. 
@@ -148,7 +152,7 @@ to a type {%ard%}B{%endard%} can be defined by choosing a point {%ard%}b : B{%en
 {%ard%}B{%endard%}.
 
 {%arend%}
-\func circRec {B : \Type} {b : B} (l : b = b) (x : Circle) : B 
+\func circRec {B : \Type} {b : B} (l : b = b) (x : Circle) : B \elim x 
     | base => b
     | loop i => l @ i
 {%endarend%}
@@ -171,11 +175,11 @@ it can be shown that dependent loops correspond to paths {%ard%}transport B (pat
   | loop i => (concat {\lam i => B (loop i)} (path (\lam i => coe (\lam j => B (loop j)) b i)) l) @ i
 {%endarend%}
 
-<!-- TODO: Add examples. Trunc and Quotient -->
+Below, while proving theorems about the fundamental group, we will see that this induction principle is useful.
 
 # The fundamental group
 
-In the module [ref]<!-- TODO: ref --> we showed how the equality type of a 1-type {%ard%}X{%endard%} gives rise to
+In the module [Equality](/documentation/tutorial/PartI/idtype) we showed how the equality type of a 1-type {%ard%}X{%endard%} gives rise to
 a groupoid structure on {%ard%}X{%endard%}. This is precisely the groupoid of paths in the space {%ard%}X{%endard%}:
 morphisms between points {%ard%}x : X{%endard%} and {%ard%}y : Y{%endard%} are paths between {%ard%}x{%endard%} and {%ard%}y{%endard%}.
 In particular, the loops {%ard%}x = x{%endard%} at a point {%ard%}x : X{%endard%} form a group with composition as the group operation.
@@ -244,7 +248,7 @@ of pointed connected 1-types and the category of groups.
 
 Let us now consider an example of a calculation of the fundamental group. We will outline the proof from the Arend standard library that for {%ard%}Sphere1{%endard%} holds
 {%ard%}(base1 = base1) = Int{%endard%}, where {%ard%}Sphere1{%endard%} is {%ard%}Circle{%endard%} and {%ard%}base1{%endard%} is {%ard%}base{%endard%}
-in the notation we used above. This implies that {%ard%}pi1U Sphere1 base1 = Int{%endard%} as well as that {%ard%}Sphere1{%endard%} is 1-type.
+in the notation we used above. This implies that {%ard%}pi1 Sphere1 base1 = Int{%endard%} as well as that {%ard%}Sphere1{%endard%} is 1-type.
 
 The type-theoretic proof of {%ard%}(base1 = base1) = Int{%endard%} follows quite closely the classical homotopy-theoretic proof. First note, that
 it is very easy to construct a "winding" homomorphism from the group {%ard%}Int{%endard%} to the group {%ard%}base1 = base1{%endard%}, which sends the generator
@@ -293,8 +297,9 @@ and the path fibration {%ard%}\lam x : Sphere1 => base1 = x{%endard%}, which rep
 one endpoint fixed at {%ard%}base1{%endard%}. The equivalence of fibers over {%ard%}base1{%endard%}, that is of {%ard%}code base1 ==> Int{%endard%} and
 {%ard%}base1 = base1{%endard%}, would follow.
 
-We have already defined the map {%ard%}encode{%endard%} from path fibration to universal cover. The definition of inverse function 
-{%ard%}decode (x : Sphere1) : code x -> base1 = x{%endard%} as well as the proofs {%ard%}encode_decode{%endard%}, {%ard%}decode_encode{%endard%} that
+We have already defined the map {%ard%}encode{%endard%} from path fibration to universal cover. The inverse function 
+{%ard%}decode (x : Sphere1) : code x -> base1 = x{%endard%} can be defined using the higher induction principle for the circle, which we described above.
+The full definition of  {%ard%}decode{%endard%} as well as the proofs {%ard%}encode_decode{%endard%}, {%ard%}decode_encode{%endard%} that
 {%ard%}encode{%endard%} and {%ard%}decode{%endard%} are mutually inverse are technical, we omit them here. The rest of the proof can be found in the
 Arend standard library.
 
@@ -382,4 +387,5 @@ such filling out of a proof that {%ard%}code{%endard%} preserves the relation {%
   }
 {%endarend%}
 
-The rest of the proof, which includes definitions of {%ard%}encode{%endard%} and {%ard%}decode{%endard%}, is technical. It can be found in the Arend standard library.
+The rest of the proof, which includes definitions of {%ard%}encode{%endard%} and {%ard%}decode{%endard%}, is technical and essentially repeats the corresponding
+parts of the proof for the circle. It can be found in the Arend standard library.

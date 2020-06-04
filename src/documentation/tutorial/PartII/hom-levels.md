@@ -3,7 +3,8 @@ title: Stratified Universes and Univalence
 nav: hom-levels
 ---
 
-The source code for this module: [homLevels.zip](code/homLevels.zip).
+The source code for this module: [PartII/HomUniverses.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartII/src/HomUniverses.ard) \\
+The source code for the exercises: [PartII/HomUniversesEx.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartII/src/Exercises/HomUniversesEx.ard)
 {: .notice--success}
 
 In this module we introduce additional universes and explain the principles that allow to prove non-trivial
@@ -62,7 +63,7 @@ with {%ard%}\use \level{%endard%} keywords instead of {%ard%}\func{%endard%}.
 
 As we will discuss below, there are universes {%ard%}\Set{%endard%} of all sets and, in general,
 {%ard%}\n-Type{%endard%} of all types of homotopy level n. The {%ard%}\use \level{%endard%} construct
-can be used similarly in these cases, see []<!-- TODO:ref --> for details.
+can be used similarly in these cases, see [Language Reference](/documentation/language-reference/definitions/level) for details.
 
 **Exercise 1:** The type {%ard%}Dec A{%endard%} below is by default placed in {%ard%}\Set0{%endard%}. Place it
 in {%ard%}\Prop{%endard%} by means of {%ard%}\use \level{%endard%}.

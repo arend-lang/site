@@ -3,7 +3,8 @@ title: Proofs of Equality
 nav: equalityex
 ---
 
-The source code for this module: [eqproofs.zip](code/eqproofs.zip).
+The source code for this module: [PartI/EqualityProofs.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartI/src/EqualityProofs.ard) \\
+The source code for the exercises: [PartI/EqualityProofsEx.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartI/src/Exercises/EqualityProofsEx.ard)
 {: .notice--success}
 
 In this module we give a number of examples, demonstrating techniques used in more advanced proofs of equalities.

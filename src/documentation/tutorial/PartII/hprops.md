@@ -3,7 +3,8 @@ title:  Propositions and Sets
 nav: hprops
 ---
 
-The source code for this module: [hprops.zip](code/hprops.zip).
+The source code for this module: [PartII/PropsSets.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartII/src/PropsSets.ard) \\
+The source code for the exercises: [PartII/PropsSetsEx.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartII/src/Exercises/PropsSetsEx.ard)
 {: .notice--success}
 
 Recall that under Curry-Howard correspondence there is no difference between propositions and types:

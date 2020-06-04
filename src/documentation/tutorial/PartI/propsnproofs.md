@@ -3,8 +3,8 @@ title: Propositions and Proofs
 nav: syn-n-def
 ---
 
-The source code for this module: [proofs.zip](code/proofs.zip).
-To open this project in IntelliJ IDEA, unpack the archive, select **File \| New \| Project from Existing Sources**, choose the unpacked directory, and select **Create project from existing sources**.
+The source code for this module: [PartI/Proofs.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartI/src/Proofs.ard) \\
+The source code for the exercises: [PartI/ProofsEx.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartI/src/Exercises/ProofsEx.ard)
 {: .notice--success}
 
 In this module we explain how to formulate and prove propositions in Arend.
@@ -19,7 +19,7 @@ The false proposition corresponds to the empty type and the true proposition cor
 Different elements of a type can be thought of as different ways to prove corresponding proposition.
 For example, the type of natural numbers corresponds to the proposition that natural numbers exist and every element of this type witnesses a proof of this proposition.
 
-**Remark:** This correspondence will be refined in Part II of this tutorial <!-- TODO -->, where we will argue that not every type should be though of as a proposition.
+**Remark:** This correspondence will be refined in [Part II](/documentation/tutorial/PartII) of this tutorial, where we will argue that not every type should be though of as a proposition.
 {: .notice--warning}
 
 In order to illustrate the correspondence between the empty type {%ard%}Empty{%endard%} and the logical False, we can prove

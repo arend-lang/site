@@ -3,7 +3,8 @@ title: Equality
 nav: equality
 ---
 
-The source code for this module: [equality.zip](code/equality.zip).
+The source code for this module: [PartI/Equality.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartI/src/Equality.ard) \\
+The source code for the exercises: [PartI/EqualityEx.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartI/src/Exercises/EqualityEx.ard)
 {: .notice--success}
 
 In the previous modules we treated the identity type {%ard%}={%endard%} in a rather hand-wavy manner as in most of the cases
