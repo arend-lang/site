@@ -3,9 +3,9 @@ title: Case Expression
 nav: case
 ---
 
-The source code for this module: [case.zip](code/case.zip).
+The source code for this module: [PartI/Case.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartI/src/Case.ard) \\
+The source code for the exercises: [PartI/CaseEx.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartI/src/Exercises/CaseEx.ard)
 {: .notice--success}
-
 
 In this module we discuss three themes.
 

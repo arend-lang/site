@@ -3,7 +3,9 @@ title: Universes, Induction, Specifications
 nav: universes
 ---
 
-The source code for this module: [universes.zip](code/universes.zip).
+The source code for this module: [PartI/Universes.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartI/src/Universes.ard),
+ [PartI/sort.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartI/src/sort.ard) \\
+The source code for the exercises: [PartI/UniversesEx.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartI/src/Exercises/UniversesEx.ard)
 {: .notice--success}
 
 In this module we take a closer look at the structure of the hierarchy of universes and
@@ -311,7 +313,7 @@ specifications can be formulated as follows:
 
 # Correctness of Insertion Sort
 
-We now finally prove the correctness of the insertion sort algorithm, defined in [Simple Examples](datanproofs):
+We now finally prove the correctness of the insertion sort algorithm, defined in [Indexed Data Types](datanproofs):
 {%arend%}
 \func sort {A : TotalPreorder} (xs : List A) : List A
   | nil => nil

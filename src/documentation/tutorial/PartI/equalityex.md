@@ -3,7 +3,8 @@ title: Proofs of Equality
 nav: equalityex
 ---
 
-The source code for this module: [eqproofs.zip](code/eqproofs.zip).
+The source code for this module: [PartI/EqualityProofs.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartI/src/EqualityProofs.ard) \\
+The source code for the exercises: [PartI/EqualityProofsEx.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartI/src/Exercises/EqualityProofsEx.ard)
 {: .notice--success}
 
 In this module we give a number of examples, demonstrating techniques used in more advanced proofs of equalities.
@@ -16,11 +17,9 @@ We supplement this discussion of equality with remarks on definitions of predica
 # Commutativity of +
 
 Let's apply notions from the previous module and prove commutativity of {%ard%}+ : Nat -> Nat -> Nat{%endard%}.
-Note that {%ard%}transport{%endard%} satisfies the following property:
+Note that {%ard%}transport{%endard%} satisfies the property {%ard%}transport B idp b ==> b{%endard%}:
 
 {%arend%}
--- transport B idp b ==> b
-
 -- recall the definition of transport:
 \func transport {A : \Type} (B : A -> \Type) {a a' : A} (p : a = a') (b : B a)
    => coe (\lam i => B (p @ i)) b right

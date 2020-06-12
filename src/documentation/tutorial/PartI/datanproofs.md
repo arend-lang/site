@@ -3,7 +3,8 @@ title: Indexed Data Types
 nav: data-n-proofs
 ---
 
-The source code for this module: [indexed.zip](code/indexed.zip).
+The source code for this module: [PartI/Indexed.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartI/src/Indexed.ard) \\
+The source code for the exercises: [PartI/IndexedEx.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartI/src/Exercises/IndexedEx.ard)
 {: .notice--success}
 
 In this module we illustrate the concepts that we discussed in the previous modules through a bunch of examples of definitions and proofs.

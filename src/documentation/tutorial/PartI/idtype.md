@@ -3,7 +3,8 @@ title: Equality
 nav: equality
 ---
 
-The source code for this module: [equality.zip](code/equality.zip).
+The source code for this module: [PartI/Equality.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartI/src/Equality.ard) \\
+The source code for the exercises: [PartI/EqualityEx.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartI/src/Exercises/EqualityEx.ard)
 {: .notice--success}
 
 In the previous modules we treated the identity type {%ard%}={%endard%} in a rather hand-wavy manner as in most of the cases
@@ -73,7 +74,7 @@ The equality {%ard%}left = right{%endard%} implies that some {%ard%}a : A{%endar
 there exists a function {%ard%}f : I -> A{%endard%} such that {%ard%}f left ==> a{%endard%} and {%ard%}f right ==> a'{%endard%}
 (where {%ard%}==>{%endard%} denotes computational equality). The type {%ard%}a = {A} a'{%endard%} is defined simply as the type
 of all functions {%ard%}f : I -> A{%endard%} satisfying this property. The constructor {%ard%}path (f : I -> A) : f left = f right{%endard%}
-allows to construct equality proofs out of such functions and the function {%ard%}@ (p : a = a') (i : I) : A{%endard%} makes the
+allows to construct equality proofs out of such functions and the function {%ard%}@ (p : a = a') (i : I) : A{%endard%} does the
 inverse operation:
 
 {%arend%}
@@ -164,12 +165,6 @@ for {%ard%}Nat{%endard%} and {%ard%}Bool{%endard%}:
   | zero => z
   | suc n => s n (Nat-rec P z s n)
 
-**Exercise 7:** Define factorial via Nat-rec (i.e., without recursion and pattern matching).
-{: .notice--info}
-
-**Exercise 8:** Prove associativity of Nat.+ via Nat-elim (i.e., without recursion and pattern matching).
-{: .notice--info}
-
 -- Dependent eliminator for Bool (recursor for Bool is just 'if').
 \func Bool-elim (P : Bool -> \Type)
                 (t : P true)
@@ -178,6 +173,12 @@ for {%ard%}Nat{%endard%} and {%ard%}Bool{%endard%}:
   | true => t
   | false => f
 {%endarend%}
+
+**Exercise 7:** Define factorial via Nat-rec (i.e., without recursion and pattern matching).
+{: .notice--info}
+
+**Exercise 8:** Prove associativity of Nat.+ via Nat-elim (i.e., without recursion and pattern matching).
+{: .notice--info}
 
 **Exercise 9:** Define recursor and eliminator for {%ard%} \data D | con1 Nat | con2 D D | con3 (Nat -> D) {%endard%}.
 {: .notice--info}

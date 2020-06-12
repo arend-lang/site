@@ -82,5 +82,16 @@ documentation:
           url: case
         - title: "Universes, Induction, Specifications"
           url: universes
+      - title: "Part II: Homotopy Type Theory"
+        url: PartII
+        children:
+        - title: "Propositions and Sets"
+          url: hprops
+        - title: "Stratified Universes and Univalence"
+          url: hom-levels
+        - title: "Basic Set Theory"
+          url: sets
+        - title: "Spaces and Homotopy Theory"
+          url: hits
   - title: "Libraries"
     url: libraries
