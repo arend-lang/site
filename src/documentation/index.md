@@ -14,3 +14,7 @@ sidebar:
 ## Forum
 
 Question about the Arend language and the IntelliJ Arend plugin are welcome [here](https://groups.google.com/forum/#!forum/arend-lang).
+
+## Videos
+
+* [Introductory talk](https://vimeo.com/413726748) about the Arend language, which covers basic language and IDE features.
