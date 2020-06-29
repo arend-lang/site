@@ -54,10 +54,10 @@ Types in Arend are distributed over the universes according to the following rul
 Every definition is considered to be polymorphic in both levels.
 That is, every definition has two additional parameters: one for a predicative level and one for a homotopy level.
 These parameters are denoted by {%ard%} \lp {%endard%} and {%ard%} \lh {%endard%} respectively.
-Level arguments can be specified explicitly in a defcall by writing {%ard%} \level p h {%endard%}, where {%ard%} p {%endard%} and {%ard%} h {%endard%} are level expressions of the corresponding kind.
-For example, {%ard%} Path (\lam _ => Nat) 0 0 {%endard%} is equivalent to {%ard%} Path \level 0 0 (\lam _ => Nat) 0 0 {%endard%}.  
-Keyword {%ard%} \level {%endard%} can often be omitted (if the resulting expression is unambiguous).
-The {%ard%} \Prop {%endard%} level can be specified by the expression {%ard%} \level \Prop {%endard%}.
+Level arguments can be specified explicitly in a defcall by writing {%ard%} \levels p h {%endard%}, where {%ard%} p {%endard%} and {%ard%} h {%endard%} are level expressions of the corresponding kind.
+For example, {%ard%} Path (\lam _ => Nat) 0 0 {%endard%} is equivalent to {%ard%} Path \levels 0 0 (\lam _ => Nat) 0 0 {%endard%}.  
+Keyword {%ard%} \levels {%endard%} can often be omitted (if the resulting expression is unambiguous).
+The {%ard%} \Prop {%endard%} level can be specified by the expression {%ard%} \levels \Prop {%endard%}.
 Level expressions are defined inductively:
 
 * {%ard%} \lp {%endard%} is a level expression of the predicative kind and {%ard%} \lh {%endard%} is a level expression of the homotopy kind.
@@ -163,5 +163,5 @@ For example, the following function typechecks:
 A definition is marked as _universe-like_ if it contains universes or universe-like definitions applied to either {%ard%} \lp {%endard%} or {%ard%} \lh {%endard%}.
 It is often true that the level of a definition can be inferred to either {%ard%} c {%endard%} or {%ard%} \lp + c {%endard%} for some constant {%ard%} c {%endard%}.
 If a definition is universe-like, then the inference algorithm uses the latter option, otherwise it uses the former option.
-Also, if {%ard%} D {%endard%} is a universe-like definition, then {%ard%} D \level p h {%endard%} is equivalent to {%ard%} D \level p' h' {%endard%} only if {%ard%} p = p' {%endard%} and {%ard%} h = h' {%endard%}.
+Also, if {%ard%} D {%endard%} is a universe-like definition, then {%ard%} D \levels p h {%endard%} is equivalent to {%ard%} D \levels p' h' {%endard%} only if {%ard%} p = p' {%endard%} and {%ard%} h = h' {%endard%}.
 If {%ard%} D {%endard%} is not universe-like, then these expressions are always equivalent.

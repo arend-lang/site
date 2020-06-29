@@ -91,12 +91,12 @@ In case the value is not a numeral, it can be passed as an ordinary first parame
 \func test5 => id (\suc \lp) (\Type \lp) Nat
 {%endarend%}
 
-Alternatively, it can be done using the construct {%ard%}\level p h{%endard%}, where {%ard%}p{%endard%} is the level
+Alternatively, it can be done using the construct {%ard%}\levels p h{%endard%}, where {%ard%}p{%endard%} is the level
 (we ignore {%ard%}h{%endard%} for now). It is useful when the value is a numeral.
 
 {%arend%}
-\func test5' => id (\level (\suc \lp) _) (\Type \lp) Nat
-\func test6 => id (\level 2 _) \Type1 \Type0
+\func test5' => id (\levels (\suc \lp) _) (\Type \lp) Nat
+\func test6 => id (\levels 2 _) \Type1 \Type0
 {%endarend%}
 
 In case a definition is invoked without explicit specification for the value of its level, the level will be infered

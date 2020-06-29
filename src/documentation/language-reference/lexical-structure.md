@@ -11,7 +11,7 @@ Here's the complete list of keywords:
 [\truncated](definitions/data#truncation) [\data](definitions/data) [\cons](definitions/data#constructor-synonyms) [\func](definitions/functions) [\lemma](definitions/functions#lemmas) [\sfunc](definitions/functions#sfunc) [\class](definitions/classes) [\record](definitions/records)
 [\classifying](definitions/classes#classifying-fields) [\noclassifying](definitions/classes#classifying-fields)
 [\field](definitions/records) [\property](definitions/records#properties) [\override](definitions/records#override) [\extends](definitions/records) [\module](definitions/modules#modules) [\instance](definitions/classes)
-[\use](definitions/coercion) [\coerce](definitions/coercion) [\level](definitions/level) [\eval](definitions/functions#sfunc) [\peval](definitions/functions#sfunc)
+[\use](definitions/coercion) [\coerce](definitions/coercion) [\level](definitions/level) [\levels](expressions/universes#level-polymorphism) [\eval](definitions/functions#sfunc) [\peval](definitions/functions#sfunc)
 [\with](definitions/functions#pattern-matching) [\elim](definitions/functions#elim) [\cowith](definitions/functions#copattern-matching) [\where](definitions/modules#where-blocks)
 [\infix](definitions#infix-operators) [\infixl](definitions#infix-operators) [\infixr](definitions#infix-operators) [\fix](definitions#precedence) [\fixl](definitions#precedence) [\fixr](definitions#precedence)
 [\new](expressions/class-ext) [\this](definitions/records) [\Pi](expressions/pi) [\Sigma](expressions/sigma) [\lam](expressions/pi) [\let](expressions/let) [\let!](expressions/let) [\in]((expressions/let)) [\case](expressions/case) [\scase](expressions/case#scase) [\return](expressions/case)
