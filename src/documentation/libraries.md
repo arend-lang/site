@@ -11,8 +11,8 @@ information about a library is contained inside the header file and may include 
 * Language version can be specified by writing `langVersion: VERSION`, where `VERSION` is either a specific version of the language or a range,
 which is written as either `>= VERSION`, `<= VERSION`, or `>= VERSION_1, <= VERSION_2`.
 
-* Directories with library's source and binary files. It can be specified by writing `sourcesDir: PATH` and 
-`binariesDir: PATH` for sources and binaries respectively, where `PATH` is either
+* Directories with library's source, test, and binary files. It can be specified by writing `sourcesDir: PATH`,
+`testsDir: PATH`, and `binariesDir: PATH` for sources, tests, and binaries respectively, where `PATH` is either
 a path relative to the library's root directory or an absolute path.
 
 * The list of names of libraries this library depends on. The list of library's dependencies can be specified by writing

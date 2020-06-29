@@ -53,3 +53,11 @@ is {%ard%} + 1 2 {%endard%}, and as noted before these expressions are equivalen
 As noted above, it is possible to use a left section of an operator, that is {%ard%} x + {%endard%} is equivalent to {%ard%} \lam y => x + y {%endard%}.
 It is also possible to use right sections:
 if a postfix notation is applied to an argument from the right as in {%ard%} `+ y {%endard%}, then such an expression is equivalent to {%ard%} \lam x => x + y {%endard%}.
+
+## Aliases
+
+An alias is an alternative name for the definition.
+It can be specified by putting {%ard%} \alias aliasName {%endard%} after the name of a definition.
+The definition itself and its alias can be used interchangeably.
+Aliases can have their own precedence which is specified before the alias name.
+Aliases can also contain unicode symbols between `U+2200` and `U+22FF`.

@@ -186,6 +186,8 @@ For example, you can define function {%ard%} absurd {%endard%} as follows:
 \func absurd {A : \Type} (e : Empty) : A
 {% endarend %}
 
+Finally, the type {%ard%} con1 = con2 {%endard%} is considered empty if {%ard%} con1 {%endard%} and {%ard%} con2 {%endard%} are disjoint constructors of some data type.
+
 ## Elim
 
 It is often true that one only needs to pattern match on a single parameter of a function (or a few parameters), but the function has much more parameters.

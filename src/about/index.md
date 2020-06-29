@@ -25,3 +25,8 @@ Moreover, IntelliJ Arend implements the following advanced features:
 * ["Implement missing fields" quick fix](intellij-features#implement-missing-fields)
 * [Move Refactoring](intellij-features#move-refactoring)
 * [Incremental typechecking](intellij-features#typechecking)
+* [Show types](intellij-features#show-types)
+* [Show expression](intellij-features#show-expr)
+* [Normalize expression](intellij-features#normalize-expr)
+* [Aliases](intellij-features#aliases)
+* [Goals](intellij-features#goals)

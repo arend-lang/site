@@ -128,6 +128,22 @@ feature_row:
     btn_label: "Show More"
     btn_class: "btn--inverse"
 
+  - image_path: /assets/images/Aliases-460x200.png
+    title: "Aliases"
+    excerpt: "Definitions are replaced with their aliases during completion."
+    url: "/about/intellij-features/Aliases.gif"
+    id: "aliases"
+    btn_label: "Show More"
+    btn_class: "btn--inverse"
+
+  - image_path: /assets/images/Goals-460x200.png
+    title: "Goals"
+    excerpt: "Custom goal solvers can be used to replace goals with expressions."
+    url: "/about/intellij-features/Goals.gif"
+    id: "goals"
+    btn_label: "Show More"
+    btn_class: "btn--inverse"
+
 ---
 
 # IntelliJ Arend Features
