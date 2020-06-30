@@ -32,10 +32,11 @@ An expression of the form {%ard%} \lam x => f x {%endard%} is equivalent to {%ar
 An implicit lambda is written as {%ard%} __ {%endard%}.
 When this expression appears inside some other expression, the outer expression is replaced with a lambda and {%ard%} __ {%endard%} is replaced with the argument of this lambda.
 The outer expression is the closest ancestor of {%ard%} __ {%endard%} in which "it is possible to insert a lambda".
-Lambda is never inserted in case arguments, anonymous class extensions, after {%ard%} \new {%endard%}, on the left of the function application, under {%ard%} \pi {%endard%} or {%ard%} \sigma {%endard%}, and under binary operators.
+Lambda is never inserted in case arguments, anonymous class extensions, after {%ard%} \new {%endard%}, on the left of the function application, under projections, under {%ard%} \pi {%endard%} or {%ard%} \sigma {%endard%}, and under binary operators.
 
 Examples:
 * {%ard%} \case f __ \with { ... } == \lam x => \case f x \with { ... } {%endard%}
+* {%ard%} f __.1 == f (\lam p => p.1) {%endard%}
 * {%ard%} __ a + __ \`f\` g __ (h __ 0) == \lam x y z => x a + y \`f\` g z (\lam t => h t 0) {%endard%}
 * {%ard%} + (f __) __ == \lam x => + (\lam y => f y) x {%endard%}
 * {%ard%} __ -> \Sigma __ __ == \lam A B C => A -> \Sigma B C {%endard%}
