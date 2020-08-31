@@ -596,6 +596,6 @@ everything that {%ard%}\open{%endard%} does, all the constructs for {%ard%}\open
 
 \import Test (foobar \as foobar', foobar2)
 \import TestDir.Test
--- if you want to make file visible, but do not want to make \open, you can write the fllowing:
+-- if you want to make file visible, but do not want to make \open, you can write the following:
 \import TestDir.Test2()
 {%endarend%}
