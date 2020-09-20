@@ -318,4 +318,4 @@ This implies that the level arguments are inferred to {%ard%} (\suc (\suc \lp), 
 A language extension is a Java class which is invoked during type-checking.
 This can be used to implement custom operations on the abstract syntax tree which are not supported by the language.
 They can also be used to implement various decision procedures for proof automation.
-To do this, you'll need [Arend API](https://github.com/JetBrains/Arend/releases/latest/download/Arend-api-1.3.0.jar) (you can also download its [sources](https://github.com/JetBrains/Arend/releases/latest/download/Arend-api-1.3.0-sources.jar)).
+To do this, you'll need [Arend API](https://github.com/JetBrains/Arend/releases/latest/download/Arend-api.jar) (you can also download its [sources](https://github.com/JetBrains/Arend/releases/latest/download/Arend-api-sources.jar)).
