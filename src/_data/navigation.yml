@@ -37,6 +37,8 @@ documentation:
           url: records
         - title: "Classes"
           url: classes
+        - title: "Meta definitions"
+          url: metas
         - title: "Coercion"
           url: coercion
         - title: "Level"

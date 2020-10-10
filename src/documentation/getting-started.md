@@ -14,22 +14,18 @@ Let's create our first Arend project.
 
 * Run Intellij IDEA and choose either **Create New Project** if you are on a _Welcome screen_ or **File \| New \| Project** from the main menu if a project is open.
 * Choose **Arend** in the list on the left. If you want to use external libraries, for example, the standard library, 
-you can set up the path to a directory with
-these libraries in the panel on the right. In order to do this, click **+** button in the top left corner of the panel, select
-**Arend libraries** and choose a path in the dialog.
-* Click **Next**. In the successive steps set up the name of the project, directories for sources and binaries and click **Finish**. 
+you can set up the path to a directory with these libraries in the field **Path to libraries**.
+Available libraries will be displayed in the list on the right.
+To add them to the project, move them to the left list.
+The standard library **arend-lib** is always available; it will be downloaded if the file is missing.
+* Click **Next**. In the successive step set up the name of the project and the path to it and click **Finish**. 
  
 You should get a new project which contains (among other files) a file `arend.yaml` and an empty source directory 
 (`src` by default).
 The yaml file contains a description of the project.
 You can read more about this configuration file [here](libraries).
 
-If you want to use the standard library, you should add it to the list of dependencies in **File \| Project Structure**.
-In case you did not specify the path to Arend external libraries on creation of the project, you should do it in Project SDK
-section of **File \| Project Structure \| Project**.  Once this is done, click **+** button on the right of the panel
-**File \| Project Structure \| Modules**, select **Library \| Arend library** and choose the libraries to be added as 
-dependencies.
-
+Now, let us write some code.
 Create a new file `example.ard` in the source directory.
 Add the following line to this file:
 
@@ -126,7 +122,7 @@ To learn more about Arend, see the [language reference](language-reference).
 
 # Standard Library
 
-In case you would also like to use the standard library, download it as described [here](/download#standard-library) and add the following line to `arend.yaml`:
+In case you would also like to use the standard library, download it as described [here](/download#standard-library) (if you are using the IntelliJ plugin, it can be downloaded from the IDE) and add the following line to `arend.yaml`:
 ```
 dependencies: [arend-lib]
 ```

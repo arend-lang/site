@@ -250,6 +250,3 @@ And as before, we cannot prove false statements:
 
 **Exercise 13:** Prove that 2 * 2 equals to 4.
 {: .notice--info}
-
-**Exercise 14:** Prove associativity of the list concatenation.
-{: .notice--info}

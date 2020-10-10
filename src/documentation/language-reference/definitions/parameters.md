@@ -65,6 +65,16 @@ parameters {%ard%} y1 {%endard%}, {%ard%} y2 {%endard%}, and {%ard%} y3 {%endard
 If a parameter is never used, its name can be replaced with {%ard%} _ {%endard%}.
 Such a name cannot be refered to, so this simply indicated that this parameter is ignored.
 
+## Strict parameters
+
+Parameters of functions and constructors of [data types](data) can be marked as _strict_ using the following syntax:
+{% arend %}
+\func f (n : Nat) (\strict m k : Nat) (l : Nat) => n
+{% endarend %}
+In this example, {%ard%} m {%endard%} and {%ard%} k {%endard%} are strict, but {%ard%} n {%endard%} and {%ard%} l {%endard%} are not.
+Strict parameters will be evaluated immediately when the function is invoked.
+This does not affect the semantics, but it can improve performance of the program.
+
 ## Implicit arguments
 
 Let {%ard%} f {%endard%} be a definition with parameters of types {%ard%} A_1, ... A_n {%endard%}.

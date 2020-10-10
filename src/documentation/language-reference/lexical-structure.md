@@ -9,7 +9,7 @@ Here's the complete list of keywords:
 
 [\open](definitions/modules#open-commands) [\import](definitions/modules#import-commands) [\hiding](definitions/modules#open-commands) [\as](definitions/modules#open-commands) [\using](definitions/modules#open-commands)
 [\truncated](definitions/data#truncation) [\data](definitions/data) [\cons](definitions/data#constructor-synonyms) [\func](definitions/functions) [\lemma](definitions/functions#lemmas) [\sfunc](definitions/functions#sfunc) [\class](definitions/classes) [\record](definitions/records)
-[\classifying](definitions/classes#classifying-fields) [\noclassifying](definitions/classes#classifying-fields)
+[\classifying](definitions/classes#classifying-fields) [\noclassifying](definitions/classes#classifying-fields) [\strict](definitions/parameters#strict-parameters)
 [\field](definitions/records) [\property](definitions/records#properties) [\override](definitions/records#override) [\extends](definitions/records) [\module](definitions/modules#modules) [\instance](definitions/classes)
 [\use](definitions/coercion) [\coerce](definitions/coercion) [\level](definitions/level) [\levels](expressions/universes#level-polymorphism) [\eval](definitions/functions#sfunc) [\peval](definitions/functions#sfunc)
 [\with](definitions/functions#pattern-matching) [\elim](definitions/functions#elim) [\cowith](definitions/functions#copattern-matching) [\where](definitions/modules#where-blocks)
