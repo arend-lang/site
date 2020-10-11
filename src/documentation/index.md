@@ -13,7 +13,12 @@ sidebar:
 
 ## Forum
 
-Question about the Arend language and the IntelliJ Arend plugin are welcome [here](https://groups.google.com/forum/#!forum/arend-lang).
+- [Google Groups](https://groups.google.com/forum/#!forum/arend-lang)
+- [Telegram](https://t.me/joinchat/GPwwsREtctsqEVs6gPeLLg)
+- [Gitter](https://gitter.im/arend-lang/community)
+
+We welcome question about the Arend language, the IntelliJ Arend plugin,
+the libraries and this website there.
 
 ## Videos
 
