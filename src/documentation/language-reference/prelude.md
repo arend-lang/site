@@ -20,12 +20,12 @@ Definitions of {%ard%} Nat.divMod {%endard%}, {%ard%} Nat.divModProp {%endard%},
 # Interval and squeeze functions
 
 The definition of the interval type {%ard%} \data I | left | right {%endard%} looks like the definition of the set with two
-elements, but this is not true actually. 
-One way to think about this data type is that it has one more constructor, which connects {%ard%} left {%endard%} and 
-{%ard%} right {%endard%} and which cannot be accessed explicitly. This means that it is forbidden to define a function 
+elements, but this is not true actually.
+One way to think about this data type is that it has one more constructor, which connects {%ard%} left {%endard%} and
+{%ard%} right {%endard%} and which cannot be accessed explicitly. This means that it is forbidden to define a function
 on {%ard%} I {%endard%} by pattern matching. Functions from {%ard%} I {%endard%} can be defined by means of several auxiliary functions:
 {%ard%} coe {%endard%}, {%ard%} coe2 {%endard%}, {%ard%} squeeze {%endard%}, {%ard%} squeezeR {%endard%}. Function {%ard%} coe {%endard%} plays the role of eliminator for {%ard%} I {%endard%}, it is discussed
-further in this module. 
+further in this module.
 
 Functions {%ard%} squeeze {%endard%} and {%ard%} squeezeR {%endard%} satisfy the following computational conditions:
 {% arend %}

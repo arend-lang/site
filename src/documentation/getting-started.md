@@ -28,7 +28,7 @@ The yaml file contains a description of the project.
 You can read more about this configuration file [here](libraries).
 
 Now, let us write some code.
-Create a new file `example.ard` in the source directory.
+Create a new file `Example.ard` in the source directory.
 Add the following line to this file:
 
 {% arend %}
@@ -76,14 +76,15 @@ sourcesDir: src
 ```
 
 Create directory `src` which will contain source files for this project.
-Create a file `example.ard` inside `src` with the following content:
+Create a file `Example.ard` inside `src` with the following content:
 
 {% arend %}
 \func f => 0
 {% endarend %}
 
-Run `java -jar $arend -L$libs $myProject`, where `$arend` is the path to `arend.jar`, `$myProject` is the path to `arend.yaml`,
-and `$libs` is the path to the directory with Arend libraries (if the project does not have dependencies, this option can be omitted).
+Run `java -jar $arend $myProject`, where `$arend` is the path to `arend.jar`, `$myProject` is the path to `arend.yaml` or the directory containing it,
+and you can optionally pass `-L$libs` where `$libs` is the path to the directory with Arend libraries (if the project does not have dependencies, this option can be omitted).
+When `$myProject` equals `.`, it can be omitted.
 You should see the following output:
 ```
 [INFO] Loading library prelude
@@ -91,12 +92,12 @@ You should see the following output:
 [INFO] Loading library myProject
 [INFO] Loaded library myProject
 --- Typechecking myProject ---
-[ ] example
+[ ] Example
 --- Done ---
 ```
 
-This means that module `example` was successfully typechecked.
-Modify file `example.ard` as follows:
+This means that module `Example` was successfully typechecked.
+Modify file `Example.ard` as follows:
 
 {% arend %}
 \func f : Nat -> Nat => 0
@@ -110,12 +111,12 @@ If you run `java -jar $arend $myProject` again, it should produce the following 
 [INFO] Loading library myProject
 [INFO] Loaded library myProject
 --- Typechecking myProject ---
-[ERROR] example:1:25: Type mismatch
+[ERROR] Example:1:25: Type mismatch
   Expected type: Nat -> Nat
     Actual type: Nat
   In: 0
   While processing: f
-[✗] example
+[✗] Example
 Number of modules with errors: 1
 --- Done ---
 ```

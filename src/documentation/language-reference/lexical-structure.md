@@ -31,7 +31,7 @@ Exceptions are sequences that begin with a digit or symbol `'`, numerals, and re
 Examples:
 
 * Valid identifiers: `xxx`, `+`, `$^~]!005x`, `::`, `->x`, `x:Nat`, `-5b`, `-33+7`, `--xxx`.
-* Invalid identifiers: `5b`, `-33`, `=>`.
+* Invalid identifiers: `5b`, `-33`, `=>`, `α`.
 
 ## Infix and postfix notation
 

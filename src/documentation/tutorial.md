@@ -4,10 +4,10 @@ toc: false
 ---
 
 Arend language is based on homotopy type theory. For that reason, the most natural explanation for many language constructs in Arend,
-including the very basic ones, would be in terms of notions from homotopy theory. However, it is also possible to abstract away from 
+including the very basic ones, would be in terms of notions from homotopy theory. However, it is also possible to abstract away from
 homotopical semantics and to consider the layer of Arend that corresponds simply to a variant of the classical Martin-Lof dependent
 type theory. The latter view is taken in this tutorial for the initial exposition of the language in [Part I](/documentation/tutorial/PartI), whereas homotopical semantics
-together with some specific for this semantics elements of the language are discussed in [Part II](/documentation/tutorial/PartII). 
+together with some specific for this semantics elements of the language are discussed in [Part II](/documentation/tutorial/PartII).
 
 The [Part I](/documentation/tutorial/PartI) is an introduction to the actual practices of working with dependent types in Arend. It contains
 example-based Arend-specific exposition of efficient ways of working with propositions and proofs, inductive types, classes and records,
