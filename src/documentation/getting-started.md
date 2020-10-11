@@ -2,9 +2,11 @@
 title: Getting Started
 ---
 
-You need to have [JRE 8](https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html) installed on your computer to use Arend.
+You need to have [JRE 11] installed on your computer to use Arend.
 Arend is available either as an [IntelliJ IDEA](https://www.jetbrains.com/idea) plugin (see [IntelliJ Arend](#intellij-arend) for the installation instructions)
 or as a console application (see [Console Application](#console-application) for the installation instructions).
+
+ [JRE 11]: https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html
 
 # IntelliJ Arend
 
@@ -13,14 +15,14 @@ or as a console application (see [Console Application](#console-application) for
 Let's create our first Arend project.
 
 * Run Intellij IDEA and choose either **Create New Project** if you are on a _Welcome screen_ or **File \| New \| Project** from the main menu if a project is open.
-* Choose **Arend** in the list on the left. If you want to use external libraries, for example, the standard library, 
+* Choose **Arend** in the list on the left. If you want to use external libraries, for example, the standard library,
 you can set up the path to a directory with these libraries in the field **Path to libraries**.
 Available libraries will be displayed in the list on the right.
 To add them to the project, move them to the left list.
 The standard library **arend-lib** is always available; it will be downloaded if the file is missing.
-* Click **Next**. In the successive step set up the name of the project and the path to it and click **Finish**. 
- 
-You should get a new project which contains (among other files) a file `arend.yaml` and an empty source directory 
+* Click **Next**. In the successive step set up the name of the project and the path to it and click **Finish**.
+
+You should get a new project which contains (among other files) a file `arend.yaml` and an empty source directory
 (`src` by default).
 The yaml file contains a description of the project.
 You can read more about this configuration file [here](libraries).
@@ -60,10 +62,10 @@ To learn more about Arend, see the [language reference](language-reference).
 Let's create our first Arend project.
 Create a directory for your project:
 
-{% arend %}
+```shell
 $ mkdir testProject
 $ cd testProject
-{% endarend %}
+```
 
 Create file `arend.yaml` inside this directory.
 This file contains the description of your project.
