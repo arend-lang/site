@@ -2,11 +2,11 @@
 title: Getting Started
 ---
 
-You need to have [JRE 11] installed on your computer to use Arend.
+{% include jre-requirement.md %}
+
 Arend is available either as an [IntelliJ IDEA](https://www.jetbrains.com/idea) plugin (see [IntelliJ Arend](#intellij-arend) for the installation instructions)
 or as a console application (see [Console Application](#console-application) for the installation instructions).
 
- [JRE 11]: https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html
 
 # IntelliJ Arend
 

@@ -11,7 +11,7 @@ sidebar:
 * [Tutorial](/documentation/tutorial) contains a more gentle introduction to the Arend language.
 * [Libraries](/documentation/libraries) describes how to manage Arend libraries.
 
-## Forum
+## Forums
 
 - [Google Groups](https://groups.google.com/forum/#!forum/arend-lang)
 - [Telegram](https://t.me/joinchat/GPwwsREtctsqEVs6gPeLLg)

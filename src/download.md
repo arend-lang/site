@@ -6,10 +6,9 @@ toc_label: Download
 toc_sticky: true
 ---
 
-You need to have [JRE 11] installed on your computer to use Arend.
-Arend is available either as an [IntelliJ IDEA plugin](#intellij-idea-plugin) or as a [console application](#console-application).
+{% include jre-requirement.md %}
 
- [JRE 11]: https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html
+Arend is available either as an [IntelliJ IDEA plugin](#intellij-idea-plugin) or as a [console application](#console-application).
 
 ## IntelliJ Arend
 
