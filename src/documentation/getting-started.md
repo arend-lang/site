@@ -71,7 +71,7 @@ Create file `arend.yaml` inside this directory.
 This file contains the description of your project.
 Minimally, we just need to specify the location of source files of your project.
 Add the following line to `arend.yaml`:
-```
+```yaml
 sourcesDir: src
 ```
 
