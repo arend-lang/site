@@ -4,7 +4,7 @@ main:
     - title: "Documentation"
       url: /documentation
     - title: "Download"
-      url: /download   
+      url: /download
 
 about:
   - title: "Arend features"
@@ -97,3 +97,18 @@ documentation:
           url: hits
   - title: "Libraries"
     url: libraries
+  - title: "Standard metas"
+    url: standard-tactics
+    children:
+    - title: Unclassified metas
+      url: meta
+    - title: Path metas
+      url: path-meta
+    - title: Functional metas
+      url: function-meta
+    - title: Algebraic metas
+      url: algebra-meta
+    - title: Logical metas
+      url: logic-meta
+    - title: Debugging metas
+      url: debug-meta

@@ -25,12 +25,12 @@ A _negative numeral_ consists of symbol `-` followed by a non-empty sequence of 
 
 ## Identifiers
 
-An _identifier_ consists of a non-empty sequence of lower and upper case letters, digits, and characters from the list `~!@#$%^&*-+=<>?/|[]:_`.
+An _identifier_ consists of a non-empty sequence of lower and upper case letters, digits, and characters from the list `'~!@#$%^&*-+=<>?/|[]:_`.
 Exceptions are sequences that begin with a digit or symbol `'`, numerals, and reserved names such as `->`, `=>`, `_`, `:`, and `|`.
 
 Examples:
 
-* Valid identifiers: `xxx`, `+`, `$^~]!005x`, `::`, `->x`, `x:Nat`, `-5b`, `-33+7`, `--xxx`.
+* Valid identifiers: `xxx`, `+`, `$^~]!005x`, `::`, `->x`, `x:Nat`, `-5b`, `-33+7`, `--xxx`, `f'`.
 * Invalid identifiers: `5b`, `-33`, `=>`, `α`.
 
 ## Infix and postfix notation
