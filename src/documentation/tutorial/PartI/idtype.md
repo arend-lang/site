@@ -14,13 +14,13 @@ way we introduce the _interval type_ {%ard%}I{%endard%}, whose properties are es
 {%ard%}coe{%endard%}, playing the role of _eliminator_ for {%ard%}I{%endard%}. In order to clarify this we briefly
 recall the general concept of eliminator.
 
-# Symmetry, transitivity, Leibniz principle 
+# Symmetry, transitivity, Leibniz principle
 
-First of all, we show that the identity type satisfies some basic properties of equality: it is an equivalence relation and 
+First of all, we show that the identity type satisfies some basic properties of equality: it is an equivalence relation and
 it satisfies the Leibniz principle.
 
 The Leibniz principle says that if {%ard%}a{%endard%} and {%ard%}a'{%endard%} satisfy the same properties, then they are
-equal. It can be easily proven that {%ard%}={%endard%} satisfies this principle: 
+equal. It can be easily proven that {%ard%}={%endard%} satisfies this principle:
 
 {%arend%}
 \func Leibniz {A : \Type} {a a' : A}
@@ -29,9 +29,9 @@ equal. It can be easily proven that {%ard%}={%endard%} satisfies this principle:
 {%endarend%}
 
 The inverse Leibniz principle (which we will call merely Leibniz principle as well) says that if {%ard%}a = a'{%endard%}, then
-{%ard%}a{%endard%} and {%ard%}a'{%endard%} satisfy the same properties, that is if {%ard%}P a{%endard%} is true, then 
+{%ard%}a{%endard%} and {%ard%}a'{%endard%} satisfy the same properties, that is if {%ard%}P a{%endard%} is true, then
 {%ard%}P a'{%endard%} is true. The proof of this is easy, but requires some constructs that will be introduced very shortly
-further in this module: 
+further in this module:
 
 {%arend%}
 \func transport {A : \Type} (B : A -> \Type) {a a' : A} (p : a = a') (b : B a) : B a'
@@ -39,7 +39,7 @@ further in this module:
 {%endarend%}
 
 Using this latter Leibniz principle, it is easy to prove that {%ard%}={%endard%} satisfies (almost) all the properties
-of equality. For example, the following properties: 
+of equality. For example, the following properties:
 
 {%arend%}
 -- symmetry
@@ -91,16 +91,16 @@ In order to prove reflexivity {%ard%}idp{%endard%} we can simply take the consta
 **Exercise 3:** Prove that {%ard%}left = right{%endard%} without using {%ard%}transport{%endard%} or {%ard%}coe{%endard%}.
 {: .notice--info}
 
-If {%ard%}f : A -> B{%endard%} and {%ard%}g : I -> A{%endard%}, then {%ard%}g{%endard%} determines a proof of the equality 
+If {%ard%}f : A -> B{%endard%} and {%ard%}g : I -> A{%endard%}, then {%ard%}g{%endard%} determines a proof of the equality
 {%ard%}g left = g right{%endard%} and the congruence {%ard%}pmap{%endard%} can be interpreted as simply the composition of
-{%ard%}f{%endard%} and {%ard%}g{%endard%}. This observation suggests an alternative definition of {%ard%}pmap{%endard%}: 
+{%ard%}f{%endard%} and {%ard%}g{%endard%}. This observation suggests an alternative definition of {%ard%}pmap{%endard%}:
 
 {%arend%}
 \func pmap {A B : \Type} (f : A -> B) {a a' : A} (p : a = a') : f a = f a'
     => path (\lam i => f (p @ i))
 {%endarend%}
 
-This definition of {%ard%}pmap{%endard%} behaves better than others with respect to computational properties. For example, 
+This definition of {%ard%}pmap{%endard%} behaves better than others with respect to computational properties. For example,
 {%ard%}pmap id{%endard%} is computationally the same as {%ard%}id{%endard%} and {%ard%}pmap (f . g){%endard%} is
 computationally the same as {%ard%}pmap f . pmap g{%endard%}, where (.) is the composition:
 
@@ -118,7 +118,7 @@ computationally the same as {%ard%}pmap f . pmap g{%endard%}, where (.) is the c
 # Functional extensionality
 
 Function extensionality is a principle saying that if two functions {%ard%}f{%endard%} and {%ard%}g{%endard%} are equal
-pointwise, then they are equal functions. Our definition of equality allows us to prove this principle very easily:    
+pointwise, then they are equal functions. Our definition of equality allows us to prove this principle very easily:
 
 {%arend%}
 \func funExt {A : \Type} (B : A -> \Type) {f g : \Pi (a : A) -> B a}
@@ -128,8 +128,8 @@ pointwise, then they are equal functions. Our definition of equality allows us t
 
 This useful principle is unprovable in many other intensional dependently typed theories. In such theories function extensionality
 can be introduced as an axiom, that is as a function without implementation, however adding new axioms worsens computational properties
-of the theory. For example, if we add the axiom of excluded middle {%ard%}lem{%endard%}, then we can define a constant 
-{%ard%}ugly_num : Nat{%endard%} that does not evaluate to any concrete natural number:   
+of the theory. For example, if we add the axiom of excluded middle {%ard%}lem{%endard%}, then we can define a constant
+{%ard%}ugly_num : Nat{%endard%} that does not evaluate to any concrete natural number:
 
 {%arend%}
 \func lem : \Pi (X : \Type) -> Either X (X -> Empty) => {?}
@@ -143,9 +143,9 @@ of the theory. For example, if we add the axiom of excluded middle {%ard%}lem{%e
 
 Elimination principles for a data type {%ard%}D{%endard%} specify what kind of data
 should be provided in order to define a function from {%ard%}D{%endard%} to a non-dependent or
-dependent type. And, essentially, these principles say that it is enough to show how "generators" 
+dependent type. And, essentially, these principles say that it is enough to show how "generators"
 (that is constructors) of {%ard%}D{%endard%} are mapped to a type {%ard%}A{%endard%} and
-that that would uniquely determine a function {%ard%}D -> A{%endard%}. For example, eliminators 
+that that would uniquely determine a function {%ard%}D -> A{%endard%}. For example, eliminators
 for {%ard%}Nat{%endard%} and {%ard%}Bool{%endard%}:
 
 {%arend%}

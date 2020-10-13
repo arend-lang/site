@@ -10,6 +10,8 @@ sidebar:
 * [Language Reference](/documentation/language-reference) contains a description of the Arend language.
 * [Tutorial](/documentation/tutorial) contains a more gentle introduction to the Arend language.
 * [Libraries](/documentation/libraries) describes how to manage Arend libraries.
+* [Standard Extensions](/documentation/standard-tactics) explains the language extensions
+  implemented in the standard library.
 
 ## Forums
 

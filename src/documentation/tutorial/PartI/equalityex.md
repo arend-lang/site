@@ -8,7 +8,7 @@ The source code for the exercises: [PartI/EqualityProofsEx.ard](https://github.c
 {: .notice--success}
 
 In this module we give a number of examples, demonstrating techniques used in more advanced proofs of equalities.
-We introduce a convention for writing more readable equality proofs called _equational reasoning_. 
+We introduce a convention for writing more readable equality proofs called _equational reasoning_.
 We argue that {%ard%}transport{%endard%} is insufficient in some cases and introduce its generalization
 called _eliminator J_.
 
@@ -24,11 +24,11 @@ Note that {%ard%}transport{%endard%} satisfies the property {%ard%}transport B i
 \func transport {A : \Type} (B : A -> \Type) {a a' : A} (p : a = a') (b : B a)
    => coe (\lam i => B (p @ i)) b right
 
--- indeed, coe (\lam i => B (idp @ i)) b right ==> 
+-- indeed, coe (\lam i => B (idp @ i)) b right ==>
 -- ==> coe (\lam i => B a) b right ==> b
 {%endarend%}
 
-It will be more convenient to have transitivity of {%ard%}={%endard%}, which we proved in the previous module, in 
+It will be more convenient to have transitivity of {%ard%}={%endard%}, which we proved in the previous module, in
 infix form:
 
 {%arend%}
@@ -91,7 +91,7 @@ These operators can be defined as follows:
 Recall from [Eliminators](/documentation/tutorial/PartI/idtype#Eliminators) that elimination
 principles for a data type {%ard%}D{%endard%} say that functions from {%ard%}D{%endard%} are
 determined by their values on the constructors of {%ard%}D{%endard%}, that is that {%ard%}D{%endard%}
-is "generated" by its constructors. 
+is "generated" by its constructors.
 
 Similarly, we can say that identity type {%ard%}={%endard%} is "generated" by reflexivity {%ard%}idp{%endard%}:
 the non-dependent version of eliminator says that if we define the value of a function {%ard%}a = x -> B x{%endard%}
