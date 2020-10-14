@@ -34,3 +34,23 @@ random (l,u) -- returns a random number between `l` and `u`
 
 Prints the argument to the console.
 In the IDE, it will open a tool window and display the argument.
+
+Examples:
+
+{% arend %}
+\import Debug.Meta
+\import Meta (run)
+
+-- A defined meta
+\meta runTimed m => run {
+  -- Record the start time
+  \let startTime => time,
+  -- Type check the input and print it
+  println m,
+  -- Calculate the elapsed time and print it
+  println (time Nat.- startTime)
+}
+
+-- Usage
+\func test => runTimed (114 Nat.+ 514)
+{% endarend %}
