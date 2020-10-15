@@ -7,7 +7,7 @@ title: \module Function.Meta
 These metas are analogical to Haskell's `$` operator
 (`$` is right-associative and `#` is left-associative), but they also work with implicit arguments.
 
- [defined meta]: (/documentation/language-reference/definitions/metas)
+ [defined meta]: /documentation/language-reference/definitions/metas
 
 Also, it's also possible to define `$` as a [defined meta]:
 
@@ -26,3 +26,4 @@ There are two ways to invoke this meta:
   {%ard%} repeat {x} f (f x) {%endard%} if `n` is `suc x`.
 + {%ard%} repeat f x {%endard%} -- it tries to typecheck `f x`, and if it fails, return `x`,
   otherwise return {%ard%} f (repeat f x) {%endard%}.
+  + In this case, `f` has to be a meta.
