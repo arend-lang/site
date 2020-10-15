@@ -1,7 +1,7 @@
 require 'rly'
 
 class ArendLexer < Rly::Lex
-  start_char = '~!@#\$%\^&\*\-\+=<>\?/\|\[\]:a-zA-Z_'
+  start_char = '~!@#\$%\^&\*\-\+=<>\?/\|\[\]:a-zA-Z_|\u005D\u2200-\u22FF'
 
   id = "[#{start_char}][#{start_char}0-9']*"
 

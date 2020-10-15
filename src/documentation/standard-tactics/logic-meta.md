@@ -43,3 +43,24 @@ Examples:
 \lemma explicitProof2 (P : \Prop) (e : P -> Not P) (p : P) : Empty
   => contradiction {e}
 {% endarend %}
+
+# `Exists`
+
+The alias of this meta is `∃`, which is convenient to read.
+
++ {%ard%} Exists {x y z} B {%endard%} is equivalent to {%ard%} TruncP (\Sigma (x y z : _) B) {%endard%}.
++ {%ard%} Exists (x y z : A) B {%endard%} is equivalent to {%ard%} TruncP (\Sigma (x y z : A) B) {%endard%}.
+
+Examples:
+
+{% arend %}
+\func test1 : ∃ = (\Sigma) => idp
+
+\func test2 : ∃ Nat = TruncP Nat => idp
+
+\func test3 : ∃ (x : Nat) (x = 0) = TruncP (\Sigma (x : Nat) (x = 0)) => idp
+
+\func test4 : ∃ {x} (x = 0) = TruncP (\Sigma (x : Nat) (x = 0)) => idp
+
+\func test5 : ∃ {x y} (x = 0) = TruncP (\Sigma (x y : Nat) (x = 0)) => idp
+{% endarend %}
