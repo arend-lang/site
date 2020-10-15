@@ -64,3 +64,25 @@ Examples:
 
 \func test5 : ∃ {x y} (x = 0) = TruncP (\Sigma (x y : Nat) (x = 0)) => idp
 {% endarend %}
+
+# `constructor`
+
+Returns either a tuple, a `\new` expression, or a single constructor of a data type depending on the expected type.
+
+{% arend %}
+\func tuple0 : \Sigma (\Sigma) (\Sigma) => constructor constructor constructor
+
+\func tuple1 : \Sigma Nat Nat => constructor 0 1
+
+\func tuple2 : \Sigma (x : Nat) (p : x = 0) => constructor 0 idp
+
+\func data2 : D => constructor 0 1 2
+  \where
+    \data D | con {x : Nat} (y z : Nat)
+
+\record R (x : Nat) (y : Nat) (z : Nat)
+
+\func class1 : R => constructor 1 2 3
+
+\func class2 : R 1 => constructor 2 3
+{% endarend %}
