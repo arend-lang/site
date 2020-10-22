@@ -9,6 +9,9 @@ theme: minimal-mistakes-jekyll
 
 paginate: 5
 
+author:
+  avatar: /assets/images/Logo_vert.svg
+
 defaults:
   - scope:
       path: "documentation"
