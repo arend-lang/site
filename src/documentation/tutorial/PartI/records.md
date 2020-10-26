@@ -203,7 +203,7 @@ define all fields as parameters. For example, the following is an equivalent ver
 
 {%endarend%}
 
-And, conversly, the type {%ard%}Pair{%endard%} has equivalent definition without parameters:
+And, conversely, the type {%ard%}Pair{%endard%} has equivalent definition without parameters:
 
 {%arend%}
 \record Pair'
@@ -301,7 +301,7 @@ monoid on {%ard%}*{%endard%}.
 \instance *-NatMonoid' : Monoid Nat 1 (Nat.*) {?} {?} {?}
 {%endarend%}
 
-The first explicit pararameter of a class is of special significance and is called _classifying field_ of a class.
+The first explicit parameter of a class is of special significance and is called _classifying field_ of a class.
 The classifying field of a class is typically a carrier, on top of which all other fields of the class define some structure.
 Thus the type of the classifying field is often {%ard%}\Type{%endard%} or {%ard%}\Set{%endard%}.
 Classifying fields significantly affect the behavior of the instance inference algorithm. Basically, in case there are no local instances, the algorithm
@@ -319,7 +319,7 @@ Consider the following examples:
 -- ok, +-NatMonoid is inferred since it was declared the first
 -- id-left x here is equivalent to id-left {+-NatMonoid} x
 \func +-test (x : Nat) : 0 Nat.+ x = x => id-left x
--- error, because +-NatMonoid is inferred, not *-NatMoniod
+-- error, because +-NatMonoid is inferred, not *-NatMonoid
 \func *-test (x : Nat) : 1 Nat.* x = x => id-left x
 {%endarend%}
 
@@ -390,7 +390,7 @@ Consider the following example:
 -- Elements of type XXX are implicitly converted to type YYY by function fromXXX.
 \func ggg => fff con
 
--- Implicit convertion from Nat to Int is done in this way:
+-- Implicit conversion from Nat to Int is done in this way:
 \func hhh : Int => 0
 {%endarend%}
 

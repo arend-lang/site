@@ -199,7 +199,7 @@ It is not possible to prove false statements in this way:
   | true => {?} -- goal expression, an element of Empty is expected
   | false => {?} -- goal expression, an element of Empty is expected
 
--- we can prove negation of not-isIdempoten
+-- we can prove negation of not-isIdempotent
 \func not-isIdempotent' (x : Bool) : T (not (not x) == not x) -> Empty
   | true => \lam x => x -- a proof of Empty -> Empty
   | false => \lam x => x -- again a proof of Empty -> Empty

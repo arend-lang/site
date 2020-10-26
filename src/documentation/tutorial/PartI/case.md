@@ -11,7 +11,7 @@ In this module we discuss three themes.
 
 Firstly, we discuss case expressions and alternatives to them in the form of the helper
 functions. We also compare {%ard%}\case{%endard%} to {%ard%}\elim{%endard%}, point
-out at peculiarities of using case expressions in a dependently typed language and 
+out at peculiarities of using case expressions in a dependently typed language and
 explain pattern matching on {%ard%}idp{%endard%} in {%ard%}\case{%endard%}.
 
 Secondly, we explain a technique of _views_, allowing to define custom pattern matching
@@ -279,7 +279,7 @@ Let us consider one more example, demonstrating what we have just discussed:
 
 # Views
 
-Views -- is a techique that allows to define some kind of custom pattern matching for data types.
+Views -- is a technique that allows to define some kind of custom pattern matching for data types.
 For example, {%ard%}Nat{%endard%} has constructors {%ard%}zero{%endard%} and {%ard%}suc{%endard%}
 and by default we pattern match on them whenever we define a function from {%ard%}Nat{%endard%}.
 But we can also define a custom pattern matching for {%ard%}Nat{%endard%} as if {%ard%}Nat{%endard%}
@@ -420,12 +420,12 @@ Let us define an instance for the type of natural numbers:
 \func test2 : (0 == 1) = false => idp
 {%endarend%}
 
-**Exercise 6:** Prove that if equality of elements of a type {%ard%}A{%endard%} is decidable, then eqiality of elements if {%ard%}List A{%endard%} is
+**Exercise 6:** Prove that if equality of elements of a type {%ard%}A{%endard%} is decidable, then equality of elements if {%ard%}List A{%endard%} is
 also decidable.
 {: .notice--info}
 
 **Exercise 7:** Prove that if equality of elements of a type {%ard%}A{%endard%} is decidable, then every list of elements of {%ard%}A{%endard%} is either empty,
-consists of repetitions of one element or there exist two different elements in {%ard%}A{%endard%}. 
+consists of repetitions of one element or there exist two different elements in {%ard%}A{%endard%}.
 {: .notice--info}
 
 

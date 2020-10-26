@@ -20,7 +20,7 @@ We conclude with remarks on writing specifications for functions.
 As we mentioned [earlier](synndef#polymorphism) there is no actual type of all types in Arend. 
 The type {%ard%}\Type{%endard%} behaves pretty much like the one, but not quite, and the difference
 is precisely that {%ard%}\Type{%endard%} cannot be used for contradictory circular definitions.
-This is so because {%ard%}\Type{%endard%} actually hides the hierarchy of unverses {%ard%}\Type0{%endard%},
+This is so because {%ard%}\Type{%endard%} actually hides the hierarchy of universes {%ard%}\Type0{%endard%},
 {%ard%}\Type1{%endard%}, ... as we explain below.
 
 The type {%ard%}\Type n{%endard%}, where the natural number {%ard%}n{%endard%} is called _the predicative level_
@@ -99,7 +99,7 @@ Alternatively, it can be done using the construct {%ard%}\levels p h{%endard%}, 
 \func test6 => id (\levels 2 _) \Type1 \Type0
 {%endarend%}
 
-In case a definition is invoked without explicit specification for the value of its level, the level will be infered
+In case a definition is invoked without explicit specification for the value of its level, the level will be inferred
 by the typechecker. In most cases there is no need to specify the level explicitly.
 
 The level of the universe of a data definition is the maximum among the levels of parameters of its constructors.
@@ -166,7 +166,7 @@ Specify explicitly result types for all idTest*.
 # Induction principles
 
 We have already seen that data types have canonical eliminators associated with them and that
-non-dependent and dependent eliminators correspond to recursion and indunction principles 
+non-dependent and dependent eliminators correspond to recursion and induction principles
 respectively. It is also possible to define custom eliminators and, thus, custom induction
 principles that in some case are more convenient to use. For example, we can define an
 induction principle for natural numbers that allows to use induction hypothesis for _any_

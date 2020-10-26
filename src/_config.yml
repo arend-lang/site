@@ -3,7 +3,7 @@ name: Arend
 description: The Arend Theorem Prover
 url: https://arend-lang.github.io
 github: [metadata]
-github_username: valis
+github_username: arend-lang
 
 theme: minimal-mistakes-jekyll
 

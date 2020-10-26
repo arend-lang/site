@@ -88,7 +88,7 @@ Note that in contrast to Haskell, types of parameters should always be specified
 Equivalently, parameters of a function can be moved from the signature to the body by means of lambda expressions:
 
 {%arend%}
- -- types of parameters cannot be infered as before
+ -- types of parameters cannot be inferred as before
 \func foo' => \lam (x _ : Nat) (_ : Int) => x
 -- but types of parameters can be omitted if the result type is specified explicitly
 \func foo'' : Nat -> Nat -> Int -> Nat => \lam x _ _ => x  
@@ -338,7 +338,7 @@ number of recursive steps:
 
 # Polymorphism
 
-Some definitions are polymorphic, that is they can be naturally parameterised by a type. Such definitions
+Some definitions are polymorphic, that is they can be naturally parameterized by a type. Such definitions
 can be stated with the use of the type {%ard%}\Type{%endard%} of all types. For example, the polymorphic identity
 function can be stated as follows:
 
@@ -391,7 +391,7 @@ as _implicit_ by surrounding it in curly braces. In this case the corresponding 
 \func id' {A : \Type} (a : A) => a
 
 \func id'Test => id' 0
-\func id'Test' => id' {Nat} 0 -- implicit arguments can be specifyed explicitly
+\func id'Test' => id' {Nat} 0 -- implicit arguments can be specified explicitly
 {%endarend%}
 
 Of course, the argument inference algorithm is limited and it cannot do too fancy things. Consider, for instance, the following
@@ -462,7 +462,7 @@ is equivalent to the data type defined as follows:
 
 More generally, for any family of types {%ard%}A1{%endard%}, ..., {%ard%}An{%endard%} one can form the type 
 {%ard%}\Sigma A1 ... An{%endard%} of tuples {%ard%}(a1, ..., an){%endard%}, where {%ard%}ai : Ai{%endard%}.
-A trivial example -- the type {%ard%}\Sigma{%endard%}, which is equivalemt to the one-element type {%ard%}Unit{%endard%}.
+A trivial example -- the type {%ard%}\Sigma{%endard%}, which is equivalent to the one-element type {%ard%}Unit{%endard%}.
 
 The tuples can be dependent in the sense that {%ard%}Ai{%endard%} can depend on {%ard%}a1{%endard%}, ..., {%ard%}a{i-1}{%endard%}.
 Let us give a few examples of dependent {%ard%}\Sigma{%endard%}-types:

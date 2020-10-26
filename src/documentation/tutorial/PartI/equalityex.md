@@ -229,7 +229,7 @@ vcons x (transport (Vec A) (+-assoc k m n) (xs v++ (ys v++ zs))) = transport (Ve
 And this is precisely the commutativity of {%ard%}transport{%endard%} with {%ard%}vcons{%endard%}, which we 
 prove in {%ard%}transport-vcons-comm{%endard%} lemma. 
 Note that it is important that we generalize the statement and prove the commutativity not only for
-{%ard%}+-assoc k m n{%endard%} but for all {%ard%}e : Nat{%endard%} satisfying {%ard%}p : k + m + n = e{%endard%} (otherwise, we would not be able to use pattern mathing or the J operator to prove this statement).
+{%ard%}+-assoc k m n{%endard%} but for all {%ard%}e : Nat{%endard%} satisfying {%ard%}p : k + m + n = e{%endard%} (otherwise, we would not be able to use pattern matching or the J operator to prove this statement).
 
 **Exercise 2:** Prove that {%ard%}vnil{%endard%} is identity for the operation {%ard%}v++{%endard%}.
 {: .notice--info}
@@ -277,11 +277,11 @@ We now illustrate all these ways in case of the predicate <= for natural numbers
 {%endarend%}
 
 There are usually many ways to choose constructors for inductive definitions. To define a predicate inductively, we need to
-come up with a set of axioms that characterise the predicate. 
+come up with a set of axioms that characterize the predicate. 
 
 For example, for {%ard%}LessOrEq{%endard%} we chose two axioms:
 1) 0 <= m for all m, 2) if n <= m, then suc n <= suc m for all n, m. Every inequality can be derived from these axioms.
-But this is not the only way to characterise {%ard%}LessOrEq{%endard%}. For example, we could use the following two axioms:
+But this is not the only way to characterize {%ard%}LessOrEq{%endard%}. For example, we could use the following two axioms:
 1) n <= n for all n, 2) if n <= m, then n <= suc m for all n, m:
 
 {%arend%}
