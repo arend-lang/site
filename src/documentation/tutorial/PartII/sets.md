@@ -17,7 +17,7 @@ The assertion that the cardinality is less (not necessarily strictly) means that
 of {%ard%}X{%endard%} into {%ard%}X -> \Prop{%endard%}. Clearly, the equality predicate 
 {%ard%}(=) : X -> (X -> \Prop){%endard%} is an injection.
 
-The assetrion that the cardinality is strictly less means that, in addition, there is no surjection 
+The assertion that the cardinality is strictly less means that, in addition, there is no surjection
 {%ard%}f : X -> (X -> \Prop){%endard%}. This can be easily proven by adopting the classical Cantor's
 argument.
 
@@ -52,7 +52,7 @@ Note that the definition of surjection requires the propositional truncation.
 {%endarend%}
 
 We now give an obvious definition of a bijection and prove that bijectivity
-is a conjuction of injectivity and surjectivity.
+is a conjunction of injectivity and surjectivity.
 
 {%arend%}
 \func isBij {A B : \Set} (f : A -> B) => \Sigma (g : B -> A) (\Pi (x : A) -> g (f x) = x) (\Pi (y : B) -> f (g y) = y)
@@ -91,7 +91,7 @@ or, in other words, gluing, and apply it to the definition of the type {%ard%}In
 of integers.
 
 Consider first the definition of the type of integers as the ordinary datatype containing
-two copies of {%ard%}Nat{%endard%}: nonegative and nonpositive numbers.
+two copies of {%ard%}Nat{%endard%}: nonnegative and nonpositive numbers.
 
 {%arend%}
 \data Int'

@@ -82,7 +82,7 @@ The embedding of {%ard%}\Prop{%endard%} into {%ard%}PropInType{%endard%} is inve
 
 Recall that in the previous module we noted that the equality {%ard%}x=y{%endard%} is not always a proposition
 and defined sets as those types {%ard%}A{%endard%}, for which equality {%ard%}a=a'{%endard%} between any two 
-elements {%ard%}a a' : A{%endard%} is a propoposition:
+elements {%ard%}a a' : A{%endard%} is a proposition:
 
 {%arend%}
 \func isSet (A : \Type) => \Pi (x y : A) -> isProp (x = y)
@@ -378,7 +378,7 @@ holds by reflexivity:
   => idp
 {%endarend%}
 
-The property {%ard%}equavalence=>equality{%endard%} does not still fully characterize equalities
+The property {%ard%}equivalence=>equality{%endard%} does not still fully characterize equalities
 between types: the type {%ard%}A = B{%endard%} should be equivalent to the type {%ard%}Equiv A B{%endard%}.
 The computational rule for {%ard%}iso{%endard%} mentioned above allows to prove that 
 the composition of {%ard%}equivalence=>equality{%endard%} and  {%ard%}equality=>equivalence{%endard%}

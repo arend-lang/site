@@ -15,7 +15,7 @@ usually does not contain any data and is merely a proof of the proposition. It i
 homotopy type theory to use the term "proposition" for mere propositions.
 
 Subsequently we discuss another important subclass of types, consisting of those types that can be
-idenified with sets.
+identified with sets.
 
 # Subsets, injective functions
 
@@ -197,7 +197,7 @@ The product (conjunction) of propositions is proposition:
   : isProp (\Sigma A B) => \lam p q => prodEq p q (pA p.1 q.1) (pB p.2 q.2)
 {%endarend%}
 
-The function type (implication) between propositions is poposition:
+The function type (implication) between propositions is proposition:
 
 {%arend%}
 \func funcExt {A : \Type} (B : A -> \Type) (f g : \Pi (x : A) -> B x)
@@ -315,7 +315,7 @@ called _sets_.
 {%arend%}
 \func isSet (A : \Type) => \Pi (a a' : A) -> isProp (a = a')
 
--- By definition equality is mere porosition for sets
+-- By definition equality is mere proposition for sets
 \func equality-isProp {A : \Type} (p : isSet A) (a a' : A) : isProp (a = a') => p a a'
 {%endarend%}
 
@@ -435,7 +435,7 @@ every morphism is invertible. In particular, all endomorphisms
 of any object in a groupoid is a group with composition as the group operation. In the groupoid
 of a 1-type {%ard%}A{%endard%} the set of morphisms between objects {%ard%}x y : A{%endard%} is given
 by elements of {%ard%}x=y{%endard%}. The identity morphism is {%ard%}idp{%endard%} and the composition
-is given by transitivity {%ard%}*>{%endard%} of equality, which turnes out to be in this case a nontrivial
+is given by transitivity {%ard%}*>{%endard%} of equality, which turns out to be in this case a nontrivial
 function rather than mere implication:
 
 {%arend%}
@@ -472,7 +472,7 @@ We can prove that {%ard%}*>{%endard%} and {%ard%}idp{%endard%} satisfy the requi
 {%endarend%}
 
 The function {%ard%}*>{%endard%} is thus similar to a group operation. For example, we can
-prove the left cancelation property for it:
+prove the left cancellation property for it:
 
 {%arend%}
 \func cancelLeft {A : \Type} {x y z : A}

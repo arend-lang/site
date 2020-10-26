@@ -42,7 +42,7 @@ This path in general goes across different types {%ard%}B i{%endard%} and lies i
 {%ard%}Path B b (coe B b right){%endard%}. The right point {%ard%}transport B p b ==> (coe B b right){%endard%} can
 be thought of as {%ard%}b{%endard%} transported along the path {%ard%}p{%endard%}.
 
-Thus one can recognise that {%ard%}B{%endard%} defines _a fibration_ over {%ard%}I{%endard%} and {%ard%}(\lam i => coe B b i) : \Pi (i : I) -> B i{%endard%}
+Thus one can recognize that {%ard%}B{%endard%} defines _a fibration_ over {%ard%}I{%endard%} and {%ard%}(\lam i => coe B b i) : \Pi (i : I) -> B i{%endard%}
 is a section of the fibration. More generally, dependent types {%ard%}B : A -> \Type{%endard%} correspond to fibrations {%ard%}p1 : \Sigma A B -> A{%endard%} (here 
 {%ard%}p1{%endard%} is the projection to the first component) over {%ard%}A{%endard%} with fibers {%ard%}B x{%endard%}
 over points {%ard%}x : A{%endard%} and the total space {%ard%}\Sigma A B{%endard%}. Note that if {%ard%}b : B x{%endard%}, then
@@ -261,7 +261,7 @@ it is very easy to construct a "winding" homomorphism from the group {%ard%}Int{
   | neg (suc n) => wind (neg n) *> inv (path loop)
 {%endarend%}
  
-In order to costruct the inverse map we will need to define a fibration over the circle, called the _universal cover_.
+In order to construct the inverse map we will need to define a fibration over the circle, called the _universal cover_.
 This amouts to constructing a specific dependent type, which we denote as {%ard%}code{%endard%}.
  
 Geometrically the universal cover of the circle is a winding of the real line over the circle and
@@ -305,7 +305,7 @@ Arend standard library.
 
 # Eilenberg-Maclane space
 
-Given a group {%ard%}G{%endard%} we now construct a pointed connected 1-type {%ard%}K1 G{%endard%} such that the fundametal group of {%ard%}K1 G{%endard%} is 
+Given a group {%ard%}G{%endard%} we now construct a pointed connected 1-type {%ard%}K1 G{%endard%} such that the fundamental group of {%ard%}K1 G{%endard%} is 
 {%ard%}G{%endard%}. The type {%ard%}K1 G{%endard%} is called the _Eilenberg-Maclane space_. This type can be defined as the type with the base point {%ard%}base{%endard%},
 for every {%ard%}g : G{%endard%} the loop constructor {%ard%}loop g i{%endard%} and for every {%ard%}g g' : G{%endard%} the 2-cell {%ard%}relation g g' i j{%endard%},
 which equalizes the composition of loops {%ard%}path (loop g) *> path (loop g'){%endard%} and the loop {%ard%}path (loop (g * g')){%endard%}.
