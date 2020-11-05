@@ -19,7 +19,7 @@ The false proposition corresponds to the empty type and the true proposition cor
 Different elements of a type can be thought of as different ways to prove corresponding proposition.
 For example, the type of natural numbers corresponds to the proposition that natural numbers exist and every element of this type witnesses a proof of this proposition.
 
-**Remark:** This correspondence will be refined in [Part II](/documentation/tutorial/PartII) of this tutorial, where we will argue that not every type should be though of as a proposition.
+**Remark:** This correspondence will be refined in [Part II](/documentation/tutorial/PartII) of this tutorial, where we will argue that not every type should be thought of as a proposition.
 {: .notice--warning}
 
 In order to illustrate the correspondence between the empty type {%ard%}Empty{%endard%} and the logical False, we can prove
