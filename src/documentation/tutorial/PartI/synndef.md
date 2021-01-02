@@ -308,7 +308,7 @@ every proposition could have been trivially proven:
 Moreover, the typechecking procedure in dependently typed language needs to check termination. Consequently, the language
 cannot be Turing complete, because typechecking becomes undecidable in this case. 
  
-Intensional Martin-Lof type theory avoids this kind of issues by ensuring that all definable functions are total, that is
+Intensional Martin-Löf type theory avoids this kind of issues by ensuring that all definable functions are total, that is
 their evaluation terminates on every input.
 It is thus typical for theorem provers, that have Martin-Lof type theory in the core of their type system, to require
 all functions to terminate and all recursive functions to be defined by _structural recursion_. And this also
