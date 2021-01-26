@@ -64,7 +64,7 @@ Similarly, a property of type {%ard%} A {%endard%} can be defined as follows:
 
 {% arend %}
 \record R {
-  \property p : \level A p
+  \property s : \level A p
 }
 {% endarend %}
 
@@ -95,7 +95,7 @@ So, in this case, {%ard%} \use \level {%endard%} is just a syntactic sugar.
 If some function {%ard%} f {%endard%} is defined with a {%ard%} \use \level {%endard%} annotation, this does not change the type of {%ard%} f {%endard%},
 but it will be treated as a type in a lower universe in situations described in [Level of a type](#level-of-a-type).
 
-For example, we can prove that {%ard%} isProp {%endard%} is itslef a proposition and then define lemmas which prove that some type is a proposition:
+For example, we can prove that {%ard%} isProp {%endard%} is itself a proposition and then define lemmas which prove that some type is a proposition:
 {% arend %}
 \func isProp (A : \Type) => \Pi (a a' : A) -> a = a'
   \where \use \level proof (A : \Type) : isProp (isProp A) => {?} -- the proof is omitted

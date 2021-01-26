@@ -122,7 +122,7 @@ Then {%ard%} x {%endard%} is equivalent to this pattern.
 Now, let us discuss how expressions of the form {%ard%} f a_1 ... a_n {%endard%} evaluate (see [Expressions](../expressions#evaluation) for the definition of the reduction and evaluation relations).
 Let {%ard%} E {%endard%} be equal to {%ard%} f a_1 ... a_n {%endard%}.
 To reduce this expression, we first evaluate expressions {%ard%} a_1, ... a_n {%endard%} and match them with the patterns in the definition of {%ard%} f {%endard%} left to right, top to bottom.
-If all patterns {%ard%} p^i_1, ... p^i_n {%endard%} matches with {%ard%} a_1, ... a_n {%endard%} for some i, then {%ard%} E {%endard%} reduces to {%ard%} e_i[b_1/y_1, ... b_k/y_k] {%endard%},
+If all patterns {%ard%} p^i_1, ... p^i_n {%endard%} matches with {%ard%} a_1, ... a_n {%endard%} for some _i_, then {%ard%} E {%endard%} reduces to {%ard%} e_i[b_1/y_1, ... b_k/y_k] {%endard%},
 where {%ard%} y_1, ... y_k {%endard%} are variables that appear in {%ard%} p^i_1, ... p^i_n {%endard%} and {%ard%} b_1, ... b_k {%endard%} are subexpressions of {%ard%} a_1, ... a_n {%endard%} corresponding to these variables.
 If some argument cannot be matched with a pattern {%ard%} con s_1 ... s_m {%endard%} because it is of the form {%ard%} con' ... {%endard%} for some constructor {%ard%} con' {%endard%} different from {%ard%} con {%endard%},
 then the evaluator skips the clause with this patterns and tries the next one.
