@@ -59,7 +59,7 @@ See [Class extensions](../expressions/class-ext) for more information about new 
 \func r2 => \new R { | p_1 => a_1 ... | p_n => a_n | f_1 => b_1 ... | f_k => b_k }
 \func r3 => \new R a_1 ... a_n b_1 ... b_k
 \func r4 => \new R a_1 ... a_i { | p_{i+1} => a_{i+1} ... | p_n => a_n | f_1 => b_1 ... | f_k => b_k }
-\func r5 => \new R a_1 ... a_n b_1 ... b_i { f_{i+1} => b_{i+1} ... | f_k => b_k }
+\func r5 => \new R a_1 ... a_n b_1 ... b_i { | f_{i+1} => b_{i+1} ... | f_k => b_k }
 {% endarend %}
 
 The same function can also be defined using [copattern matching](functions#copattern-matching):
