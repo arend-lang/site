@@ -53,9 +53,15 @@ To do this, one needs to use the keyword {%ard%} \instance {%endard%}:
 
 {% arend %}
 \instance NatSemigroup : Semigroup Nat
-  | * => Nat.*
-  | *-assoc => {?} -- the proof is omitted
+  | * => Nat.+
+  | *-assoc (x y z : Nat) : (x Nat.+ y) Nat.+ z = x Nat.+ (y Nat.+ z) \elim z {
+    | 0 => idp
+    | suc z => pmap suc (*-assoc x y z)
+  }
 {% endarend %}
+
+An implementation of a field can be defined by pattern matching as demonstrated above.
+In this case, a separate function with the same name as the field is created in the namespace of the instance.
 
 A global instance is just a function, defined by [copattern matching](functions#copattern-matching).
 It can be used as an ordinary function.

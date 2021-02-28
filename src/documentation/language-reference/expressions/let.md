@@ -36,6 +36,22 @@ That is, instead of {%ard%} | x_i => e_i {%endard%}, you can write {%ard%} | x_i
 where {%ard%} p^i_1, ... p^i_{n_i} {%endard%} are either variables or named parameters to which {%ard%} e_i {%endard%} can refer.
 Such a clause is equivalent to {%ard%} | x_i => \lam p^i_1 ... p^i_{n_i} => e_i {%endard%}.
 
-Let expressions also can be _strict_.
+# Strict let expressions
+
+Let expressions can be _strict_.
 This means that expressions {%ard%} e_1, ... e_n {%endard%} will be evaluated immediately when the let expression is evaluated.
 To define a strict let expression, use the keyword {%ard%} \let! {%endard%} instead of {%ard%} \let {%endard%}.
+
+# \have
+
+The {%ard%} \have {%endard%} keyword can be used instead of the {%ard%} \let {%endard%} keyword.
+The resulting expression will not change, but defined variables will not unfold inside the expression.
+For example, the following code will not work because {%ard%} x {%endard%} is not equivalent to {%ard%} 0 {%endard%}.
+
+{% arend %}
+\have x => 0
+\in (idp : x = 0)
+{% endarend %}
+
+This can be useful when the actual value of the variable is not important.
+For example, this is usually the case when it is a proof of some fact.

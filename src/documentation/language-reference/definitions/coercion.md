@@ -37,3 +37,16 @@ For example, {%ard%} Nat {%endard%} can be coerced to {%ard%} Bool {%endard%} as
 {% endarend %}
 
 It is possible to define several coercing functions for a single type.
+
+If some data type or record can be coerced to a function, then elements of this type can be applied to arguments, in which case the coercing function will be inserted.
+
+# Fields and constructors
+
+A field or a constructor can be marked with the {%ard%} \coerce {%endard%} keyword like this:
+
+{% arend %}
+\record R (\coerce A : \Type) (a : A)
+\data D | \coerce con1 Nat | con2
+{% endarend %}
+
+Then the marked field or constructor will be used just as coercing functions.

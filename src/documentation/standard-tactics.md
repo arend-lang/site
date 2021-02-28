@@ -14,7 +14,7 @@ implemented in the standard library.
 These metas are scattered into several modules:
 
 + [Meta](/documentation/standard-tactics/meta)
-+ [Paths.Meta](/documentation/standard-tactics/path-meta)
++ [Paths.Meta](/documentation/standard-tactics/paths-meta)
 + [Function.Meta](/documentation/standard-tactics/function-meta)
 + [Algebra.Meta](/documentation/standard-tactics/algebra-meta)
 + [Logic.Meta](/documentation/standard-tactics/logic-meta)

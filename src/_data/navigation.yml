@@ -102,8 +102,8 @@ documentation:
     children:
     - title: Unclassified metas
       url: meta
-    - title: Path metas
-      url: path-meta
+    - title: Paths metas
+      url: paths-meta
     - title: Functional metas
       url: function-meta
     - title: Algebraic metas

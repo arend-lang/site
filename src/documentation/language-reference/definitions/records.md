@@ -200,6 +200,35 @@ Every field of a record {%ard%} R {%endard%} has additional implicit parameter o
 
 The keyword {%ard%} \this {%endard%} can appear only in arguments of definitions and only in those arguments, which in turn satisfy this condition.
 
+## Dynamic definitions
+
+A function or a data type can be put inside a record definition:
+
+{% arend %}
+\record R {
+  | n : Nat
+
+  \func f (x : Nat) => x Nat.+ n
+}
+{% endarend %}
+
+Such a definition will have an addition implicit parameter of type {%ard%} R {%endard%}.
+Thus, the code above is equivalent to the following one:
+
+{% arend %}
+\record R {
+  | n : Nat
+} \where {
+  \func f {this : R} (x : Nat) => x Nat.+ this.n
+}
+{% endarend %}
+
+Such functions and data types are called dynamic and can be accessed with the dot-syntax:
+
+{% arend %}
+\func g (r : R) : Nat => r.f 1
+{% endarend %}
+
 ## Override
 
 The type of a field or a property can be overridden with a subtype in a subclass using keyword {%ard%} \override {%endard%}:
@@ -216,4 +245,111 @@ The type of a field or a property can be overridden with a subtype in a subclass
 \record B \extends A {
   \override f : S
 }
+{% endarend %}
+
+## \default
+
+A default implementation does not modify the record, but it will be used when a new instance is created if the implementation is not specified.
+Default implementations are defined with the {%ard%} \default {%endard%} keyword:
+
+{% arend %}
+\record R
+  | f : Nat
+  | g : Nat
+
+\record S \extends R {
+  \default f => 0
+}
+{% endarend %}
+
+In this example, the type {%ard%} S {%endard%} is equivalent to {%ard%} R {%endard%}.
+An instance of {%ard%} S {%endard%} can be created as usual or the implementation of {%ard%} f {%endard%} can be omitted:
+
+{% arend %}
+\func inst1 : S \cowith
+  | f => 1
+  | g => 2
+
+\func inst2 : S \cowith
+  | g => 2
+
+\func test1 : inst1.f = 1 => idp
+
+\func test2 : inst2.f = 0 => idp
+{% endarend %}
+
+Defaullt implementations can be defined by pattern matching as usual:
+
+{% arend %}
+\record R
+  | f : Nat -> Nat
+
+\record S \extends R {
+  \default f (n : Nat) : Nat \with {
+    | 0 => 0
+    | suc n => n
+  }
+}
+{% endarend %}
+
+In this case, a function with the same name as the field will be created in the namespace of the record.
+The name of the function can be changed with the {%ard%} \as {%endard%} keyword:
+
+{% arend %}
+\record S' \extends R {
+  \default f \as fImpl (n : Nat) : Nat \with {
+    | 0 => 0
+    | suc n => n
+  }
+}
+{% endarend %}
+
+Default implementations do not see each other by default.
+For example, the following code does not work:
+
+{% arend %}
+\record R
+  | x : Nat
+  | p : x = 0
+
+\record S \extends R {
+  \default x => 0
+  \default p => idp -- does not work
+}
+{% endarend %}
+
+To fix this, the first default implementation must be given a name and in the second one its type must be explicitly specified:
+
+{% arend %}
+\record S' \extends R {
+  \default x \as x' => 0
+  \default p : x' = 0 => idp
+}
+{% endarend %}
+
+Default implementations can also be implemented in terms of each other:
+
+{% arend %}
+\record R
+  | x : Nat
+  | y : Nat
+
+\record S \extends R {
+  \default x => y
+  \default y => x
+}
+{% endarend %}
+
+To define an instance of {%ard%} S {%endard%}, you need to specify one of the fields (or both):
+
+{% arend %}
+\func test1 : S \cowith
+  | x => 0
+
+\func test2 : S \cowith
+  | y => 1
+
+\func test3 : S \cowith
+  | x => 2
+  | y => 3
 {% endarend %}

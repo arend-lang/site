@@ -12,10 +12,29 @@ to actual definitions since most of them cannot be actually defined in the ordin
 
 # Nat and Int
 
-The definitions of {%ard%} Nat {%endard%}, {%ard%} Int {%endard%}, {%ard%} Nat.+ {%endard%}, {%ard%} Nat.* {%endard%}, {%ard%} Nat.- {%endard%}, {%ard%} Nat.<= {%endard%}, {%ard%} Nat.div {%endard%}, {%ard%} Nat.mod {%endard%}, and {%ard%} Int.fromNat {%endard%} are actually correct,
+The definitions of {%ard%} Nat {%endard%}, {%ard%} Int {%endard%}, {%ard%} Nat.* {%endard%}, {%ard%} Nat.<= {%endard%}, and {%ard%} Nat.div {%endard%} are actually correct,
 they could have been as well defined in an ordinary file and successfully typechecked according to normal Arend typechecking rules.
 The only difference is that these definitions from Prelude are implemented more efficiently.
 Definitions of {%ard%} Nat.divMod {%endard%}, {%ard%} Nat.divModProp {%endard%}, and {%ard%} Nat.modProp {%endard%} are omitted, but these functions also can be defined in Arend.
+
+Functions {%ard%} Nat.+ {%endard%} and {%ard%} Nat.- {%endard%} have more computational rules than can be defined normally:
+{% arend %}
+n + 0 => n
+n + suc m => suc (n + m)
+0 + m => m
+suc n + m => suc (n + m)
+
+0 - m => neg m
+n - 0 => pos n
+suc n - suc m => n - m
+{% endarend %}
+
+Finally, {%ard%} Nat.mod (suc n) {%endard%} has type {%ard%} Fin (suc n) {%endard%} and {%ard%} Nat.divMod (suc n) {%endard%} has type {%ard%} \Sigma Nat (Fin (suc n)) {%endard%}.
+
+# Fin
+
+The type {%ard%} Fin n {%endard%} is a subtype of {%ard%} Nat {%endard%} and also a subtype of {%ard%} Fin (suc n) {%endard%}.
+Constructors of {%ard%} Nat {%endard%} are also constructors of {%ard%} Fin n {%endard%}: {%ard%} zero {%endard%} has type {%ard%} Fin (suc n) {%endard%} and if {%ard%} x : Fin n {%endard%}, then {%ard%} suc x : Fin (suc n) {%endard%}.
 
 # Interval and squeeze functions
 
