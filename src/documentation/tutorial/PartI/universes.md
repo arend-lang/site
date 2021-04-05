@@ -243,7 +243,7 @@ The type {%ard%}Type{%endard%} can be thought of as a type contains codes of typ
 function that realizes them as actual types:
 
 {%arend%}
-\func El (t : Type) : \Type0 \elim t
+\func El (t : Type) : \Set0 \elim t -- \Set0 is almost the same as \Type0, we will discuss the difference later
   | nat => Nat
   | list t => List (El t)
   | arr t1 t2 => El t1 -> El t2
@@ -255,12 +255,12 @@ The universe {%ard%}Type{%endard%} contains just non-dependent types. If we want
 to the universe, we should use induction-recursion:
 
 {%arend%}
-\data Type' : \Set0 -- \Set0 is almost the same as \Type0, we will discuss the difference later
+\data Type' : \Set0
   | nat'
   | list' Type'
   | pi' (a : Type') (El' a -> Type')
 
-\func El' (t : Type') : \Type0 \elim t
+\func El' (t : Type') : \Set0 \elim t
   | nat' => Nat
   | list' t => List (El' t)
   | pi' t1 t2 => \Pi (a : El' t1) -> El' (t2 a)
