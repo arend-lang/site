@@ -136,8 +136,8 @@ non-implemented fields of {%ard%}Magma \lp Nat{%endard%} do not contain universe
 Consider one more example, the class {%ard%}Functor{%endard%} of functors:
 
 {%arend%}
-\class Functor (F : \Type -> \Type)
-  | fmap {A B : \Type} : (A -> B) -> F A -> F B
+\class Functor (F : \Set -> \Set) -- \Set is almost the same as \Type, we will discuss the difference later
+  | fmap {A B : \Set} : (A -> B) -> F A -> F B
 {%endarend%}
 
 The level of {%ard%}Functor{%endard%} will be {%ard%}\Type (\suc \lp){%endard%} even if the field {%ard%}F{%endard%} is
@@ -159,7 +159,7 @@ Specify explicitly result types for all idTest*.
 \func idTest2 => id'' Maybe
 \func idTest3 => id'' Functor
 \func idTest4 => id'' (Functor Maybe)
-\func idTest5 (f : \Pi {A B : \Type} -> (A -> B) -> Maybe A -> Maybe B) => id'' (Functor Maybe f)
+\func idTest5 (f : \Pi {A B : \Set} -> (A -> B) -> Maybe A -> Maybe B) => id'' (Functor Maybe f)
 {%endarend%}
 
 
@@ -243,7 +243,7 @@ The type {%ard%}Type{%endard%} can be thought of as a type contains codes of typ
 function that realizes them as actual types:
 
 {%arend%}
-\func El (t : Type) : \Set0 \elim t -- \Set0 is almost the same as \Type0, we will discuss the difference later
+\func El (t : Type) : \Set0 \elim t
   | nat => Nat
   | list t => List (El t)
   | arr t1 t2 => El t1 -> El t2
