@@ -125,7 +125,7 @@ evaluates to {%ard%}pos 0{%endard%}.
 Whenever a function over such a type is defined, the typechecker checks if its 
 values on equivalent constructors coincide. For example, the following definition
 does not typecheck, because {%ard%}intEx (pos 0){%endard%} is 3, but 
-{%ard%}intEx (pos 0){%endard%} is 7:
+{%ard%}intEx (neg 0){%endard%} is 7:
 
 {%arend%}
 -- This does not typecheck!
