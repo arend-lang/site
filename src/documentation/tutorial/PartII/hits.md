@@ -74,17 +74,18 @@ conditions saying that endpoints of the loop evaluate to the basepoint: {%ard%}l
 {%endarend%}
 
 Higher dimensional spheres are also easy to define using the construction called _suspension_. For a type
-{%ard%}A{%endard%} its suspension {%ard%}Susp A{%endard%} is a type with two points {%ard%}S{%endard%}
-and {%ard%}N{%endard%} and for every element {%ard%}a : A{%endard%} a path {%ard%}merid a i{%endard%}
-between {%ard%}S{%endard%} and {%ard%}N{%endard%}: {%ard%}merid a left ==> S{%endard%},
-{%ard%}merid a right ==> N{%endard%}.
+{%ard%}A{%endard%} its suspension {%ard%}Susp A{%endard%} is a type with two points {%ard%}south{%endard%}
+and {%ard%}north{%endard%} and for every element {%ard%}a : A{%endard%} a path {%ard%}merid a i{%endard%}
+between {%ard%}north{%endard%} and {%ard%}south{%endard%}: {%ard%}merid a left ==> north{%endard%},
+{%ard%}merid a right ==> south{%endard%}.
 
 {%arend%}
 \data Susp (A : \Type)
-   | S | N
+   | south
+   | north
    | merid A (i : I) \elim i {
-      	| left => S
-        | right => N
+      	| left => north
+        | right => south
    }
 {%endarend%}
 
@@ -100,14 +101,14 @@ It is easy to see that the type {%ard%}Circle{%endard%} is equivalent to the typ
 
 {%arend%}
 \func CircleToSphere1 (x : Circle) : Sphere 1
-    | base => S
-    | loop i => (path (merid N) *> inv (path (merid S))) @ i 
+    | base => north
+    | loop i => (path (merid north) *> inv (path (merid south))) @ i 
 
 \func Sphere1ToCircle (x : Sphere 1) : Circle
-    | S => base
-    | N => base
-    | merid S i => loop i
-    | merid N i => base
+    | south => base
+    | north => base
+    | merid north i => loop i
+    | merid south i => base
     | merid (merid () _) _
 {%endarend%}  
 
