@@ -51,7 +51,7 @@ For example, the result type of a [lemma](functions#lemmas)
 or a [property](records#properties) must be a proposition.
 If the type does not belong to the corresponding universe, but it can be proved that it has the correct homotopy level,
 the keyword {%ard%} \level {%endard%} can be used to convince the typechecker to accept the definition.
-This keywords can be specified in the result type of a function, a lemma, a field, or a case expression.
+This keyword can be specified in the result type of a function, a lemma, a field, or a case expression.
 Its first argument is the type and the second is the proof that it belongs to some homotopy level.
 
 For example, if {%ard%} A {%endard%} is a type such that {%ard%} p : \Pi (x y : A) -> x = y {%endard%}, then a lemma that proves {%ard%} A {%endard%} can be defined as follows:
