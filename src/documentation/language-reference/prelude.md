@@ -41,6 +41,9 @@ Constructors of {%ard%} Nat {%endard%} are also constructors of {%ard%} Fin n {%
 {%ard%} Array {%endard%} is a record consisting of a type of its elements {%ard%}A{%endard%}, its length {%ard%}len{%endard%}, and a function {%ard%} Fin len -> A {%endard%}.
 Thus, {%ard%} Array A {%endard%} is equivalent to the type of lists of elements of type {%ard%} A {%endard%} and {%ard%} Array A n {%endard%} is equivalent to the type of vectors of elements of type {%ard%} A {%endard%} and length {%ard%} n {%endard%}.
 
+The prelude also includes constructors {%ard%} nil {%endard%} and {%ard%} :: {%endard%} which can be used to define functions on arrays by pattern matching.
+Thus, arrays can be used as functions {%ard%} Fin len -> A {%endard%} and as lists simultaneously.
+
 The type of dependent arrays {%ard%} DArray {%endard%} is a generalization of {%ard%} Array {%endard%} in which {%ard%} A : Fin len -> \Type {%endard%} is a dependent type and elements are given by a dependent function {%ard%} \Pi (j : Fin len) -> A j {%endard%}.
 
 # Interval and squeeze functions
