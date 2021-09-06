@@ -29,6 +29,8 @@ documentation:
           url: parameters
         - title: "Functions"
           url: functions
+        - title: "Type synonyms"
+          url: types
         - title: "Data"
           url: data
         - title: "Higher inductive types"

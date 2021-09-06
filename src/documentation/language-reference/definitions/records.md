@@ -353,3 +353,18 @@ To define an instance of {%ard%} S {%endard%}, you need to specify one of the fi
   | x => 2
   | y => 3
 {% endarend %}
+
+## Levels
+
+It is possible to specify levels of a super class:
+
+{% arend %}
+\record R
+  | A : \Type
+  | B : \1-Type
+  | C : \Type1
+
+\record S \extends R (0,0)
+{% endarend %}
+
+Now, if we have {%ard%} s : S {%endard%}, then {%ard%} s.A : \Set0 {%endard%}, {%ard%} s.B : \1-Type0 {%endard%}, and {%ard%} s.C : \Set1 {%endard%}.

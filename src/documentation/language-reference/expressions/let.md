@@ -36,6 +36,22 @@ That is, instead of {%ard%} | x_i => e_i {%endard%}, you can write {%ard%} | x_i
 where {%ard%} p^i_1, ... p^i_{n_i} {%endard%} are either variables or named parameters to which {%ard%} e_i {%endard%} can refer.
 Such a clause is equivalent to {%ard%} | x_i => \lam p^i_1 ... p^i_{n_i} => e_i {%endard%}.
 
+# Pattern matching
+
+It is also possible to match constructors of data types as follows:
+{% arend %}
+\let (con x_1 ... x_k) => e1
+\in e2
+{% endarend %}
+where {%ard%} x_1, ... x_k {%endard%} are patterns and {%ard%} con {%endard%} is a constructor.
+
+This expression is equivalent to the following one:
+{% arend %}
+\case e1 \with {
+  | con x_1 ... x_k => e2
+}
+{% endarend %}
+
 # Strict let expressions
 
 Let expressions can be _strict_.

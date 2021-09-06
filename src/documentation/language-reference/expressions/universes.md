@@ -21,9 +21,9 @@ Some of these universes have alternative names: the universe of propositions (-1
 Note that the universe {%ard%} \Prop {%endard%} is _impredicative_: it does not have predicative level. Practically, this means that
 if {%ard%} B : \Prop {%endard%}, then the type {%ard%} \Pi (x : \Prop) -> B {%endard%} is in {%ard%} \Prop {%endard%}. 
 
-The universe {%ard%} \Prop {%endard%} is not proof irrelevant, but some elements of propositions are definitionally equal.
-If {%ard%} A : \Prop {%endard%} and {%ard%} a, a' : A {%endard%} are such that they never evaluate to a constructor, then they are definitionally equal.
-For example, if the type is an empty data type, then this is true for any pair of its elements, so they always be definitionally equal.
+The universe {%ard%} \Prop {%endard%} is not proof irrelevant, but some elements of propositions are computationally equal.
+If {%ard%} A : \Prop {%endard%} and {%ard%} a, a' : A {%endard%} are such that they never evaluate to a constructor, then they are computationally equal.
+For example, if the type is an empty data type, then this is true for any pair of its elements, so they always be computationally equal.
 
 Universes with h equal to ∞ are represented in the syntax as {%ard%} \oo-Type p {%endard%}. The homotopy level can also be 
 specified after the predicative level: {%ard%} \Type p h {%endard%} is equivalent to {%ard%} \h-Type p {%endard%}.   
@@ -67,6 +67,22 @@ Level expressions are defined inductively:
 * If {%ard%} l1 {%endard%} and {%ard%} l2 {%endard%} are level expressions of the same kind, then {%ard%} \max l1 l2 {%endard%} is also a level expression of the same kind as {%ard%} l1 {%endard%} and {%ard%} l2 {%endard%}.
 
 Since the only level variables are {%ard%} \lp {%endard%} and {%ard%} \lh {%endard%}, the expression {%ard%} \max l1 l2 {%endard%} is useful only when one of the levels is a constant.
+
+## Level parameters
+
+It is possible to declare definitions with several level parameters with the following syntax:
+{% arend %}
+\func func \plevels p1 <= p2 <= p3 \hlevels h1 >= h2 (A : \Type p2 h1) (B : \Type p3 h2) => \Type p1
+{% endarend %}
+
+All level parameters of the same type must be linearly ordered.
+In the example above, {%ard%} func {%endard%} has three predicative level parameters which are declared in ascending order and two homotopy level parameters in descending order.
+Level arguments for a definition with multiple level parameters can be specified as before:
+{% arend %}
+\func example => func \levels (1,2,3) (2,1) Nat Nat
+{% endarend %}
+
+If level parameters are not explicitly declared for a class, they are inhereted from the first super class (if any).
 
 ## Level inference
 

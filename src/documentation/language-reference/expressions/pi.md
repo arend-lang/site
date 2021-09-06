@@ -27,7 +27,12 @@ An expression of the form {%ard%} (\lam x => b) a {%endard%} reduces to {%ard%} 
 
 An expression of the form {%ard%} \lam x => f x {%endard%} is equivalent to {%ard%} f {%endard%} if {%ard%} x {%endard%} is not free in {%ard%} f {%endard%} (eta equivalence for Pi types).
 
-## Implicit lambdas
+# Pattern matching
+
+It is possible to use pattern matching in lambda parameters with the following syntax: {%ard%} \lam (p) => e {%endard%}, where {%ard%} p {%endard%} is a pattern.
+This expression is equivalent to {%ard%} \lam x => \let (p) => x \in e {%endard%}.
+
+# Implicit lambdas
 
 An implicit lambda is written as {%ard%} __ {%endard%}.
 When this expression appears inside some other expression, the outer expression is replaced with a lambda and {%ard%} __ {%endard%} is replaced with the argument of this lambda.

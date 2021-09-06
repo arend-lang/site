@@ -14,8 +14,8 @@ such as Coq or Idris (in Agda, `rewrite` is allowed only in the LHS of a clause,
 + {%ard%} rewriteF {%endard%} is like {%ard%} rewrite {%endard%} but it enforces to use the type of {%ard%} t {%endard%} instead of the expected type.
 + {%ard%} rewriteI p t {%endard%} is equivalent to {%ard%} rewrite (inv p) t {%endard%}.
 
-To any of the metas above it is possible to add specification of numbers of occurrences. For example, {%ard%} rewrite {i1 i2 … ik} p t : T {%endard%} rewrites only occurrences
-with numbers {%ard%} i1 i2 … ik {%endard%} where occurrence {%ard%} ij {%endard%} is the number of occurrence after all previous occurrences have been replaced.
+To any of the metas above it is possible to add specification of numbers of occurrences. For example, {%ard%} rewrite {i1, i2, ... ik} p t : T {%endard%} rewrites only occurrences
+with numbers {%ard%} i1, i2, ... ik {%endard%} where occurrence {%ard%} ij {%endard%} is the number of occurrence after all previous occurrences have been replaced.
 
 Examples:
 
@@ -60,7 +60,7 @@ Examples:
   => rewrite ++_nil p
 {% endarend %}
 
-# Algebraic rewrite meta
+# Algebraic rewrite
 
 Meta {%ard%} rewriteEq {%endard%} allows for more advanced rewriting in algebraic subexpressions. {%ard%} rewriteEq p t : T {%endard%},
 where {%ard%} p : a = b {%endard%}, like {%ard%} rewrite {%endard%} replaces literal occurrences of {%ard%} a {%endard%} in {%ard%} T {%endard%}
@@ -76,13 +76,11 @@ Note that occurrences can overlap in this case. The counting is natural from lef
 Examples:
 
 {% arend %}
-
 \lemma test1 {A : Monoid} (a b c d x : A) (B : A -> \Prop) (p : b * c = x) (t : B (a * x * d)) : B (((a * b) * (ide * c)) * (d * ide))
   => rewriteEq p t
   
 \lemma test2 {C : Precat} {a b c d : C} (P : Hom a d -> \Prop) (f : Hom a b) (g : Hom b c) (g' : Hom c b) (h : Hom c d) (p : g ∘ g' = id c) (t : P ((h ∘ g) ∘ (id b ∘ f))) : P ((h ∘ id c ∘ g) ∘ (g' ∘ g ∘ f))
   => rewriteEq p (rewriteEq (idp {_} {(h ∘ g) ∘ (id b ∘ f)}) t)
-  
 {% endarend %}  
 
 # Extensionality meta

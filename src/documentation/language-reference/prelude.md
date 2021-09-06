@@ -36,6 +36,13 @@ Finally, {%ard%} Nat.mod (suc n) {%endard%} has type {%ard%} Fin (suc n) {%endar
 The type {%ard%} Fin n {%endard%} is a subtype of {%ard%} Nat {%endard%} and also a subtype of {%ard%} Fin (suc n) {%endard%}.
 Constructors of {%ard%} Nat {%endard%} are also constructors of {%ard%} Fin n {%endard%}: {%ard%} zero {%endard%} has type {%ard%} Fin (suc n) {%endard%} and if {%ard%} x : Fin n {%endard%}, then {%ard%} suc x : Fin (suc n) {%endard%}.
 
+# Array
+
+{%ard%} Array {%endard%} is a record consisting of a type of its elements {%ard%}A{%endard%}, its length {%ard%}len{%endard%}, and a function {%ard%} Fin len -> A {%endard%}.
+Thus, {%ard%} Array A {%endard%} is equivalent to the type of lists of elements of type {%ard%} A {%endard%} and {%ard%} Array A n {%endard%} is equivalent to the type of vectors of elements of type {%ard%} A {%endard%} and length {%ard%} n {%endard%}.
+
+The type of dependent arrays {%ard%} DArray {%endard%} is a generalization of {%ard%} Array {%endard%} in which {%ard%} A : Fin len -> \Type {%endard%} is a dependent type and elements are given by a dependent function {%ard%} \Pi (j : Fin len) -> A j {%endard%}.
+
 # Interval and squeeze functions
 
 The definition of the interval type {%ard%} \data I | left | right {%endard%} looks like the definition of the set with two

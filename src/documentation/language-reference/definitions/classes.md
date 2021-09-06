@@ -1,6 +1,5 @@
 ---
 title: Classes
-toc: false
 ---
 
 A _class_ is a record that has several useful properties.
