@@ -14,6 +14,9 @@ such as Coq or Idris (in Agda, `rewrite` is allowed only in the LHS of a clause,
 + {%ard%} rewriteF {%endard%} is like {%ard%} rewrite {%endard%} but it enforces to use the type of {%ard%} t {%endard%} instead of the expected type.
 + {%ard%} rewriteI p t {%endard%} is equivalent to {%ard%} rewrite (inv p) t {%endard%}.
 
+To any of the metas above it is possible to add specification of numbers of occurrences. For example, {%ard%} rewrite {i1 i2 … ik} p t : T {%endard%} rewrites only occurrences
+with numbers {%ard%} i1 i2 … ik {%endard%} where occurrence {%ard%} ij {%endard%} is the number of occurrence after all previous occurrences have been replaced.
+
 Examples:
 
 {% arend %}
@@ -47,6 +50,8 @@ Examples:
 
 \lemma test7 {A : Nat} (x y : A) (f : A -> A) : f (x + y) = f (y + x)
   => rewrite +-comm-rw idp
+  
+\lemma testOccur {x : Nat} (p : suc x = suc (suc x)) : suc (suc x) = x Nat.+ 3 => rewrite {1} p idp  
 
 \lemma testNorm {A : \Type} (a : A) (l : List A) (P : List A -> \Prop) (p : P (a :: l)) : P ((a :: l) ++ nil)
   => rewrite ++_nil p
@@ -54,6 +59,31 @@ Examples:
 \lemma testRestore {A : \Type} (xs ys zs : List A) (P : List A -> List A -> \Prop) (p : P (xs ++ ys) zs) : P (xs ++ ys) (zs ++ nil)
   => rewrite ++_nil p
 {% endarend %}
+
+# Algebraic rewrite meta
+
+Meta {%ard%} rewriteEq {%endard%} allows for more advanced rewriting in algebraic subexpressions. {%ard%} rewriteEq p t : T {%endard%},
+where {%ard%} p : a = b {%endard%}, like {%ard%} rewrite {%endard%} replaces literal occurrences of {%ard%} a {%endard%} in {%ard%} T {%endard%}
+with {%ard%} b {%endard%}, but it also finds and replaces occurrences up to algebraic equivalences. Currently, this meta supports noncommutative monoids and categories.
+
+For example, if {%ard%} ((a * b) * (ide * c)) * (d * ide) {%endard%} is an expression of type {%ard%} Monoid {%endard%} in {%ard%} T {%endard%},
+then {%ard%} b * c * ide {%endard%} counts as an occurrence. If {%ard%} p : b * c * ide = x {%endard%}, then 
+{%ard%} rewriteEq p t {%endard%} will rewrite {%ard%} ((a * b) * (ide * c)) * (d * ide) {%endard%} as {%ard%} ((a * x) * d) {%endard%}.
+
+Meta {%ard%} rewriteEq {%endard%} also supports specification of numbers of occurrences which works similarly to the one for {%ard%} rewrite {%endard%}.
+Note that occurrences can overlap in this case. The counting is natural from left to right.
+
+Examples:
+
+{% arend %}
+
+\lemma test1 {A : Monoid} (a b c d x : A) (B : A -> \Prop) (p : b * c = x) (t : B (a * x * d)) : B (((a * b) * (ide * c)) * (d * ide))
+  => rewriteEq p t
+  
+\lemma test2 {C : Precat} {a b c d : C} (P : Hom a d -> \Prop) (f : Hom a b) (g : Hom b c) (g' : Hom c b) (h : Hom c d) (p : g ∘ g' = id c) (t : P ((h ∘ g) ∘ (id b ∘ f))) : P ((h ∘ id c ∘ g) ∘ (g' ∘ g ∘ f))
+  => rewriteEq p (rewriteEq (idp {_} {(h ∘ g) ∘ (id b ∘ f)}) t)
+  
+{% endarend %}  
 
 # Extensionality meta
 
