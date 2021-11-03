@@ -16,7 +16,7 @@ Arend is based on a variant of Martin-Löf's type theory.
 Such theories do not have a separate logical language to express propositions and their proofs.
 Instead, they use the Curry-Howard correspondence to encode propositions as types.
 The false proposition corresponds to the empty type and the true proposition corresponds to the unit type.
-Different elements of a type can be thought of as different ways to prove corresponding proposition.
+Different elements of a type can be thought of as different ways to prove their corresponding proposition.
 For example, the type of natural numbers corresponds to the proposition that natural numbers exist and every element of this type witnesses a proof of this proposition.
 
 **Remark:** This correspondence will be refined in [Part II](/documentation/tutorial/PartII) of this tutorial, where we will argue that not every type should be thought of as a proposition.

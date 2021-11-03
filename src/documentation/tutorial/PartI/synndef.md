@@ -362,7 +362,7 @@ For example, the type {%ard%} \Pi (b : Bool) -> if b Nat Bool {%endard%} is the 
 If we pass {%ard%} true {%endard%} to such a function, it returns an element of {%ard%} Nat {%endard%}; otherwise, it returns an element of {%ard%} Bool {%endard%}.
 
 The type {%ard%} \Pi (A : \Type) (a : A) -> A {%endard%} can be equivalently written as {%ard%} \Pi (A : \Type) -> A -> A {%endard%} since its codomain does not depend on the second argument.
-This is the type functions which accept a type {%ard%} A {%endard%} and return a function of type {%ard%} A -> A {%endard%}.
+This is the type of functions which accept a type {%ard%} A {%endard%} and return a function of type {%ard%} A -> A {%endard%}.
 
 Note that {%ard%}\Type{%endard%} is not a type of _all_ types: the famous Girard's paradox states that intensional Martin-Lof's
 type theory is inconsistent with the type of all types.
@@ -374,7 +374,7 @@ Levels are inferred automatically and hidden from the user, unless he or she use
 
 It is quite often the case that some arguments in a function application are completely determined by others. In 
 such cases user may ask typechecker to infer these arguments by writing {%ard%}_{%endard%} in place of them. For 
-example, an application of {%ard%}id{%endard%} function defined above may look as follows:  
+example, an application of the {%ard%}id{%endard%} function defined above may look as follows:
 
 {%arend%}
 \func idTest => id _ 0
@@ -476,7 +476,7 @@ Let us give a few examples of dependent {%ard%}\Sigma{%endard%}-types:
   that are full squares: its elements are pairs {%ard%}(n, p){%endard%}, where {%ard%}n{%endard%} is a natural number and 
   {%ard%}p : \Sigma (k : Nat) (n = k * k){%endard%} is a proof that {%ard%}n{%endard%} is a square. 
 
-If {%ard%}x{%endard%} is an element of type {%ard%}\Sigma A1 ... An{%endard%}, i-th component of {%ard%}x{%endard%}, where
+If {%ard%}x{%endard%} is an element of type {%ard%}\Sigma A1 ... An{%endard%}, the i-th component of {%ard%}x{%endard%}, where
 i is a numeral, can be accessed by the projection operator {%ard%}x.i{%endard%}. Note that eta equivalence holds for 
 Sigma-types: if {%ard%}x : \Sigma A1... An{%endard%}, then {%ard%}(x.1, ..., x.n){%endard%} is computationally equal
 to {%ard%}x{%endard%}.  

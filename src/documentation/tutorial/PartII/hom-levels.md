@@ -7,7 +7,7 @@ The source code for this module: [PartII/HomUniverses.ard](https://github.com/ar
 The source code for the exercises: [PartII/HomUniversesEx.ard](https://github.com/arend-lang/tutorial-code/blob/master/PartII/src/Exercises/HomUniversesEx.ard)
 {: .notice--success}
 
-In this module we introduce additional universes and explain the principles that allow to prove non-trivial
+In this module we introduce additional universes and explain the principles that allow us to prove non-trivial
 equalities between elements of universes, that is between types.
 
 Firstly, we show that the stratification of types according to their homotopy level is reflected in the structure of universes. 

@@ -175,8 +175,8 @@ also be defined, but in general require additional language constructs, which we
 introduce later. One can use recursion and induction to define predicates in this logic
 as usual.
 
-Consider several examples. The unit type {%ard%}Unit{%endard%} is proposition
-corresponding to the proposition "True":
+Consider several examples. The unit type {%ard%}Unit{%endard%} corresponds to
+the proposition "True":
 
 {%arend%}
 \func Unit => \Sigma
