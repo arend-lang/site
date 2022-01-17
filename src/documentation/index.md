@@ -25,4 +25,4 @@ the libraries and this website there.
 
 ## Videos
 
-* [Introductory talk](https://vimeo.com/413726748) about the Arend language, which covers basic language and IDE features.
+* [Introductory talk](https://www.youtube.com/watch?v=BUUEvTbVQR8) about the Arend language, which covers basic language and IDE features.
