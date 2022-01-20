@@ -4,7 +4,7 @@ toc: false
 ---
 
 A type synonym is a [function](functions) that returns a type and does not evaluate.
-To define a type synonym, use {%ard%} \type {%endard%} keywork:
+To define a type synonym, use {%ard%} \type {%endard%} keyword:
 
 {% arend %}
 \type T p_1 ... p_n => E
