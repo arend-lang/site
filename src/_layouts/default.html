@@ -10,11 +10,13 @@
 -->
 <html lang="{{ site.locale | slice: 0,2 | default: "en" }}" class="no-js">
 <head>
+    {% include google-tag-manager.html %}
     {% include head.html %}
     {% include head/custom.html %}
 </head>
 
 <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">
+{% include google-tag-manager-noscript.html %}
 {% include_cached skip-links.html %}
 {% include_cached browser-upgrade.html %}
 {% include_cached masthead.html %}
