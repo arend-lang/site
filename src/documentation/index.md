@@ -12,6 +12,7 @@ sidebar:
 * [Libraries](/documentation/libraries) describes how to manage Arend libraries.
 * [Standard Extensions](/documentation/standard-tactics) explains the language extensions
   implemented in the standard library.
+* To learn how to write proofs with IntelliJ Arend IDE, see [Interactive Theorem Proving with IntelliJ Arend](intellij-arend-tutorial). 
 
 ## Forums
 
