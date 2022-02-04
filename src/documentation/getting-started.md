@@ -54,6 +54,7 @@ Type mismatch
 
 You can read more about IntelliJ IDEA [here](https://www.jetbrains.com/help/idea/discover-intellij-idea.html).
 To learn more about Arend, see the [language reference](language-reference).
+Also, check out the tutorial on [interactive theorem proving with IntelliJ Arend](intellij-arend-tutorial).
 
 # Console Application
 
