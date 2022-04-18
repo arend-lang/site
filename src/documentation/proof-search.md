@@ -3,19 +3,21 @@ title: Arend Proof Search
 nav: proof-search
 ---
 
-Nearly every proof assistant has difficult discoverability of proven theorems. For instance, try to recall how a lemma describing the commutativity of addition is called in your favorite proof assistant. Is it `add_comm`? Or `+-comm`?
+Nearly every proof assistant faces a problem with poor discoverability of proven theorems. For instance, try to recall how a lemma describing the commutativity of addition is called in your favorite theorem prover. Is it `add_comm`? Or `+-comm`?
 
 IntelliJ Arend provides a possibility to search for functions by the definitions they are talking about. We call this functionality _Proof Search_. Its closest relatives are the [Search](https://coq.inria.fr/refman/proof-engine/vernacular-commands.html#coq:cmd.Search) vernacular command of Coq and [Type Directed Search](http://docs.idris-lang.org/en/latest/reference/type-directed-search.html) of Idris.
 
 # Overview
 
-Proof search can be invoked by `Find Action` > `Proof Search` or via the predefined hotkey `Ctrl + Alt + P` (`⌥ ⌘ P` on macOS).
-
-![User interface](ui.png)
+Proof search can be invoked by `Help` > `Find Action` > `Proof Search` or via the predefined hotkey `Ctrl + Alt + P` (`⌥ ⌘ P` on macOS).
 
 The user interface is clear: you can just type a proof search query in the input field.
 
-Simply put, _Proof Search_ will show all definitions that have a specified pattern as a subexpression of their result type.
+**Demo of the usage:**
+![User interface](demo.gif)
+{: .notice--info}
+
+Simply put, _Proof Search_ shows all definitions that have a specified pattern as a subexpression of their result type.
 
 {%arend%}
 -- The following definitions can be found by the pattern `List`:
@@ -31,7 +33,7 @@ It is possible to specify an `_` as a pattern for an arbitrary term. Also, patte
 \func bar (a b : Int) : a + b = b + a
 {%endarend%}
 
-Apart from displaying the search results, it is possible to show the definition of each entry (by pressing `Enter`), navigate to the location of the selected definition (`F4`), and insert the selected definition in the editor (`Ctrl + Enter`). 
+Apart from displaying the search results, it is possible to show the definition of each entry (by pressing `Enter`), navigate to the location of the selected definition (`F4`), and insert the selected definition in the editor (`Ctrl + Enter` / `⌘ Enter` ). 
 
 # Query Language
 
@@ -45,11 +47,11 @@ app_pattern  ::= atom_pattern+
 atom_pattern ::= '_' | (IDENTIFIER '.')* IDENTIFIER | '(' app_pattern ')'
 ```
 
-IntelliJ Arend provides highlighting of the queries, so syntax errors will be easily discoverable.
+IntelliJ Arend provides highlighting for the queries, so syntax errors will be easily discoverable.
 
 ## Parameters and result type
 
-If there is an `->` in a query (i.e. it has several `and_pattern`s), then the rightmost `and_pattern` will be matched with the codomain of the definition, and the rest patterns delimited by `->` will be matched with the parameters of the definition.
+If there is an `->` in a query (i.e. it has several `and_pattern`s), then the rightmost `and_pattern` will be matched with the codomain of the definition, and the rest patterns delimited by `->` will be matched with the domain parameters of the definition.
 
 {%arend%}
 -- The pattern is `Foo -> Bar`
@@ -68,7 +70,7 @@ The order of the left `and_pattern`s is not important.
 
 ## Matching multiple patterns in the same term
 
-If there is an `\and` in an `and_pattern` (i.e. it has several `app_pattern`s), then the term matches an `and_pattern` iff it matches all its `app_pattern`s at once. This is useful when you want to find a function that tells something about several definitions, but you don't remember how they are located precisely.
+If there is an `\and` in an `and_pattern` (i.e. it has several `app_pattern`s), then the term matches an `and_pattern` iff it matches all its `app_pattern`s at once. This is useful when you want to find a function that tells something about several definitions, but you don't remember where they are located precisely.
 
 {%arend%}
 -- The query is `Nat \and Bool`
@@ -98,7 +100,7 @@ An `app_pattern` resembles an application of a function. It can represent a tree
 \func f : List (foo (bar baz) true) -- matched
 {%endarend%}
 
-It is possible to specify a subsequence of a module path for the identifier. Also note that IntelliJ Arend provides code completion for the queries.
+It is possible to specify a subsequence of a module path for the identifier. Also note, that IntelliJ Arend provides code completion for the queries.
 {%arend%}
 \module Foo \where \func foo : Nat
 \module Bar \where \func foo : Nat
