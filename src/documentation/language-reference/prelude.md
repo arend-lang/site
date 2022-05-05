@@ -99,7 +99,13 @@ path (\lam i => p @ i) == p
 {% endarend %}
 This rule does not apply to functions {%ard%} @ {%endard%} defined in other files.
 
-Finally, function {%ard%} Path.inProp {%endard%} is not correct since it does not have a body.
+There is also an implicit coercion between paths and functions of type {%ard%} \Pi (i : I) -> A i {%endard%}.
+That is, when such a function occurs in a place where a path is expected, {%ard%} path {%endard%} is automatically inserted.
+The converse is also true: paths are automatically converted to such functions with {%ard%} @ {%endard%}.
+
+# Path.inProp
+
+The function {%ard%} Path.inProp {%endard%} is not correct since it does not have a body.
 It postulates the proof irrelevance for types in {%ard%} \Prop {%endard%}, namely that any two elements of a type in {%ard%} \Prop {%endard%} are equal.
 
 # idp

@@ -118,3 +118,6 @@ In other words, implicit arguments which are written immediately after an infix 
 {% arend %}
 \func f (A : \Type) => \lam a b => a = {A} b
 {% endarend %}
+
+An implicit argument can also be inferred if its type has a unique element definitionally.
+That is, if it is a {%ard%}\Sigma{%endard%}-type with no parameters or a record with no fields.

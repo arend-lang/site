@@ -43,7 +43,7 @@ Thus, one cannot define the following function:
 
 ## Higher inductive types
 
-A higher inductive type is a data type with a constructor that has conditions of the form {%ard%} | left => e {%endard%} and {%ard%} | right => e' {%endard%}.
+A higher inductive type (HIT) is a data type with a constructor that has conditions of the form {%ard%} | left => e {%endard%} and {%ard%} | right => e' {%endard%}.
 Let us give a few examples:
 
 {% arend %}
@@ -94,3 +94,55 @@ if {%ard%} X {%endard%} is a set and only for {%ard%} inQ a {%endard%} if it is 
 This also works for several arguments.
 For example, if {%ard%} X {%endard%} is a set, then, to define a function {%ard%} Quotient A R -> Quotient A R -> X {%endard%},
 it is enough to specify its value for {%ard%} inQ a, inQ a' {%endard%}, {%ard%} inQ a, equivQ x y r i {%endard%}, and {%ard%} equivQ x y r i, inQ a {%endard%}.
+
+## Another syntax for HITs
+
+There is a special syntax for defining higher inductive types.
+Instead of writing down conditions explicitly, they can be specified by giving the type of the constructor.
+The type of each constructor must be an iterated path type in the data itself.
+The endpoints of these path types specify the conditions.
+The examples above can be rewritten in this syntax as follows:
+
+{% arend %}
+-- Circle
+\data S1
+  | base
+  | loop : base = base
+
+-- Suspension
+\data Susp (A : \Type)
+  | north
+  | south
+  | merid A : north = south
+
+-- Propositional truncation
+\data Trunc (A : \Type)
+  | inT A
+  | truncT (x y : Trunc A) : x = y
+
+-- Set quotient
+\data Quotient (A : \Type) (R : A -> A -> \Type)
+  | inQ A
+  | equivQ (x y : A) (R x y) : inQ x = inQ y
+  | truncQ (a a' : Quotient A R) (p p' : a = a') : Path (\lam i => p i = p' i) idp idp
+{% endarend %}
+
+## Pattern matching on HITs
+
+There is also a special syntax for pattern matching on HITs.
+In this syntax, the interval variables can be omitted and the right hand side should be a path.
+Then the typechecker will insert missing variables and apply the right hand side to them.
+
+For example, function {%ard%} double {%endard%} below is equivalent to {%ard%} double' {%endard%}.
+
+{% arend %}
+\func double (x : S1) : S1
+  | base => base
+  | loop => loop *> loop
+
+\func double' (x : S1) : S1
+  | base => base
+  | loop i => (loop *> loop) i
+{% endarend %}
+
+Here, {%ard%} *> {%endard%} is the path concatenation function.

@@ -108,3 +108,39 @@ Simplifies certain equalities. It expects one argument and the type of this argu
 * If the type under {%ard%} coe {%endard%} is a record, then {%ard%} simp_coe {%endard%} works similarly to the case of \Sigma types. The copattern matching syntax as in {ext} is also supported.
 * All of the above cases also work for goals with {transport} instead of {coe} since the former evaluates to the latter.
 * If the goal is {%ard%} transport (\lam x => f x = g x) p q = s {%endard%}, then the subgoal is {%ard%} q *> pmap g p = pmap f p *> s {%endard%}. If {%ard%} f {%endard%} does not depend on {%ard%} x {%endard%}, then the right hand side of the subgoal is simply {%ard%} s {%endard%}.
+
+# simplify
+
+Simplifies the expected type.
+
+{% arend %}
+\func test1 {M : Monoid} (x : M) : x = x * ide
+  => simplify
+
+\func test2 {M : Monoid} (x : M) : x * x = (x * (ide * x)) * ide
+  => simplify
+
+\func test3 {M : Monoid} (x : M) : ide * x * x * ide = x * ide * x * ide * ide
+  => simplify
+
+\func test4 {M : AddMonoid} (x : M) : x + x = x + x + zro
+  => simplify
+
+\func test5 {R : Semiring} (x : R) : zro = x * zro
+  => simplify
+
+\func test6 {R : Ring} (x : R) : negative (x * x) = x * negative x
+  => simplify
+
+\func test6' {R : Ring} (x y : R) : x * negative y = negative (x * y)
+  => simplify
+
+\func test7 {R : AddGroup} (x : R) : negative (negative x) = x
+  => simplify
+
+\func test8 {R : Ring} (x : R) : x * negative ide = negative x
+  => simplify
+
+\func test9 {M : Monoid} (x y : M) (p : x * x = y) : x * (1 * x) = y * 1
+  => simplify p
+{% endarend %}  

@@ -31,6 +31,11 @@ Examples (requires arend-lib):
 
 \lemma usingTest (P Q : \Prop) (q : Q) (e : P -> Empty) (p : P) : Empty
   => contradiction {usingOnly (e,p)}
+
+\lemma transTest {A : LinearOrder} {x y z u v w : A}
+  (p : x < y) (q : y = z) (a : z <= u) (b : u = v) (c : v < w) (d : w <= x)
+  : Empty
+  => contradiction
 {% endarend %}
 
 It can also be specified with an implicit argument which itself is a contradiction.
@@ -54,20 +59,117 @@ The alias of this meta is `∃`, which is convenient to read.
 Examples:
 
 {% arend %}
-\func test1 : ∃ = (\Sigma) => idp
+\lemma test1 : ∃ = (\Sigma) => idp
 
-\func test2 : ∃ Nat = TruncP Nat => idp
+\lemma test2 : ∃ Nat = TruncP Nat => idp
 
-\func test3 : ∃ (x : Nat) (x = 0) = TruncP (\Sigma (x : Nat) (x = 0)) => idp
+\lemma test3 : ∃ (x : Nat) (x = 0) = TruncP (\Sigma (x : Nat) (x = 0)) => idp
 
-\func test4 : ∃ {x} (x = 0) = TruncP (\Sigma (x : Nat) (x = 0)) => idp
+\lemma test4 : ∃ {x} (x = 0) = TruncP (\Sigma (x : Nat) (x = 0)) => idp
 
-\func test5 : ∃ {x y} (x = 0) = TruncP (\Sigma (x y : Nat) (x = 0)) => idp
+\lemma test5 : ∃ {x y} (x = 0) = TruncP (\Sigma (x y : Nat) (x = 0)) => idp
+{% endarend %}
+
+If the argument of `∃` is a predicate, it will be treated as a subset:
+
+{% arend %}
+\lemma test7 (P : Nat -> \Type)
+  : ∃ P
+  = TruncP (\Sigma (x : Nat) (P x))
+  => idp
+
+\lemma test8 (P : Nat -> Nat -> \Type)
+  : ∃ P
+  = TruncP (\Sigma (x y : Nat) (P x y))
+  => idp
+
+\lemma test9 (P : Nat -> \Type)
+  : ∃ (x : P) (x = x)
+  = TruncP (\Sigma (x : Nat) (P x) (x = x))
+  => idp
+
+\lemma test10 (P : Nat -> \Type)
+  : ∃ (x y : P) (x = y) (y = x)
+  = TruncP (\Sigma (x y : Nat) (P x) (P y) (x = y) (y = x))
+  => idp
+
+\lemma test11 (P : Nat -> Bool -> Array Nat -> \Type)
+  : ∃ ((x,y,z) (a,b,c) : P) (x = a) (y = b) (z = c)
+  = TruncP (\Sigma (x a : Nat) (y b : Bool) (z c : Array Nat) (P x y z) (P a b c) (x = a) (y = b) (z = c))
+  => idp
+{% endarend %}
+
+If the argument of `∃` is an array, it will be treated as a set of its elements:
+
+{% arend %}
+\lemma test12 (l : Array Nat)
+  : ∃ l
+  = TruncP (Fin l.len)
+  => idp
+
+\lemma test13 {A : \Type} (y : A) (l : Array A)
+  : ∃ (x : l) (x = y)
+  = TruncP (\Sigma (j : Fin l.len) (l j = y))
+  => idp
+
+\lemma test14 {A : \Type} (l : Array A)
+  : ∃ (x y : l) (x = y)
+  = TruncP (\Sigma (j j' : Fin l.len) (l j = l j'))
+  => idp
+{% endarend %}
+
+# `Given`
+
+This meta has the same syntax as `Exists`, but returns an untruncated {%ard%}\Sigma{%endard%}-expression.
+
+{% arend %}
+\func sigmaTest : Given (x : Nat) (x = 0) = (\Sigma (x : Nat) (x = 0)) => idp
+{% endarend %}
+
+# `Forall`
+
+The alias of this meta is `∀`.
+This meta has a similar syntax to `Exists`, but returns a {%ard%}\Pi{%endard%}-expression.
+
+{% arend %}
+\lemma piTest1 : ∀ (x y : Nat) (x = y) = (\Pi (x y : Nat) -> x = y) => idp
+
+\lemma piTest2 : ∀ {x y : Nat} (x = y) = (\Pi {x y : Nat} -> x = y) => idp
+
+\lemma piTest3
+  : ∀ x y (pos x = y)
+  = (\Pi (x : Nat) (y : Int) -> pos x = y)
+  => idp
+
+\lemma piTest4
+  : ∀ {x y} {z} (pos x = z)
+  = (\Pi {x y : Nat} {z : Int} -> pos x = z)
+  => idp
+
+\lemma piTest5 (P : Nat -> \Type)
+  : ∀ (x y : P) (x = y) (y = x)
+  = (\Pi (x y : Nat) (P x) (P y) -> x = y -> y = x)
+  => idp
+
+\lemma piTest6 (P : Nat -> \Type)
+  : ∀ {x y : P} (x = y) (y = x)
+  = (\Pi {x y : Nat} (P x) (P y) -> x = y -> y = x)
+  => idp
+
+\lemma piTest7 {A : \Set} (l : Array A)
+  : ∀ (x y : l) (x = y) (y = x)
+  = (\Pi (j j' : Fin l.len) -> l j = l j' -> l j' = l j)
+  => idp
+
+\lemma piTest8 (P : Nat -> Bool -> Array Nat -> \Type)
+  : ∀ ((x,y,z) (a,b,c) : P) (x = a) (y = b) (z = c)
+  = (\Pi (x a : Nat) (y b : Bool) (z c : Array Nat) -> P x y z -> P a b c -> x = a -> y = b -> z = c)
+  => idp
 {% endarend %}
 
 # `constructor`
 
-Returns either a tuple, a `\new` expression, or a single constructor of a data type depending on the expected type.
+Returns either a tuple, a {%ard%} \new {%endard%} expression, or a single constructor of a data type depending on the expected type.
 
 {% arend %}
 \func tuple0 : \Sigma (\Sigma) (\Sigma) => constructor constructor constructor
