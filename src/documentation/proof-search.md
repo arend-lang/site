@@ -14,7 +14,7 @@ Proof search can be invoked by `Help` > `Find Action` > `Proof Search` or via th
 The user interface is clear: you can just type a proof search query in the input field.
 
 **Demo of the usage:**
-![User interface](demo.gif)
+![User interface](/documentation/proof-search/demo.gif)
 {: .notice--info}
 
 Simply put, _Proof Search_ shows all definitions that have a specified pattern as a subexpression of their result type.
