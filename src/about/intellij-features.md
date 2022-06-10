@@ -119,7 +119,7 @@ feature_row:
     id: "show-expr"
     btn_label: "Show More"
     btn_class: "btn--inverse"
-
+   
   - image_path: /assets/images/NormalizeExpr-460x200.png
     title: "Normalize Expression"
     excerpt: "IntelliJ Arend can replace an expression with its normalized result."
@@ -143,7 +143,64 @@ feature_row:
     id: "goals"
     btn_label: "Show More"
     btn_class: "btn--inverse"
+  
+  - image_path: /assets/images/RedundantParens-460x200.png
+    title: "Redundant Parentheses Inspection"
+    excerpt: "IntelliJ Arend detects and suggests to remove redundant parentheses."
+    url: "/about/intellij-features/Parens.gif"
+    id: "parens"
+    btn_label: "Show More"
+    btn_class: "btn--inverse"
 
+  - image_path: /assets/images/GenerateFunction-460x200.png
+    title: "Generate Function"
+    excerpt: "IntelliJ Arend allows to extract goals and selected expressions to a separate function."
+    url: "/about/intellij-features/GenerateFunction.gif"
+    id: "generate-function"
+    btn_label: "Show More"
+    btn_class: "btn--inverse"
+  
+  - image_path: /assets/images/ExtractToLet-460x200.png
+    title: "Extract to \\let-binding"
+    excerpt: "IntelliJ Arend allows to extract selected expressions to a \\let-binding."
+    url: "/about/intellij-features/ExtractToLet.gif"
+    id: "extract-to-let"
+    btn_label: "Show More"
+    btn_class: "btn--inverse"
+  
+  - image_path: /assets/images/UnusedImports-460x200.png
+    title: "Unused Imports"
+    excerpt: "IntelliJ Arend detects and suggests to remove import statements that are not used in a module."
+    url: "/about/intellij-features/UnusedImports.gif"
+    id: "unused-imports"
+    btn_label: "Show More"
+    btn_class: "btn--inverse"
+  
+  - image_path: /assets/images/Revealing-460x200.png
+    title: "Incremental Term Inspection"
+    excerpt: "IntelliJ Arend allows to incrementally reveal hidden information about the term, which reduces visual noise."
+    url: "/about/intellij-features/Reveal.gif"
+    id: "revealing"
+    btn_label: "Show More"
+    btn_class: "btn--inverse"
+  
+  - image_path: /assets/images/ProofSearch-460x200.png
+    title: "Proof Search"
+    excerpt: "IntelliJ Arend provides a flexible search engine that allows to discover theorems by their signature.
+              To invoke it, press **Ctrl+Shift+P**."
+    url: "/documentation/proof-search/"
+    id: "proof-search"
+    btn_label: "Open Reference"
+    btn_class: "btn--inverse"
+  
+  - image_path: /assets/images/Tracer-460x200.png
+    title: "Tracer"
+    excerpt: "Tracer allows to analyze the typechecking process of Arend terms step-by-step."
+    url: "/about/intellij-features/Tracer.mp4"
+    id: "tracer"
+    btn_label: "Show More"
+    btn_class: "btn--inverse"
+  
 ---
 
 # IntelliJ Arend Features
