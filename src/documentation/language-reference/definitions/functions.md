@@ -188,6 +188,21 @@ For example, you can define function {%ard%} absurd {%endard%} as follows:
 
 Finally, the type {%ard%} con1 = con2 {%endard%} is considered empty if {%ard%} con1 {%endard%} and {%ard%} con2 {%endard%} are disjoint constructors of some data type.
 
+If the constructor is infix, then it can be used in the infix form in a pattern.
+For example, functions {%ard%}tail{%endard%} and {%ard%}tail'{%endard%} below are equivalent:
+
+{% arend %}
+\data List (A : \Type) | nil | \infixr 5 :: A (List A)
+
+\func tail {A : \Type} (l : List A) : List A
+  | nil => nil
+  | :: _ l => l
+
+\func tail' {A : \Type} (l : List A) : List A
+  | nil => nil
+  | _ :: l => l
+{% endarend %}
+
 ## Elim
 
 It is often true that one only needs to pattern match on a single parameter of a function (or a few parameters), but the function has much more parameters.
@@ -279,6 +294,9 @@ without computational content, and, thus, it does not evaluate.
 To define a lemma use the keyword {%ard%} \lemma {%endard%} instead of {%ard%} \func {%endard%}.
 If the result type of a lemma does not belong to {%ard%} \Prop {%endard%}, but is provably a proposition, you can use the keywords [\level](level#level-of-a-type) to define a lemma with this result type.
 The fact that lemmas do not evaluate may greatly improve performance of typechecking if their proofs are too lengthy.
+
+An _axiom_ is a lemma without a body.
+Axioms are defined with the keyword {%ard%} \axiom {%endard%}.
 
 ## \sfunc
 

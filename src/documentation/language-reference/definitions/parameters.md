@@ -121,3 +121,21 @@ In other words, implicit arguments which are written immediately after an infix 
 
 An implicit argument can also be inferred if its type has a unique element definitionally.
 That is, if it is a {%ard%}\Sigma{%endard%}-type with no parameters or a record with no fields.
+
+## Where block
+
+Parameters of a definition are visible in its {%ard%}\where{%endard%} block.
+If some parameter is used in some definition in this block, then this parameter and all parameters on which it depends are added to the definition.
+When this definition is invoked within the {%ard%}\where{%endard%} block, these additional parameters are added to the invocation automatically.
+If the definition is invoked from somewhere else, they must be specified as ordinary parameters.
+For example, the following code is valid:
+
+{% arend %}
+\func f (x : Nat) (p : x = 0) => p
+  \where {
+    \func g => p
+    \func h : x = 0 => g
+  }
+\func g : 0 = 0 => f.g 0 idp
+\func h : 0 = 0 => f.h 0 idp
+{% endarend %}

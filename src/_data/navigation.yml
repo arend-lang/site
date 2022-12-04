@@ -62,6 +62,8 @@ documentation:
           url: case
         - title: "Class extensions"
           url: class-ext
+        - title: "Box"
+          url: box
       - title: "Prelude"
         url: prelude
   - title: "Tutorial"

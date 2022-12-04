@@ -82,7 +82,18 @@ Level arguments for a definition with multiple level parameters can be specified
 \func example => func \levels (1,2,3) (2,1) Nat Nat
 {% endarend %}
 
-If level parameters are not explicitly declared for a class, they are inhereted from the first super class (if any).
+If level parameters are not explicitly declared for a definition, they will be inhereted from definitions that appear in parameters if all of them have the same levels.
+
+## Global level declarations
+
+Levels can be also declared on the top level as follows:
+
+{% arend %}
+\plevels p1 <= p2 <= p3
+\hlevels h1 >= h2
+{% endarend %}
+
+These levels can be used in any definition, in which case they will be used as level parameters of this definition.
 
 ## Level inference
 

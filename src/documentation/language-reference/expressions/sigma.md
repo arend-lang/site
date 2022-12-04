@@ -26,3 +26,7 @@ type {%ard%} A_i[p.1/x_1, ... p_{i-1}/x_{i-1}] {%endard%}.
 An expression of the form {%ard%} (a_1, ... a_n).i {%endard%} reduces to {%ard%} a_i {%endard%}.
 
 An expression of the form {%ard%} (p.1, ... p.n) {%endard%} is equivalent to {%ard%} p {%endard%} (eta equivalence for Sigma types).
+
+A field can be marked as a property with the following syntax: {%ard%} \Sigma p_1 ... (\property p_i) ... p_n {%endard%}.
+Properties work just like [record properties](../definitions/records#properties).
+That is, the type of a property must live in {%ard%} \Prop {%endard%} and {%ard%} (a_1, ... a_n).i {%endard%} does not evaluate if the i-th field is a property.

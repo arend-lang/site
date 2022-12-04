@@ -15,3 +15,7 @@ In the latter case, the meta will prove an equality using only structure availab
 
 This meta implements the congruence closure algorithm.
 For example, given assumptions {%ard%} x = x' {%endard%} and {%ard%} y = y' {%endard%}, it can prove {%ard%} f x y = f x' y' {%endard%}.
+
+# linarith
+
+This meta solves systems of linear equations in ordered rings using Fourier–Motzkin elimination.
