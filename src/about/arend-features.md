@@ -16,7 +16,7 @@ Arend also has a simple and powerful mechanism of dealing with universe levels, 
 
 Arend is based on homotopy type theory with an interval type.
 This means that it has a built-in contractible interval type together with two constructors {%ard%} left, right : I {%endard%}.
-We can use this type to define the type of _n_-dimensional cubes as {%ard%} \Sigma I ... I {%endard%}, that is as the product of _n_ itervals.
+We can use this type to define the type of _n_-dimensional cubes as {%ard%} \Sigma I ... I {%endard%}, that is as the product of _n_ intervals.
 These types are not very interesting by themselves since they are contractible,
 but they can be used as types of cells in the definition of a higher inductive type as discussed below.
 
