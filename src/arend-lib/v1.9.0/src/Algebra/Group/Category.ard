@@ -1,0 +1,67 @@
+\import Algebra.Group
+\import Algebra.Monoid
+\import Algebra.Monoid.Category
+\import Category (Cat)
+\import Category.Meta
+\import Category.Subcat
+\import Equiv
+\import Paths
+\import Paths.Meta
+\import Set.Category
+
+\instance GroupCat : Cat Group
+  => subCat (\new Embedding {
+    | f G => G
+    | isEmb G H => \new Retraction {
+      | sec => Group.equals G H
+      | f_sec => idpe
+    }
+  })
+
+\record AddMonoidHom \extends SetHom {
+  \override Dom : AddMonoid
+  \override Cod : AddMonoid
+  | func-+ {x y : Dom} : func (x + y) = func x + func y
+  | func-zro : func 0 = 0
+} \where {
+    \func toMonoidHom (f : AddGroupHom) : MonoidHom \cowith
+      | Dom => \new Monoid f.Dom.E 0 (+ {f.Dom}) (zro-left {f.Dom}) (zro-right {f.Dom}) (+-assoc {f.Dom})
+      | Cod => \new Monoid f.Cod.E 0 (+ {f.Cod}) (zro-left {f.Cod}) (zro-right {f.Cod}) (+-assoc {f.Cod})
+      | func => f
+      | func-* => func-+
+      | func-ide => func-zro
+  }
+
+\record AddGroupHom \extends AddMonoidHom {
+  \override Dom : AddGroup
+  \override Cod : AddGroup
+  | func-zro => AddGroup.cancel-left (func 0) (inv func-+ *> pmap func zro-right *> inv zro-right)
+
+  \lemma func-negative {x : Dom} : func (negative x) = negative (func x)
+    => AddGroup.cancel-left (func x) (inv (negative-right *> inv (pmap func negative-right *> func-zro) *> func-+))
+}
+
+\instance AddGroupCat : Cat AddGroup
+  | Hom G H => AddGroupHom G H
+  | id => id
+  | o g f => \new AddGroupHom {
+    | func x => g (f x)
+    | func-+ => pmap g func-+ *> func-+
+  }
+  | id-left => idp
+  | id-right => idp
+  | o-assoc => idp
+  | univalence => sip (\lam {X} {A} {B} (p1 : AddGroupHom) p2 => exts (p1.func-zro, \lam _ _ => p1.func-+, AddGroup.negative-equality A B p1.func-zro p1.func-+))
+  \where
+    \func id (G : AddGroup) : AddGroupHom G G \cowith
+      | func x => x
+      | func-+ => idp
+
+\instance AbGroupCat : Cat AbGroup
+  => subCat (\new Embedding {AbGroup} {AddGroup} {
+    | f A => A
+    | isEmb A B => \new Retraction {
+      | sec => AbGroup.equals A B
+      | f_sec => idpe
+    }
+  })

@@ -1,0 +1,99 @@
+\import Algebra.Meta
+\import Algebra.Monoid
+\import Algebra.Monoid.GCD
+\import Algebra.Ring
+\import Algebra.Semiring
+\import Function.Meta ($)
+\import Logic
+\import Paths
+\import Paths.Meta
+\import Set
+
+{- | Domain is a ring with a tight apartness relation such that elements apart from {zro} are closed under finite products.
+ -   Classically, this is equivalent to the usual definition since there is a unique apartness relation on a set assuming LEM.
+ -}
+\class Domain \extends Ring.With# {
+  | zro#ide : ide `#0
+  | apartZeroProduct {x y : E} : x `#0 -> y `#0 -> (x * y) `#0
+
+  \lemma nonZeroProduct {x y : E} (x/=0 : x /= zro) (y/=0 : y /= zro) : x * y /= zro => \lam x*y=0 =>
+    x/=0 (#0-tight (\lam x#0 =>
+    y/=0 (#0-tight (\lam y#0 =>
+        #0-zro (transport #0 x*y=0 (apartZeroProduct x#0 y#0))))))
+
+  \lemma nonZero-left {x y : E} (x/=0 : x /= zro) (x*y=0 : x * y = zro) : y = zro
+    => separatedEq (nonZeroProduct x/=0 __ x*y=0)
+
+  \lemma nonZero-right {x y : E} (y/=0 : y /= zro) (x*y=0 : x * y = zro) : x = zro
+    => separatedEq (nonZeroProduct __ y/=0 x*y=0)
+
+  \lemma nonZero-cancel-left {x y z : E} (x/=0 : x /= zro) (x*y=x*z : x * y = x * z) : y = z
+    => fromZero (nonZero-left x/=0 (ldistr *> pmap (x * y +) Ring.negative_*-right *> toZero x*y=x*z))
+
+  \lemma nonZero-cancel-right {x y z : E} (z/=0 : z /= zro) (x*z=y*z : x * z = y * z) : x = y
+    => fromZero (nonZero-right z/=0 (rdistr *> pmap (x * z +) Ring.negative_*-left *> toZero x*z=y*z))
+
+  \func nonZeroMonoid : CancelMonoid \cowith
+    | E => \Sigma (x : E) (x `#0)
+    | ide => (ide, zro#ide)
+    | * x y => (x.1 * y.1, apartZeroProduct x.2 y.2)
+    | ide-left => ext ide-left
+    | ide-right => ext ide-right
+    | *-assoc => ext *-assoc
+    | cancel-left x {y} {z} x*y=x*z => ext (nonZero-cancel-left (apartNonZero x.2) (pmap __.1 x*y=x*z))
+    | cancel-right z {x} {y} x*z=y*z => ext (nonZero-cancel-right (apartNonZero z.2) (pmap __.1 x*z=y*z))
+
+  \lemma ldiv_nonZero {a b : E} (a#0 : a `#0) (b#0 : b `#0) (a|b : Monoid.LDiv a b) : Monoid.LDiv {nonZeroMonoid} (a,a#0) (b,b#0) \cowith
+    | inv => (a|b.inv, #0-*-right (transportInv #0 a|b.inv-right b#0))
+    | inv-right => ext a|b.inv-right
+
+  \func nonZero_ldiv {a b : E} (a#0 : a `#0) (b#0 : b `#0) (a|b : Monoid.LDiv {nonZeroMonoid} (a,a#0) (b,b#0)) : Monoid.LDiv a b \cowith
+    | inv => a|b.inv.1
+    | inv-right => pmap __.1 a|b.inv-right
+
+  \lemma inv_nonZero {a : E} (a#0 : a `#0) (i : Monoid.Inv a) : Monoid.Inv {nonZeroMonoid} (a,a#0) \cowith
+    | inv => (i.inv, #0-*-right (transportInv #0 i.inv-right zro#ide))
+    | inv-left => ext i.inv-left
+    | inv-right => ext i.inv-right
+
+  \lemma nonZero_inv {a : E} (a#0 : a `#0) (i : Monoid.Inv {nonZeroMonoid} (a,a#0)) : Monoid.Inv a \cowith
+    | inv => i.inv.1
+    | inv-left => pmap __.1 i.inv-left
+    | inv-right => pmap __.1 i.inv-right
+} \where {
+  \class Dec \extends Domain, Ring.Dec, StrictDomain {
+    \default zro/=ide zro=ide => #0-zro (transportInv #0 zro=ide zro#ide)
+    \default zeroProduct {x} {y} xy=0 => \case decideEq x zro, decideEq y zro \with {
+      | yes x=0, _ => byLeft x=0
+      | _, yes y=0 => byRight y=0
+      | no x/=0, no y/=0 => absurd $ #0-zro $ transport #0 xy=0 $ apartZeroProduct (nonZeroApart x/=0) (nonZeroApart y/=0)
+    }
+    \default zro#ide => nonZeroApart (\lam x => zro/=ide (inv x))
+    \default apartZeroProduct x#0 y#0 => nonZeroApart (\lam xy=0 => ||.rec' (apartNonZero x#0) (apartNonZero y#0) (zeroProduct xy=0))
+  }
+}
+
+-- | An integral domain is a commutative domain.
+\class IntegralDomain \extends Domain, CRing.With# {
+  \func nonZeroMonoid : CancelCMonoid \cowith
+    | CancelMonoid => Domain.nonZeroMonoid
+    | *-comm => ext *-comm
+
+  \lemma div-inv (x y : E) (x/=0 : x /= zro) (x|y : LDiv x y) (y|x : LDiv y x) : Inv x|y.inv
+    => Inv.rmake y|x.inv (Domain.nonZero-cancel-left x/=0 (equation {Monoid}))
+
+  \func gcd_nonZero {a b : E} (a#0 : a `#0) (b#0 : b `#0) (gcd : GCD a b) : GCD {nonZeroMonoid} (a,a#0) (b,b#0) \cowith
+    | gcd => (gcd.gcd, #0-*-left (transportInv #0 gcd.gcd|val1.inv-right a#0))
+    | gcd|val1 => Domain.ldiv_nonZero _ _ gcd.gcd|val1
+    | gcd|val2 => Domain.ldiv_nonZero _ _ gcd.gcd|val2
+    | gcd-univ g g|a g|b => Domain.ldiv_nonZero _ _ (gcd.gcd-univ g.1 (Domain.nonZero_ldiv _ _ g|a) (Domain.nonZero_ldiv _ _ g|b))
+} \where {
+  \open Monoid
+
+  \class Dec \extends Domain.Dec, StrictIntegralDomain
+}
+
+\class StrictDomain \extends Ring, NonZeroSemiring
+  | zeroProduct {x y : E} : x * y = zro -> (x = zro) || (y = zro)
+
+\class StrictIntegralDomain \extends StrictDomain, CRing

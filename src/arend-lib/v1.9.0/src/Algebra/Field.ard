@@ -1,0 +1,86 @@
+\import Algebra.Domain
+\import Algebra.Group
+\import Algebra.Meta
+\import Algebra.Monoid
+\import Algebra.Ring.Local
+\import Data.Or
+\import Logic
+\import Meta
+\import Paths
+\import Paths.Meta
+\import Set
+\open Monoid(Inv)
+
+-- | A field is a commutative local ring such that non-invertible elements equal to {zro}.
+\class Field \extends LocalCRing, IntegralDomain
+  | #0 x => Inv x
+  | #0-+ {x} {y} => LocalRing.sumInv=>eitherInv x y
+  | #0-zro (j : Inv zro) => zro/=ide (inv zro_*-right *> j.inv-left)
+  | #0-*-left {x} {y} => Inv.cfactor-left x y
+  | zro#ide => Inv.lmake ide ide-left
+  | apartZeroProduct xj yj => Inv.product xj yj
+
+-- | A discrete field is a commutative ring such that every element is either {zro} or invertible.
+\class DiscreteField \extends Field, IntegralDomain.Dec {
+  | finv : E -> E
+  | finv_zro : finv 0 = 0
+  | finv-right {x : E} (x/=0 : x /= 0) : x * finv x = 1
+  \field eitherZeroOrInv (x : E) : (x = 0) `Or` Inv x
+    \level Or.levelProp (\lam x=0 j => inv-nonZero j x=0)
+
+  \default finv \as finv-impl x => \case eitherZeroOrInv x \with {
+    | inl _ => 0
+    | inr (j : Inv) => j.inv
+  }
+  \default finv_zro \as finv_zroImpl : finv-impl 0 = 0 => unfold finv-impl (mcases \with {
+    | inl _ => idp
+    | inr (j : Inv) => absurd (zro/=ide (inv zro_*-left *> j.inv-right))
+  })
+  \default finv-right \as id_finvImpl {x} x/=0 : x * finv-impl x = 1 => unfold finv-impl (mcases \with {
+    | inl x=0 => absurd (x/=0 x=0)
+    | inr (j : Inv) => j.inv-right
+  })
+  \default eitherZeroOrInv x => \case decideEq x 0 \with {
+    | yes x=0 => inl x=0
+    | no x/=0 => inr (Inv.rmake (finv x) (finv-right x/=0))
+  }
+
+  | locality x => \case eitherZeroOrInv x \with {
+    | inl x=0 => byRight (Inv.lmake ide equation)
+    | inr xInv => byLeft xInv
+  }
+  \default decideEq x y => \case eitherZeroOrInv (x - y) \with {
+    | inl x-y=0 => yes (fromZero x-y=0)
+    | inr x-y-isInv => no (\lam x=y => #-irreflexive (rewriteF x=y x-y-isInv))
+  }
+  | nonZeroApart {x} x/=0 => \case eitherZeroOrInv x \with {
+    | inl x=0 => absurd (x/=0 x=0)
+    | inr x#0 => x#0
+  }
+
+  \lemma finv-left {x : E} (x/=0 : x /= 0) : finv x * x = 1
+    => *-comm *> finv-right x/=0
+
+  \lemma finv-Inv {x : E} (x/=0 : x /= 0) : Inv (finv x) x
+    => Inv.lmake x (finv-right x/=0)
+
+  \lemma nonZero-Inv {x : E} (x/=0 : x /= 0) : Inv x (finv x)
+    => Inv.rmake (finv x) (finv-right x/=0)
+
+  \lemma finv/=0 {x : E} (x/=0 : x /= 0) : finv x /= 0
+    => inv-nonZero (finv-Inv x/=0)
+
+  \lemma finv_* {x y : E} : finv (x * y) = finv y * finv x
+    => \case decideEq x 0, decideEq y 0 \with {
+      | yes x=0, _ => rewrite (x=0,zro_*-left,finv_zro) (inv zro_*-right)
+      | _, yes y=0 => rewrite (y=0,zro_*-right,finv_zro) (inv zro_*-left)
+      | no x/=0, no y/=0 => Inv.inv-isUnique (nonZero-Inv (nonZeroProduct x/=0 y/=0))
+          (Inv.lmake (finv y * finv x) (equation {usingOnly (finv-left x/=0, finv-left y/=0)})) idp
+    }
+
+  \lemma finv_finv {x : E} : finv (finv x) = x
+    => \case decideEq x 0 \with {
+      | yes x=0 => rewrite (x=0,finv_zro) finv_zro
+      | no x/=0 => Inv.inv-isUnique (nonZero-Inv (finv/=0 x/=0)) (Inv.lmake x (finv-right x/=0)) idp
+    }
+}

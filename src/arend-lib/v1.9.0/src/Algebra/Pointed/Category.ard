@@ -1,0 +1,28 @@
+\import Algebra.Pointed
+\import Category
+\import Category.Meta
+\import Paths
+\import Paths.Meta
+\import Set.Category
+
+\record PointedHom \extends SetHom {
+  \override Dom : Pointed
+  \override Cod : Pointed
+  | func-ide : func ide = ide
+}
+
+\instance PointedSetCat : Cat Pointed
+  | Hom X Y => PointedHom X Y
+  | id => id
+  | o {X Y Z : Pointed} (g : PointedHom Y Z) (f : PointedHom X Y) => \new PointedHom {
+    | func x => g (f x)
+    | func-ide => pmap g f.func-ide *> g.func-ide
+  }
+  | id-left => idp
+  | id-right => idp
+  | o-assoc => idp
+  | univalence => sip (\lam p1 p2 => ext (func-ide {p1}))
+  \where
+    \func id (X : Pointed) : PointedHom X X \cowith
+      | func x => x
+      | func-ide => idp

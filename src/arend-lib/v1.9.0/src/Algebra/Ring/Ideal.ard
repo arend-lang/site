@@ -1,0 +1,133 @@
+\import Algebra.Meta
+\import Algebra.Monoid
+\import Algebra.Monoid.Sub
+\import Algebra.Ring
+\import Algebra.Semiring
+\import Arith.Int
+\import Arith.Nat
+\import Combinatorics.Binom
+\import Data.Array
+\import Data.Bool
+\import Equiv
+\import Logic
+\import Logic.Meta
+\import Meta
+\import Order.PartialOrder
+\import Paths
+\import Paths.Meta
+\import Set
+\open AddMonoid
+
+-- | Left ideal
+\record LIdeal \extends AddSubMonoid {
+  \override E : Ring
+  | ideal-left {r a : E} : S a -> S (r * a)
+}
+
+-- | Right ideal
+\record RIdeal \extends AddSubMonoid {
+  \override E : Ring
+  | ideal-right {r a : E} : S a -> S (a * r)
+}
+
+-- | Two-sided ideal
+\record TIdeal \extends LIdeal, RIdeal
+
+-- | Ideal of a commutative ring
+\record Ideal \extends TIdeal {
+  \override E : CRing
+  | ideal-right s => transport S *-comm (ideal-left s)
+
+  \func radical : Ideal {E} \cowith
+    | S a => ∃ (n : Nat) (S (Monoid.pow a n))
+    | sub-zero => inP (1, transportInv S ide-left sub-zero)
+    | sub-+ {x} {y} (inP (n,xS)) (inP (m,yS)) => inP (n + m, transportInv S (binom.expansion x y (n + m)) (bigSum
+        (\new Array E (suc (n + m)) (\lam i => natCoef (binom (n + m) i) * (Monoid.pow x i * Monoid.pow y (iabs (n + m Nat.- i)))))
+        (\lam i => ideal-left (\let j => iabs (n + m Nat.- i) \in \case NatSemiring.splitSum (Poset.<=_= (pmap iabs (inv (pmap (`+ (n + m)) IntRing.minus__) *> IntRing.minus+pos i i (n + m) *> pmap (pos i +) (inv (pos_iabs (<_suc_<= (fin_< i))))))) \with {
+          | byLeft n<=i => ideal-right (rewriteI (<=_exists n<=i) (rewrite Monoid.pow_+ (ideal-right xS)))
+          | byRight m<=j => ideal-left (rewriteI (<=_exists m<=j) (rewrite Monoid.pow_+ (ideal-right yS)))
+        }))))
+    | ideal-left (inP (n,s)) => inP (n, transportInv S CMonoid.pow_*-comm (ideal-left s))
+
+  \lemma radical-superset {x : E} (s : S x) : radical x
+    => inP (1, transportInv S ide-left s)
+
+  \lemma radical_pow {x : E} {n : Nat} (s : radical (Monoid.pow x n)) : radical x \elim s
+    | inP (m,p) => inP (n * m, transportInv S Monoid.pow_* p)
+
+  \lemma bigSum (l : Array E) (p : \Pi (i : Fin l.len) -> S (l i)) : S (BigSum l) \elim l
+    | nil => sub-zero
+    | :: a l => sub-+ (p 0) (bigSum l (\lam i => p (suc i)))
+} \where {
+  \func closure {R : CRing} {J : \Set} (g : J -> R) : Ideal {R} \cowith
+    | S e => ∃ (l : Array (\Sigma R J)) (e = BigSum (map (\lam p => p.1 * g p.2) l))
+    | sub-zero => inP (nil,idp)
+    | sub-+ (inP (l,p)) (inP (l',p')) => inP (l ++ l', pmap2 (+) p p' *> inv (pmap BigSum (map_++ (later (\lam (c,j) => c * g j))) *> BigSum_++))
+    | ideal-left {r} (inP (l,p)) => inP (map (\lam (c,j) => (r * c, j)) l, pmap (r *) p *> Ring.Big-ldistr *> path (\lam i => BigSum (map (\lam (c,j) => inv (R.*-assoc {r} {c} {g j}) @ i) l)))
+
+  \lemma closure-superset {R : CRing} {J : \Set} {g : J -> R} (j : J) : closure g (g j)
+    => inP ((1,j) :: nil, equation)
+
+  \func closure1 {R : CRing} (a : R) : Ideal {R}
+    => closure (\lam (_ : \Sigma) => a)
+
+  \lemma closure1-lem {R : CRing} {a b : R} : closure1 a b <-> ∃ (c : R) (b = a * c)
+    => (\lam (inP (l,b=sl)) => inP (BigSum (map __.1 l), b=sl *> inv (R.Big-rdistr {a} {map __.1 l})  *> *-comm), \lam (inP (c,b=ac)) => inP ((c,()) :: nil, b=ac *> *-comm *> inv zro-right))
+
+  \lemma closure2-lem {R : CRing} {a : R} (f : Bool -> R)
+    : closure f a <-> ∃ (c d : R) (a = f true * c + f false * d) =>
+    \let (g, h) => fin-closure-lem {2} (\new QEquiv {
+      | f => \case \elim __ \with {
+        | 0 => true | 1 => false
+      }
+      | ret => \case \elim __ \with {
+        | false => 1 | true => 0
+      }
+      | ret_f => cases __ \with {
+        | 0 => idp | 1 => idp
+      }
+      | f_sec => cases __ \with {
+        | false => idp | true => idp
+      }
+    }) f
+    \in (\lam s => TruncP.map (g s) (\lam (c, a=fc) => (c true, c false, equation)),
+         \lam (inP (c, d, a=fc)) => h (inP (if __ c d, a=fc *> equation)))
+
+  \lemma fin-closure-lem {n : Nat} {R : CRing} {D : \Set} (eq : Equiv {Fin n} {D}) {a : R} (f : D -> R)
+    : closure f a <-> ∃ (c : D -> R) (a = BigSum (\lam i => c (eq i) * f (eq i))) =>
+    \let (g, h) => closureN-lem (\lam i => f (eq i))
+    \in (
+      \lam (inP (l, a=fl)) =>
+          TruncP.map (g (inP (map (\lam (r, d) => (r, eq.ret d)) l,
+                              a=fl *> pmap BigSum (exts (idp, \lam j => pmap (_ * f __) (inv (eq.f_ret _)))))))
+              (\lam (c, a=fc) => (\lam d => c (eq.ret d),
+                                  a=fc *> pmap BigSum (exts (idp, \lam j => pmap (c __ * _) (inv (eq.ret_f _)))))),
+      \lam (inP (c, a=fc)) =>
+          TruncP.map (h (inP (\lam i => c (eq i), a=fc))) (\lam (l, a=fl) => (map (\lam (r, i) => (r, eq i)) l, a=fl)))
+
+  \lemma closureN-lem {R : CRing} {a : R} {n : Nat} (B : Array R n)
+    : closure B a <-> ∃ (c : Array R n) (a = BigSum (\lam i => c i * B i)) =>
+    (TruncP.map __ (\lam q =>
+        (\lam i => BigSum (map (\lam p => if (p.2 NatSemiring.== i) p.1 0) q.1),
+         q.2 *> pmap BigSum (exts (idp,
+                                   \lam k => inv (singleton-lem _ _ (q.1 k).2)
+                                     *> pmap BigSum (exts (idp, \lam h => unfold (==) (cases (NatSemiring.decideEq (q.1 k).2 h) \with {
+                                     | yes e => pmap (_ * B __) (fin_nat-inj e)
+                                     | no _ => inv zro_*-left
+                                   })))))
+                  *> R.BigSum_transpose (\lam i j => if ((q.1 i).2 NatSemiring.== j) (q.1 i).1 0 * B j)
+                       *> pmap BigSum (exts (idp, \lam j => inv R.BigSum_rdistr)))),
+     TruncP.map __ (\lam (c, a=Bc) => (\lam i => (c i, i), a=Bc)))
+    \where {
+      \lemma singleton-lem {R : Semiring} (a : R) (n : Nat) (i : Fin n)
+        : BigSum (\lam (j : Fin n) => if (i NatSemiring.== j) a 0) = a \elim n, i
+        | suc _, 0 => pmap (_ +) (R.BigSum_zro (\lam _ => idp)) *> zro-right
+        | suc n, suc i => zro-left *> pmap BigSum (exts (idp, \lam j => pmap (if __ _ _) suc-eq)) *> singleton-lem a n i
+
+      \lemma suc-eq {a b : Nat} : suc a == suc b = a == b =>
+        unfold (==) (cases (decideEq a b, decideEq (suc a) (suc b)) idp \with {
+          | yes e, no n => absurd (n (pmap suc e))
+          | no n, yes e => absurd (n (pmap pred e))
+        })
+    }
+}

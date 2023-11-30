@@ -1,0 +1,83 @@
+\import Function.Meta
+\import HLevel
+\import Logic.Meta
+\import Paths
+\import Paths.Meta
+
+\data Empty
+
+\func absurd {A : \Type} (x : Empty) : A
+
+\func Not (A : \Type) => A -> Empty
+
+\func \infix 1 /= {A : \Type} (a a' : A) => Not (a = a')
+
+\data TruncP (A : \Type)
+  | inP A
+  | truncP (a a' : TruncP A) : a = a'
+  \where {
+    \use \level levelProp {A : \Type} (a a' : TruncP A) : a = a' => path (truncP a a')
+
+    \lemma remove {A : \Type} (p : isProp A) (t : TruncP A) : A \elim t
+      | inP a => a
+
+    \lemma remove' {A : \Prop} (t : TruncP A) : A \elim t
+      | inP a => a
+
+    \lemma rec {A B : \Type} (p : isProp B) (t : TruncP A) (f : A -> B) : B \elim t
+      | inP a => f a
+
+    \lemma rec-eval {A B : \Type} {p : isProp B} {a : A} {f : A -> B} : rec p (inP a) f = f a \level isProp=>isSet B p _ _
+      => p _ _
+
+    \lemma rec-set {A : \Type} {B : \Set} (t : TruncP A) (f : A -> B) (p : \Pi (a a' : A) -> f a = f a')
+      : \Sigma (b : B) (∃ (a : A) (f a = b))
+        \level \lam (b, inP (a,fa=b)) (b', inP (a',fa'=b')) => ext $ inv fa=b *> p a a' *> fa'=b'
+        \elim t
+      | inP a => (f a, inP (a, idp))
+
+    \func map {A B : \Type} (t : TruncP A) (f : A -> B) : TruncP B \elim t
+      | inP a => inP (f a)
+  }
+
+\data ToProp (A : \Type) (p : isProp A)
+  | toProp A
+  \where {
+    \lemma fromProp {A : \Type} {p : isProp A} (t : ToProp A p) : A \elim t
+      | toProp a => a
+
+    \use \level levelProp : \Prop
+  }
+
+\truncated \data \infixr 2 || (A B : \Type) : \Prop
+  | byLeft A
+  | byRight B
+  \where {
+    \lemma rec {A B C : \Type} (p : isProp C) (f : A -> C) (g : B -> C) (t : A || B) : C \elim t
+      | byLeft a => f a
+      | byRight b => g b
+
+    \lemma rec' {A B : \Type} {C : \Prop} (f : A -> C) (g : B -> C) (t : A || B) : C \elim t
+      | byLeft a => f a
+      | byRight b => g b
+
+    \func map {A B C D : \Type} (f : A -> C) (g : B -> D) (t : A || B) : C || D \elim t
+      | byLeft a => byLeft (f a)
+      | byRight b => byRight (g b)
+  }
+
+\func \infix 0 <-> (P Q : \Prop) => \Sigma (P -> Q) (Q -> P)
+
+\func OneOf (l : Array \Type) => ∃ (P : l) P
+
+\func ElemOf (l : Array \Type) => Given (P : l) P
+
+\type arraySubset {X : \Type} (l : Array X) (x : X) => ∃ (y : l) (y = x)
+
+\lemma propExt {A B : \Prop} (f : A -> B) (g : B -> A) : A = B =>
+  path (iso f g (\lam _ => propPath) (\lam _ => propPath))
+  \where {
+    \lemma dir {A B : \Prop} (p : A = B) (a : A) : B => transport (\lam X => X) p a
+
+    \lemma conv {A B : \Prop} (p : A = B) (b : B) : A => dir (inv p) b
+  }

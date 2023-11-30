@@ -1,0 +1,7 @@
+langVersion: 1.9
+version: 1.9
+sourcesDir: src
+testsDir: test
+binariesDir: bin
+extensionsDir: ext
+extensionMainClass: org.arend.lib.StdExtension

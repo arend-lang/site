@@ -1,0 +1,56 @@
+\import Algebra.Monoid
+\import Logic
+\import Paths
+
+\class Semiring \extends AbMonoid, Monoid {
+  | ldistr {x y z : E} : x * (y + z) = x * y + x * z
+  | rdistr {x y z : E} : (x + y) * z = x * z + y * z
+  | zro_*-left {x : E} : zro * x = zro
+  | zro_*-right {x : E} : x * zro = zro
+
+  | natCoef : Nat -> E
+  \default natCoef \as natCoefImpl n \with {
+    | 0 => zro
+    | suc n => natCoefImpl n + ide
+  }
+  | natCoefZero : natCoef 0 = zro
+  \default natCoefZero \as natCoefZeroImpl : natCoefImpl 0 = zro => idp
+  | natCoefSuc (n : Nat) : natCoef (suc n) = natCoef n + ide
+  \default natCoefSuc \as natCoefSucImpl n : natCoefImpl (suc n) = natCoefImpl n + ide => idp
+
+  \lemma zero-div {x : E} : Monoid.LDiv x 0 0 \cowith
+    | inv-right => zro_*-right
+
+  \lemma nonZero-div {x y : E} (y/=0 : y /= 0) (x|y : Monoid.LDiv x y) : x /= 0
+    => \lam x=0 => y/=0 (inv x|y.inv-right *> pmap (`* _) x=0 *> zro_*-left)
+
+  \lemma natCoef_+ (n m : Nat) : natCoef (n Nat.+ m) = natCoef n + natCoef m \elim m
+    | 0 => inv (pmap (_ +) natCoefZero *> zro-right)
+    | suc m => natCoefSuc _ *> pmap (`+ 1) (natCoef_+ n m) *> +-assoc *> inv (pmap (_ +) (natCoefSuc m))
+
+  \lemma BigSum_rdistr {l : Array E} {z : E} : BigSum l * z = BigSum (\lam i => l i * z) \elim l
+    | nil => zro_*-left
+    | :: a arr => rdistr *> pmap (_ +) BigSum_rdistr
+} \where {
+    \func op (R : Semiring) : Semiring \cowith
+      | AbMonoid => R
+      | Monoid => Monoid.op R
+      | ldistr => R.rdistr
+      | rdistr => R.ldistr
+      | zro_*-left => zro_*-right
+      | zro_*-right => zro_*-left
+  }
+
+\class NonZeroSemiring \extends Semiring {
+  | zro/=ide : zro /= ide
+
+  \lemma inv-nonZero {a : E} (i : Monoid.Inv a) : a /= zro
+    => \lam a=0 => zro/=ide (inv zro_*-right *> pmap (_ *) (inv a=0) *> i.inv-left)
+}
+
+\class CSemiring \extends Semiring, CMonoid {
+  \default ldistr => *-comm *> rdistr *> pmap2 (+) *-comm *-comm
+  \default rdistr => *-comm *> ldistr *> pmap2 (+) *-comm *-comm
+  \default zro_*-left => *-comm *> zro_*-right
+  \default zro_*-right => *-comm *> zro_*-left
+}
