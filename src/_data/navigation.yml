@@ -5,6 +5,8 @@ main:
       url: /documentation
     - title: "Download"
       url: /download
+    - title: "Arend Library"
+      url: /arend-lib
 
 about:
   - title: "Arend features"
