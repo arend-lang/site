@@ -159,7 +159,7 @@ feature_row:
     id: "generate-function"
     btn_label: "Show More"
     btn_class: "btn--inverse"
-  
+
   - image_path: /assets/images/ExtractToLet-460x200.png
     title: "Extract to \\let-binding"
     excerpt: "IntelliJ Arend allows to extract selected expressions to a \\let-binding."
@@ -167,7 +167,7 @@ feature_row:
     id: "extract-to-let"
     btn_label: "Show More"
     btn_class: "btn--inverse"
-  
+
   - image_path: /assets/images/UnusedImports-460x200.png
     title: "Unused Imports"
     excerpt: "IntelliJ Arend detects and suggests to remove import statements that are not used in a module."
@@ -175,7 +175,7 @@ feature_row:
     id: "unused-imports"
     btn_label: "Show More"
     btn_class: "btn--inverse"
-  
+
   - image_path: /assets/images/Revealing-460x200.png
     title: "Incremental Term Inspection"
     excerpt: "IntelliJ Arend allows to incrementally reveal hidden information about the term, which reduces visual noise."
@@ -183,7 +183,7 @@ feature_row:
     id: "revealing"
     btn_label: "Show More"
     btn_class: "btn--inverse"
-  
+
   - image_path: /assets/images/ProofSearch-460x200.png
     title: "Proof Search"
     excerpt: "IntelliJ Arend provides a flexible search engine that allows to discover theorems by their signature.
@@ -192,7 +192,7 @@ feature_row:
     id: "proof-search"
     btn_label: "Open Reference"
     btn_class: "btn--inverse"
-  
+
   - image_path: /assets/images/Tracer-460x200.png
     title: "Tracer"
     excerpt: "Tracer allows to analyze the typechecking process of Arend terms step-by-step."
@@ -200,7 +200,24 @@ feature_row:
     id: "tracer"
     btn_label: "Show More"
     btn_class: "btn--inverse"
-  
+
+  - image_path: /assets/images/ChangeSignature-460x200.png
+    title: "Change signature"
+    excerpt: "This refactoring can be used to modify the signature of a definition by adding or deleting parameters and changing their explicitness and types.
+              It can be invoked by pressing **Ctrl+F6**."
+    url: "/about/intellij-features/ChangeSignature.gif"
+    id: "change-signature"
+    btn_label: "Show More"
+    btn_class: "btn--inverse"
+
+  - image_path: /assets/images/LatexDoc-460x200.png
+    title: "Latex documentation"
+    excerpt: "Documentation may contain latex commands which are rendered in the documentation preview."
+    url: "/about/intellij-features/LatexDoc.png"
+    id: "latex-doc"
+    btn_label: "Show More"
+    btn_class: "btn--inverse"
+
 ---
 
 # IntelliJ Arend Features

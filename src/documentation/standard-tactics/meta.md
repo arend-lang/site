@@ -57,3 +57,20 @@ If the expected type is unknown, it unfolds these function in the result type of
 # unfold_let
 
 {%ard%} unfold_let {%endard%} unfolds {%ard%} \let {%endard%} expressions
+
+# assumption
+
+{%ard%} assumption {%endard%} searches for a proof in the context. It tries variables that are declared later first.
+{%ard%} assumption {n} {%endard%} returns the n-th variables from the context counting from the end.
+{%ard%} assumption {n} a1 ... ak {%endard%} applies n-th variable from the context to arguments a1, ... ak.
+
+# in
+
+{%ard%} f in x {%endard%} is equivalent to {%ard%} \let r => f x \in r {%endard%}.
+Also, {%ard%} (f_1, ... f_n) in x {%endard%} is equivalent to {%ard%} f_1 in ... f_n in x {%endard%}.
+This meta is usually used with {%ard%} f {%endard%} being a meta such as {%ard%} rewrite {%endard%}, {%ard%} simplify {%endard%}, {%ard%} simp_coe {%endard%}, or {%ard%} unfold {%endard%}.
+
+# defaultImpl
+
+{%ard%} defaultImpl C F E {%endard%} returns the default implementation of field {%ard%} F {%endard%} in class {%ard%} C {%endard%} applied to expression {%ard%} E {%endard%}.
+The third argument can be omitted, in which case either {%ard%} \this {%endard%} or {%ard%} _ {%endard%} will be used instead,

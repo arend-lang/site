@@ -1,0 +1,2605 @@
+<svg width="4861px" height="1052px"
+ viewBox="0.00 0.00 4860.63 1052.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1.0 1.0) rotate(0.0) translate(4.0 1048.0)">
+<title>Visualize as Orthogonal Diagram (A hierarchical class graph)</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-1048 4856.63,-1048 4856.63,4 -4,4"/>
+<!-- FinGroup -->
+<g id="node1" class="node">
+<title>FinGroup</title>
+<ellipse fill="none" stroke="black" cx="1008.54" cy="-594" rx="54.69" ry="18"/>
+<text text-anchor="middle" x="1008.54" y="-590.3" font-family="Times,serif" font-size="14.00">FinGroup</text>
+</g>
+<!-- UniformLocale -->
+<g id="node2" class="node">
+<title>UniformLocale</title>
+<ellipse fill="none" stroke="black" cx="4720.54" cy="-378" rx="79.09" ry="18"/>
+<text text-anchor="middle" x="4720.54" y="-374.3" font-family="Times,serif" font-size="14.00">UniformLocale</text>
+</g>
+<!-- HeytingAlebra -->
+<g id="node3" class="node">
+<title>HeytingAlebra</title>
+<ellipse fill="none" stroke="black" cx="4529.54" cy="-522" rx="77.99" ry="18"/>
+<text text-anchor="middle" x="4529.54" y="-518.3" font-family="Times,serif" font-size="14.00">HeytingAlebra</text>
+</g>
+<!-- DiscreteOrderedField -->
+<g id="node4" class="node">
+<title>DiscreteOrderedField</title>
+<ellipse fill="none" stroke="black" cx="2662.54" cy="-18" rx="111.58" ry="18"/>
+<text text-anchor="middle" x="2662.54" y="-14.3" font-family="Times,serif" font-size="14.00">DiscreteOrderedField</text>
+</g>
+<!-- UnboundedDenseLinearOrder.Dec -->
+<g id="node5" class="node">
+<title>UnboundedDenseLinearOrder.Dec</title>
+<ellipse fill="none" stroke="black" cx="4248.54" cy="-378" rx="169.77" ry="18"/>
+<text text-anchor="middle" x="4248.54" y="-374.3" font-family="Times,serif" font-size="14.00">UnboundedDenseLinearOrder.Dec</text>
+</g>
+<!-- OrderedFieldAlgebra -->
+<g id="node6" class="node">
+<title>OrderedFieldAlgebra</title>
+<ellipse fill="none" stroke="black" cx="2799.54" cy="-90" rx="108.58" ry="18"/>
+<text text-anchor="middle" x="2799.54" y="-86.3" font-family="Times,serif" font-size="14.00">OrderedFieldAlgebra</text>
+</g>
+<!-- OrderedCMonoid -->
+<g id="node7" class="node">
+<title>OrderedCMonoid</title>
+<ellipse fill="none" stroke="black" cx="1835.54" cy="-666" rx="90.98" ry="18"/>
+<text text-anchor="middle" x="1835.54" y="-662.3" font-family="Times,serif" font-size="14.00">OrderedCMonoid</text>
+</g>
+<!-- LinearOrder.With# -->
+<g id="node8" class="node">
+<title>LinearOrder.With#</title>
+<ellipse fill="none" stroke="black" cx="4043.54" cy="-594" rx="99.38" ry="18"/>
+<text text-anchor="middle" x="4043.54" y="-590.3" font-family="Times,serif" font-size="14.00">LinearOrder.With#</text>
+</g>
+<!-- Partial -->
+<g id="node9" class="node">
+<title>Partial</title>
+<ellipse fill="none" stroke="black" cx="823.54" cy="-954" rx="41.69" ry="18"/>
+<text text-anchor="middle" x="823.54" y="-950.3" font-family="Times,serif" font-size="14.00">Partial</text>
+</g>
+<!-- EuclideanRingData -->
+<g id="node10" class="node">
+<title>EuclideanRingData</title>
+<ellipse fill="none" stroke="black" cx="1394.54" cy="-522" rx="100.18" ry="18"/>
+<text text-anchor="middle" x="1394.54" y="-518.3" font-family="Times,serif" font-size="14.00">EuclideanRingData</text>
+</g>
+<!-- BezoutDomain.Dec -->
+<g id="node11" class="node">
+<title>BezoutDomain.Dec</title>
+<ellipse fill="none" stroke="black" cx="1608.54" cy="-90" rx="98.58" ry="18"/>
+<text text-anchor="middle" x="1608.54" y="-86.3" font-family="Times,serif" font-size="14.00">BezoutDomain.Dec</text>
+</g>
+<!-- FinVectorSpace -->
+<g id="node12" class="node">
+<title>FinVectorSpace</title>
+<ellipse fill="none" stroke="black" cx="3147.54" cy="-522" rx="83.39" ry="18"/>
+<text text-anchor="middle" x="3147.54" y="-518.3" font-family="Times,serif" font-size="14.00">FinVectorSpace</text>
+</g>
+<!-- DRing -->
+<g id="node13" class="node">
+<title>DRing</title>
+<ellipse fill="none" stroke="black" cx="1754.54" cy="-522" rx="39.79" ry="18"/>
+<text text-anchor="middle" x="1754.54" y="-518.3" font-family="Times,serif" font-size="14.00">DRing</text>
+</g>
+<!-- PPRing -->
+<g id="node14" class="node">
+<title>PPRing</title>
+<ellipse fill="none" stroke="black" cx="2149.54" cy="-450" rx="44.69" ry="18"/>
+<text text-anchor="middle" x="2149.54" y="-446.3" font-family="Times,serif" font-size="14.00">PPRing</text>
+</g>
+<!-- GradedCRing -->
+<g id="node15" class="node">
+<title>GradedCRing</title>
+<ellipse fill="none" stroke="black" cx="1623.54" cy="-522" rx="73.39" ry="18"/>
+<text text-anchor="middle" x="1623.54" y="-518.3" font-family="Times,serif" font-size="14.00">GradedCRing</text>
+</g>
+<!-- FrameUPres -->
+<g id="node16" class="node">
+<title>FrameUPres</title>
+<ellipse fill="none" stroke="black" cx="2145.54" cy="-882" rx="69.59" ry="18"/>
+<text text-anchor="middle" x="2145.54" y="-878.3" font-family="Times,serif" font-size="14.00">FrameUPres</text>
+</g>
+<!-- CompleteValuedRing -->
+<g id="node17" class="node">
+<title>CompleteValuedRing</title>
+<ellipse fill="none" stroke="black" cx="508.54" cy="-90" rx="107.78" ry="18"/>
+<text text-anchor="middle" x="508.54" y="-86.3" font-family="Times,serif" font-size="14.00">CompleteValuedRing</text>
+</g>
+<!-- CompletelyStronglyRegularCoverSpace -->
+<g id="node18" class="node">
+<title>CompletelyStronglyRegularCoverSpace</title>
+<ellipse fill="none" stroke="black" cx="664.54" cy="-594" rx="194.97" ry="18"/>
+<text text-anchor="middle" x="664.54" y="-590.3" font-family="Times,serif" font-size="14.00">CompletelyStronglyRegularCoverSpace</text>
+</g>
+<!-- UnitlessMonoid -->
+<g id="node19" class="node">
+<title>UnitlessMonoid</title>
+<ellipse fill="none" stroke="black" cx="1275.54" cy="-594" rx="83.69" ry="18"/>
+<text text-anchor="middle" x="1275.54" y="-590.3" font-family="Times,serif" font-size="14.00">UnitlessMonoid</text>
+</g>
+<!-- CGroup -->
+<g id="node20" class="node">
+<title>CGroup</title>
+<ellipse fill="none" stroke="black" cx="1127.54" cy="-594" rx="46.29" ry="18"/>
+<text text-anchor="middle" x="1127.54" y="-590.3" font-family="Times,serif" font-size="14.00">CGroup</text>
+</g>
+<!-- ValuationRing -->
+<g id="node21" class="node">
+<title>ValuationRing</title>
+<ellipse fill="none" stroke="black" cx="1839.54" cy="-90" rx="75.29" ry="18"/>
+<text text-anchor="middle" x="1839.54" y="-86.3" font-family="Times,serif" font-size="14.00">ValuationRing</text>
+</g>
+<!-- UnitlessGCDMonoid -->
+<g id="node22" class="node">
+<title>UnitlessGCDMonoid</title>
+<ellipse fill="none" stroke="black" cx="949.54" cy="-522" rx="105.08" ry="18"/>
+<text text-anchor="middle" x="949.54" y="-518.3" font-family="Times,serif" font-size="14.00">UnitlessGCDMonoid</text>
+</g>
+<!-- BaseSet -->
+<g id="node23" class="node">
+<title>BaseSet</title>
+<ellipse fill="none" stroke="black" cx="2145.54" cy="-1026" rx="48.99" ry="18"/>
+<text text-anchor="middle" x="2145.54" y="-1022.3" font-family="Times,serif" font-size="14.00">BaseSet</text>
+</g>
+<!-- BaseSet&#45;&gt;Partial -->
+<g id="edge8" class="edge">
+<title>BaseSet&#45;&gt;Partial</title>
+<path fill="none" stroke="black" d="M2096.65,-1024.79C1893.52,-1023.62 1115.51,-1016.28 874.54,-972 870.88,-971.33 867.13,-970.45 863.39,-969.46"/>
+<polygon fill="black" stroke="black" points="864.23,-966.05 853.65,-966.58 862.25,-972.77 864.23,-966.05"/>
+</g>
+<!-- Pointed -->
+<g id="node24" class="node">
+<title>Pointed</title>
+<ellipse fill="none" stroke="black" cx="2018.54" cy="-954" rx="46.29" ry="18"/>
+<text text-anchor="middle" x="2018.54" y="-950.3" font-family="Times,serif" font-size="14.00">Pointed</text>
+</g>
+<!-- BaseSet&#45;&gt;Pointed -->
+<g id="edge1" class="edge">
+<title>BaseSet&#45;&gt;Pointed</title>
+<path fill="none" stroke="black" d="M2119.53,-1010.67C2100.32,-1000.07 2073.96,-985.55 2052.99,-973.99"/>
+<polygon fill="black" stroke="black" points="2054.52,-970.84 2044.08,-969.08 2051.15,-976.97 2054.52,-970.84"/>
+</g>
+<!-- TopSpace -->
+<g id="node25" class="node">
+<title>TopSpace</title>
+<ellipse fill="none" stroke="black" cx="938.54" cy="-954" rx="55.49" ry="18"/>
+<text text-anchor="middle" x="938.54" y="-950.3" font-family="Times,serif" font-size="14.00">TopSpace</text>
+</g>
+<!-- BaseSet&#45;&gt;TopSpace -->
+<g id="edge2" class="edge">
+<title>BaseSet&#45;&gt;TopSpace</title>
+<path fill="none" stroke="black" d="M2097.85,-1022.23C1909.57,-1011.32 1217.7,-971.19 1002.71,-958.72"/>
+<polygon fill="black" stroke="black" points="1002.72,-955.22 992.54,-958.13 1002.32,-962.2 1002.72,-955.22"/>
+</g>
+<!-- Choice -->
+<g id="node26" class="node">
+<title>Choice</title>
+<ellipse fill="none" stroke="black" cx="1327.54" cy="-954" rx="42.49" ry="18"/>
+<text text-anchor="middle" x="1327.54" y="-950.3" font-family="Times,serif" font-size="14.00">Choice</text>
+</g>
+<!-- BaseSet&#45;&gt;Choice -->
+<g id="edge3" class="edge">
+<title>BaseSet&#45;&gt;Choice</title>
+<path fill="none" stroke="black" d="M2098.62,-1020.99C1955.9,-1008.77 1527.67,-972.13 1379.03,-959.41"/>
+<polygon fill="black" stroke="black" points="1379.09,-955.9 1368.82,-958.53 1378.49,-962.87 1379.09,-955.9"/>
+</g>
+<!-- SeparatedSet -->
+<g id="node27" class="node">
+<title>SeparatedSet</title>
+<ellipse fill="none" stroke="black" cx="2352.54" cy="-954" rx="74.19" ry="18"/>
+<text text-anchor="middle" x="2352.54" y="-950.3" font-family="Times,serif" font-size="14.00">SeparatedSet</text>
+</g>
+<!-- BaseSet&#45;&gt;SeparatedSet -->
+<g id="edge4" class="edge">
+<title>BaseSet&#45;&gt;SeparatedSet</title>
+<path fill="none" stroke="black" d="M2180.19,-1013.28C2213.26,-1002.1 2263.49,-985.11 2301.2,-972.36"/>
+<polygon fill="black" stroke="black" points="2302.64,-975.57 2310.99,-969.05 2300.4,-968.94 2302.64,-975.57"/>
+</g>
+<!-- FramePres -->
+<g id="node28" class="node">
+<title>FramePres</title>
+<ellipse fill="none" stroke="black" cx="2145.54" cy="-954" rx="61.99" ry="18"/>
+<text text-anchor="middle" x="2145.54" y="-950.3" font-family="Times,serif" font-size="14.00">FramePres</text>
+</g>
+<!-- BaseSet&#45;&gt;FramePres -->
+<g id="edge5" class="edge">
+<title>BaseSet&#45;&gt;FramePres</title>
+<path fill="none" stroke="black" d="M2145.54,-1007.7C2145.54,-999.98 2145.54,-990.71 2145.54,-982.11"/>
+<polygon fill="black" stroke="black" points="2149.04,-982.1 2145.54,-972.1 2142.04,-982.1 2149.04,-982.1"/>
+</g>
+<!-- AddPointed -->
+<g id="node29" class="node">
+<title>AddPointed</title>
+<ellipse fill="none" stroke="black" cx="2687.54" cy="-954" rx="63.89" ry="18"/>
+<text text-anchor="middle" x="2687.54" y="-950.3" font-family="Times,serif" font-size="14.00">AddPointed</text>
+</g>
+<!-- BaseSet&#45;&gt;AddPointed -->
+<g id="edge6" class="edge">
+<title>BaseSet&#45;&gt;AddPointed</title>
+<path fill="none" stroke="black" d="M2190.82,-1019.15C2286.3,-1006.82 2508.67,-978.1 2620.63,-963.64"/>
+<polygon fill="black" stroke="black" points="2621.31,-967.08 2630.78,-962.33 2620.42,-960.14 2621.31,-967.08"/>
+</g>
+<!-- DecSet -->
+<g id="node30" class="node">
+<title>DecSet</title>
+<ellipse fill="none" stroke="black" cx="2318.54" cy="-738" rx="44.39" ry="18"/>
+<text text-anchor="middle" x="2318.54" y="-734.3" font-family="Times,serif" font-size="14.00">DecSet</text>
+</g>
+<!-- BaseSet&#45;&gt;DecSet -->
+<g id="edge7" class="edge">
+<title>BaseSet&#45;&gt;DecSet</title>
+<path fill="none" stroke="black" d="M2171.17,-1010.5C2185.99,-1001.08 2204.1,-987.66 2216.54,-972 2268.13,-907.03 2298.93,-811.94 2311.67,-765.92"/>
+<polygon fill="black" stroke="black" points="2315.1,-766.67 2314.32,-756.1 2308.34,-764.84 2315.1,-766.67"/>
+</g>
+<!-- StrictPoset -->
+<g id="node31" class="node">
+<title>StrictPoset</title>
+<ellipse fill="none" stroke="black" cx="3652.54" cy="-882" rx="62.29" ry="18"/>
+<text text-anchor="middle" x="3652.54" y="-878.3" font-family="Times,serif" font-size="14.00">StrictPoset</text>
+</g>
+<!-- BaseSet&#45;&gt;StrictPoset -->
+<g id="edge9" class="edge">
+<title>BaseSet&#45;&gt;StrictPoset</title>
+<path fill="none" stroke="black" d="M2192.62,-1021.16C2295.63,-1012.71 2548.73,-991.69 2760.54,-972 3068.31,-943.39 3435.42,-905.6 3584.55,-890.1"/>
+<polygon fill="black" stroke="black" points="3585.32,-893.54 3594.91,-889.02 3584.6,-886.58 3585.32,-893.54"/>
+</g>
+<!-- Preorder -->
+<g id="node32" class="node">
+<title>Preorder</title>
+<ellipse fill="none" stroke="black" cx="3952.54" cy="-954" rx="51.99" ry="18"/>
+<text text-anchor="middle" x="3952.54" y="-950.3" font-family="Times,serif" font-size="14.00">Preorder</text>
+</g>
+<!-- BaseSet&#45;&gt;Preorder -->
+<g id="edge10" class="edge">
+<title>BaseSet&#45;&gt;Preorder</title>
+<path fill="none" stroke="black" d="M2193.87,-1023.13C2445.99,-1013.36 3609.42,-968.29 3891.03,-957.38"/>
+<polygon fill="black" stroke="black" points="3891.21,-960.88 3901.06,-956.99 3890.94,-953.88 3891.21,-960.88"/>
+</g>
+<!-- PigeonholeSet -->
+<g id="node33" class="node">
+<title>PigeonholeSet</title>
+<ellipse fill="none" stroke="black" cx="1724.54" cy="-954" rx="77.19" ry="18"/>
+<text text-anchor="middle" x="1724.54" y="-950.3" font-family="Times,serif" font-size="14.00">PigeonholeSet</text>
+</g>
+<!-- BaseSet&#45;&gt;PigeonholeSet -->
+<g id="edge11" class="edge">
+<title>BaseSet&#45;&gt;PigeonholeSet</title>
+<path fill="none" stroke="black" d="M2102.07,-1017.77C2029.55,-1005.71 1883.21,-981.38 1795.55,-966.81"/>
+<polygon fill="black" stroke="black" points="1796.12,-963.35 1785.68,-965.17 1794.97,-970.26 1796.12,-963.35"/>
+</g>
+<!-- Monoid -->
+<g id="node152" class="node">
+<title>Monoid</title>
+<ellipse fill="none" stroke="black" cx="1992.54" cy="-810" rx="45.49" ry="18"/>
+<text text-anchor="middle" x="1992.54" y="-806.3" font-family="Times,serif" font-size="14.00">Monoid</text>
+</g>
+<!-- Pointed&#45;&gt;Monoid -->
+<g id="edge254" class="edge">
+<title>Pointed&#45;&gt;Monoid</title>
+<path fill="none" stroke="black" d="M2015.4,-935.87C2010.97,-911.67 2002.83,-867.21 1997.55,-838.39"/>
+<polygon fill="black" stroke="black" points="2000.93,-837.4 1995.69,-828.19 1994.04,-838.66 2000.93,-837.4"/>
+</g>
+<!-- TopAbGroup -->
+<g id="node101" class="node">
+<title>TopAbGroup</title>
+<ellipse fill="none" stroke="black" cx="692.54" cy="-522" rx="68.49" ry="18"/>
+<text text-anchor="middle" x="692.54" y="-518.3" font-family="Times,serif" font-size="14.00">TopAbGroup</text>
+</g>
+<!-- TopSpace&#45;&gt;TopAbGroup -->
+<g id="edge224" class="edge">
+<title>TopSpace&#45;&gt;TopAbGroup</title>
+<path fill="none" stroke="black" d="M938.54,-935.95C938.54,-909.29 938.54,-856.11 938.54,-811 938.54,-811 938.54,-811 938.54,-737 938.54,-661.67 943.21,-624.46 885.54,-576 852.82,-548.5 806.98,-535.19 768.19,-528.79"/>
+<polygon fill="black" stroke="black" points="768.38,-525.28 757.97,-527.23 767.33,-532.2 768.38,-525.28"/>
+</g>
+<!-- PrecoverSpace -->
+<g id="node138" class="node">
+<title>PrecoverSpace</title>
+<ellipse fill="none" stroke="black" cx="747.54" cy="-882" rx="79.89" ry="18"/>
+<text text-anchor="middle" x="747.54" y="-878.3" font-family="Times,serif" font-size="14.00">PrecoverSpace</text>
+</g>
+<!-- TopSpace&#45;&gt;PrecoverSpace -->
+<g id="edge222" class="edge">
+<title>TopSpace&#45;&gt;PrecoverSpace</title>
+<path fill="none" stroke="black" d="M903.06,-940C873.21,-929.06 830.21,-913.3 796.98,-901.12"/>
+<polygon fill="black" stroke="black" points="798.04,-897.78 787.45,-897.63 795.63,-904.35 798.04,-897.78"/>
+</g>
+<!-- HausdorffTopSpace -->
+<g id="node139" class="node">
+<title>HausdorffTopSpace</title>
+<ellipse fill="none" stroke="black" cx="531.54" cy="-882" rx="100.98" ry="18"/>
+<text text-anchor="middle" x="531.54" y="-878.3" font-family="Times,serif" font-size="14.00">HausdorffTopSpace</text>
+</g>
+<!-- TopSpace&#45;&gt;HausdorffTopSpace -->
+<g id="edge223" class="edge">
+<title>TopSpace&#45;&gt;HausdorffTopSpace</title>
+<path fill="none" stroke="black" d="M898.07,-941.55C890.29,-939.55 882.19,-937.6 874.54,-936 826.89,-926.02 702.72,-907.52 617.62,-895.23"/>
+<polygon fill="black" stroke="black" points="618.1,-891.77 607.7,-893.8 617.1,-898.69 618.1,-891.77"/>
+</g>
+<!-- FinSet -->
+<g id="node36" class="node">
+<title>FinSet</title>
+<ellipse fill="none" stroke="black" cx="1036.54" cy="-666" rx="41.69" ry="18"/>
+<text text-anchor="middle" x="1036.54" y="-662.3" font-family="Times,serif" font-size="14.00">FinSet</text>
+</g>
+<!-- Choice&#45;&gt;FinSet -->
+<g id="edge221" class="edge">
+<title>Choice&#45;&gt;FinSet</title>
+<path fill="none" stroke="black" d="M1298.41,-940.93C1255.8,-922.1 1175.98,-882.17 1124.54,-828 1086.37,-787.81 1059.44,-727.87 1046.09,-693.6"/>
+<polygon fill="black" stroke="black" points="1049.21,-691.95 1042.39,-683.84 1042.67,-694.43 1049.21,-691.95"/>
+</g>
+<!-- Set# -->
+<g id="node137" class="node">
+<title>Set#</title>
+<ellipse fill="none" stroke="black" cx="2369.54" cy="-810" rx="34.39" ry="18"/>
+<text text-anchor="middle" x="2369.54" y="-806.3" font-family="Times,serif" font-size="14.00">Set#</text>
+</g>
+<!-- SeparatedSet&#45;&gt;Set# -->
+<g id="edge217" class="edge">
+<title>SeparatedSet&#45;&gt;Set#</title>
+<path fill="none" stroke="black" d="M2354.59,-935.87C2357.49,-911.67 2362.81,-867.21 2366.26,-838.39"/>
+<polygon fill="black" stroke="black" points="2369.77,-838.53 2367.48,-828.19 2362.82,-837.7 2369.77,-838.53"/>
+</g>
+<!-- FramePres&#45;&gt;FrameUPres -->
+<g id="edge216" class="edge">
+<title>FramePres&#45;&gt;FrameUPres</title>
+<path fill="none" stroke="black" d="M2145.54,-935.7C2145.54,-927.98 2145.54,-918.71 2145.54,-910.11"/>
+<polygon fill="black" stroke="black" points="2149.04,-910.1 2145.54,-900.1 2142.04,-910.1 2149.04,-910.1"/>
+</g>
+<!-- AddMonoid -->
+<g id="node84" class="node">
+<title>AddMonoid</title>
+<ellipse fill="none" stroke="black" cx="2825.54" cy="-882" rx="63.89" ry="18"/>
+<text text-anchor="middle" x="2825.54" y="-878.3" font-family="Times,serif" font-size="14.00">AddMonoid</text>
+</g>
+<!-- AddPointed&#45;&gt;AddMonoid -->
+<g id="edge104" class="edge">
+<title>AddPointed&#45;&gt;AddMonoid</title>
+<path fill="none" stroke="black" d="M2717.14,-937.98C2737.52,-927.65 2764.78,-913.82 2786.87,-902.61"/>
+<polygon fill="black" stroke="black" points="2788.65,-905.64 2795.98,-897.99 2785.48,-899.39 2788.65,-905.64"/>
+</g>
+<!-- DecSet&#45;&gt;FinSet -->
+<g id="edge93" class="edge">
+<title>DecSet&#45;&gt;FinSet</title>
+<path fill="none" stroke="black" d="M2275.63,-733.39C2228.9,-729.58 2151.96,-723.62 2085.54,-720 1863.72,-707.92 1305.02,-724.18 1086.54,-684 1083.1,-683.37 1079.57,-682.55 1076.06,-681.6"/>
+<polygon fill="black" stroke="black" points="1076.89,-678.2 1066.3,-678.7 1074.89,-684.91 1076.89,-678.2"/>
+</g>
+<!-- LinearOrder.Dec -->
+<g id="node53" class="node">
+<title>LinearOrder.Dec</title>
+<ellipse fill="none" stroke="black" cx="4106.54" cy="-522" rx="87.18" ry="18"/>
+<text text-anchor="middle" x="4106.54" y="-518.3" font-family="Times,serif" font-size="14.00">LinearOrder.Dec</text>
+</g>
+<!-- DecSet&#45;&gt;LinearOrder.Dec -->
+<g id="edge91" class="edge">
+<title>DecSet&#45;&gt;LinearOrder.Dec</title>
+<path fill="none" stroke="black" d="M2354.63,-727.47C2367.18,-724.55 2381.39,-721.67 2394.54,-720 2516.4,-704.52 3387.92,-735.29 3499.54,-684 3519.26,-674.94 3513.12,-657.71 3532.54,-648 3678.34,-575.11 3749.26,-679.71 3897.54,-612 3918.7,-602.34 3915.46,-587.75 3935.54,-576 3966.17,-558.07 4003.5,-545.6 4035.45,-537.27"/>
+<polygon fill="black" stroke="black" points="4036.34,-540.66 4045.18,-534.82 4034.63,-533.87 4036.34,-540.66"/>
+</g>
+<!-- AddGroup.Dec -->
+<g id="node77" class="node">
+<title>AddGroup.Dec</title>
+<ellipse fill="none" stroke="black" cx="2705.54" cy="-666" rx="77.99" ry="18"/>
+<text text-anchor="middle" x="2705.54" y="-662.3" font-family="Times,serif" font-size="14.00">AddGroup.Dec</text>
+</g>
+<!-- DecSet&#45;&gt;AddGroup.Dec -->
+<g id="edge90" class="edge">
+<title>DecSet&#45;&gt;AddGroup.Dec</title>
+<path fill="none" stroke="black" d="M2355.96,-728.23C2368.22,-725.46 2381.94,-722.48 2394.54,-720 2475.73,-704.01 2569.42,-688.43 2632.57,-678.35"/>
+<polygon fill="black" stroke="black" points="2633.49,-681.75 2642.82,-676.72 2632.39,-674.84 2633.49,-681.75"/>
+</g>
+<!-- EuclideanSemiringData -->
+<g id="node78" class="node">
+<title>EuclideanSemiringData</title>
+<ellipse fill="none" stroke="black" cx="1826.54" cy="-594" rx="120.78" ry="18"/>
+<text text-anchor="middle" x="1826.54" y="-590.3" font-family="Times,serif" font-size="14.00">EuclideanSemiringData</text>
+</g>
+<!-- DecSet&#45;&gt;EuclideanSemiringData -->
+<g id="edge92" class="edge">
+<title>DecSet&#45;&gt;EuclideanSemiringData</title>
+<path fill="none" stroke="black" d="M2275.37,-733.6C2195.04,-726.74 2025.99,-709.69 1973.54,-684 1952.65,-673.77 1954.67,-661.24 1935.54,-648 1917.18,-635.29 1895.31,-624.01 1875.99,-615.16"/>
+<polygon fill="black" stroke="black" points="1877.3,-611.91 1866.74,-611.01 1874.43,-618.29 1877.3,-611.91"/>
+</g>
+<!-- BiorderedSet -->
+<g id="node39" class="node">
+<title>BiorderedSet</title>
+<ellipse fill="none" stroke="black" cx="3864.54" cy="-810" rx="72.59" ry="18"/>
+<text text-anchor="middle" x="3864.54" y="-806.3" font-family="Times,serif" font-size="14.00">BiorderedSet</text>
+</g>
+<!-- StrictPoset&#45;&gt;BiorderedSet -->
+<g id="edge76" class="edge">
+<title>StrictPoset&#45;&gt;BiorderedSet</title>
+<path fill="none" stroke="black" d="M3691.92,-868C3726.1,-856.71 3775.84,-840.29 3813.15,-827.97"/>
+<polygon fill="black" stroke="black" points="3814.44,-831.23 3822.83,-824.77 3812.24,-824.58 3814.44,-831.23"/>
+</g>
+<!-- OrderedAddMonoid -->
+<g id="node71" class="node">
+<title>OrderedAddMonoid</title>
+<ellipse fill="none" stroke="black" cx="3652.54" cy="-810" rx="102.08" ry="18"/>
+<text text-anchor="middle" x="3652.54" y="-806.3" font-family="Times,serif" font-size="14.00">OrderedAddMonoid</text>
+</g>
+<!-- StrictPoset&#45;&gt;OrderedAddMonoid -->
+<g id="edge77" class="edge">
+<title>StrictPoset&#45;&gt;OrderedAddMonoid</title>
+<path fill="none" stroke="black" d="M3652.54,-863.7C3652.54,-855.98 3652.54,-846.71 3652.54,-838.11"/>
+<polygon fill="black" stroke="black" points="3656.04,-838.1 3652.54,-828.1 3649.04,-838.1 3656.04,-838.1"/>
+</g>
+<!-- DirectedSet -->
+<g id="node37" class="node">
+<title>DirectedSet</title>
+<ellipse fill="none" stroke="black" cx="4249.54" cy="-882" rx="66.09" ry="18"/>
+<text text-anchor="middle" x="4249.54" y="-878.3" font-family="Times,serif" font-size="14.00">DirectedSet</text>
+</g>
+<!-- Preorder&#45;&gt;DirectedSet -->
+<g id="edge16" class="edge">
+<title>Preorder&#45;&gt;DirectedSet</title>
+<path fill="none" stroke="black" d="M3994.15,-943.19C4045.61,-931.06 4133.51,-910.35 4191.56,-896.67"/>
+<polygon fill="black" stroke="black" points="4192.39,-900.07 4201.32,-894.36 4190.79,-893.25 4192.39,-900.07"/>
+</g>
+<!-- Poset -->
+<g id="node38" class="node">
+<title>Poset</title>
+<ellipse fill="none" stroke="black" cx="3952.54" cy="-882" rx="36.29" ry="18"/>
+<text text-anchor="middle" x="3952.54" y="-878.3" font-family="Times,serif" font-size="14.00">Poset</text>
+</g>
+<!-- Preorder&#45;&gt;Poset -->
+<g id="edge17" class="edge">
+<title>Preorder&#45;&gt;Poset</title>
+<path fill="none" stroke="black" d="M3952.54,-935.7C3952.54,-927.98 3952.54,-918.71 3952.54,-910.11"/>
+<polygon fill="black" stroke="black" points="3956.04,-910.1 3952.54,-900.1 3949.04,-910.1 3956.04,-910.1"/>
+</g>
+<!-- BoundedPigeonholeSet -->
+<g id="node34" class="node">
+<title>BoundedPigeonholeSet</title>
+<ellipse fill="none" stroke="black" cx="1571.54" cy="-882" rx="118.08" ry="18"/>
+<text text-anchor="middle" x="1571.54" y="-878.3" font-family="Times,serif" font-size="14.00">BoundedPigeonholeSet</text>
+</g>
+<!-- PigeonholeSet&#45;&gt;BoundedPigeonholeSet -->
+<g id="edge12" class="edge">
+<title>PigeonholeSet&#45;&gt;BoundedPigeonholeSet</title>
+<path fill="none" stroke="black" d="M1690.96,-937.64C1668.99,-927.58 1640.02,-914.33 1616.12,-903.4"/>
+<polygon fill="black" stroke="black" points="1617.45,-900.16 1606.9,-899.18 1614.54,-906.52 1617.45,-900.16"/>
+</g>
+<!-- KFinSet -->
+<g id="node35" class="node">
+<title>KFinSet</title>
+<ellipse fill="none" stroke="black" cx="1181.54" cy="-810" rx="48.19" ry="18"/>
+<text text-anchor="middle" x="1181.54" y="-806.3" font-family="Times,serif" font-size="14.00">KFinSet</text>
+</g>
+<!-- BoundedPigeonholeSet&#45;&gt;KFinSet -->
+<g id="edge13" class="edge">
+<title>BoundedPigeonholeSet&#45;&gt;KFinSet</title>
+<path fill="none" stroke="black" d="M1498.18,-867.83C1421.16,-854.01 1301.97,-832.62 1233.92,-820.4"/>
+<polygon fill="black" stroke="black" points="1234.32,-816.92 1223.86,-818.6 1233.08,-823.81 1234.32,-816.92"/>
+</g>
+<!-- KFinSet&#45;&gt;FinSet -->
+<g id="edge14" class="edge">
+<title>KFinSet&#45;&gt;FinSet</title>
+<path fill="none" stroke="black" d="M1167.37,-792.73C1151.25,-774.48 1123.87,-744.26 1098.54,-720 1087.35,-709.28 1074.39,-698.04 1063.23,-688.68"/>
+<polygon fill="black" stroke="black" points="1065.4,-685.93 1055.47,-682.24 1060.92,-691.32 1065.4,-685.93"/>
+</g>
+<!-- FinSet&#45;&gt;FinGroup -->
+<g id="edge15" class="edge">
+<title>FinSet&#45;&gt;FinGroup</title>
+<path fill="none" stroke="black" d="M1029.76,-648.05C1026.61,-640.18 1022.79,-630.62 1019.26,-621.79"/>
+<polygon fill="black" stroke="black" points="1022.41,-620.26 1015.45,-612.28 1015.91,-622.86 1022.41,-620.26"/>
+</g>
+<!-- Bounded.JoinSemilattice -->
+<g id="node44" class="node">
+<title>Bounded.JoinSemilattice</title>
+<ellipse fill="none" stroke="black" cx="4508.54" cy="-738" rx="124.58" ry="18"/>
+<text text-anchor="middle" x="4508.54" y="-734.3" font-family="Times,serif" font-size="14.00">Bounded.JoinSemilattice</text>
+</g>
+<!-- DirectedSet&#45;&gt;Bounded.JoinSemilattice -->
+<g id="edge75" class="edge">
+<title>DirectedSet&#45;&gt;Bounded.JoinSemilattice</title>
+<path fill="none" stroke="black" d="M4277.75,-865.53C4324.13,-840.1 4416.6,-789.41 4469.32,-760.5"/>
+<polygon fill="black" stroke="black" points="4471.28,-763.42 4478.37,-755.54 4467.92,-757.28 4471.28,-763.42"/>
+</g>
+<!-- Poset&#45;&gt;BiorderedSet -->
+<g id="edge18" class="edge">
+<title>Poset&#45;&gt;BiorderedSet</title>
+<path fill="none" stroke="black" d="M3933.88,-866.15C3922.01,-856.72 3906.42,-844.31 3893.02,-833.66"/>
+<polygon fill="black" stroke="black" points="3895.02,-830.78 3885.02,-827.29 3890.67,-836.25 3895.02,-830.78"/>
+</g>
+<!-- OrderedMonoid -->
+<g id="node40" class="node">
+<title>OrderedMonoid</title>
+<ellipse fill="none" stroke="black" cx="1992.54" cy="-738" rx="83.69" ry="18"/>
+<text text-anchor="middle" x="1992.54" y="-734.3" font-family="Times,serif" font-size="14.00">OrderedMonoid</text>
+</g>
+<!-- Poset&#45;&gt;OrderedMonoid -->
+<g id="edge19" class="edge">
+<title>Poset&#45;&gt;OrderedMonoid</title>
+<path fill="none" stroke="black" d="M3916.87,-877.82C3871.86,-873.92 3792.02,-867.42 3723.54,-864 3413.38,-848.5 2633.91,-872.28 2326.54,-828 2224.56,-813.31 2109.14,-778.29 2044.18,-756.82"/>
+<polygon fill="black" stroke="black" points="2045.18,-753.46 2034.58,-753.63 2042.96,-760.11 2045.18,-753.46"/>
+</g>
+<!-- MeetSemilattice -->
+<g id="node41" class="node">
+<title>MeetSemilattice</title>
+<ellipse fill="none" stroke="black" cx="4042.54" cy="-810" rx="87.18" ry="18"/>
+<text text-anchor="middle" x="4042.54" y="-806.3" font-family="Times,serif" font-size="14.00">MeetSemilattice</text>
+</g>
+<!-- Poset&#45;&gt;MeetSemilattice -->
+<g id="edge20" class="edge">
+<title>Poset&#45;&gt;MeetSemilattice</title>
+<path fill="none" stroke="black" d="M3971.19,-866.5C3983.21,-857.14 3999.11,-844.78 4012.85,-834.09"/>
+<polygon fill="black" stroke="black" points="4015.32,-836.6 4021.07,-827.7 4011.03,-831.08 4015.32,-836.6"/>
+</g>
+<!-- JoinSemilattice -->
+<g id="node42" class="node">
+<title>JoinSemilattice</title>
+<ellipse fill="none" stroke="black" cx="4228.54" cy="-810" rx="81.49" ry="18"/>
+<text text-anchor="middle" x="4228.54" y="-806.3" font-family="Times,serif" font-size="14.00">JoinSemilattice</text>
+</g>
+<!-- Poset&#45;&gt;JoinSemilattice -->
+<g id="edge21" class="edge">
+<title>Poset&#45;&gt;JoinSemilattice</title>
+<path fill="none" stroke="black" d="M3984.2,-872.97C4028.68,-861.69 4110.56,-840.92 4167.2,-826.56"/>
+<polygon fill="black" stroke="black" points="4168.28,-829.89 4177.12,-824.04 4166.56,-823.11 4168.28,-829.89"/>
+</g>
+<!-- LinearOrder -->
+<g id="node68" class="node">
+<title>LinearOrder</title>
+<ellipse fill="none" stroke="black" cx="4043.54" cy="-666" rx="67.69" ry="18"/>
+<text text-anchor="middle" x="4043.54" y="-662.3" font-family="Times,serif" font-size="14.00">LinearOrder</text>
+</g>
+<!-- BiorderedSet&#45;&gt;LinearOrder -->
+<g id="edge67" class="edge">
+<title>BiorderedSet&#45;&gt;LinearOrder</title>
+<path fill="none" stroke="black" d="M3885.07,-792.71C3916.95,-767.42 3978.46,-718.63 4014.75,-689.83"/>
+<polygon fill="black" stroke="black" points="4017.31,-692.27 4022.97,-683.32 4012.96,-686.79 4017.31,-692.27"/>
+</g>
+<!-- OrderedMonoid&#45;&gt;OrderedCMonoid -->
+<g id="edge66" class="edge">
+<title>OrderedMonoid&#45;&gt;OrderedCMonoid</title>
+<path fill="none" stroke="black" d="M1957.7,-721.46C1934.79,-711.25 1904.6,-697.79 1879.97,-686.81"/>
+<polygon fill="black" stroke="black" points="1881.39,-683.61 1870.83,-682.73 1878.54,-690 1881.39,-683.61"/>
+</g>
+<!-- Lattice -->
+<g id="node43" class="node">
+<title>Lattice</title>
+<ellipse fill="none" stroke="black" cx="4042.54" cy="-738" rx="42.79" ry="18"/>
+<text text-anchor="middle" x="4042.54" y="-734.3" font-family="Times,serif" font-size="14.00">Lattice</text>
+</g>
+<!-- MeetSemilattice&#45;&gt;Lattice -->
+<g id="edge63" class="edge">
+<title>MeetSemilattice&#45;&gt;Lattice</title>
+<path fill="none" stroke="black" d="M4042.54,-791.7C4042.54,-783.98 4042.54,-774.71 4042.54,-766.11"/>
+<polygon fill="black" stroke="black" points="4046.04,-766.1 4042.54,-756.1 4039.04,-766.1 4046.04,-766.1"/>
+</g>
+<!-- Bounded.MeetSemilattice -->
+<g id="node67" class="node">
+<title>Bounded.MeetSemilattice</title>
+<ellipse fill="none" stroke="black" cx="4234.54" cy="-738" rx="131.08" ry="18"/>
+<text text-anchor="middle" x="4234.54" y="-734.3" font-family="Times,serif" font-size="14.00">Bounded.MeetSemilattice</text>
+</g>
+<!-- MeetSemilattice&#45;&gt;Bounded.MeetSemilattice -->
+<g id="edge64" class="edge">
+<title>MeetSemilattice&#45;&gt;Bounded.MeetSemilattice</title>
+<path fill="none" stroke="black" d="M4083.73,-793.98C4112.06,-783.65 4149.98,-769.83 4180.71,-758.63"/>
+<polygon fill="black" stroke="black" points="4182.21,-761.8 4190.41,-755.09 4179.82,-755.23 4182.21,-761.8"/>
+</g>
+<!-- JoinSemilattice&#45;&gt;Lattice -->
+<g id="edge22" class="edge">
+<title>JoinSemilattice&#45;&gt;Lattice</title>
+<path fill="none" stroke="black" d="M4189.09,-794.15C4157.92,-782.42 4114.56,-766.1 4083.1,-754.26"/>
+<polygon fill="black" stroke="black" points="4083.92,-750.84 4073.33,-750.59 4081.46,-757.39 4083.92,-750.84"/>
+</g>
+<!-- JoinSemilattice&#45;&gt;Bounded.JoinSemilattice -->
+<g id="edge23" class="edge">
+<title>JoinSemilattice&#45;&gt;Bounded.JoinSemilattice</title>
+<path fill="none" stroke="black" d="M4280.22,-796.08C4324.87,-784.92 4389.76,-768.69 4438.97,-756.39"/>
+<polygon fill="black" stroke="black" points="4440.05,-759.73 4448.9,-753.91 4438.35,-752.94 4440.05,-759.73"/>
+</g>
+<!-- Bounded.Lattice -->
+<g id="node45" class="node">
+<title>Bounded.Lattice</title>
+<ellipse fill="none" stroke="black" cx="4508.54" cy="-666" rx="87.18" ry="18"/>
+<text text-anchor="middle" x="4508.54" y="-662.3" font-family="Times,serif" font-size="14.00">Bounded.Lattice</text>
+</g>
+<!-- Lattice&#45;&gt;Bounded.Lattice -->
+<g id="edge33" class="edge">
+<title>Lattice&#45;&gt;Bounded.Lattice</title>
+<path fill="none" stroke="black" d="M4073.9,-725.7C4080.64,-723.56 4087.78,-721.52 4094.54,-720 4110.49,-716.41 4309.74,-691.53 4425.89,-677.18"/>
+<polygon fill="black" stroke="black" points="4426.34,-680.65 4435.83,-675.95 4425.48,-673.7 4426.34,-680.65"/>
+</g>
+<!-- LinearlyOrderedAbMonoid -->
+<g id="node50" class="node">
+<title>LinearlyOrderedAbMonoid</title>
+<ellipse fill="none" stroke="black" cx="3754.54" cy="-594" rx="133.78" ry="18"/>
+<text text-anchor="middle" x="3754.54" y="-590.3" font-family="Times,serif" font-size="14.00">LinearlyOrderedAbMonoid</text>
+</g>
+<!-- Lattice&#45;&gt;LinearlyOrderedAbMonoid -->
+<g id="edge32" class="edge">
+<title>Lattice&#45;&gt;LinearlyOrderedAbMonoid</title>
+<path fill="none" stroke="black" d="M4015.7,-723.77C3965.6,-699.06 3857.46,-645.75 3797.23,-616.05"/>
+<polygon fill="black" stroke="black" points="3798.51,-612.78 3788,-611.5 3795.42,-619.06 3798.51,-612.78"/>
+</g>
+<!-- DistributiveLattice -->
+<g id="node51" class="node">
+<title>DistributiveLattice</title>
+<ellipse fill="none" stroke="black" cx="4259.54" cy="-666" rx="98.58" ry="18"/>
+<text text-anchor="middle" x="4259.54" y="-662.3" font-family="Times,serif" font-size="14.00">DistributiveLattice</text>
+</g>
+<!-- Lattice&#45;&gt;DistributiveLattice -->
+<g id="edge34" class="edge">
+<title>Lattice&#45;&gt;DistributiveLattice</title>
+<path fill="none" stroke="black" d="M4075.26,-726.27C4081.65,-724.19 4088.3,-722.02 4094.54,-720 4130.72,-708.27 4171.41,-695.2 4203.33,-684.98"/>
+<polygon fill="black" stroke="black" points="4204.48,-688.28 4212.93,-681.9 4202.34,-681.62 4204.48,-688.28"/>
+</g>
+<!-- Bounded.JoinSemilattice&#45;&gt;Bounded.Lattice -->
+<g id="edge24" class="edge">
+<title>Bounded.JoinSemilattice&#45;&gt;Bounded.Lattice</title>
+<path fill="none" stroke="black" d="M4508.54,-719.7C4508.54,-711.98 4508.54,-702.71 4508.54,-694.11"/>
+<polygon fill="black" stroke="black" points="4512.04,-694.1 4508.54,-684.1 4505.04,-694.1 4512.04,-694.1"/>
+</g>
+<!-- CompleteLattice -->
+<g id="node46" class="node">
+<title>CompleteLattice</title>
+<ellipse fill="none" stroke="black" cx="4765.54" cy="-594" rx="87.18" ry="18"/>
+<text text-anchor="middle" x="4765.54" y="-590.3" font-family="Times,serif" font-size="14.00">CompleteLattice</text>
+</g>
+<!-- Bounded.Lattice&#45;&gt;CompleteLattice -->
+<g id="edge25" class="edge">
+<title>Bounded.Lattice&#45;&gt;CompleteLattice</title>
+<path fill="none" stroke="black" d="M4559.01,-651.25C4601,-639.82 4660.89,-623.5 4705.37,-611.39"/>
+<polygon fill="black" stroke="black" points="4706.46,-614.72 4715.19,-608.71 4704.62,-607.97 4706.46,-614.72"/>
+</g>
+<!-- Bounded.DistributiveLattice -->
+<g id="node47" class="node">
+<title>Bounded.DistributiveLattice</title>
+<ellipse fill="none" stroke="black" cx="4518.54" cy="-594" rx="142.17" ry="18"/>
+<text text-anchor="middle" x="4518.54" y="-590.3" font-family="Times,serif" font-size="14.00">Bounded.DistributiveLattice</text>
+</g>
+<!-- Bounded.Lattice&#45;&gt;Bounded.DistributiveLattice -->
+<g id="edge26" class="edge">
+<title>Bounded.Lattice&#45;&gt;Bounded.DistributiveLattice</title>
+<path fill="none" stroke="black" d="M4511.01,-647.7C4512.11,-639.98 4513.44,-630.71 4514.67,-622.11"/>
+<polygon fill="black" stroke="black" points="4518.15,-622.5 4516.1,-612.1 4511.22,-621.51 4518.15,-622.5"/>
+</g>
+<!-- Locale -->
+<g id="node48" class="node">
+<title>Locale</title>
+<ellipse fill="none" stroke="black" cx="4720.54" cy="-522" rx="40.09" ry="18"/>
+<text text-anchor="middle" x="4720.54" y="-518.3" font-family="Times,serif" font-size="14.00">Locale</text>
+</g>
+<!-- CompleteLattice&#45;&gt;Locale -->
+<g id="edge31" class="edge">
+<title>CompleteLattice&#45;&gt;Locale</title>
+<path fill="none" stroke="black" d="M4754.65,-576.05C4749.28,-567.71 4742.71,-557.49 4736.77,-548.25"/>
+<polygon fill="black" stroke="black" points="4739.68,-546.31 4731.33,-539.79 4733.8,-550.09 4739.68,-546.31"/>
+</g>
+<!-- Bounded.DistributiveLattice&#45;&gt;HeytingAlebra -->
+<g id="edge27" class="edge">
+<title>Bounded.DistributiveLattice&#45;&gt;HeytingAlebra</title>
+<path fill="none" stroke="black" d="M4521.26,-575.7C4522.47,-567.98 4523.93,-558.71 4525.28,-550.11"/>
+<polygon fill="black" stroke="black" points="4528.76,-550.53 4526.85,-540.1 4521.84,-549.44 4528.76,-550.53"/>
+</g>
+<!-- Bounded.DistributiveLattice&#45;&gt;Locale -->
+<g id="edge28" class="edge">
+<title>Bounded.DistributiveLattice&#45;&gt;Locale</title>
+<path fill="none" stroke="black" d="M4564.88,-576.94C4599.61,-564.91 4646.68,-548.6 4679.94,-537.07"/>
+<polygon fill="black" stroke="black" points="4681.48,-540.24 4689.79,-533.66 4679.19,-533.62 4681.48,-540.24"/>
+</g>
+<!-- PreuniformLocale -->
+<g id="node49" class="node">
+<title>PreuniformLocale</title>
+<ellipse fill="none" stroke="black" cx="4720.54" cy="-450" rx="92.88" ry="18"/>
+<text text-anchor="middle" x="4720.54" y="-446.3" font-family="Times,serif" font-size="14.00">PreuniformLocale</text>
+</g>
+<!-- Locale&#45;&gt;PreuniformLocale -->
+<g id="edge29" class="edge">
+<title>Locale&#45;&gt;PreuniformLocale</title>
+<path fill="none" stroke="black" d="M4720.54,-503.7C4720.54,-495.98 4720.54,-486.71 4720.54,-478.11"/>
+<polygon fill="black" stroke="black" points="4724.04,-478.1 4720.54,-468.1 4717.04,-478.1 4724.04,-478.1"/>
+</g>
+<!-- PreuniformLocale&#45;&gt;UniformLocale -->
+<g id="edge30" class="edge">
+<title>PreuniformLocale&#45;&gt;UniformLocale</title>
+<path fill="none" stroke="black" d="M4720.54,-431.7C4720.54,-423.98 4720.54,-414.71 4720.54,-406.11"/>
+<polygon fill="black" stroke="black" points="4724.04,-406.1 4720.54,-396.1 4717.04,-406.1 4724.04,-406.1"/>
+</g>
+<!-- LinearlyOrderedSemiring -->
+<g id="node59" class="node">
+<title>LinearlyOrderedSemiring</title>
+<ellipse fill="none" stroke="black" cx="3594.54" cy="-522" rx="129.98" ry="18"/>
+<text text-anchor="middle" x="3594.54" y="-518.3" font-family="Times,serif" font-size="14.00">LinearlyOrderedSemiring</text>
+</g>
+<!-- LinearlyOrderedAbMonoid&#45;&gt;LinearlyOrderedSemiring -->
+<g id="edge46" class="edge">
+<title>LinearlyOrderedAbMonoid&#45;&gt;LinearlyOrderedSemiring</title>
+<path fill="none" stroke="black" d="M3717.03,-576.59C3694.36,-566.67 3665.28,-553.95 3641.14,-543.39"/>
+<polygon fill="black" stroke="black" points="3642.38,-540.11 3631.82,-539.31 3639.58,-546.52 3642.38,-540.11"/>
+</g>
+<!-- LinearlyOrderedAbGroup -->
+<g id="node60" class="node">
+<title>LinearlyOrderedAbGroup</title>
+<ellipse fill="none" stroke="black" cx="3870.54" cy="-522" rx="128.08" ry="18"/>
+<text text-anchor="middle" x="3870.54" y="-518.3" font-family="Times,serif" font-size="14.00">LinearlyOrderedAbGroup</text>
+</g>
+<!-- LinearlyOrderedAbMonoid&#45;&gt;LinearlyOrderedAbGroup -->
+<g id="edge47" class="edge">
+<title>LinearlyOrderedAbMonoid&#45;&gt;LinearlyOrderedAbGroup</title>
+<path fill="none" stroke="black" d="M3782.32,-576.23C3797.82,-566.88 3817.31,-555.12 3834.02,-545.04"/>
+<polygon fill="black" stroke="black" points="3836.23,-547.79 3842.98,-539.63 3832.61,-541.8 3836.23,-547.79"/>
+</g>
+<!-- DistributiveLattice&#45;&gt;Bounded.DistributiveLattice -->
+<g id="edge36" class="edge">
+<title>DistributiveLattice&#45;&gt;Bounded.DistributiveLattice</title>
+<path fill="none" stroke="black" d="M4312.26,-650.75C4352.33,-639.92 4407.75,-624.94 4451.05,-613.24"/>
+<polygon fill="black" stroke="black" points="4452.2,-616.56 4460.94,-610.57 4450.37,-609.8 4452.2,-616.56"/>
+</g>
+<!-- TotalOrder -->
+<g id="node52" class="node">
+<title>TotalOrder</title>
+<ellipse fill="none" stroke="black" cx="4259.54" cy="-594" rx="61.19" ry="18"/>
+<text text-anchor="middle" x="4259.54" y="-590.3" font-family="Times,serif" font-size="14.00">TotalOrder</text>
+</g>
+<!-- DistributiveLattice&#45;&gt;TotalOrder -->
+<g id="edge35" class="edge">
+<title>DistributiveLattice&#45;&gt;TotalOrder</title>
+<path fill="none" stroke="black" d="M4259.54,-647.7C4259.54,-639.98 4259.54,-630.71 4259.54,-622.11"/>
+<polygon fill="black" stroke="black" points="4263.04,-622.1 4259.54,-612.1 4256.04,-622.1 4263.04,-622.1"/>
+</g>
+<!-- TotalOrder&#45;&gt;LinearOrder.Dec -->
+<g id="edge37" class="edge">
+<title>TotalOrder&#45;&gt;LinearOrder.Dec</title>
+<path fill="none" stroke="black" d="M4227.84,-578.5C4205.25,-568.16 4174.62,-554.15 4149.79,-542.79"/>
+<polygon fill="black" stroke="black" points="4151.14,-539.56 4140.59,-538.58 4148.23,-545.92 4151.14,-539.56"/>
+</g>
+<!-- DenseLinearOrder.Dec -->
+<g id="node54" class="node">
+<title>DenseLinearOrder.Dec</title>
+<ellipse fill="none" stroke="black" cx="4106.54" cy="-450" rx="116.18" ry="18"/>
+<text text-anchor="middle" x="4106.54" y="-446.3" font-family="Times,serif" font-size="14.00">DenseLinearOrder.Dec</text>
+</g>
+<!-- LinearOrder.Dec&#45;&gt;DenseLinearOrder.Dec -->
+<g id="edge38" class="edge">
+<title>LinearOrder.Dec&#45;&gt;DenseLinearOrder.Dec</title>
+<path fill="none" stroke="black" d="M4106.54,-503.7C4106.54,-495.98 4106.54,-486.71 4106.54,-478.11"/>
+<polygon fill="black" stroke="black" points="4110.04,-478.1 4106.54,-468.1 4103.04,-478.1 4110.04,-478.1"/>
+</g>
+<!-- LinearlyOrderedSemiring.Dec -->
+<g id="node55" class="node">
+<title>LinearlyOrderedSemiring.Dec</title>
+<ellipse fill="none" stroke="black" cx="3618.54" cy="-450" rx="150.27" ry="18"/>
+<text text-anchor="middle" x="3618.54" y="-446.3" font-family="Times,serif" font-size="14.00">LinearlyOrderedSemiring.Dec</text>
+</g>
+<!-- LinearOrder.Dec&#45;&gt;LinearlyOrderedSemiring.Dec -->
+<g id="edge39" class="edge">
+<title>LinearOrder.Dec&#45;&gt;LinearlyOrderedSemiring.Dec</title>
+<path fill="none" stroke="black" d="M4042.69,-509.7C4031.01,-507.73 4018.92,-505.75 4007.54,-504 3913.41,-489.51 3806.15,-475.05 3728.13,-464.9"/>
+<polygon fill="black" stroke="black" points="3728.17,-461.38 3717.81,-463.56 3727.27,-468.32 3728.17,-461.38"/>
+</g>
+<!-- DenseLinearOrder.Dec&#45;&gt;UnboundedDenseLinearOrder.Dec -->
+<g id="edge45" class="edge">
+<title>DenseLinearOrder.Dec&#45;&gt;UnboundedDenseLinearOrder.Dec</title>
+<path fill="none" stroke="black" d="M4139.83,-432.59C4159.4,-422.94 4184.35,-410.64 4205.4,-400.26"/>
+<polygon fill="black" stroke="black" points="4207.05,-403.36 4214.47,-395.8 4203.95,-397.08 4207.05,-403.36"/>
+</g>
+<!-- OrderedRing.Dec -->
+<g id="node56" class="node">
+<title>OrderedRing.Dec</title>
+<ellipse fill="none" stroke="black" cx="3240.54" cy="-306" rx="90.98" ry="18"/>
+<text text-anchor="middle" x="3240.54" y="-302.3" font-family="Times,serif" font-size="14.00">OrderedRing.Dec</text>
+</g>
+<!-- LinearlyOrderedSemiring.Dec&#45;&gt;OrderedRing.Dec -->
+<g id="edge40" class="edge">
+<title>LinearlyOrderedSemiring.Dec&#45;&gt;OrderedRing.Dec</title>
+<path fill="none" stroke="black" d="M3515.95,-436.75C3413.2,-424.04 3268.94,-404.82 3259.54,-396 3242.94,-380.42 3239,-354.18 3238.74,-334.22"/>
+<polygon fill="black" stroke="black" points="3242.24,-334.22 3238.9,-324.16 3235.24,-334.1 3242.24,-334.22"/>
+</g>
+<!-- LinearlyOrderedCSemiring.Dec -->
+<g id="node57" class="node">
+<title>LinearlyOrderedCSemiring.Dec</title>
+<ellipse fill="none" stroke="black" cx="3425.54" cy="-378" rx="157.07" ry="18"/>
+<text text-anchor="middle" x="3425.54" y="-374.3" font-family="Times,serif" font-size="14.00">LinearlyOrderedCSemiring.Dec</text>
+</g>
+<!-- LinearlyOrderedSemiring.Dec&#45;&gt;LinearlyOrderedCSemiring.Dec -->
+<g id="edge41" class="edge">
+<title>LinearlyOrderedSemiring.Dec&#45;&gt;LinearlyOrderedCSemiring.Dec</title>
+<path fill="none" stroke="black" d="M3573.78,-432.76C3545.86,-422.64 3509.75,-409.54 3480.16,-398.81"/>
+<polygon fill="black" stroke="black" points="3480.99,-395.39 3470.39,-395.27 3478.6,-401.97 3480.99,-395.39"/>
+</g>
+<!-- OrderedCRing.Dec -->
+<g id="node58" class="node">
+<title>OrderedCRing.Dec</title>
+<ellipse fill="none" stroke="black" cx="3007.54" cy="-234" rx="98.28" ry="18"/>
+<text text-anchor="middle" x="3007.54" y="-230.3" font-family="Times,serif" font-size="14.00">OrderedCRing.Dec</text>
+</g>
+<!-- OrderedRing.Dec&#45;&gt;OrderedCRing.Dec -->
+<g id="edge44" class="edge">
+<title>OrderedRing.Dec&#45;&gt;OrderedCRing.Dec</title>
+<path fill="none" stroke="black" d="M3192.83,-290.67C3156.13,-279.64 3105.24,-264.35 3066.08,-252.59"/>
+<polygon fill="black" stroke="black" points="3066.98,-249.2 3056.39,-249.68 3064.96,-255.91 3066.98,-249.2"/>
+</g>
+<!-- LinearlyOrderedCSemiring.Dec&#45;&gt;OrderedCRing.Dec -->
+<g id="edge42" class="edge">
+<title>LinearlyOrderedCSemiring.Dec&#45;&gt;OrderedCRing.Dec</title>
+<path fill="none" stroke="black" d="M3414.35,-359.69C3399.95,-338.98 3372.89,-304.97 3340.54,-288 3300.5,-267 3187.54,-252.04 3104.23,-243.49"/>
+<polygon fill="black" stroke="black" points="3104.53,-240 3094.23,-242.47 3103.83,-246.96 3104.53,-240"/>
+</g>
+<!-- OrderedCRing.Dec&#45;&gt;DiscreteOrderedField -->
+<g id="edge43" class="edge">
+<title>OrderedCRing.Dec&#45;&gt;DiscreteOrderedField</title>
+<path fill="none" stroke="black" d="M3003.15,-215.97C2993.62,-182.64 2967.76,-108.84 2917.54,-72 2892.5,-53.63 2820.92,-39.72 2759.95,-30.76"/>
+<polygon fill="black" stroke="black" points="2760.28,-27.27 2749.88,-29.31 2759.28,-34.2 2760.28,-27.27"/>
+</g>
+<!-- LinearlyOrderedSemiring&#45;&gt;LinearlyOrderedSemiring.Dec -->
+<g id="edge60" class="edge">
+<title>LinearlyOrderedSemiring&#45;&gt;LinearlyOrderedSemiring.Dec</title>
+<path fill="none" stroke="black" d="M3600.47,-503.7C3603.15,-495.9 3606.36,-486.51 3609.34,-477.83"/>
+<polygon fill="black" stroke="black" points="3612.74,-478.7 3612.67,-468.1 3606.12,-476.43 3612.74,-478.7"/>
+</g>
+<!-- OrderedRing -->
+<g id="node61" class="node">
+<title>OrderedRing</title>
+<ellipse fill="none" stroke="black" cx="3140.54" cy="-378" rx="70.69" ry="18"/>
+<text text-anchor="middle" x="3140.54" y="-374.3" font-family="Times,serif" font-size="14.00">OrderedRing</text>
+</g>
+<!-- LinearlyOrderedSemiring&#45;&gt;OrderedRing -->
+<g id="edge59" class="edge">
+<title>LinearlyOrderedSemiring&#45;&gt;OrderedRing</title>
+<path fill="none" stroke="black" d="M3540.29,-505.58C3507.12,-495.73 3464.01,-482.19 3426.54,-468 3389.7,-454.05 3382.74,-444.97 3345.54,-432 3298.72,-415.67 3244.33,-401.84 3203.35,-392.4"/>
+<polygon fill="black" stroke="black" points="3204.02,-388.96 3193.49,-390.16 3202.47,-395.79 3204.02,-388.96"/>
+</g>
+<!-- LinearlyOrderedCSemiring -->
+<g id="node66" class="node">
+<title>LinearlyOrderedCSemiring</title>
+<ellipse fill="none" stroke="black" cx="3200.54" cy="-450" rx="136.48" ry="18"/>
+<text text-anchor="middle" x="3200.54" y="-446.3" font-family="Times,serif" font-size="14.00">LinearlyOrderedCSemiring</text>
+</g>
+<!-- LinearlyOrderedSemiring&#45;&gt;LinearlyOrderedCSemiring -->
+<g id="edge61" class="edge">
+<title>LinearlyOrderedSemiring&#45;&gt;LinearlyOrderedCSemiring</title>
+<path fill="none" stroke="black" d="M3518.1,-507.42C3452.3,-495.73 3357.34,-478.86 3288.42,-466.61"/>
+<polygon fill="black" stroke="black" points="3288.9,-463.14 3278.44,-464.84 3287.68,-470.04 3288.9,-463.14"/>
+</g>
+<!-- LinearlyOrderedAbGroup&#45;&gt;OrderedRing -->
+<g id="edge48" class="edge">
+<title>LinearlyOrderedAbGroup&#45;&gt;OrderedRing</title>
+<path fill="none" stroke="black" d="M3777.91,-509.53C3659.02,-494.74 3467.03,-470.6 3459.54,-468 3430.16,-457.8 3428.52,-443.28 3399.54,-432 3381.68,-425.05 3276.86,-404.61 3206.17,-391.24"/>
+<polygon fill="black" stroke="black" points="3206.47,-387.73 3196,-389.32 3205.17,-394.61 3206.47,-387.73"/>
+</g>
+<!-- OrderedRing&#45;&gt;OrderedRing.Dec -->
+<g id="edge50" class="edge">
+<title>OrderedRing&#45;&gt;OrderedRing.Dec</title>
+<path fill="none" stroke="black" d="M3163.73,-360.76C3177.04,-351.45 3193.96,-339.61 3208.52,-329.41"/>
+<polygon fill="black" stroke="black" points="3210.59,-332.24 3216.78,-323.63 3206.58,-326.5 3210.59,-332.24"/>
+</g>
+<!-- OrderedAAlgebra -->
+<g id="node62" class="node">
+<title>OrderedAAlgebra</title>
+<ellipse fill="none" stroke="black" cx="3039.54" cy="-306" rx="91.78" ry="18"/>
+<text text-anchor="middle" x="3039.54" y="-302.3" font-family="Times,serif" font-size="14.00">OrderedAAlgebra</text>
+</g>
+<!-- OrderedRing&#45;&gt;OrderedAAlgebra -->
+<g id="edge49" class="edge">
+<title>OrderedRing&#45;&gt;OrderedAAlgebra</title>
+<path fill="none" stroke="black" d="M3117.37,-360.94C3103.83,-351.56 3086.55,-339.58 3071.71,-329.3"/>
+<polygon fill="black" stroke="black" points="3073.52,-326.29 3063.3,-323.47 3069.53,-332.04 3073.52,-326.29"/>
+</g>
+<!-- OrderedCRing -->
+<g id="node63" class="node">
+<title>OrderedCRing</title>
+<ellipse fill="none" stroke="black" cx="2852.54" cy="-306" rx="77.19" ry="18"/>
+<text text-anchor="middle" x="2852.54" y="-302.3" font-family="Times,serif" font-size="14.00">OrderedCRing</text>
+</g>
+<!-- OrderedRing&#45;&gt;OrderedCRing -->
+<g id="edge51" class="edge">
+<title>OrderedRing&#45;&gt;OrderedCRing</title>
+<path fill="none" stroke="black" d="M3091.03,-364.97C3042.08,-353.07 2967.04,-334.83 2914.23,-322"/>
+<polygon fill="black" stroke="black" points="2914.86,-318.54 2904.31,-319.58 2913.2,-325.35 2914.86,-318.54"/>
+</g>
+<!-- OrderedCAlgebra -->
+<g id="node65" class="node">
+<title>OrderedCAlgebra</title>
+<ellipse fill="none" stroke="black" cx="2799.54" cy="-234" rx="92.08" ry="18"/>
+<text text-anchor="middle" x="2799.54" y="-230.3" font-family="Times,serif" font-size="14.00">OrderedCAlgebra</text>
+</g>
+<!-- OrderedAAlgebra&#45;&gt;OrderedCAlgebra -->
+<g id="edge58" class="edge">
+<title>OrderedAAlgebra&#45;&gt;OrderedCAlgebra</title>
+<path fill="none" stroke="black" d="M2990.68,-290.75C2952.44,-279.6 2899.12,-264.05 2858.51,-252.2"/>
+<polygon fill="black" stroke="black" points="2859.32,-248.79 2848.74,-249.35 2857.36,-255.51 2859.32,-248.79"/>
+</g>
+<!-- OrderedCRing&#45;&gt;OrderedCRing.Dec -->
+<g id="edge54" class="edge">
+<title>OrderedCRing&#45;&gt;OrderedCRing.Dec</title>
+<path fill="none" stroke="black" d="M2886.55,-289.64C2908.98,-279.51 2938.58,-266.14 2962.89,-255.17"/>
+<polygon fill="black" stroke="black" points="2964.59,-258.24 2972.26,-250.93 2961.7,-251.86 2964.59,-258.24"/>
+</g>
+<!-- OrderedField -->
+<g id="node64" class="node">
+<title>OrderedField</title>
+<ellipse fill="none" stroke="black" cx="2667.54" cy="-162" rx="72.59" ry="18"/>
+<text text-anchor="middle" x="2667.54" y="-158.3" font-family="Times,serif" font-size="14.00">OrderedField</text>
+</g>
+<!-- OrderedCRing&#45;&gt;OrderedField -->
+<g id="edge52" class="edge">
+<title>OrderedCRing&#45;&gt;OrderedField</title>
+<path fill="none" stroke="black" d="M2787.53,-296.02C2757.03,-288.76 2722.28,-275.65 2698.54,-252 2682.01,-235.53 2674.28,-209.8 2670.67,-190.23"/>
+<polygon fill="black" stroke="black" points="2674.08,-189.42 2669.06,-180.09 2667.17,-190.51 2674.08,-189.42"/>
+</g>
+<!-- OrderedCRing&#45;&gt;OrderedCAlgebra -->
+<g id="edge53" class="edge">
+<title>OrderedCRing&#45;&gt;OrderedCAlgebra</title>
+<path fill="none" stroke="black" d="M2839.71,-288.05C2833.42,-279.75 2825.72,-269.58 2818.75,-260.38"/>
+<polygon fill="black" stroke="black" points="2821.45,-258.14 2812.62,-252.28 2815.87,-262.36 2821.45,-258.14"/>
+</g>
+<!-- OrderedField&#45;&gt;DiscreteOrderedField -->
+<g id="edge56" class="edge">
+<title>OrderedField&#45;&gt;DiscreteOrderedField</title>
+<path fill="none" stroke="black" d="M2666.94,-143.87C2666.08,-119.67 2664.52,-75.21 2663.5,-46.39"/>
+<polygon fill="black" stroke="black" points="2666.99,-46.06 2663.14,-36.19 2660,-46.31 2666.99,-46.06"/>
+</g>
+<!-- OrderedField&#45;&gt;OrderedFieldAlgebra -->
+<g id="edge57" class="edge">
+<title>OrderedField&#45;&gt;OrderedFieldAlgebra</title>
+<path fill="none" stroke="black" d="M2696.83,-145.46C2715.28,-135.68 2739.33,-122.93 2759.52,-112.22"/>
+<polygon fill="black" stroke="black" points="2761.29,-115.24 2768.49,-107.47 2758.01,-109.06 2761.29,-115.24"/>
+</g>
+<!-- OrderedCAlgebra&#45;&gt;OrderedFieldAlgebra -->
+<g id="edge55" class="edge">
+<title>OrderedCAlgebra&#45;&gt;OrderedFieldAlgebra</title>
+<path fill="none" stroke="black" d="M2799.54,-215.87C2799.54,-191.67 2799.54,-147.21 2799.54,-118.39"/>
+<polygon fill="black" stroke="black" points="2803.04,-118.19 2799.54,-108.19 2796.04,-118.19 2803.04,-118.19"/>
+</g>
+<!-- LinearlyOrderedCSemiring&#45;&gt;OrderedCRing -->
+<g id="edge62" class="edge">
+<title>LinearlyOrderedCSemiring&#45;&gt;OrderedCRing</title>
+<path fill="none" stroke="black" d="M3156.53,-432.88C3128.86,-422.62 3092.48,-408.87 3060.54,-396 3003.42,-372.98 2938.25,-344.77 2896.31,-326.37"/>
+<polygon fill="black" stroke="black" points="2897.51,-323.07 2886.95,-322.25 2894.69,-329.48 2897.51,-323.07"/>
+</g>
+<!-- Bounded.MeetSemilattice&#45;&gt;Bounded.Lattice -->
+<g id="edge65" class="edge">
+<title>Bounded.MeetSemilattice&#45;&gt;Bounded.Lattice</title>
+<path fill="none" stroke="black" d="M4293.66,-721.9C4338.65,-710.4 4400.43,-694.62 4446.2,-682.93"/>
+<polygon fill="black" stroke="black" points="4447.19,-686.29 4456.01,-680.42 4445.45,-679.5 4447.19,-686.29"/>
+</g>
+<!-- LinearOrder&#45;&gt;LinearOrder.With# -->
+<g id="edge68" class="edge">
+<title>LinearOrder&#45;&gt;LinearOrder.With#</title>
+<path fill="none" stroke="black" d="M4043.54,-647.7C4043.54,-639.98 4043.54,-630.71 4043.54,-622.11"/>
+<polygon fill="black" stroke="black" points="4047.04,-622.1 4043.54,-612.1 4040.04,-622.1 4047.04,-622.1"/>
+</g>
+<!-- LinearOrder&#45;&gt;LinearlyOrderedAbMonoid -->
+<g id="edge71" class="edge">
+<title>LinearOrder&#45;&gt;LinearlyOrderedAbMonoid</title>
+<path fill="none" stroke="black" d="M3995.17,-653.28C3949.05,-642.11 3879.02,-625.15 3826.39,-612.4"/>
+<polygon fill="black" stroke="black" points="3826.98,-608.94 3816.44,-609.99 3825.33,-615.75 3826.98,-608.94"/>
+</g>
+<!-- LinearOrder&#45;&gt;LinearOrder.Dec -->
+<g id="edge69" class="edge">
+<title>LinearOrder&#45;&gt;LinearOrder.Dec</title>
+<path fill="none" stroke="black" d="M4092.77,-653.54C4114.74,-645.7 4138.56,-632.83 4151.54,-612 4164.68,-590.91 4148.95,-565.5 4132.59,-547.24"/>
+<polygon fill="black" stroke="black" points="4135.03,-544.74 4125.62,-539.88 4129.95,-549.55 4135.03,-544.74"/>
+</g>
+<!-- DenseLinearOrder -->
+<g id="node69" class="node">
+<title>DenseLinearOrder</title>
+<ellipse fill="none" stroke="black" cx="4336.54" cy="-522" rx="96.68" ry="18"/>
+<text text-anchor="middle" x="4336.54" y="-518.3" font-family="Times,serif" font-size="14.00">DenseLinearOrder</text>
+</g>
+<!-- LinearOrder&#45;&gt;DenseLinearOrder -->
+<g id="edge70" class="edge">
+<title>LinearOrder&#45;&gt;DenseLinearOrder</title>
+<path fill="none" stroke="black" d="M4099.1,-655.58C4181.19,-641.53 4325.67,-616.29 4329.54,-612 4344.33,-595.58 4344.81,-569.84 4342.34,-550.25"/>
+<polygon fill="black" stroke="black" points="4345.76,-549.44 4340.74,-540.11 4338.84,-550.53 4345.76,-549.44"/>
+</g>
+<!-- DenseLinearOrder&#45;&gt;DenseLinearOrder.Dec -->
+<g id="edge72" class="edge">
+<title>DenseLinearOrder&#45;&gt;DenseLinearOrder.Dec</title>
+<path fill="none" stroke="black" d="M4288.32,-506.33C4252.89,-495.54 4204.52,-480.82 4166.58,-469.27"/>
+<polygon fill="black" stroke="black" points="4167.27,-465.82 4156.68,-466.26 4165.23,-472.52 4167.27,-465.82"/>
+</g>
+<!-- UnboundedDenseLinearOrder -->
+<g id="node70" class="node">
+<title>UnboundedDenseLinearOrder</title>
+<ellipse fill="none" stroke="black" cx="4390.54" cy="-450" rx="150.27" ry="18"/>
+<text text-anchor="middle" x="4390.54" y="-446.3" font-family="Times,serif" font-size="14.00">UnboundedDenseLinearOrder</text>
+</g>
+<!-- DenseLinearOrder&#45;&gt;UnboundedDenseLinearOrder -->
+<g id="edge73" class="edge">
+<title>DenseLinearOrder&#45;&gt;UnboundedDenseLinearOrder</title>
+<path fill="none" stroke="black" d="M4349.61,-504.05C4356.02,-495.75 4363.86,-485.58 4370.96,-476.38"/>
+<polygon fill="black" stroke="black" points="4373.88,-478.33 4377.21,-468.28 4368.33,-474.06 4373.88,-478.33"/>
+</g>
+<!-- UnboundedDenseLinearOrder&#45;&gt;UnboundedDenseLinearOrder.Dec -->
+<g id="edge74" class="edge">
+<title>UnboundedDenseLinearOrder&#45;&gt;UnboundedDenseLinearOrder.Dec</title>
+<path fill="none" stroke="black" d="M4356.89,-432.41C4337.31,-422.76 4312.44,-410.5 4291.47,-400.16"/>
+<polygon fill="black" stroke="black" points="4292.96,-396.99 4282.44,-395.71 4289.86,-403.27 4292.96,-396.99"/>
+</g>
+<!-- OrderedAddGroup -->
+<g id="node72" class="node">
+<title>OrderedAddGroup</title>
+<ellipse fill="none" stroke="black" cx="3680.54" cy="-666" rx="96.38" ry="18"/>
+<text text-anchor="middle" x="3680.54" y="-662.3" font-family="Times,serif" font-size="14.00">OrderedAddGroup</text>
+</g>
+<!-- OrderedAddMonoid&#45;&gt;OrderedAddGroup -->
+<g id="edge78" class="edge">
+<title>OrderedAddMonoid&#45;&gt;OrderedAddGroup</title>
+<path fill="none" stroke="black" d="M3657.53,-791.92C3660.42,-781.59 3663.99,-768.11 3666.54,-756 3670.85,-735.46 3674.49,-712.01 3676.98,-694.34"/>
+<polygon fill="black" stroke="black" points="3680.48,-694.54 3678.37,-684.16 3673.55,-693.59 3680.48,-694.54"/>
+</g>
+<!-- OrderedAbMonoid -->
+<g id="node73" class="node">
+<title>OrderedAbMonoid</title>
+<ellipse fill="none" stroke="black" cx="3394.54" cy="-666" rx="96.38" ry="18"/>
+<text text-anchor="middle" x="3394.54" y="-662.3" font-family="Times,serif" font-size="14.00">OrderedAbMonoid</text>
+</g>
+<!-- OrderedAddMonoid&#45;&gt;OrderedAbMonoid -->
+<g id="edge79" class="edge">
+<title>OrderedAddMonoid&#45;&gt;OrderedAbMonoid</title>
+<path fill="none" stroke="black" d="M3653.96,-791.72C3654.6,-771.67 3652.35,-738.96 3633.54,-720 3612.78,-699.07 3544.33,-685.26 3485.98,-677"/>
+<polygon fill="black" stroke="black" points="3486.35,-673.52 3475.97,-675.62 3485.4,-680.45 3486.35,-673.52"/>
+</g>
+<!-- OrderedAbGroup -->
+<g id="node76" class="node">
+<title>OrderedAbGroup</title>
+<ellipse fill="none" stroke="black" cx="3512.54" cy="-594" rx="90.18" ry="18"/>
+<text text-anchor="middle" x="3512.54" y="-590.3" font-family="Times,serif" font-size="14.00">OrderedAbGroup</text>
+</g>
+<!-- OrderedAddGroup&#45;&gt;OrderedAbGroup -->
+<g id="edge89" class="edge">
+<title>OrderedAddGroup&#45;&gt;OrderedAbGroup</title>
+<path fill="none" stroke="black" d="M3642.84,-649.29C3618.11,-638.99 3585.6,-625.44 3559.23,-614.46"/>
+<polygon fill="black" stroke="black" points="3560.4,-611.15 3549.83,-610.54 3557.71,-617.61 3560.4,-611.15"/>
+</g>
+<!-- OrderedAbMonoid&#45;&gt;LinearlyOrderedAbMonoid -->
+<g id="edge83" class="edge">
+<title>OrderedAbMonoid&#45;&gt;LinearlyOrderedAbMonoid</title>
+<path fill="none" stroke="black" d="M3458.9,-652.49C3518.32,-640.93 3606.88,-623.71 3671.59,-611.13"/>
+<polygon fill="black" stroke="black" points="3672.61,-614.5 3681.76,-609.15 3671.27,-607.63 3672.61,-614.5"/>
+</g>
+<!-- OrderedSemiring -->
+<g id="node74" class="node">
+<title>OrderedSemiring</title>
+<ellipse fill="none" stroke="black" cx="3274.54" cy="-594" rx="91.78" ry="18"/>
+<text text-anchor="middle" x="3274.54" y="-590.3" font-family="Times,serif" font-size="14.00">OrderedSemiring</text>
+</g>
+<!-- OrderedAbMonoid&#45;&gt;OrderedSemiring -->
+<g id="edge80" class="edge">
+<title>OrderedAbMonoid&#45;&gt;OrderedSemiring</title>
+<path fill="none" stroke="black" d="M3366.71,-648.76C3350.32,-639.2 3329.38,-626.99 3311.6,-616.62"/>
+<polygon fill="black" stroke="black" points="3313.04,-613.41 3302.64,-611.39 3309.51,-619.45 3313.04,-613.41"/>
+</g>
+<!-- OrderedCSemiring -->
+<g id="node75" class="node">
+<title>OrderedCSemiring</title>
+<ellipse fill="none" stroke="black" cx="3347.54" cy="-522" rx="98.58" ry="18"/>
+<text text-anchor="middle" x="3347.54" y="-518.3" font-family="Times,serif" font-size="14.00">OrderedCSemiring</text>
+</g>
+<!-- OrderedAbMonoid&#45;&gt;OrderedCSemiring -->
+<g id="edge81" class="edge">
+<title>OrderedAbMonoid&#45;&gt;OrderedCSemiring</title>
+<path fill="none" stroke="black" d="M3392.32,-647.88C3389.63,-629.67 3384.33,-600.21 3375.54,-576 3372.24,-566.9 3367.64,-557.42 3363.12,-549.03"/>
+<polygon fill="black" stroke="black" points="3366.07,-547.13 3358.13,-540.11 3359.96,-550.55 3366.07,-547.13"/>
+</g>
+<!-- OrderedAbMonoid&#45;&gt;OrderedAbGroup -->
+<g id="edge82" class="edge">
+<title>OrderedAbMonoid&#45;&gt;OrderedAbGroup</title>
+<path fill="none" stroke="black" d="M3422.2,-648.59C3438.33,-639.02 3458.86,-626.85 3476.27,-616.52"/>
+<polygon fill="black" stroke="black" points="3478.23,-619.42 3485.05,-611.31 3474.66,-613.4 3478.23,-619.42"/>
+</g>
+<!-- OrderedSemiring&#45;&gt;LinearlyOrderedSemiring -->
+<g id="edge88" class="edge">
+<title>OrderedSemiring&#45;&gt;LinearlyOrderedSemiring</title>
+<path fill="none" stroke="black" d="M3333.23,-580.16C3385.23,-568.79 3461.48,-552.11 3518.21,-539.7"/>
+<polygon fill="black" stroke="black" points="3519.19,-543.07 3528.21,-537.51 3517.69,-536.23 3519.19,-543.07"/>
+</g>
+<!-- OrderedSemiring&#45;&gt;OrderedCSemiring -->
+<g id="edge87" class="edge">
+<title>OrderedSemiring&#45;&gt;OrderedCSemiring</title>
+<path fill="none" stroke="black" d="M3292.21,-576.05C3301.36,-567.28 3312.67,-556.43 3322.69,-546.83"/>
+<polygon fill="black" stroke="black" points="3325.24,-549.24 3330.03,-539.79 3320.39,-544.18 3325.24,-549.24"/>
+</g>
+<!-- OrderedCSemiring&#45;&gt;LinearlyOrderedCSemiring.Dec -->
+<g id="edge86" class="edge">
+<title>OrderedCSemiring&#45;&gt;LinearlyOrderedCSemiring.Dec</title>
+<path fill="none" stroke="black" d="M3356.95,-503.87C3370.42,-479.35 3395.31,-434.03 3411.12,-405.26"/>
+<polygon fill="black" stroke="black" points="3414.35,-406.64 3416.1,-396.19 3408.22,-403.27 3414.35,-406.64"/>
+</g>
+<!-- OrderedCSemiring&#45;&gt;LinearlyOrderedCSemiring -->
+<g id="edge85" class="edge">
+<title>OrderedCSemiring&#45;&gt;LinearlyOrderedCSemiring</title>
+<path fill="none" stroke="black" d="M3313.81,-504.94C3293.2,-495.12 3266.6,-482.46 3244.36,-471.87"/>
+<polygon fill="black" stroke="black" points="3245.66,-468.61 3235.13,-467.47 3242.65,-474.93 3245.66,-468.61"/>
+</g>
+<!-- OrderedAbGroup&#45;&gt;LinearlyOrderedAbGroup -->
+<g id="edge84" class="edge">
+<title>OrderedAbGroup&#45;&gt;LinearlyOrderedAbGroup</title>
+<path fill="none" stroke="black" d="M3574.49,-580.89C3633.88,-569.27 3723.88,-551.68 3789.06,-538.93"/>
+<polygon fill="black" stroke="black" points="3789.75,-542.36 3798.89,-537.01 3788.41,-535.49 3789.75,-542.36"/>
+</g>
+<!-- Ring.Dec -->
+<g id="node79" class="node">
+<title>Ring.Dec</title>
+<ellipse fill="none" stroke="black" cx="2955.54" cy="-522" rx="52.79" ry="18"/>
+<text text-anchor="middle" x="2955.54" y="-518.3" font-family="Times,serif" font-size="14.00">Ring.Dec</text>
+</g>
+<!-- AddGroup.Dec&#45;&gt;Ring.Dec -->
+<g id="edge95" class="edge">
+<title>AddGroup.Dec&#45;&gt;Ring.Dec</title>
+<path fill="none" stroke="black" d="M2702.58,-647.87C2700.2,-627.98 2699.72,-595.41 2717.54,-576 2720.7,-572.56 2832.72,-548.65 2901.93,-534.15"/>
+<polygon fill="black" stroke="black" points="2902.74,-537.55 2911.81,-532.08 2901.31,-530.7 2902.74,-537.55"/>
+</g>
+<!-- EuclideanSemiringData&#45;&gt;EuclideanRingData -->
+<g id="edge94" class="edge">
+<title>EuclideanSemiringData&#45;&gt;EuclideanRingData</title>
+<path fill="none" stroke="black" d="M1748.06,-580.28C1671.23,-567.83 1554.67,-548.95 1476.63,-536.3"/>
+<polygon fill="black" stroke="black" points="1476.79,-532.78 1466.36,-534.64 1475.67,-539.69 1476.79,-532.78"/>
+</g>
+<!-- CRing.Dec -->
+<g id="node80" class="node">
+<title>CRing.Dec</title>
+<ellipse fill="none" stroke="black" cx="2663.54" cy="-450" rx="59.59" ry="18"/>
+<text text-anchor="middle" x="2663.54" y="-446.3" font-family="Times,serif" font-size="14.00">CRing.Dec</text>
+</g>
+<!-- Ring.Dec&#45;&gt;CRing.Dec -->
+<g id="edge96" class="edge">
+<title>Ring.Dec&#45;&gt;CRing.Dec</title>
+<path fill="none" stroke="black" d="M2913.7,-510.97C2862.38,-498.67 2775.22,-477.77 2718.53,-464.18"/>
+<polygon fill="black" stroke="black" points="2719.2,-460.74 2708.66,-461.82 2717.57,-467.55 2719.2,-460.74"/>
+</g>
+<!-- Domain.Dec -->
+<g id="node81" class="node">
+<title>Domain.Dec</title>
+<ellipse fill="none" stroke="black" cx="2842.54" cy="-378" rx="66.89" ry="18"/>
+<text text-anchor="middle" x="2842.54" y="-374.3" font-family="Times,serif" font-size="14.00">Domain.Dec</text>
+</g>
+<!-- Ring.Dec&#45;&gt;Domain.Dec -->
+<g id="edge97" class="edge">
+<title>Ring.Dec&#45;&gt;Domain.Dec</title>
+<path fill="none" stroke="black" d="M2945.34,-504.31C2933.84,-485.94 2914.17,-455.87 2894.54,-432 2886.22,-421.89 2876.32,-411.46 2867.4,-402.55"/>
+<polygon fill="black" stroke="black" points="2869.78,-399.99 2860.19,-395.47 2864.87,-404.98 2869.78,-399.99"/>
+</g>
+<!-- IntegralDomain.Dec -->
+<g id="node82" class="node">
+<title>IntegralDomain.Dec</title>
+<ellipse fill="none" stroke="black" cx="2575.54" cy="-306" rx="103.98" ry="18"/>
+<text text-anchor="middle" x="2575.54" y="-302.3" font-family="Times,serif" font-size="14.00">IntegralDomain.Dec</text>
+</g>
+<!-- CRing.Dec&#45;&gt;IntegralDomain.Dec -->
+<g id="edge103" class="edge">
+<title>CRing.Dec&#45;&gt;IntegralDomain.Dec</title>
+<path fill="none" stroke="black" d="M2665.9,-431.93C2667.65,-412.97 2667.8,-382.11 2654.54,-360 2646.67,-346.88 2634.15,-336.32 2621.38,-328.18"/>
+<polygon fill="black" stroke="black" points="2622.94,-325.03 2612.55,-322.93 2619.36,-331.05 2622.94,-325.03"/>
+</g>
+<!-- Domain.Dec&#45;&gt;OrderedRing.Dec -->
+<g id="edge99" class="edge">
+<title>Domain.Dec&#45;&gt;OrderedRing.Dec</title>
+<path fill="none" stroke="black" d="M2897.04,-367.41C2966.32,-355.23 3086.28,-334.13 3164.52,-320.37"/>
+<polygon fill="black" stroke="black" points="3165.55,-323.74 3174.8,-318.56 3164.34,-316.85 3165.55,-323.74"/>
+</g>
+<!-- Domain.Dec&#45;&gt;IntegralDomain.Dec -->
+<g id="edge98" class="edge">
+<title>Domain.Dec&#45;&gt;IntegralDomain.Dec</title>
+<path fill="none" stroke="black" d="M2796.34,-364.89C2753.19,-353.57 2688.38,-336.58 2640.12,-323.93"/>
+<polygon fill="black" stroke="black" points="2640.95,-320.53 2630.39,-321.38 2639.18,-327.3 2640.95,-320.53"/>
+</g>
+<!-- IntegralDomain.Dec&#45;&gt;OrderedCRing.Dec -->
+<g id="edge101" class="edge">
+<title>IntegralDomain.Dec&#45;&gt;OrderedCRing.Dec</title>
+<path fill="none" stroke="black" d="M2648.82,-293.13C2725.81,-280.65 2846.59,-261.08 2926.4,-248.15"/>
+<polygon fill="black" stroke="black" points="2927.1,-251.58 2936.41,-246.53 2925.98,-244.67 2927.1,-251.58"/>
+</g>
+<!-- GCDDomain.Dec -->
+<g id="node83" class="node">
+<title>GCDDomain.Dec</title>
+<ellipse fill="none" stroke="black" cx="1799.54" cy="-234" rx="88.28" ry="18"/>
+<text text-anchor="middle" x="1799.54" y="-230.3" font-family="Times,serif" font-size="14.00">GCDDomain.Dec</text>
+</g>
+<!-- IntegralDomain.Dec&#45;&gt;GCDDomain.Dec -->
+<g id="edge100" class="edge">
+<title>IntegralDomain.Dec&#45;&gt;GCDDomain.Dec</title>
+<path fill="none" stroke="black" d="M2485.76,-296.9C2336.2,-283.41 2037.76,-256.49 1888.64,-243.04"/>
+<polygon fill="black" stroke="black" points="1888.88,-239.54 1878.6,-242.13 1888.25,-246.52 1888.88,-239.54"/>
+</g>
+<!-- GCDDomain.Dec&#45;&gt;BezoutDomain.Dec -->
+<g id="edge102" class="edge">
+<title>GCDDomain.Dec&#45;&gt;BezoutDomain.Dec</title>
+<path fill="none" stroke="black" d="M1777.26,-216.43C1743.13,-191.06 1677.84,-142.52 1639.25,-113.83"/>
+<polygon fill="black" stroke="black" points="1641.09,-110.84 1630.98,-107.68 1636.91,-116.46 1641.09,-110.84"/>
+</g>
+<!-- AddMonoid&#45;&gt;OrderedAddMonoid -->
+<g id="edge107" class="edge">
+<title>AddMonoid&#45;&gt;OrderedAddMonoid</title>
+<path fill="none" stroke="black" d="M2885.68,-875.91C3026.53,-863.99 3378.98,-834.16 3552.63,-819.46"/>
+<polygon fill="black" stroke="black" points="3553.13,-822.93 3562.8,-818.6 3552.54,-815.95 3553.13,-822.93"/>
+</g>
+<!-- AbMonoid -->
+<g id="node85" class="node">
+<title>AbMonoid</title>
+<ellipse fill="none" stroke="black" cx="2758.54" cy="-810" rx="57.69" ry="18"/>
+<text text-anchor="middle" x="2758.54" y="-806.3" font-family="Times,serif" font-size="14.00">AbMonoid</text>
+</g>
+<!-- AddMonoid&#45;&gt;AbMonoid -->
+<g id="edge105" class="edge">
+<title>AddMonoid&#45;&gt;AbMonoid</title>
+<path fill="none" stroke="black" d="M2809.66,-864.41C2801.23,-855.61 2790.73,-844.63 2781.43,-834.92"/>
+<polygon fill="black" stroke="black" points="2783.75,-832.27 2774.3,-827.47 2778.69,-837.11 2783.75,-832.27"/>
+</g>
+<!-- AddGroup -->
+<g id="node86" class="node">
+<title>AddGroup</title>
+<ellipse fill="none" stroke="black" cx="2892.54" cy="-810" rx="57.69" ry="18"/>
+<text text-anchor="middle" x="2892.54" y="-806.3" font-family="Times,serif" font-size="14.00">AddGroup</text>
+</g>
+<!-- AddMonoid&#45;&gt;AddGroup -->
+<g id="edge106" class="edge">
+<title>AddMonoid&#45;&gt;AddGroup</title>
+<path fill="none" stroke="black" d="M2841.42,-864.41C2849.84,-855.61 2860.35,-844.63 2869.65,-834.92"/>
+<polygon fill="black" stroke="black" points="2872.39,-837.11 2876.78,-827.47 2867.33,-832.27 2872.39,-837.11"/>
+</g>
+<!-- AbMonoid&#45;&gt;OrderedAbMonoid -->
+<g id="edge206" class="edge">
+<title>AbMonoid&#45;&gt;OrderedAbMonoid</title>
+<path fill="none" stroke="black" d="M2801.74,-797.82C2809.65,-795.84 2817.83,-793.82 2825.54,-792 3004.02,-749.76 3215.15,-704.64 3323.12,-681.92"/>
+<polygon fill="black" stroke="black" points="3323.86,-685.34 3332.93,-679.86 3322.42,-678.49 3323.86,-685.34"/>
+</g>
+<!-- AbGroup -->
+<g id="node88" class="node">
+<title>AbGroup</title>
+<ellipse fill="none" stroke="black" cx="2825.54" cy="-738" rx="51.99" ry="18"/>
+<text text-anchor="middle" x="2825.54" y="-734.3" font-family="Times,serif" font-size="14.00">AbGroup</text>
+</g>
+<!-- AbMonoid&#45;&gt;AbGroup -->
+<g id="edge204" class="edge">
+<title>AbMonoid&#45;&gt;AbGroup</title>
+<path fill="none" stroke="black" d="M2774.42,-792.41C2782.84,-783.61 2793.35,-772.63 2802.65,-762.92"/>
+<polygon fill="black" stroke="black" points="2805.39,-765.11 2809.78,-755.47 2800.33,-760.27 2805.39,-765.11"/>
+</g>
+<!-- Semiring -->
+<g id="node134" class="node">
+<title>Semiring</title>
+<ellipse fill="none" stroke="black" cx="2456.54" cy="-738" rx="53.09" ry="18"/>
+<text text-anchor="middle" x="2456.54" y="-734.3" font-family="Times,serif" font-size="14.00">Semiring</text>
+</g>
+<!-- AbMonoid&#45;&gt;Semiring -->
+<g id="edge205" class="edge">
+<title>AbMonoid&#45;&gt;Semiring</title>
+<path fill="none" stroke="black" d="M2711.89,-799.2C2663.81,-788.96 2586.75,-772.16 2520.54,-756 2515.96,-754.88 2511.21,-753.69 2506.46,-752.47"/>
+<polygon fill="black" stroke="black" points="2507.32,-749.08 2496.76,-749.95 2505.56,-755.85 2507.32,-749.08"/>
+</g>
+<!-- PreorderedAddGroup -->
+<g id="node87" class="node">
+<title>PreorderedAddGroup</title>
+<ellipse fill="none" stroke="black" cx="3514.54" cy="-738" rx="110.48" ry="18"/>
+<text text-anchor="middle" x="3514.54" y="-734.3" font-family="Times,serif" font-size="14.00">PreorderedAddGroup</text>
+</g>
+<!-- AddGroup&#45;&gt;PreorderedAddGroup -->
+<g id="edge108" class="edge">
+<title>AddGroup&#45;&gt;PreorderedAddGroup</title>
+<path fill="none" stroke="black" d="M2947.13,-803.73C3038.83,-794.77 3229.57,-775.6 3390.54,-756 3401.47,-754.67 3412.93,-753.2 3424.28,-751.7"/>
+<polygon fill="black" stroke="black" points="3424.76,-755.17 3434.21,-750.37 3423.83,-748.23 3424.76,-755.17"/>
+</g>
+<!-- AddGroup&#45;&gt;AbGroup -->
+<g id="edge109" class="edge">
+<title>AddGroup&#45;&gt;AbGroup</title>
+<path fill="none" stroke="black" d="M2876.66,-792.41C2868.23,-783.61 2857.73,-772.63 2848.43,-762.92"/>
+<polygon fill="black" stroke="black" points="2850.75,-760.27 2841.3,-755.47 2845.69,-765.11 2850.75,-760.27"/>
+</g>
+<!-- AddGroup.With# -->
+<g id="node89" class="node">
+<title>AddGroup.With#</title>
+<ellipse fill="none" stroke="black" cx="2619.54" cy="-738" rx="90.18" ry="18"/>
+<text text-anchor="middle" x="2619.54" y="-734.3" font-family="Times,serif" font-size="14.00">AddGroup.With#</text>
+</g>
+<!-- AddGroup&#45;&gt;AddGroup.With# -->
+<g id="edge110" class="edge">
+<title>AddGroup&#45;&gt;AddGroup.With#</title>
+<path fill="none" stroke="black" d="M2849.28,-797.91C2804.46,-786.42 2733.94,-768.33 2682.85,-755.23"/>
+<polygon fill="black" stroke="black" points="2683.46,-751.78 2672.9,-752.68 2681.72,-758.56 2683.46,-751.78"/>
+</g>
+<!-- PreorderedAddGroup&#45;&gt;OrderedAddGroup -->
+<g id="edge203" class="edge">
+<title>PreorderedAddGroup&#45;&gt;OrderedAddGroup</title>
+<path fill="none" stroke="black" d="M3552.62,-720.94C3576.81,-710.74 3608.29,-697.47 3633.96,-686.64"/>
+<polygon fill="black" stroke="black" points="3635.64,-689.73 3643.49,-682.62 3632.92,-683.28 3635.64,-689.73"/>
+</g>
+<!-- AbGroup&#45;&gt;OrderedAbGroup -->
+<g id="edge137" class="edge">
+<title>AbGroup&#45;&gt;OrderedAbGroup</title>
+<path fill="none" stroke="black" d="M2870.87,-729.15C2927.52,-719.23 3027.39,-701.33 3112.54,-684 3230.54,-659.99 3367.36,-628.82 3446.53,-610.46"/>
+<polygon fill="black" stroke="black" points="3447.42,-613.84 3456.37,-608.17 3445.84,-607.03 3447.42,-613.84"/>
+</g>
+<!-- Ring -->
+<g id="node100" class="node">
+<title>Ring</title>
+<ellipse fill="none" stroke="black" cx="2333.54" cy="-666" rx="32.49" ry="18"/>
+<text text-anchor="middle" x="2333.54" y="-662.3" font-family="Times,serif" font-size="14.00">Ring</text>
+</g>
+<!-- AbGroup&#45;&gt;Ring -->
+<g id="edge135" class="edge">
+<title>AbGroup&#45;&gt;Ring</title>
+<path fill="none" stroke="black" d="M2780.06,-729.23C2761.08,-726.12 2738.77,-722.66 2718.54,-720 2566.13,-699.93 2523.53,-721.83 2374.54,-684 2372.06,-683.37 2369.53,-682.62 2367,-681.78"/>
+<polygon fill="black" stroke="black" points="2368.02,-678.43 2357.43,-678.26 2365.6,-685 2368.02,-678.43"/>
+</g>
+<!-- AbGroup&#45;&gt;TopAbGroup -->
+<g id="edge136" class="edge">
+<title>AbGroup&#45;&gt;TopAbGroup</title>
+<path fill="none" stroke="black" d="M2780.93,-728.62C2761.79,-725.37 2739.14,-721.95 2718.54,-720 2465.1,-695.98 1822.02,-739.37 1573.54,-684 1494.65,-666.42 1474.03,-656.48 1406.54,-612 1387.11,-599.2 1389.85,-585.34 1368.54,-576 1259.8,-528.36 953.74,-551.01 835.54,-540 811.69,-537.78 785.66,-534.84 762.42,-532.03"/>
+<polygon fill="black" stroke="black" points="762.65,-528.53 752.3,-530.79 761.8,-535.48 762.65,-528.53"/>
+</g>
+<!-- LModule -->
+<g id="node102" class="node">
+<title>LModule</title>
+<ellipse fill="none" stroke="black" cx="2885.54" cy="-666" rx="51.19" ry="18"/>
+<text text-anchor="middle" x="2885.54" y="-662.3" font-family="Times,serif" font-size="14.00">LModule</text>
+</g>
+<!-- AbGroup&#45;&gt;LModule -->
+<g id="edge138" class="edge">
+<title>AbGroup&#45;&gt;LModule</title>
+<path fill="none" stroke="black" d="M2839.76,-720.41C2847.23,-711.69 2856.53,-700.85 2864.79,-691.21"/>
+<polygon fill="black" stroke="black" points="2867.57,-693.34 2871.42,-683.47 2862.26,-688.78 2867.57,-693.34"/>
+</g>
+<!-- AddGroup.With#&#45;&gt;AddGroup.Dec -->
+<g id="edge111" class="edge">
+<title>AddGroup.With#&#45;&gt;AddGroup.Dec</title>
+<path fill="none" stroke="black" d="M2639.92,-720.41C2651.06,-711.34 2665.03,-699.97 2677.21,-690.06"/>
+<polygon fill="black" stroke="black" points="2679.76,-692.5 2685.3,-683.47 2675.34,-687.07 2679.76,-692.5"/>
+</g>
+<!-- Ring.With# -->
+<g id="node90" class="node">
+<title>Ring.With#</title>
+<ellipse fill="none" stroke="black" cx="2605.54" cy="-594" rx="64.99" ry="18"/>
+<text text-anchor="middle" x="2605.54" y="-590.3" font-family="Times,serif" font-size="14.00">Ring.With#</text>
+</g>
+<!-- AddGroup.With#&#45;&gt;Ring.With# -->
+<g id="edge112" class="edge">
+<title>AddGroup.With#&#45;&gt;Ring.With#</title>
+<path fill="none" stroke="black" d="M2617.85,-719.87C2615.46,-695.67 2611.08,-651.21 2608.24,-622.39"/>
+<polygon fill="black" stroke="black" points="2611.7,-621.8 2607.23,-612.19 2604.73,-622.48 2611.7,-621.8"/>
+</g>
+<!-- Ring.With#&#45;&gt;Ring.Dec -->
+<g id="edge114" class="edge">
+<title>Ring.With#&#45;&gt;Ring.Dec</title>
+<path fill="none" stroke="black" d="M2654.79,-582.11C2664.63,-580.01 2674.9,-577.89 2684.54,-576 2774.89,-558.31 2798.52,-559.33 2888.54,-540 2893.97,-538.83 2899.62,-537.54 2905.24,-536.19"/>
+<polygon fill="black" stroke="black" points="2906.38,-539.51 2915.26,-533.73 2904.72,-532.71 2906.38,-539.51"/>
+</g>
+<!-- Domain -->
+<g id="node91" class="node">
+<title>Domain</title>
+<ellipse fill="none" stroke="black" cx="2839.54" cy="-450" rx="46.29" ry="18"/>
+<text text-anchor="middle" x="2839.54" y="-446.3" font-family="Times,serif" font-size="14.00">Domain</text>
+</g>
+<!-- Ring.With#&#45;&gt;Domain -->
+<g id="edge113" class="edge">
+<title>Ring.With#&#45;&gt;Domain</title>
+<path fill="none" stroke="black" d="M2655.07,-582.34C2726.6,-566.93 2850.34,-540.24 2850.54,-540 2864.61,-522.56 2859.38,-496.6 2852.11,-477.22"/>
+<polygon fill="black" stroke="black" points="2855.26,-475.67 2848.21,-467.76 2848.79,-478.33 2855.26,-475.67"/>
+</g>
+<!-- CRing.With# -->
+<g id="node92" class="node">
+<title>CRing.With#</title>
+<ellipse fill="none" stroke="black" cx="2611.54" cy="-522" rx="71.49" ry="18"/>
+<text text-anchor="middle" x="2611.54" y="-518.3" font-family="Times,serif" font-size="14.00">CRing.With#</text>
+</g>
+<!-- Ring.With#&#45;&gt;CRing.With# -->
+<g id="edge115" class="edge">
+<title>Ring.With#&#45;&gt;CRing.With#</title>
+<path fill="none" stroke="black" d="M2607.02,-575.7C2607.68,-567.98 2608.48,-558.71 2609.22,-550.11"/>
+<polygon fill="black" stroke="black" points="2612.71,-550.37 2610.07,-540.1 2605.73,-549.77 2612.71,-550.37"/>
+</g>
+<!-- Domain&#45;&gt;OrderedRing -->
+<g id="edge122" class="edge">
+<title>Domain&#45;&gt;OrderedRing</title>
+<path fill="none" stroke="black" d="M2878.27,-439.99C2929.49,-428.08 3020.26,-406.97 3080.42,-392.98"/>
+<polygon fill="black" stroke="black" points="3081.23,-396.39 3090.17,-390.71 3079.64,-389.57 3081.23,-396.39"/>
+</g>
+<!-- Domain&#45;&gt;Domain.Dec -->
+<g id="edge124" class="edge">
+<title>Domain&#45;&gt;Domain.Dec</title>
+<path fill="none" stroke="black" d="M2840.28,-431.7C2840.61,-423.98 2841.01,-414.71 2841.38,-406.11"/>
+<polygon fill="black" stroke="black" points="2844.87,-406.25 2841.81,-396.1 2837.88,-405.95 2844.87,-406.25"/>
+</g>
+<!-- IntegralDomain -->
+<g id="node93" class="node">
+<title>IntegralDomain</title>
+<ellipse fill="none" stroke="black" cx="2324.54" cy="-378" rx="83.39" ry="18"/>
+<text text-anchor="middle" x="2324.54" y="-374.3" font-family="Times,serif" font-size="14.00">IntegralDomain</text>
+</g>
+<!-- Domain&#45;&gt;IntegralDomain -->
+<g id="edge123" class="edge">
+<title>Domain&#45;&gt;IntegralDomain</title>
+<path fill="none" stroke="black" d="M2798.19,-441.99C2778.36,-438.75 2754.25,-434.96 2732.54,-432 2592.48,-412.91 2556.35,-416.85 2416.54,-396 2409.28,-394.92 2401.71,-393.69 2394.18,-392.39"/>
+<polygon fill="black" stroke="black" points="2394.77,-388.95 2384.32,-390.67 2393.57,-395.84 2394.77,-388.95"/>
+</g>
+<!-- CRing.With#&#45;&gt;CRing.Dec -->
+<g id="edge116" class="edge">
+<title>CRing.With#&#45;&gt;CRing.Dec</title>
+<path fill="none" stroke="black" d="M2624.13,-504.05C2630.39,-495.63 2638.07,-485.28 2644.99,-475.97"/>
+<polygon fill="black" stroke="black" points="2647.91,-477.9 2651.07,-467.79 2642.29,-473.73 2647.91,-477.9"/>
+</g>
+<!-- CRing.With#&#45;&gt;IntegralDomain -->
+<g id="edge117" class="edge">
+<title>CRing.With#&#45;&gt;IntegralDomain</title>
+<path fill="none" stroke="black" d="M2605.73,-504.06C2597.85,-483.71 2581.8,-450.07 2556.54,-432 2543.3,-422.53 2458.47,-404.64 2395.19,-392.28"/>
+<polygon fill="black" stroke="black" points="2395.71,-388.82 2385.23,-390.35 2394.38,-395.69 2395.71,-388.82"/>
+</g>
+<!-- IntegralDomain&#45;&gt;OrderedCRing -->
+<g id="edge119" class="edge">
+<title>IntegralDomain&#45;&gt;OrderedCRing</title>
+<path fill="none" stroke="black" d="M2384.33,-365.4C2395.04,-363.48 2406.1,-361.6 2416.54,-360 2540.7,-341 2685.6,-324.51 2773.14,-315.16"/>
+<polygon fill="black" stroke="black" points="2773.69,-318.62 2783.26,-314.09 2772.95,-311.66 2773.69,-318.62"/>
+</g>
+<!-- IntegralDomain&#45;&gt;IntegralDomain.Dec -->
+<g id="edge118" class="edge">
+<title>IntegralDomain&#45;&gt;IntegralDomain.Dec</title>
+<path fill="none" stroke="black" d="M2373.53,-363.34C2413.5,-352.19 2470.22,-336.37 2513.38,-324.33"/>
+<polygon fill="black" stroke="black" points="2514.52,-327.65 2523.21,-321.59 2512.64,-320.91 2514.52,-327.65"/>
+</g>
+<!-- GCDDomain -->
+<g id="node94" class="node">
+<title>GCDDomain</title>
+<ellipse fill="none" stroke="black" cx="2007.54" cy="-306" rx="67.69" ry="18"/>
+<text text-anchor="middle" x="2007.54" y="-302.3" font-family="Times,serif" font-size="14.00">GCDDomain</text>
+</g>
+<!-- IntegralDomain&#45;&gt;GCDDomain -->
+<g id="edge120" class="edge">
+<title>IntegralDomain&#45;&gt;GCDDomain</title>
+<path fill="none" stroke="black" d="M2268.04,-364.64C2219.19,-353.93 2146.69,-338.01 2083.54,-324 2078.26,-322.83 2072.77,-321.61 2067.28,-320.38"/>
+<polygon fill="black" stroke="black" points="2067.93,-316.94 2057.41,-318.18 2066.41,-323.78 2067.93,-316.94"/>
+</g>
+<!-- IntegrallyClosedDomain -->
+<g id="node95" class="node">
+<title>IntegrallyClosedDomain</title>
+<ellipse fill="none" stroke="black" cx="1799.54" cy="-306" rx="122.68" ry="18"/>
+<text text-anchor="middle" x="1799.54" y="-302.3" font-family="Times,serif" font-size="14.00">IntegrallyClosedDomain</text>
+</g>
+<!-- IntegralDomain&#45;&gt;IntegrallyClosedDomain -->
+<g id="edge121" class="edge">
+<title>IntegralDomain&#45;&gt;IntegrallyClosedDomain</title>
+<path fill="none" stroke="black" d="M2255.63,-367.81C2164.1,-355.61 2001.84,-333.97 1897.57,-320.07"/>
+<polygon fill="black" stroke="black" points="1897.72,-316.56 1887.35,-318.71 1896.8,-323.5 1897.72,-316.56"/>
+</g>
+<!-- GCDDomain&#45;&gt;GCDDomain.Dec -->
+<g id="edge128" class="edge">
+<title>GCDDomain&#45;&gt;GCDDomain.Dec</title>
+<path fill="none" stroke="black" d="M1967.43,-291.5C1934.85,-280.54 1888.59,-264.97 1852.88,-252.95"/>
+<polygon fill="black" stroke="black" points="1853.71,-249.54 1843.11,-249.66 1851.47,-256.17 1853.71,-249.54"/>
+</g>
+<!-- BezoutDomain -->
+<g id="node96" class="node">
+<title>BezoutDomain</title>
+<ellipse fill="none" stroke="black" cx="1417.54" cy="-234" rx="78.79" ry="18"/>
+<text text-anchor="middle" x="1417.54" y="-230.3" font-family="Times,serif" font-size="14.00">BezoutDomain</text>
+</g>
+<!-- GCDDomain&#45;&gt;BezoutDomain -->
+<g id="edge126" class="edge">
+<title>GCDDomain&#45;&gt;BezoutDomain</title>
+<path fill="none" stroke="black" d="M1959.48,-293.22C1950.25,-291.25 1940.63,-289.39 1931.54,-288 1743.73,-259.2 1693.75,-278.06 1505.54,-252 1498.44,-251.02 1491.05,-249.84 1483.69,-248.56"/>
+<polygon fill="black" stroke="black" points="1484.19,-245.1 1473.72,-246.78 1482.95,-251.99 1484.19,-245.1"/>
+</g>
+<!-- Field -->
+<g id="node97" class="node">
+<title>Field</title>
+<ellipse fill="none" stroke="black" cx="2156.54" cy="-234" rx="34.39" ry="18"/>
+<text text-anchor="middle" x="2156.54" y="-230.3" font-family="Times,serif" font-size="14.00">Field</text>
+</g>
+<!-- GCDDomain&#45;&gt;Field -->
+<g id="edge127" class="edge">
+<title>GCDDomain&#45;&gt;Field</title>
+<path fill="none" stroke="black" d="M2039.5,-289.98C2063.92,-278.51 2097.5,-262.74 2122.43,-251.02"/>
+<polygon fill="black" stroke="black" points="2123.96,-254.17 2131.53,-246.75 2120.99,-247.84 2123.96,-254.17"/>
+</g>
+<!-- IntegrallyClosedDomain&#45;&gt;GCDDomain.Dec -->
+<g id="edge125" class="edge">
+<title>IntegrallyClosedDomain&#45;&gt;GCDDomain.Dec</title>
+<path fill="none" stroke="black" d="M1799.54,-287.7C1799.54,-279.98 1799.54,-270.71 1799.54,-262.11"/>
+<polygon fill="black" stroke="black" points="1803.04,-262.1 1799.54,-252.1 1796.04,-262.1 1803.04,-262.1"/>
+</g>
+<!-- StrictBezoutDomain -->
+<g id="node99" class="node">
+<title>StrictBezoutDomain</title>
+<ellipse fill="none" stroke="black" cx="1455.54" cy="-162" rx="104.78" ry="18"/>
+<text text-anchor="middle" x="1455.54" y="-158.3" font-family="Times,serif" font-size="14.00">StrictBezoutDomain</text>
+</g>
+<!-- BezoutDomain&#45;&gt;StrictBezoutDomain -->
+<g id="edge132" class="edge">
+<title>BezoutDomain&#45;&gt;StrictBezoutDomain</title>
+<path fill="none" stroke="black" d="M1426.74,-216.05C1431.11,-208.01 1436.43,-198.2 1441.3,-189.23"/>
+<polygon fill="black" stroke="black" points="1444.47,-190.73 1446.16,-180.28 1438.31,-187.39 1444.47,-190.73"/>
+</g>
+<!-- Field&#45;&gt;OrderedField -->
+<g id="edge129" class="edge">
+<title>Field&#45;&gt;OrderedField</title>
+<path fill="none" stroke="black" d="M2189.67,-228.46C2271.17,-217.3 2482.89,-188.29 2595.17,-172.91"/>
+<polygon fill="black" stroke="black" points="2595.96,-176.34 2605.39,-171.51 2595,-169.4 2595.96,-176.34"/>
+</g>
+<!-- DiscreteField -->
+<g id="node98" class="node">
+<title>DiscreteField</title>
+<ellipse fill="none" stroke="black" cx="2156.54" cy="-90" rx="73.39" ry="18"/>
+<text text-anchor="middle" x="2156.54" y="-86.3" font-family="Times,serif" font-size="14.00">DiscreteField</text>
+</g>
+<!-- Field&#45;&gt;DiscreteField -->
+<g id="edge130" class="edge">
+<title>Field&#45;&gt;DiscreteField</title>
+<path fill="none" stroke="black" d="M2156.54,-215.87C2156.54,-191.67 2156.54,-147.21 2156.54,-118.39"/>
+<polygon fill="black" stroke="black" points="2160.04,-118.19 2156.54,-108.19 2153.04,-118.19 2160.04,-118.19"/>
+</g>
+<!-- DiscreteField&#45;&gt;DiscreteOrderedField -->
+<g id="edge131" class="edge">
+<title>DiscreteField&#45;&gt;DiscreteOrderedField</title>
+<path fill="none" stroke="black" d="M2218.84,-80.38C2307.04,-68.18 2468.89,-45.79 2570.83,-31.69"/>
+<polygon fill="black" stroke="black" points="2571.38,-35.14 2580.81,-30.31 2570.42,-28.21 2571.38,-35.14"/>
+</g>
+<!-- StrictBezoutDomain&#45;&gt;BezoutDomain.Dec -->
+<g id="edge133" class="edge">
+<title>StrictBezoutDomain&#45;&gt;BezoutDomain.Dec</title>
+<path fill="none" stroke="black" d="M1490.64,-144.94C1512.58,-134.9 1541.03,-121.89 1564.49,-111.16"/>
+<polygon fill="black" stroke="black" points="1566.23,-114.21 1573.87,-106.86 1563.32,-107.84 1566.23,-114.21"/>
+</g>
+<!-- StrictBezoutDomain&#45;&gt;ValuationRing -->
+<g id="edge134" class="edge">
+<title>StrictBezoutDomain&#45;&gt;ValuationRing</title>
+<path fill="none" stroke="black" d="M1524.63,-148.4C1594.61,-135.65 1702.16,-116.04 1771.68,-103.37"/>
+<polygon fill="black" stroke="black" points="1772.45,-106.79 1781.66,-101.55 1771.19,-99.9 1772.45,-106.79"/>
+</g>
+<!-- Ring&#45;&gt;Ring.With# -->
+<g id="edge153" class="edge">
+<title>Ring&#45;&gt;Ring.With#</title>
+<path fill="none" stroke="black" d="M2358.01,-654.07C2363.39,-651.89 2369.11,-649.74 2374.54,-648 2430.41,-630.15 2495.68,-615.74 2542.56,-606.48"/>
+<polygon fill="black" stroke="black" points="2543.43,-609.88 2552.57,-604.53 2542.08,-603.01 2543.43,-609.88"/>
+</g>
+<!-- AAlgebra -->
+<g id="node105" class="node">
+<title>AAlgebra</title>
+<ellipse fill="none" stroke="black" cx="2779.54" cy="-594" rx="53.09" ry="18"/>
+<text text-anchor="middle" x="2779.54" y="-590.3" font-family="Times,serif" font-size="14.00">AAlgebra</text>
+</g>
+<!-- Ring&#45;&gt;AAlgebra -->
+<g id="edge154" class="edge">
+<title>Ring&#45;&gt;AAlgebra</title>
+<path fill="none" stroke="black" d="M2357.44,-653.8C2362.96,-651.58 2368.87,-649.48 2374.54,-648 2506.61,-613.53 2544.43,-631.44 2679.54,-612 2693.85,-609.94 2709.26,-607.45 2723.6,-605.03"/>
+<polygon fill="black" stroke="black" points="2724.55,-608.41 2733.82,-603.28 2723.37,-601.52 2724.55,-608.41"/>
+</g>
+<!-- PseudoNormedRing -->
+<g id="node110" class="node">
+<title>PseudoNormedRing</title>
+<ellipse fill="none" stroke="black" cx="704.54" cy="-306" rx="102.88" ry="18"/>
+<text text-anchor="middle" x="704.54" y="-302.3" font-family="Times,serif" font-size="14.00">PseudoNormedRing</text>
+</g>
+<!-- Ring&#45;&gt;PseudoNormedRing -->
+<g id="edge156" class="edge">
+<title>Ring&#45;&gt;PseudoNormedRing</title>
+<path fill="none" stroke="black" d="M2301.59,-662.44C2227.94,-656.15 2048.47,-638.5 1994.54,-612 1973.66,-601.74 1977.96,-585.09 1956.54,-576 1789.24,-505.03 1314.79,-588.1 1139.54,-540 1118.09,-534.11 845.03,-384.36 742.81,-328.1"/>
+<polygon fill="black" stroke="black" points="744.49,-325.02 734.04,-323.27 741.11,-331.16 744.49,-325.02"/>
+</g>
+<!-- ReducedRing -->
+<g id="node112" class="node">
+<title>ReducedRing</title>
+<ellipse fill="none" stroke="black" cx="2171.54" cy="-594" rx="72.29" ry="18"/>
+<text text-anchor="middle" x="2171.54" y="-590.3" font-family="Times,serif" font-size="14.00">ReducedRing</text>
+</g>
+<!-- Ring&#45;&gt;ReducedRing -->
+<g id="edge152" class="edge">
+<title>Ring&#45;&gt;ReducedRing</title>
+<path fill="none" stroke="black" d="M2308.58,-654.22C2283.83,-643.52 2245.4,-626.91 2215.52,-614.01"/>
+<polygon fill="black" stroke="black" points="2216.72,-610.71 2206.15,-609.96 2213.94,-617.14 2216.72,-610.71"/>
+</g>
+<!-- CRing -->
+<g id="node113" class="node">
+<title>CRing</title>
+<ellipse fill="none" stroke="black" cx="2042.54" cy="-594" rx="38.99" ry="18"/>
+<text text-anchor="middle" x="2042.54" y="-590.3" font-family="Times,serif" font-size="14.00">CRing</text>
+</g>
+<!-- Ring&#45;&gt;CRing -->
+<g id="edge155" class="edge">
+<title>Ring&#45;&gt;CRing</title>
+<path fill="none" stroke="black" d="M2302.93,-659.6C2256.55,-651.14 2165.91,-633.47 2090.54,-612 2087.57,-611.16 2084.53,-610.23 2081.47,-609.25"/>
+<polygon fill="black" stroke="black" points="2082.39,-605.87 2071.8,-606.02 2080.17,-612.51 2082.39,-605.87"/>
+</g>
+<!-- LocalRing -->
+<g id="node114" class="node">
+<title>LocalRing</title>
+<ellipse fill="none" stroke="black" cx="2222.54" cy="-522" rx="56.59" ry="18"/>
+<text text-anchor="middle" x="2222.54" y="-518.3" font-family="Times,serif" font-size="14.00">LocalRing</text>
+</g>
+<!-- Ring&#45;&gt;LocalRing -->
+<g id="edge157" class="edge">
+<title>Ring&#45;&gt;LocalRing</title>
+<path fill="none" stroke="black" d="M2320.62,-649.33C2312.02,-638.83 2300.51,-624.66 2290.54,-612 2273.69,-590.6 2254.92,-565.97 2241.38,-548.06"/>
+<polygon fill="black" stroke="black" points="2244,-545.72 2235.18,-539.84 2238.41,-549.93 2244,-545.72"/>
+</g>
+<!-- StrictDomain -->
+<g id="node115" class="node">
+<title>StrictDomain</title>
+<ellipse fill="none" stroke="black" cx="2474.54" cy="-450" rx="72.59" ry="18"/>
+<text text-anchor="middle" x="2474.54" y="-446.3" font-family="Times,serif" font-size="14.00">StrictDomain</text>
+</g>
+<!-- Ring&#45;&gt;StrictDomain -->
+<g id="edge158" class="edge">
+<title>Ring&#45;&gt;StrictDomain</title>
+<path fill="none" stroke="black" d="M2358.5,-654.43C2393.47,-639.57 2452.99,-614.07 2454.54,-612 2483.71,-572.88 2482.56,-512.97 2478.77,-478.33"/>
+<polygon fill="black" stroke="black" points="2482.19,-477.52 2477.48,-468.03 2475.24,-478.39 2482.19,-477.52"/>
+</g>
+<!-- NonZeroRing -->
+<g id="node116" class="node">
+<title>NonZeroRing</title>
+<ellipse fill="none" stroke="black" cx="2372.54" cy="-594" rx="72.59" ry="18"/>
+<text text-anchor="middle" x="2372.54" y="-590.3" font-family="Times,serif" font-size="14.00">NonZeroRing</text>
+</g>
+<!-- Ring&#45;&gt;NonZeroRing -->
+<g id="edge159" class="edge">
+<title>Ring&#45;&gt;NonZeroRing</title>
+<path fill="none" stroke="black" d="M2342.78,-648.41C2347.38,-640.16 2353.03,-630.01 2358.18,-620.78"/>
+<polygon fill="black" stroke="black" points="2361.28,-622.4 2363.09,-611.96 2355.17,-618.99 2361.28,-622.4"/>
+</g>
+<!-- PseudoNormedAbGroup -->
+<g id="node107" class="node">
+<title>PseudoNormedAbGroup</title>
+<ellipse fill="none" stroke="black" cx="565.54" cy="-378" rx="122.38" ry="18"/>
+<text text-anchor="middle" x="565.54" y="-374.3" font-family="Times,serif" font-size="14.00">PseudoNormedAbGroup</text>
+</g>
+<!-- TopAbGroup&#45;&gt;PseudoNormedAbGroup -->
+<g id="edge147" class="edge">
+<title>TopAbGroup&#45;&gt;PseudoNormedAbGroup</title>
+<path fill="none" stroke="black" d="M677.47,-504.15C655.25,-479.31 613.55,-432.68 587.79,-403.88"/>
+<polygon fill="black" stroke="black" points="590.26,-401.39 580.98,-396.27 585.04,-406.05 590.26,-401.39"/>
+</g>
+<!-- CompleteTopAbGroup -->
+<g id="node108" class="node">
+<title>CompleteTopAbGroup</title>
+<ellipse fill="none" stroke="black" cx="131.54" cy="-450" rx="112.38" ry="18"/>
+<text text-anchor="middle" x="131.54" y="-446.3" font-family="Times,serif" font-size="14.00">CompleteTopAbGroup</text>
+</g>
+<!-- TopAbGroup&#45;&gt;CompleteTopAbGroup -->
+<g id="edge148" class="edge">
+<title>TopAbGroup&#45;&gt;CompleteTopAbGroup</title>
+<path fill="none" stroke="black" d="M643.17,-509.42C633.7,-507.43 623.84,-505.52 614.54,-504 486.69,-483.11 338.42,-468.21 240.24,-459.63"/>
+<polygon fill="black" stroke="black" points="240.27,-456.12 230.01,-458.75 239.67,-463.1 240.27,-456.12"/>
+</g>
+<!-- VectorSpace -->
+<g id="node103" class="node">
+<title>VectorSpace</title>
+<ellipse fill="none" stroke="black" cx="2919.54" cy="-594" rx="68.49" ry="18"/>
+<text text-anchor="middle" x="2919.54" y="-590.3" font-family="Times,serif" font-size="14.00">VectorSpace</text>
+</g>
+<!-- LModule&#45;&gt;VectorSpace -->
+<g id="edge139" class="edge">
+<title>LModule&#45;&gt;VectorSpace</title>
+<path fill="none" stroke="black" d="M2893.77,-648.05C2897.64,-640.09 2902.34,-630.41 2906.66,-621.51"/>
+<polygon fill="black" stroke="black" points="2909.93,-622.8 2911.15,-612.28 2903.63,-619.74 2909.93,-622.8"/>
+</g>
+<!-- FinModule -->
+<g id="node104" class="node">
+<title>FinModule</title>
+<ellipse fill="none" stroke="black" cx="3066.54" cy="-594" rx="60.39" ry="18"/>
+<text text-anchor="middle" x="3066.54" y="-590.3" font-family="Times,serif" font-size="14.00">FinModule</text>
+</g>
+<!-- LModule&#45;&gt;FinModule -->
+<g id="edge140" class="edge">
+<title>LModule&#45;&gt;FinModule</title>
+<path fill="none" stroke="black" d="M2918.74,-652.16C2947.59,-641 2989.65,-624.73 3021.54,-612.4"/>
+<polygon fill="black" stroke="black" points="3023.01,-615.59 3031.08,-608.71 3020.49,-609.06 3023.01,-615.59"/>
+</g>
+<!-- LModule&#45;&gt;AAlgebra -->
+<g id="edge141" class="edge">
+<title>LModule&#45;&gt;AAlgebra</title>
+<path fill="none" stroke="black" d="M2862.54,-649.81C2847.64,-639.97 2828.02,-627.02 2811.6,-616.18"/>
+<polygon fill="black" stroke="black" points="2813.13,-612.99 2802.86,-610.4 2809.28,-618.83 2813.13,-612.99"/>
+</g>
+<!-- VectorSpace&#45;&gt;FinVectorSpace -->
+<g id="edge146" class="edge">
+<title>VectorSpace&#45;&gt;FinVectorSpace</title>
+<path fill="none" stroke="black" d="M2962.16,-579.92C2998.83,-568.66 3052,-552.33 3092,-540.05"/>
+<polygon fill="black" stroke="black" points="3093.08,-543.38 3101.61,-537.1 3091.02,-536.69 3093.08,-543.38"/>
+</g>
+<!-- FinModule&#45;&gt;FinVectorSpace -->
+<g id="edge145" class="edge">
+<title>FinModule&#45;&gt;FinVectorSpace</title>
+<path fill="none" stroke="black" d="M3085.33,-576.76C3095.81,-567.71 3109.04,-556.27 3120.61,-546.28"/>
+<polygon fill="black" stroke="black" points="3123.01,-548.82 3128.29,-539.63 3118.44,-543.52 3123.01,-548.82"/>
+</g>
+<!-- AAlgebra&#45;&gt;OrderedAAlgebra -->
+<g id="edge142" class="edge">
+<title>AAlgebra&#45;&gt;OrderedAAlgebra</title>
+<path fill="none" stroke="black" d="M2819.1,-581.93C2826.85,-579.87 2834.93,-577.81 2842.54,-576 2919.8,-557.65 2964.52,-599.12 3017.54,-540 3069.11,-482.49 3056.22,-381.89 3046.16,-333.92"/>
+<polygon fill="black" stroke="black" points="3049.54,-332.99 3043.96,-323.98 3042.71,-334.5 3049.54,-332.99"/>
+</g>
+<!-- CAlgebra -->
+<g id="node106" class="node">
+<title>CAlgebra</title>
+<ellipse fill="none" stroke="black" cx="2754.54" cy="-522" rx="53.89" ry="18"/>
+<text text-anchor="middle" x="2754.54" y="-518.3" font-family="Times,serif" font-size="14.00">CAlgebra</text>
+</g>
+<!-- AAlgebra&#45;&gt;CAlgebra -->
+<g id="edge143" class="edge">
+<title>AAlgebra&#45;&gt;CAlgebra</title>
+<path fill="none" stroke="black" d="M2773.49,-576.05C2770.67,-568.18 2767.26,-558.62 2764.11,-549.79"/>
+<polygon fill="black" stroke="black" points="2767.37,-548.52 2760.71,-540.28 2760.78,-550.87 2767.37,-548.52"/>
+</g>
+<!-- CAlgebra&#45;&gt;OrderedCAlgebra -->
+<g id="edge144" class="edge">
+<title>CAlgebra&#45;&gt;OrderedCAlgebra</title>
+<path fill="none" stroke="black" d="M2752.56,-503.82C2748.63,-464.52 2742.22,-365.48 2766.54,-288 2769.54,-278.43 2774.69,-268.85 2780.03,-260.53"/>
+<polygon fill="black" stroke="black" points="2783.08,-262.27 2785.82,-252.04 2777.29,-258.33 2783.08,-262.27"/>
+</g>
+<!-- PseudoNormedAbGroup&#45;&gt;PseudoNormedRing -->
+<g id="edge150" class="edge">
+<title>PseudoNormedAbGroup&#45;&gt;PseudoNormedRing</title>
+<path fill="none" stroke="black" d="M598.13,-360.59C617.56,-350.8 642.42,-338.29 663.22,-327.81"/>
+<polygon fill="black" stroke="black" points="664.8,-330.93 672.15,-323.31 661.65,-324.68 664.8,-330.93"/>
+</g>
+<!-- NormedAbGroup -->
+<g id="node111" class="node">
+<title>NormedAbGroup</title>
+<ellipse fill="none" stroke="black" cx="494.54" cy="-306" rx="89.08" ry="18"/>
+<text text-anchor="middle" x="494.54" y="-302.3" font-family="Times,serif" font-size="14.00">NormedAbGroup</text>
+</g>
+<!-- PseudoNormedAbGroup&#45;&gt;NormedAbGroup -->
+<g id="edge151" class="edge">
+<title>PseudoNormedAbGroup&#45;&gt;NormedAbGroup</title>
+<path fill="none" stroke="black" d="M548.35,-360.05C539.46,-351.28 528.45,-340.43 518.71,-330.83"/>
+<polygon fill="black" stroke="black" points="521.15,-328.32 511.57,-323.79 516.23,-333.3 521.15,-328.32"/>
+</g>
+<!-- CompleteNormedAbGroup -->
+<g id="node109" class="node">
+<title>CompleteNormedAbGroup</title>
+<ellipse fill="none" stroke="black" cx="277.54" cy="-234" rx="133.78" ry="18"/>
+<text text-anchor="middle" x="277.54" y="-230.3" font-family="Times,serif" font-size="14.00">CompleteNormedAbGroup</text>
+</g>
+<!-- CompleteTopAbGroup&#45;&gt;CompleteNormedAbGroup -->
+<g id="edge149" class="edge">
+<title>CompleteTopAbGroup&#45;&gt;CompleteNormedAbGroup</title>
+<path fill="none" stroke="black" d="M128.4,-431.93C123.58,-400.13 117.99,-331.14 150.54,-288 162.54,-272.09 180.21,-260.93 198.57,-253.1"/>
+<polygon fill="black" stroke="black" points="199.89,-256.34 207.91,-249.41 197.32,-249.83 199.89,-256.34"/>
+</g>
+<!-- CompleteNormedRing -->
+<g id="node124" class="node">
+<title>CompleteNormedRing</title>
+<ellipse fill="none" stroke="black" cx="410.54" cy="-162" rx="114.28" ry="18"/>
+<text text-anchor="middle" x="410.54" y="-158.3" font-family="Times,serif" font-size="14.00">CompleteNormedRing</text>
+</g>
+<!-- CompleteNormedAbGroup&#45;&gt;CompleteNormedRing -->
+<g id="edge225" class="edge">
+<title>CompleteNormedAbGroup&#45;&gt;CompleteNormedRing</title>
+<path fill="none" stroke="black" d="M309.06,-216.41C327.36,-206.78 350.61,-194.54 370.23,-184.22"/>
+<polygon fill="black" stroke="black" points="372.03,-187.22 379.25,-179.47 368.77,-181.03 372.03,-187.22"/>
+</g>
+<!-- NormedRing -->
+<g id="node121" class="node">
+<title>NormedRing</title>
+<ellipse fill="none" stroke="black" cx="511.54" cy="-234" rx="69.59" ry="18"/>
+<text text-anchor="middle" x="511.54" y="-230.3" font-family="Times,serif" font-size="14.00">NormedRing</text>
+</g>
+<!-- PseudoNormedRing&#45;&gt;NormedRing -->
+<g id="edge170" class="edge">
+<title>PseudoNormedRing&#45;&gt;NormedRing</title>
+<path fill="none" stroke="black" d="M661.71,-289.46C631.51,-278.51 591.04,-263.84 559.72,-252.48"/>
+<polygon fill="black" stroke="black" points="560.91,-249.18 550.32,-249.07 558.53,-255.77 560.91,-249.18"/>
+</g>
+<!-- PseudoValuedRing -->
+<g id="node122" class="node">
+<title>PseudoValuedRing</title>
+<ellipse fill="none" stroke="black" cx="701.54" cy="-234" rx="96.68" ry="18"/>
+<text text-anchor="middle" x="701.54" y="-230.3" font-family="Times,serif" font-size="14.00">PseudoValuedRing</text>
+</g>
+<!-- PseudoNormedRing&#45;&gt;PseudoValuedRing -->
+<g id="edge171" class="edge">
+<title>PseudoNormedRing&#45;&gt;PseudoValuedRing</title>
+<path fill="none" stroke="black" d="M703.8,-287.7C703.47,-279.98 703.07,-270.71 702.7,-262.11"/>
+<polygon fill="black" stroke="black" points="706.2,-261.95 702.27,-252.1 699.2,-262.25 706.2,-261.95"/>
+</g>
+<!-- NormedAbGroup&#45;&gt;CompleteNormedAbGroup -->
+<g id="edge228" class="edge">
+<title>NormedAbGroup&#45;&gt;CompleteNormedAbGroup</title>
+<path fill="none" stroke="black" d="M449.31,-290.41C416.5,-279.83 371.82,-265.41 336.25,-253.94"/>
+<polygon fill="black" stroke="black" points="337.07,-250.53 326.48,-250.79 334.92,-257.19 337.07,-250.53"/>
+</g>
+<!-- NormedAbGroup&#45;&gt;NormedRing -->
+<g id="edge227" class="edge">
+<title>NormedAbGroup&#45;&gt;NormedRing</title>
+<path fill="none" stroke="black" d="M498.74,-287.7C500.64,-279.9 502.92,-270.51 505.02,-261.83"/>
+<polygon fill="black" stroke="black" points="508.43,-262.65 507.39,-252.1 501.62,-261 508.43,-262.65"/>
+</g>
+<!-- ImpotentRing -->
+<g id="node118" class="node">
+<title>ImpotentRing</title>
+<ellipse fill="none" stroke="black" cx="2371.54" cy="-522" rx="74.99" ry="18"/>
+<text text-anchor="middle" x="2371.54" y="-518.3" font-family="Times,serif" font-size="14.00">ImpotentRing</text>
+</g>
+<!-- ReducedRing&#45;&gt;ImpotentRing -->
+<g id="edge198" class="edge">
+<title>ReducedRing&#45;&gt;ImpotentRing</title>
+<path fill="none" stroke="black" d="M2211.53,-579C2243.07,-567.96 2287.25,-552.5 2321.2,-540.62"/>
+<polygon fill="black" stroke="black" points="2322.65,-543.82 2330.93,-537.21 2320.34,-537.21 2322.65,-543.82"/>
+</g>
+<!-- ReducedCRing -->
+<g id="node127" class="node">
+<title>ReducedCRing</title>
+<ellipse fill="none" stroke="black" cx="2068.54" cy="-522" rx="79.09" ry="18"/>
+<text text-anchor="middle" x="2068.54" y="-518.3" font-family="Times,serif" font-size="14.00">ReducedCRing</text>
+</g>
+<!-- ReducedRing&#45;&gt;ReducedCRing -->
+<g id="edge199" class="edge">
+<title>ReducedRing&#45;&gt;ReducedCRing</title>
+<path fill="none" stroke="black" d="M2147.91,-576.94C2134.01,-567.49 2116.23,-555.41 2101.02,-545.08"/>
+<polygon fill="black" stroke="black" points="2102.65,-541.95 2092.42,-539.23 2098.72,-547.74 2102.65,-541.95"/>
+</g>
+<!-- CRing&#45;&gt;EuclideanRingData -->
+<g id="edge176" class="edge">
+<title>CRing&#45;&gt;EuclideanRingData</title>
+<path fill="none" stroke="black" d="M2012.87,-582.13C2005.35,-579.75 1997.22,-577.5 1989.54,-576 1779.13,-534.98 1721.59,-563.83 1508.54,-540 1498.22,-538.85 1487.39,-537.46 1476.69,-535.99"/>
+<polygon fill="black" stroke="black" points="1476.89,-532.48 1466.5,-534.55 1475.91,-539.41 1476.89,-532.48"/>
+</g>
+<!-- CRing&#45;&gt;DRing -->
+<g id="edge181" class="edge">
+<title>CRing&#45;&gt;DRing</title>
+<path fill="none" stroke="black" d="M2012.17,-582.57C2004.81,-580.24 1996.93,-577.89 1989.54,-576 1907.97,-555.1 1884.85,-561.86 1803.54,-540 1800.37,-539.15 1797.1,-538.19 1793.83,-537.18"/>
+<polygon fill="black" stroke="black" points="1794.72,-533.79 1784.13,-534.03 1792.56,-540.44 1794.72,-533.79"/>
+</g>
+<!-- CRing&#45;&gt;GradedCRing -->
+<g id="edge179" class="edge">
+<title>CRing&#45;&gt;GradedCRing</title>
+<path fill="none" stroke="black" d="M2012.53,-582.32C2005.09,-579.96 1997.09,-577.67 1989.54,-576 1865.32,-548.45 1831.04,-560.93 1705.54,-540 1699.33,-538.96 1692.87,-537.79 1686.43,-536.56"/>
+<polygon fill="black" stroke="black" points="1686.84,-533.07 1676.36,-534.58 1685.5,-539.94 1686.84,-533.07"/>
+</g>
+<!-- CRing&#45;&gt;CRing.With# -->
+<g id="edge183" class="edge">
+<title>CRing&#45;&gt;CRing.With#</title>
+<path fill="none" stroke="black" d="M2071.14,-581.6C2077.45,-579.44 2084.15,-577.42 2090.54,-576 2249.64,-540.53 2293.4,-556.83 2455.54,-540 2482.21,-537.23 2511.44,-534.08 2537.31,-531.25"/>
+<polygon fill="black" stroke="black" points="2537.86,-534.71 2547.42,-530.14 2537.1,-527.75 2537.86,-534.71"/>
+</g>
+<!-- CRing&#45;&gt;CAlgebra -->
+<g id="edge182" class="edge">
+<title>CRing&#45;&gt;CAlgebra</title>
+<path fill="none" stroke="black" d="M2070.85,-581.5C2077.23,-579.32 2084.04,-577.32 2090.54,-576 2352.79,-522.81 2427.44,-583.08 2691.54,-540 2696.32,-539.22 2701.26,-538.23 2706.17,-537.11"/>
+<polygon fill="black" stroke="black" points="2707.27,-540.45 2716.16,-534.69 2705.62,-533.65 2707.27,-540.45"/>
+</g>
+<!-- NonZeroCRing -->
+<g id="node117" class="node">
+<title>NonZeroCRing</title>
+<ellipse fill="none" stroke="black" cx="1891.54" cy="-522" rx="79.09" ry="18"/>
+<text text-anchor="middle" x="1891.54" y="-518.3" font-family="Times,serif" font-size="14.00">NonZeroCRing</text>
+</g>
+<!-- CRing&#45;&gt;NonZeroCRing -->
+<g id="edge177" class="edge">
+<title>CRing&#45;&gt;NonZeroCRing</title>
+<path fill="none" stroke="black" d="M2015.89,-580.65C1993.27,-570.16 1960.39,-554.92 1934.13,-542.74"/>
+<polygon fill="black" stroke="black" points="1935.32,-539.44 1924.78,-538.41 1932.38,-545.79 1935.32,-539.44"/>
+</g>
+<!-- BezoutRing -->
+<g id="node125" class="node">
+<title>BezoutRing</title>
+<ellipse fill="none" stroke="black" cx="1212.54" cy="-522" rx="64.19" ry="18"/>
+<text text-anchor="middle" x="1212.54" y="-518.3" font-family="Times,serif" font-size="14.00">BezoutRing</text>
+</g>
+<!-- CRing&#45;&gt;BezoutRing -->
+<g id="edge175" class="edge">
+<title>CRing&#45;&gt;BezoutRing</title>
+<path fill="none" stroke="black" d="M2013.17,-582.09C2005.57,-579.68 1997.33,-577.42 1989.54,-576 1681.34,-519.68 1595.77,-583.7 1285.54,-540 1279.76,-539.19 1273.77,-538.14 1267.81,-536.96"/>
+<polygon fill="black" stroke="black" points="1268.37,-533.5 1257.87,-534.87 1266.93,-540.35 1268.37,-533.5"/>
+</g>
+<!-- NoetherianCRing -->
+<g id="node126" class="node">
+<title>NoetherianCRing</title>
+<ellipse fill="none" stroke="black" cx="1537.54" cy="-378" rx="90.98" ry="18"/>
+<text text-anchor="middle" x="1537.54" y="-374.3" font-family="Times,serif" font-size="14.00">NoetherianCRing</text>
+</g>
+<!-- CRing&#45;&gt;NoetherianCRing -->
+<g id="edge178" class="edge">
+<title>CRing&#45;&gt;NoetherianCRing</title>
+<path fill="none" stroke="black" d="M2012.86,-582.16C2005.34,-579.78 1997.22,-577.52 1989.54,-576 1940.55,-566.31 1575.86,-576.28 1541.54,-540 1507.7,-504.23 1518.53,-441.48 1528.58,-405.8"/>
+<polygon fill="black" stroke="black" points="1531.97,-406.66 1531.49,-396.08 1525.27,-404.65 1531.97,-406.66"/>
+</g>
+<!-- CRing&#45;&gt;ReducedCRing -->
+<g id="edge180" class="edge">
+<title>CRing&#45;&gt;ReducedCRing</title>
+<path fill="none" stroke="black" d="M2048.83,-576.05C2051.76,-568.18 2055.31,-558.62 2058.59,-549.79"/>
+<polygon fill="black" stroke="black" points="2061.92,-550.87 2062.12,-540.28 2055.36,-548.43 2061.92,-550.87"/>
+</g>
+<!-- LocalCRing -->
+<g id="node120" class="node">
+<title>LocalCRing</title>
+<ellipse fill="none" stroke="black" cx="2156.54" cy="-306" rx="63.89" ry="18"/>
+<text text-anchor="middle" x="2156.54" y="-302.3" font-family="Times,serif" font-size="14.00">LocalCRing</text>
+</g>
+<!-- LocalRing&#45;&gt;LocalCRing -->
+<g id="edge167" class="edge">
+<title>LocalRing&#45;&gt;LocalCRing</title>
+<path fill="none" stroke="black" d="M2219.65,-503.75C2216.43,-485.68 2210.74,-456.56 2203.54,-432 2193.4,-397.39 2178.23,-358.68 2167.88,-333.64"/>
+<polygon fill="black" stroke="black" points="2170.99,-331.99 2163.91,-324.11 2164.53,-334.69 2170.99,-331.99"/>
+</g>
+<!-- StrictDomain&#45;&gt;Domain.Dec -->
+<g id="edge164" class="edge">
+<title>StrictDomain&#45;&gt;Domain.Dec</title>
+<path fill="none" stroke="black" d="M2530.43,-438.37C2597.41,-425.63 2709.35,-404.33 2779.39,-391.01"/>
+<polygon fill="black" stroke="black" points="2780.24,-394.41 2789.41,-389.11 2778.94,-387.54 2780.24,-394.41"/>
+</g>
+<!-- StrictIntegralDomain -->
+<g id="node119" class="node">
+<title>StrictIntegralDomain</title>
+<ellipse fill="none" stroke="black" cx="2535.54" cy="-378" rx="109.68" ry="18"/>
+<text text-anchor="middle" x="2535.54" y="-374.3" font-family="Times,serif" font-size="14.00">StrictIntegralDomain</text>
+</g>
+<!-- StrictDomain&#45;&gt;StrictIntegralDomain -->
+<g id="edge165" class="edge">
+<title>StrictDomain&#45;&gt;StrictIntegralDomain</title>
+<path fill="none" stroke="black" d="M2489.31,-432.05C2496.69,-423.58 2505.76,-413.17 2513.91,-403.82"/>
+<polygon fill="black" stroke="black" points="2516.55,-406.11 2520.49,-396.28 2511.28,-401.51 2516.55,-406.11"/>
+</g>
+<!-- NonZeroRing&#45;&gt;Domain -->
+<g id="edge162" class="edge">
+<title>NonZeroRing&#45;&gt;Domain</title>
+<path fill="none" stroke="black" d="M2437.58,-585.73C2560.27,-571.95 2814,-543.12 2817.54,-540 2834.73,-524.82 2839.54,-498.53 2840.46,-478.44"/>
+<polygon fill="black" stroke="black" points="2843.96,-478.38 2840.62,-468.32 2836.96,-478.26 2843.96,-478.38"/>
+</g>
+<!-- NonZeroRing&#45;&gt;LocalRing -->
+<g id="edge161" class="edge">
+<title>NonZeroRing&#45;&gt;LocalRing</title>
+<path fill="none" stroke="black" d="M2339.99,-577.81C2317.17,-567.16 2286.53,-552.86 2262.27,-541.54"/>
+<polygon fill="black" stroke="black" points="2263.52,-538.26 2252.98,-537.21 2260.56,-544.61 2263.52,-538.26"/>
+</g>
+<!-- NonZeroRing&#45;&gt;NonZeroCRing -->
+<g id="edge160" class="edge">
+<title>NonZeroRing&#45;&gt;NonZeroCRing</title>
+<path fill="none" stroke="black" d="M2311.2,-584.2C2292.38,-581.53 2271.61,-578.61 2252.54,-576 2131.72,-559.45 2100.92,-559.45 1980.54,-540 1973.49,-538.86 1966.15,-537.59 1958.83,-536.28"/>
+<polygon fill="black" stroke="black" points="1959.37,-532.82 1948.91,-534.46 1958.11,-539.7 1959.37,-532.82"/>
+</g>
+<!-- NonZeroRing&#45;&gt;ImpotentRing -->
+<g id="edge163" class="edge">
+<title>NonZeroRing&#45;&gt;ImpotentRing</title>
+<path fill="none" stroke="black" d="M2372.29,-575.7C2372.18,-567.98 2372.05,-558.71 2371.93,-550.11"/>
+<polygon fill="black" stroke="black" points="2375.43,-550.05 2371.78,-540.1 2368.43,-550.15 2375.43,-550.05"/>
+</g>
+<!-- NonZeroCRing&#45;&gt;IntegralDomain -->
+<g id="edge191" class="edge">
+<title>NonZeroCRing&#45;&gt;IntegralDomain</title>
+<path fill="none" stroke="black" d="M1890.91,-503.68C1891.19,-483.27 1895.05,-449.9 1915.54,-432 1961.18,-392.12 2125.31,-381.81 2231.26,-379.4"/>
+<polygon fill="black" stroke="black" points="2231.4,-382.9 2241.33,-379.19 2231.26,-375.9 2231.4,-382.9"/>
+</g>
+<!-- NonZeroCRing&#45;&gt;LocalCRing -->
+<g id="edge190" class="edge">
+<title>NonZeroCRing&#45;&gt;LocalCRing</title>
+<path fill="none" stroke="black" d="M1886.16,-503.76C1881.29,-484.65 1876.79,-453.65 1890.54,-432 1915.16,-393.23 2036.71,-347.17 2106.67,-323.25"/>
+<polygon fill="black" stroke="black" points="2107.84,-326.55 2116.19,-320.02 2105.59,-319.92 2107.84,-326.55"/>
+</g>
+<!-- ImpotentCRing -->
+<g id="node128" class="node">
+<title>ImpotentCRing</title>
+<ellipse fill="none" stroke="black" cx="2005.54" cy="-450" rx="81.49" ry="18"/>
+<text text-anchor="middle" x="2005.54" y="-446.3" font-family="Times,serif" font-size="14.00">ImpotentCRing</text>
+</g>
+<!-- NonZeroCRing&#45;&gt;ImpotentCRing -->
+<g id="edge192" class="edge">
+<title>NonZeroCRing&#45;&gt;ImpotentCRing</title>
+<path fill="none" stroke="black" d="M1917.69,-504.94C1933.37,-495.32 1953.49,-482.96 1970.53,-472.5"/>
+<polygon fill="black" stroke="black" points="1972.42,-475.44 1979.11,-467.23 1968.76,-469.48 1972.42,-475.44"/>
+</g>
+<!-- ImpotentRing&#45;&gt;Domain -->
+<g id="edge201" class="edge">
+<title>ImpotentRing&#45;&gt;Domain</title>
+<path fill="none" stroke="black" d="M2434.18,-512.03C2506.2,-501.67 2627.97,-483.98 2732.54,-468 2750.49,-465.26 2770.12,-462.16 2787.61,-459.38"/>
+<polygon fill="black" stroke="black" points="2788.31,-462.81 2797.63,-457.78 2787.21,-455.9 2788.31,-462.81"/>
+</g>
+<!-- ImpotentRing&#45;&gt;StrictDomain -->
+<g id="edge200" class="edge">
+<title>ImpotentRing&#45;&gt;StrictDomain</title>
+<path fill="none" stroke="black" d="M2395.43,-504.76C2409.34,-495.31 2427.06,-483.26 2442.21,-472.97"/>
+<polygon fill="black" stroke="black" points="2444.48,-475.66 2450.78,-467.15 2440.54,-469.87 2444.48,-475.66"/>
+</g>
+<!-- ImpotentRing&#45;&gt;ImpotentCRing -->
+<g id="edge202" class="edge">
+<title>ImpotentRing&#45;&gt;ImpotentCRing</title>
+<path fill="none" stroke="black" d="M2316.65,-509.62C2307.28,-507.71 2297.63,-505.78 2288.54,-504 2202.91,-487.25 2181.3,-484.1 2095.54,-468 2088.92,-466.76 2082.04,-465.46 2075.15,-464.16"/>
+<polygon fill="black" stroke="black" points="2075.56,-460.68 2065.08,-462.27 2074.26,-467.56 2075.56,-460.68"/>
+</g>
+<!-- StrictIntegralDomain&#45;&gt;IntegralDomain.Dec -->
+<g id="edge166" class="edge">
+<title>StrictIntegralDomain&#45;&gt;IntegralDomain.Dec</title>
+<path fill="none" stroke="black" d="M2545.22,-360.05C2549.82,-352.01 2555.42,-342.2 2560.55,-333.23"/>
+<polygon fill="black" stroke="black" points="2563.75,-334.69 2565.67,-324.28 2557.67,-331.22 2563.75,-334.69"/>
+</g>
+<!-- LocalCRing&#45;&gt;ValuationRing -->
+<g id="edge168" class="edge">
+<title>LocalCRing&#45;&gt;ValuationRing</title>
+<path fill="none" stroke="black" d="M2125.13,-290.15C2080.99,-268.65 1998.89,-226.3 1935.54,-180 1908.61,-160.32 1881,-133.95 1862.35,-115.03"/>
+<polygon fill="black" stroke="black" points="1864.66,-112.39 1855.17,-107.67 1859.65,-117.27 1864.66,-112.39"/>
+</g>
+<!-- LocalCRing&#45;&gt;Field -->
+<g id="edge169" class="edge">
+<title>LocalCRing&#45;&gt;Field</title>
+<path fill="none" stroke="black" d="M2156.54,-287.7C2156.54,-279.98 2156.54,-270.71 2156.54,-262.11"/>
+<polygon fill="black" stroke="black" points="2160.04,-262.1 2156.54,-252.1 2153.04,-262.1 2160.04,-262.1"/>
+</g>
+<!-- ValuedRing -->
+<g id="node123" class="node">
+<title>ValuedRing</title>
+<ellipse fill="none" stroke="black" cx="606.54" cy="-162" rx="63.89" ry="18"/>
+<text text-anchor="middle" x="606.54" y="-158.3" font-family="Times,serif" font-size="14.00">ValuedRing</text>
+</g>
+<!-- NormedRing&#45;&gt;ValuedRing -->
+<g id="edge174" class="edge">
+<title>NormedRing&#45;&gt;ValuedRing</title>
+<path fill="none" stroke="black" d="M533.57,-216.76C546.28,-207.4 562.45,-195.49 576.33,-185.26"/>
+<polygon fill="black" stroke="black" points="578.65,-187.9 584.63,-179.15 574.5,-182.26 578.65,-187.9"/>
+</g>
+<!-- NormedRing&#45;&gt;CompleteNormedRing -->
+<g id="edge173" class="edge">
+<title>NormedRing&#45;&gt;CompleteNormedRing</title>
+<path fill="none" stroke="black" d="M488.37,-216.94C474.93,-207.63 457.8,-195.75 443.03,-185.52"/>
+<polygon fill="black" stroke="black" points="444.87,-182.54 434.66,-179.72 440.88,-188.29 444.87,-182.54"/>
+</g>
+<!-- PseudoValuedRing&#45;&gt;ValuedRing -->
+<g id="edge172" class="edge">
+<title>PseudoValuedRing&#45;&gt;ValuedRing</title>
+<path fill="none" stroke="black" d="M679.03,-216.41C666.3,-207.04 650.24,-195.2 636.47,-185.05"/>
+<polygon fill="black" stroke="black" points="638.36,-182.1 628.24,-178.99 634.21,-187.74 638.36,-182.1"/>
+</g>
+<!-- ValuedRing&#45;&gt;CompleteValuedRing -->
+<g id="edge229" class="edge">
+<title>ValuedRing&#45;&gt;CompleteValuedRing</title>
+<path fill="none" stroke="black" d="M584.3,-145.12C571.27,-135.81 554.6,-123.9 540.22,-113.63"/>
+<polygon fill="black" stroke="black" points="542.23,-110.76 532.06,-107.8 538.16,-116.46 542.23,-110.76"/>
+</g>
+<!-- CompleteNormedRing&#45;&gt;CompleteValuedRing -->
+<g id="edge226" class="edge">
+<title>CompleteNormedRing&#45;&gt;CompleteValuedRing</title>
+<path fill="none" stroke="black" d="M434.26,-144.05C447.02,-134.94 462.93,-123.58 476.75,-113.71"/>
+<polygon fill="black" stroke="black" points="478.93,-116.45 485.03,-107.79 474.86,-110.75 478.93,-116.45"/>
+</g>
+<!-- BezoutRing&#45;&gt;BezoutDomain -->
+<g id="edge193" class="edge">
+<title>BezoutRing&#45;&gt;BezoutDomain</title>
+<path fill="none" stroke="black" d="M1212.83,-503.88C1213.56,-485.67 1215.94,-456.21 1223.54,-432 1245.22,-362.96 1246.77,-337.52 1299.54,-288 1316.58,-272.01 1339.27,-260.26 1360.19,-251.95"/>
+<polygon fill="black" stroke="black" points="1361.54,-255.18 1369.65,-248.37 1359.06,-248.63 1361.54,-255.18"/>
+</g>
+<!-- StrictBezoutRing -->
+<g id="node131" class="node">
+<title>StrictBezoutRing</title>
+<ellipse fill="none" stroke="black" cx="1323.54" cy="-450" rx="90.98" ry="18"/>
+<text text-anchor="middle" x="1323.54" y="-446.3" font-family="Times,serif" font-size="14.00">StrictBezoutRing</text>
+</g>
+<!-- BezoutRing&#45;&gt;StrictBezoutRing -->
+<g id="edge194" class="edge">
+<title>BezoutRing&#45;&gt;StrictBezoutRing</title>
+<path fill="none" stroke="black" d="M1237.45,-505.29C1252.55,-495.77 1272.05,-483.47 1288.66,-472.99"/>
+<polygon fill="black" stroke="black" points="1290.96,-475.68 1297.55,-467.39 1287.23,-469.76 1290.96,-475.68"/>
+</g>
+<!-- PID -->
+<g id="node129" class="node">
+<title>PID</title>
+<ellipse fill="none" stroke="black" cx="1542.54" cy="-234" rx="27.9" ry="18"/>
+<text text-anchor="middle" x="1542.54" y="-230.3" font-family="Times,serif" font-size="14.00">PID</text>
+</g>
+<!-- NoetherianCRing&#45;&gt;PID -->
+<g id="edge188" class="edge">
+<title>NoetherianCRing&#45;&gt;PID</title>
+<path fill="none" stroke="black" d="M1538.14,-359.87C1538.99,-335.67 1540.56,-291.21 1541.57,-262.39"/>
+<polygon fill="black" stroke="black" points="1545.08,-262.31 1541.93,-252.19 1538.08,-262.06 1545.08,-262.31"/>
+</g>
+<!-- ReducedCRing&#45;&gt;PPRing -->
+<g id="edge184" class="edge">
+<title>ReducedCRing&#45;&gt;PPRing</title>
+<path fill="none" stroke="black" d="M2087.74,-504.41C2098.53,-495.08 2112.15,-483.31 2123.85,-473.2"/>
+<polygon fill="black" stroke="black" points="2126.31,-475.7 2131.59,-466.51 2121.74,-470.4 2126.31,-475.7"/>
+</g>
+<!-- ReducedCRing&#45;&gt;ImpotentCRing -->
+<g id="edge185" class="edge">
+<title>ReducedCRing&#45;&gt;ImpotentCRing</title>
+<path fill="none" stroke="black" d="M2053.29,-504.05C2045.55,-495.46 2036.01,-484.86 2027.5,-475.4"/>
+<polygon fill="black" stroke="black" points="2029.94,-472.88 2020.65,-467.79 2024.74,-477.56 2029.94,-472.88"/>
+</g>
+<!-- ImpotentCRing&#45;&gt;IntegralDomain -->
+<g id="edge186" class="edge">
+<title>ImpotentCRing&#45;&gt;IntegralDomain</title>
+<path fill="none" stroke="black" d="M2061.1,-436.81C2116.03,-424.75 2200.08,-406.31 2258.42,-393.51"/>
+<polygon fill="black" stroke="black" points="2259.25,-396.91 2268.27,-391.35 2257.75,-390.07 2259.25,-396.91"/>
+</g>
+<!-- ImpotentCRing&#45;&gt;StrictIntegralDomain -->
+<g id="edge187" class="edge">
+<title>ImpotentCRing&#45;&gt;StrictIntegralDomain</title>
+<path fill="none" stroke="black" d="M2063.53,-437.38C2074.15,-435.45 2085.16,-433.56 2095.54,-432 2237.51,-410.66 2274.13,-414.15 2416.54,-396 2426.32,-394.75 2436.55,-393.39 2446.72,-391.99"/>
+<polygon fill="black" stroke="black" points="2447.43,-395.42 2456.85,-390.58 2446.47,-388.49 2447.43,-395.42"/>
+</g>
+<!-- EuclideanDomain -->
+<g id="node130" class="node">
+<title>EuclideanDomain</title>
+<ellipse fill="none" stroke="black" cx="2036.54" cy="-162" rx="92.08" ry="18"/>
+<text text-anchor="middle" x="2036.54" y="-158.3" font-family="Times,serif" font-size="14.00">EuclideanDomain</text>
+</g>
+<!-- PID&#45;&gt;EuclideanDomain -->
+<g id="edge189" class="edge">
+<title>PID&#45;&gt;EuclideanDomain</title>
+<path fill="none" stroke="black" d="M1569.8,-229.14C1642.06,-218.9 1840.68,-190.75 1954.17,-174.67"/>
+<polygon fill="black" stroke="black" points="1954.8,-178.12 1964.21,-173.25 1953.82,-171.19 1954.8,-178.12"/>
+</g>
+<!-- EuclideanDomain&#45;&gt;DiscreteField -->
+<g id="edge271" class="edge">
+<title>EuclideanDomain&#45;&gt;DiscreteField</title>
+<path fill="none" stroke="black" d="M2064.37,-144.76C2081,-135.07 2102.3,-122.64 2120.24,-112.17"/>
+<polygon fill="black" stroke="black" points="2122.4,-114.97 2129.27,-106.91 2118.87,-108.92 2122.4,-114.97"/>
+</g>
+<!-- StrictBezoutRing&#45;&gt;StrictBezoutDomain -->
+<g id="edge196" class="edge">
+<title>StrictBezoutRing&#45;&gt;StrictBezoutDomain</title>
+<path fill="none" stroke="black" d="M1313.59,-431.98C1308.27,-421.89 1302.27,-408.64 1299.54,-396 1282.43,-316.72 1272.29,-273.45 1329.54,-216 1345.52,-199.97 1367.08,-188.52 1387.85,-180.47"/>
+<polygon fill="black" stroke="black" points="1389.13,-183.73 1397.32,-177.01 1386.72,-177.16 1389.13,-183.73"/>
+</g>
+<!-- SmithRing -->
+<g id="node132" class="node">
+<title>SmithRing</title>
+<ellipse fill="none" stroke="black" cx="1368.54" cy="-378" rx="59.59" ry="18"/>
+<text text-anchor="middle" x="1368.54" y="-374.3" font-family="Times,serif" font-size="14.00">SmithRing</text>
+</g>
+<!-- StrictBezoutRing&#45;&gt;SmithRing -->
+<g id="edge195" class="edge">
+<title>StrictBezoutRing&#45;&gt;SmithRing</title>
+<path fill="none" stroke="black" d="M1334.43,-432.05C1339.79,-423.71 1346.37,-413.49 1352.31,-404.25"/>
+<polygon fill="black" stroke="black" points="1355.28,-406.09 1357.75,-395.79 1349.39,-402.31 1355.28,-406.09"/>
+</g>
+<!-- SmithDomain -->
+<g id="node133" class="node">
+<title>SmithDomain</title>
+<ellipse fill="none" stroke="black" cx="1382.54" cy="-306" rx="74.19" ry="18"/>
+<text text-anchor="middle" x="1382.54" y="-302.3" font-family="Times,serif" font-size="14.00">SmithDomain</text>
+</g>
+<!-- SmithRing&#45;&gt;SmithDomain -->
+<g id="edge197" class="edge">
+<title>SmithRing&#45;&gt;SmithDomain</title>
+<path fill="none" stroke="black" d="M1372,-359.7C1373.54,-351.98 1375.4,-342.71 1377.12,-334.11"/>
+<polygon fill="black" stroke="black" points="1380.59,-334.6 1379.12,-324.1 1373.73,-333.22 1380.59,-334.6"/>
+</g>
+<!-- SmithDomain&#45;&gt;PID -->
+<g id="edge272" class="edge">
+<title>SmithDomain&#45;&gt;PID</title>
+<path fill="none" stroke="black" d="M1417.63,-290.14C1442.29,-279.64 1476.01,-265.14 1505.54,-252 1507.33,-251.2 1509.17,-250.38 1511.02,-249.54"/>
+<polygon fill="black" stroke="black" points="1512.62,-252.66 1520.27,-245.33 1509.72,-246.29 1512.62,-252.66"/>
+</g>
+<!-- Semiring&#45;&gt;OrderedSemiring -->
+<g id="edge207" class="edge">
+<title>Semiring&#45;&gt;OrderedSemiring</title>
+<path fill="none" stroke="black" d="M2495.22,-725.56C2503.51,-723.44 2512.27,-721.44 2520.54,-720 2707.31,-687.54 2758.85,-716.88 2945.54,-684 3044.06,-666.65 3155.95,-633.4 3220.58,-612.81"/>
+<polygon fill="black" stroke="black" points="3221.69,-616.13 3230.15,-609.75 3219.56,-609.47 3221.69,-616.13"/>
+</g>
+<!-- Semiring&#45;&gt;Ring -->
+<g id="edge208" class="edge">
+<title>Semiring&#45;&gt;Ring</title>
+<path fill="none" stroke="black" d="M2430.45,-722.15C2411.13,-711.16 2384.73,-696.13 2364.36,-684.54"/>
+<polygon fill="black" stroke="black" points="2365.9,-681.39 2355.48,-679.48 2362.44,-687.47 2365.9,-681.39"/>
+</g>
+<!-- CSemiring -->
+<g id="node135" class="node">
+<title>CSemiring</title>
+<ellipse fill="none" stroke="black" cx="2042.54" cy="-666" rx="59.59" ry="18"/>
+<text text-anchor="middle" x="2042.54" y="-662.3" font-family="Times,serif" font-size="14.00">CSemiring</text>
+</g>
+<!-- Semiring&#45;&gt;CSemiring -->
+<g id="edge209" class="edge">
+<title>Semiring&#45;&gt;CSemiring</title>
+<path fill="none" stroke="black" d="M2412.48,-727.86C2399.33,-725.22 2384.87,-722.41 2371.54,-720 2278.99,-703.3 2171.32,-686.44 2105.05,-676.35"/>
+<polygon fill="black" stroke="black" points="2105.19,-672.83 2094.78,-674.79 2104.14,-679.76 2105.19,-672.83"/>
+</g>
+<!-- NonZeroSemiring -->
+<g id="node136" class="node">
+<title>NonZeroSemiring</title>
+<ellipse fill="none" stroke="black" cx="2477.54" cy="-666" rx="93.68" ry="18"/>
+<text text-anchor="middle" x="2477.54" y="-662.3" font-family="Times,serif" font-size="14.00">NonZeroSemiring</text>
+</g>
+<!-- Semiring&#45;&gt;NonZeroSemiring -->
+<g id="edge210" class="edge">
+<title>Semiring&#45;&gt;NonZeroSemiring</title>
+<path fill="none" stroke="black" d="M2461.62,-720.05C2463.96,-712.26 2466.79,-702.82 2469.42,-694.08"/>
+<polygon fill="black" stroke="black" points="2472.84,-694.86 2472.36,-684.28 2466.13,-692.85 2472.84,-694.86"/>
+</g>
+<!-- CSemiring&#45;&gt;OrderedCSemiring -->
+<g id="edge215" class="edge">
+<title>CSemiring&#45;&gt;OrderedCSemiring</title>
+<path fill="none" stroke="black" d="M2100.11,-660.67C2150.76,-656.96 2226.52,-651.65 2292.54,-648 2386.15,-642.82 3049.21,-648.55 3135.54,-612 3156.96,-602.93 3153.43,-587.7 3173.54,-576 3203.46,-558.59 3239.67,-546.37 3271.29,-538.09"/>
+<polygon fill="black" stroke="black" points="3272.54,-541.38 3281.38,-535.54 3270.83,-534.59 3272.54,-541.38"/>
+</g>
+<!-- CSemiring&#45;&gt;EuclideanSemiringData -->
+<g id="edge214" class="edge">
+<title>CSemiring&#45;&gt;EuclideanSemiringData</title>
+<path fill="none" stroke="black" d="M2003.42,-652.32C1970.28,-641.58 1922.28,-626.03 1884.64,-613.83"/>
+<polygon fill="black" stroke="black" points="1885.41,-610.4 1874.82,-610.65 1883.25,-617.06 1885.41,-610.4"/>
+</g>
+<!-- CSemiring&#45;&gt;CRing -->
+<g id="edge213" class="edge">
+<title>CSemiring&#45;&gt;CRing</title>
+<path fill="none" stroke="black" d="M2042.54,-647.7C2042.54,-639.98 2042.54,-630.71 2042.54,-622.11"/>
+<polygon fill="black" stroke="black" points="2046.04,-622.1 2042.54,-612.1 2039.04,-622.1 2046.04,-622.1"/>
+</g>
+<!-- NonZeroSemiring&#45;&gt;StrictDomain -->
+<g id="edge211" class="edge">
+<title>NonZeroSemiring&#45;&gt;StrictDomain</title>
+<path fill="none" stroke="black" d="M2482,-647.95C2484.47,-637.63 2487.29,-624.15 2488.54,-612 2493.44,-564.25 2494.72,-551.6 2488.54,-504 2487.41,-495.28 2485.27,-485.95 2483,-477.58"/>
+<polygon fill="black" stroke="black" points="2486.35,-476.6 2480.22,-467.96 2479.63,-478.54 2486.35,-476.6"/>
+</g>
+<!-- NonZeroSemiring&#45;&gt;NonZeroRing -->
+<g id="edge212" class="edge">
+<title>NonZeroSemiring&#45;&gt;NonZeroRing</title>
+<path fill="none" stroke="black" d="M2452.92,-648.59C2438.73,-639.13 2420.72,-627.12 2405.34,-616.87"/>
+<polygon fill="black" stroke="black" points="2406.9,-613.7 2396.64,-611.07 2403.02,-619.53 2406.9,-613.7"/>
+</g>
+<!-- Set#&#45;&gt;LinearOrder.With# -->
+<g id="edge218" class="edge">
+<title>Set#&#45;&gt;LinearOrder.With#</title>
+<path fill="none" stroke="black" d="M2403.12,-805.66C2485.5,-797.45 2704.19,-775.51 2886.54,-756 3030.16,-740.63 3399.72,-740.78 3532.54,-684 3555.46,-674.2 3552.57,-657.68 3575.54,-648 3721.67,-586.38 3773.19,-631.8 3930.54,-612 3940.43,-610.76 3950.79,-609.34 3961.06,-607.88"/>
+<polygon fill="black" stroke="black" points="3961.88,-611.3 3971.27,-606.4 3960.87,-604.37 3961.88,-611.3"/>
+</g>
+<!-- Set#&#45;&gt;DecSet -->
+<g id="edge220" class="edge">
+<title>Set#&#45;&gt;DecSet</title>
+<path fill="none" stroke="black" d="M2357.71,-792.76C2351.43,-784.14 2343.58,-773.36 2336.55,-763.73"/>
+<polygon fill="black" stroke="black" points="2339.38,-761.65 2330.66,-755.63 2333.72,-765.78 2339.38,-761.65"/>
+</g>
+<!-- Set#&#45;&gt;AddGroup.With# -->
+<g id="edge219" class="edge">
+<title>Set#&#45;&gt;AddGroup.With#</title>
+<path fill="none" stroke="black" d="M2399.2,-800.7C2438.49,-789.69 2508.71,-770.03 2559.33,-755.86"/>
+<polygon fill="black" stroke="black" points="2560.5,-759.17 2569.18,-753.1 2558.61,-752.43 2560.5,-759.17"/>
+</g>
+<!-- CoverSpace -->
+<g id="node145" class="node">
+<title>CoverSpace</title>
+<ellipse fill="none" stroke="black" cx="669.54" cy="-810" rx="65.79" ry="18"/>
+<text text-anchor="middle" x="669.54" y="-806.3" font-family="Times,serif" font-size="14.00">CoverSpace</text>
+</g>
+<!-- PrecoverSpace&#45;&gt;CoverSpace -->
+<g id="edge239" class="edge">
+<title>PrecoverSpace&#45;&gt;CoverSpace</title>
+<path fill="none" stroke="black" d="M729.05,-864.41C719.05,-855.43 706.53,-844.19 695.55,-834.34"/>
+<polygon fill="black" stroke="black" points="697.67,-831.54 687.89,-827.47 693,-836.75 697.67,-831.54"/>
+</g>
+<!-- SeparatedCoverSpace -->
+<g id="node140" class="node">
+<title>SeparatedCoverSpace</title>
+<ellipse fill="none" stroke="black" cx="303.54" cy="-738" rx="113.98" ry="18"/>
+<text text-anchor="middle" x="303.54" y="-734.3" font-family="Times,serif" font-size="14.00">SeparatedCoverSpace</text>
+</g>
+<!-- HausdorffTopSpace&#45;&gt;SeparatedCoverSpace -->
+<g id="edge230" class="edge">
+<title>HausdorffTopSpace&#45;&gt;SeparatedCoverSpace</title>
+<path fill="none" stroke="black" d="M504.94,-864.43C463.86,-838.85 384.95,-789.7 339.04,-761.11"/>
+<polygon fill="black" stroke="black" points="340.66,-758 330.32,-755.68 336.96,-763.94 340.66,-758"/>
+</g>
+<!-- MetricSpace -->
+<g id="node141" class="node">
+<title>MetricSpace</title>
+<ellipse fill="none" stroke="black" cx="314.54" cy="-378" rx="69.59" ry="18"/>
+<text text-anchor="middle" x="314.54" y="-374.3" font-family="Times,serif" font-size="14.00">MetricSpace</text>
+</g>
+<!-- SeparatedCoverSpace&#45;&gt;MetricSpace -->
+<g id="edge231" class="edge">
+<title>SeparatedCoverSpace&#45;&gt;MetricSpace</title>
+<path fill="none" stroke="black" d="M297.3,-719.59C293.97,-709.37 290.22,-696.12 288.54,-684 277.54,-604.75 281.86,-583.53 290.54,-504 294.25,-469.98 302.26,-431.37 308,-406.18"/>
+<polygon fill="black" stroke="black" points="311.45,-406.79 310.31,-396.26 304.63,-405.21 311.45,-406.79"/>
+</g>
+<!-- CompleteCoverSpace -->
+<g id="node142" class="node">
+<title>CompleteCoverSpace</title>
+<ellipse fill="none" stroke="black" cx="130.54" cy="-666" rx="110.48" ry="18"/>
+<text text-anchor="middle" x="130.54" y="-662.3" font-family="Times,serif" font-size="14.00">CompleteCoverSpace</text>
+</g>
+<!-- SeparatedCoverSpace&#45;&gt;CompleteCoverSpace -->
+<g id="edge232" class="edge">
+<title>SeparatedCoverSpace&#45;&gt;CompleteCoverSpace</title>
+<path fill="none" stroke="black" d="M263.85,-720.94C238.71,-710.77 206.01,-697.54 179.29,-686.73"/>
+<polygon fill="black" stroke="black" points="180.33,-683.37 169.75,-682.86 177.7,-689.86 180.33,-683.37"/>
+</g>
+<!-- MetricSpace&#45;&gt;NormedAbGroup -->
+<g id="edge237" class="edge">
+<title>MetricSpace&#45;&gt;NormedAbGroup</title>
+<path fill="none" stroke="black" d="M351.4,-362.67C378.69,-352.05 416.12,-337.49 445.87,-325.93"/>
+<polygon fill="black" stroke="black" points="447.18,-329.17 455.23,-322.29 444.65,-322.65 447.18,-329.17"/>
+</g>
+<!-- CompleteMetricSpace -->
+<g id="node144" class="node">
+<title>CompleteMetricSpace</title>
+<ellipse fill="none" stroke="black" cx="273.54" cy="-306" rx="113.98" ry="18"/>
+<text text-anchor="middle" x="273.54" y="-302.3" font-family="Times,serif" font-size="14.00">CompleteMetricSpace</text>
+</g>
+<!-- MetricSpace&#45;&gt;CompleteMetricSpace -->
+<g id="edge238" class="edge">
+<title>MetricSpace&#45;&gt;CompleteMetricSpace</title>
+<path fill="none" stroke="black" d="M304.61,-360.05C299.85,-351.92 294.04,-342 288.73,-332.94"/>
+<polygon fill="black" stroke="black" points="291.73,-331.14 283.66,-324.28 285.69,-334.67 291.73,-331.14"/>
+</g>
+<!-- CompleteUniformSpace -->
+<g id="node143" class="node">
+<title>CompleteUniformSpace</title>
+<ellipse fill="none" stroke="black" cx="121.54" cy="-522" rx="121.58" ry="18"/>
+<text text-anchor="middle" x="121.54" y="-518.3" font-family="Times,serif" font-size="14.00">CompleteUniformSpace</text>
+</g>
+<!-- CompleteCoverSpace&#45;&gt;CompleteUniformSpace -->
+<g id="edge233" class="edge">
+<title>CompleteCoverSpace&#45;&gt;CompleteUniformSpace</title>
+<path fill="none" stroke="black" d="M129.45,-647.87C127.92,-623.67 125.1,-579.21 123.28,-550.39"/>
+<polygon fill="black" stroke="black" points="126.75,-549.95 122.63,-540.19 119.77,-550.39 126.75,-549.95"/>
+</g>
+<!-- CompleteUniformSpace&#45;&gt;CompleteTopAbGroup -->
+<g id="edge234" class="edge">
+<title>CompleteUniformSpace&#45;&gt;CompleteTopAbGroup</title>
+<path fill="none" stroke="black" d="M124.01,-503.7C125.11,-495.98 126.44,-486.71 127.67,-478.11"/>
+<polygon fill="black" stroke="black" points="131.15,-478.5 129.1,-468.1 124.22,-477.51 131.15,-478.5"/>
+</g>
+<!-- CompleteUniformSpace&#45;&gt;CompleteMetricSpace -->
+<g id="edge235" class="edge">
+<title>CompleteUniformSpace&#45;&gt;CompleteMetricSpace</title>
+<path fill="none" stroke="black" d="M61.39,-506.3C41.75,-498.34 22.04,-486.24 10.54,-468 2,-454.47 1.99,-445.53 10.54,-432 49.62,-370.16 128.54,-338.29 189.78,-322.27"/>
+<polygon fill="black" stroke="black" points="190.99,-325.58 199.83,-319.74 189.28,-318.79 190.99,-325.58"/>
+</g>
+<!-- CompleteMetricSpace&#45;&gt;CompleteNormedAbGroup -->
+<g id="edge236" class="edge">
+<title>CompleteMetricSpace&#45;&gt;CompleteNormedAbGroup</title>
+<path fill="none" stroke="black" d="M274.53,-287.7C274.97,-279.98 275.5,-270.71 275.99,-262.11"/>
+<polygon fill="black" stroke="black" points="279.49,-262.29 276.56,-252.1 272.5,-261.89 279.49,-262.29"/>
+</g>
+<!-- CoverSpace&#45;&gt;SeparatedCoverSpace -->
+<g id="edge242" class="edge">
+<title>CoverSpace&#45;&gt;SeparatedCoverSpace</title>
+<path fill="none" stroke="black" d="M617.1,-798.97C555.97,-787.28 454.27,-767.83 383.32,-754.26"/>
+<polygon fill="black" stroke="black" points="383.57,-750.74 373.09,-752.3 382.25,-757.62 383.57,-750.74"/>
+</g>
+<!-- OmegaRegularCoverSpace -->
+<g id="node146" class="node">
+<title>OmegaRegularCoverSpace</title>
+<ellipse fill="none" stroke="black" cx="587.54" cy="-738" rx="135.38" ry="18"/>
+<text text-anchor="middle" x="587.54" y="-734.3" font-family="Times,serif" font-size="14.00">OmegaRegularCoverSpace</text>
+</g>
+<!-- CoverSpace&#45;&gt;OmegaRegularCoverSpace -->
+<g id="edge240" class="edge">
+<title>CoverSpace&#45;&gt;OmegaRegularCoverSpace</title>
+<path fill="none" stroke="black" d="M650.52,-792.76C639.99,-783.77 626.71,-772.44 615.06,-762.49"/>
+<polygon fill="black" stroke="black" points="617.19,-759.71 607.31,-755.88 612.64,-765.03 617.19,-759.71"/>
+</g>
+<!-- StronglyRegularCoverSpace -->
+<g id="node147" class="node">
+<title>StronglyRegularCoverSpace</title>
+<ellipse fill="none" stroke="black" cx="768.54" cy="-666" rx="142.17" ry="18"/>
+<text text-anchor="middle" x="768.54" y="-662.3" font-family="Times,serif" font-size="14.00">StronglyRegularCoverSpace</text>
+</g>
+<!-- CoverSpace&#45;&gt;StronglyRegularCoverSpace -->
+<g id="edge241" class="edge">
+<title>CoverSpace&#45;&gt;StronglyRegularCoverSpace</title>
+<path fill="none" stroke="black" d="M693.15,-793.04C705.86,-783.5 721.05,-770.43 731.54,-756 745.24,-737.16 754.98,-712.49 761.02,-693.9"/>
+<polygon fill="black" stroke="black" points="764.38,-694.87 763.99,-684.28 757.7,-692.8 764.38,-694.87"/>
+</g>
+<!-- CompletelyRegularCoverSpace -->
+<g id="node150" class="node">
+<title>CompletelyRegularCoverSpace</title>
+<ellipse fill="none" stroke="black" cx="452.54" cy="-666" rx="155.17" ry="18"/>
+<text text-anchor="middle" x="452.54" y="-662.3" font-family="Times,serif" font-size="14.00">CompletelyRegularCoverSpace</text>
+</g>
+<!-- OmegaRegularCoverSpace&#45;&gt;CompletelyRegularCoverSpace -->
+<g id="edge248" class="edge">
+<title>OmegaRegularCoverSpace&#45;&gt;CompletelyRegularCoverSpace</title>
+<path fill="none" stroke="black" d="M555.55,-720.41C537.1,-710.85 513.72,-698.72 493.89,-688.44"/>
+<polygon fill="black" stroke="black" points="495.26,-685.21 484.77,-683.71 492.04,-691.42 495.26,-685.21"/>
+</g>
+<!-- StronglyRegularCoverSpace&#45;&gt;CompletelyStronglyRegularCoverSpace -->
+<g id="edge244" class="edge">
+<title>StronglyRegularCoverSpace&#45;&gt;CompletelyStronglyRegularCoverSpace</title>
+<path fill="none" stroke="black" d="M743.63,-648.23C729.97,-639.04 712.84,-627.51 698.02,-617.54"/>
+<polygon fill="black" stroke="black" points="699.86,-614.55 689.61,-611.87 695.95,-620.36 699.86,-614.55"/>
+</g>
+<!-- StronglyRegularUniformSpace -->
+<g id="node148" class="node">
+<title>StronglyRegularUniformSpace</title>
+<ellipse fill="none" stroke="black" cx="452.54" cy="-522" rx="153.27" ry="18"/>
+<text text-anchor="middle" x="452.54" y="-518.3" font-family="Times,serif" font-size="14.00">StronglyRegularUniformSpace</text>
+</g>
+<!-- StronglyRegularCoverSpace&#45;&gt;StronglyRegularUniformSpace -->
+<g id="edge243" class="edge">
+<title>StronglyRegularCoverSpace&#45;&gt;StronglyRegularUniformSpace</title>
+<path fill="none" stroke="black" d="M822.08,-649.3C840.05,-641.19 858.15,-629.26 868.54,-612 876.79,-598.29 879.11,-588.01 868.54,-576 863.56,-570.35 690.96,-549.83 569.67,-536.05"/>
+<polygon fill="black" stroke="black" points="569.9,-532.55 559.57,-534.9 569.11,-539.5 569.9,-532.55"/>
+</g>
+<!-- PseudoMetricSpace -->
+<g id="node149" class="node">
+<title>PseudoMetricSpace</title>
+<ellipse fill="none" stroke="black" cx="452.54" cy="-450" rx="102.88" ry="18"/>
+<text text-anchor="middle" x="452.54" y="-446.3" font-family="Times,serif" font-size="14.00">PseudoMetricSpace</text>
+</g>
+<!-- StronglyRegularUniformSpace&#45;&gt;PseudoMetricSpace -->
+<g id="edge245" class="edge">
+<title>StronglyRegularUniformSpace&#45;&gt;PseudoMetricSpace</title>
+<path fill="none" stroke="black" d="M452.54,-503.7C452.54,-495.98 452.54,-486.71 452.54,-478.11"/>
+<polygon fill="black" stroke="black" points="456.04,-478.1 452.54,-468.1 449.04,-478.1 456.04,-478.1"/>
+</g>
+<!-- PseudoMetricSpace&#45;&gt;PseudoNormedAbGroup -->
+<g id="edge246" class="edge">
+<title>PseudoMetricSpace&#45;&gt;PseudoNormedAbGroup</title>
+<path fill="none" stroke="black" d="M479.03,-432.59C494.11,-423.25 513.21,-411.41 529.63,-401.25"/>
+<polygon fill="black" stroke="black" points="531.77,-404.04 538.43,-395.8 528.08,-398.09 531.77,-404.04"/>
+</g>
+<!-- PseudoMetricSpace&#45;&gt;MetricSpace -->
+<g id="edge247" class="edge">
+<title>PseudoMetricSpace&#45;&gt;MetricSpace</title>
+<path fill="none" stroke="black" d="M420.53,-432.76C400.7,-422.7 375.07,-409.7 353.98,-399.01"/>
+<polygon fill="black" stroke="black" points="355.45,-395.83 344.95,-394.43 352.29,-402.07 355.45,-395.83"/>
+</g>
+<!-- CompletelyRegularCoverSpace&#45;&gt;CompletelyStronglyRegularCoverSpace -->
+<g id="edge249" class="edge">
+<title>CompletelyRegularCoverSpace&#45;&gt;CompletelyStronglyRegularCoverSpace</title>
+<path fill="none" stroke="black" d="M501.44,-648.85C532.25,-638.68 572.23,-625.48 604.89,-614.69"/>
+<polygon fill="black" stroke="black" points="606.38,-617.89 614.78,-611.43 604.19,-611.24 606.38,-617.89"/>
+</g>
+<!-- UniformSpace -->
+<g id="node151" class="node">
+<title>UniformSpace</title>
+<ellipse fill="none" stroke="black" cx="374.54" cy="-594" rx="77.19" ry="18"/>
+<text text-anchor="middle" x="374.54" y="-590.3" font-family="Times,serif" font-size="14.00">UniformSpace</text>
+</g>
+<!-- CompletelyRegularCoverSpace&#45;&gt;UniformSpace -->
+<g id="edge250" class="edge">
+<title>CompletelyRegularCoverSpace&#45;&gt;UniformSpace</title>
+<path fill="none" stroke="black" d="M433.66,-648.05C423.72,-639.13 411.37,-628.06 400.54,-618.34"/>
+<polygon fill="black" stroke="black" points="402.76,-615.62 392.98,-611.55 398.08,-620.83 402.76,-615.62"/>
+</g>
+<!-- UniformSpace&#45;&gt;TopAbGroup -->
+<g id="edge252" class="edge">
+<title>UniformSpace&#45;&gt;TopAbGroup</title>
+<path fill="none" stroke="black" d="M428.84,-581.05C485.27,-568.62 573.37,-549.23 632,-536.33"/>
+<polygon fill="black" stroke="black" points="632.86,-539.72 641.87,-534.15 631.35,-532.88 632.86,-539.72"/>
+</g>
+<!-- UniformSpace&#45;&gt;CompleteUniformSpace -->
+<g id="edge253" class="edge">
+<title>UniformSpace&#45;&gt;CompleteUniformSpace</title>
+<path fill="none" stroke="black" d="M326.65,-579.75C286.83,-568.73 229.79,-552.95 185.96,-540.83"/>
+<polygon fill="black" stroke="black" points="186.83,-537.43 176.26,-538.14 184.97,-544.18 186.83,-537.43"/>
+</g>
+<!-- UniformSpace&#45;&gt;StronglyRegularUniformSpace -->
+<g id="edge251" class="edge">
+<title>UniformSpace&#45;&gt;StronglyRegularUniformSpace</title>
+<path fill="none" stroke="black" d="M393.02,-576.41C402.88,-567.56 415.19,-556.52 426.05,-546.77"/>
+<polygon fill="black" stroke="black" points="428.54,-549.24 433.65,-539.96 423.87,-544.03 428.54,-549.24"/>
+</g>
+<!-- Monoid&#45;&gt;OrderedMonoid -->
+<g id="edge258" class="edge">
+<title>Monoid&#45;&gt;OrderedMonoid</title>
+<path fill="none" stroke="black" d="M1992.54,-791.7C1992.54,-783.98 1992.54,-774.71 1992.54,-766.11"/>
+<polygon fill="black" stroke="black" points="1996.04,-766.1 1992.54,-756.1 1989.04,-766.1 1996.04,-766.1"/>
+</g>
+<!-- Monoid&#45;&gt;Semiring -->
+<g id="edge256" class="edge">
+<title>Monoid&#45;&gt;Semiring</title>
+<path fill="none" stroke="black" d="M2035.58,-803.81C2106.01,-795.14 2250.2,-776.6 2371.54,-756 2381.55,-754.3 2392.2,-752.31 2402.44,-750.31"/>
+<polygon fill="black" stroke="black" points="2403.39,-753.69 2412.51,-748.31 2402.02,-746.83 2403.39,-753.69"/>
+</g>
+<!-- CMonoid -->
+<g id="node153" class="node">
+<title>CMonoid</title>
+<ellipse fill="none" stroke="black" cx="1835.54" cy="-738" rx="51.99" ry="18"/>
+<text text-anchor="middle" x="1835.54" y="-734.3" font-family="Times,serif" font-size="14.00">CMonoid</text>
+</g>
+<!-- Monoid&#45;&gt;CMonoid -->
+<g id="edge255" class="edge">
+<title>Monoid&#45;&gt;CMonoid</title>
+<path fill="none" stroke="black" d="M1963.38,-796C1938.63,-784.96 1902.87,-769.02 1875.47,-756.8"/>
+<polygon fill="black" stroke="black" points="1876.71,-753.53 1866.15,-752.65 1873.86,-759.92 1876.71,-753.53"/>
+</g>
+<!-- CancelMonoid -->
+<g id="node154" class="node">
+<title>CancelMonoid</title>
+<ellipse fill="none" stroke="black" cx="1276.54" cy="-738" rx="76.89" ry="18"/>
+<text text-anchor="middle" x="1276.54" y="-734.3" font-family="Times,serif" font-size="14.00">CancelMonoid</text>
+</g>
+<!-- Monoid&#45;&gt;CancelMonoid -->
+<g id="edge257" class="edge">
+<title>Monoid&#45;&gt;CancelMonoid</title>
+<path fill="none" stroke="black" d="M1948.83,-804.73C1831.29,-793.24 1507.18,-761.55 1356.05,-746.77"/>
+<polygon fill="black" stroke="black" points="1356.21,-743.27 1345.91,-745.78 1355.53,-750.24 1356.21,-743.27"/>
+</g>
+<!-- CMonoid&#45;&gt;OrderedCMonoid -->
+<g id="edge269" class="edge">
+<title>CMonoid&#45;&gt;OrderedCMonoid</title>
+<path fill="none" stroke="black" d="M1835.54,-719.7C1835.54,-711.98 1835.54,-702.71 1835.54,-694.11"/>
+<polygon fill="black" stroke="black" points="1839.04,-694.1 1835.54,-684.1 1832.04,-694.1 1839.04,-694.1"/>
+</g>
+<!-- CMonoid&#45;&gt;CSemiring -->
+<g id="edge270" class="edge">
+<title>CMonoid&#45;&gt;CSemiring</title>
+<path fill="none" stroke="black" d="M1871.6,-724.81C1905.73,-713.26 1957.19,-695.86 1994.74,-683.17"/>
+<polygon fill="black" stroke="black" points="1996.09,-686.4 2004.44,-679.88 1993.85,-679.77 1996.09,-686.4"/>
+</g>
+<!-- CancelCMonoid -->
+<g id="node156" class="node">
+<title>CancelCMonoid</title>
+<ellipse fill="none" stroke="black" cx="1276.54" cy="-666" rx="83.39" ry="18"/>
+<text text-anchor="middle" x="1276.54" y="-662.3" font-family="Times,serif" font-size="14.00">CancelCMonoid</text>
+</g>
+<!-- CMonoid&#45;&gt;CancelCMonoid -->
+<g id="edge268" class="edge">
+<title>CMonoid&#45;&gt;CancelCMonoid</title>
+<path fill="none" stroke="black" d="M1786.19,-732.31C1701.55,-724.05 1523.35,-705.7 1373.54,-684 1365.06,-682.77 1356.18,-681.37 1347.38,-679.92"/>
+<polygon fill="black" stroke="black" points="1347.95,-676.46 1337.51,-678.25 1346.79,-683.37 1347.95,-676.46"/>
+</g>
+<!-- GCDMonoid -->
+<g id="node158" class="node">
+<title>GCDMonoid</title>
+<ellipse fill="none" stroke="black" cx="1649.54" cy="-666" rx="66.89" ry="18"/>
+<text text-anchor="middle" x="1649.54" y="-662.3" font-family="Times,serif" font-size="14.00">GCDMonoid</text>
+</g>
+<!-- CMonoid&#45;&gt;GCDMonoid -->
+<g id="edge267" class="edge">
+<title>CMonoid&#45;&gt;GCDMonoid</title>
+<path fill="none" stroke="black" d="M1801.42,-724.16C1771.93,-713.06 1729.01,-696.91 1696.31,-684.6"/>
+<polygon fill="black" stroke="black" points="1697.54,-681.33 1686.95,-681.08 1695.08,-687.88 1697.54,-681.33"/>
+</g>
+<!-- Group -->
+<g id="node155" class="node">
+<title>Group</title>
+<ellipse fill="none" stroke="black" cx="1135.54" cy="-666" rx="39.79" ry="18"/>
+<text text-anchor="middle" x="1135.54" y="-662.3" font-family="Times,serif" font-size="14.00">Group</text>
+</g>
+<!-- CancelMonoid&#45;&gt;Group -->
+<g id="edge259" class="edge">
+<title>CancelMonoid&#45;&gt;Group</title>
+<path fill="none" stroke="black" d="M1245.25,-721.46C1223.14,-710.49 1193.5,-695.77 1170.59,-684.4"/>
+<polygon fill="black" stroke="black" points="1172.06,-681.22 1161.55,-679.91 1168.95,-687.49 1172.06,-681.22"/>
+</g>
+<!-- CancelMonoid&#45;&gt;CancelCMonoid -->
+<g id="edge260" class="edge">
+<title>CancelMonoid&#45;&gt;CancelCMonoid</title>
+<path fill="none" stroke="black" d="M1276.54,-719.7C1276.54,-711.98 1276.54,-702.71 1276.54,-694.11"/>
+<polygon fill="black" stroke="black" points="1280.04,-694.1 1276.54,-684.1 1273.04,-694.1 1280.04,-694.1"/>
+</g>
+<!-- Group&#45;&gt;FinGroup -->
+<g id="edge266" class="edge">
+<title>Group&#45;&gt;FinGroup</title>
+<path fill="none" stroke="black" d="M1111.35,-651.67C1092.33,-641.19 1065.56,-626.43 1044.1,-614.6"/>
+<polygon fill="black" stroke="black" points="1045.72,-611.5 1035.27,-609.73 1042.34,-617.63 1045.72,-611.5"/>
+</g>
+<!-- Group&#45;&gt;CGroup -->
+<g id="edge265" class="edge">
+<title>Group&#45;&gt;CGroup</title>
+<path fill="none" stroke="black" d="M1133.56,-647.7C1132.68,-639.98 1131.62,-630.71 1130.64,-622.11"/>
+<polygon fill="black" stroke="black" points="1134.11,-621.64 1129.49,-612.1 1127.15,-622.44 1134.11,-621.64"/>
+</g>
+<!-- CancelCMonoid&#45;&gt;UnitlessMonoid -->
+<g id="edge263" class="edge">
+<title>CancelCMonoid&#45;&gt;UnitlessMonoid</title>
+<path fill="none" stroke="black" d="M1276.29,-647.7C1276.18,-639.98 1276.05,-630.71 1275.93,-622.11"/>
+<polygon fill="black" stroke="black" points="1279.43,-622.05 1275.78,-612.1 1272.43,-622.15 1279.43,-622.05"/>
+</g>
+<!-- CancelCMonoid&#45;&gt;CGroup -->
+<g id="edge262" class="edge">
+<title>CancelCMonoid&#45;&gt;CGroup</title>
+<path fill="none" stroke="black" d="M1243.47,-649.46C1220.31,-638.58 1189.32,-624.02 1165.2,-612.69"/>
+<polygon fill="black" stroke="black" points="1166.54,-609.45 1156,-608.37 1163.56,-615.79 1166.54,-609.45"/>
+</g>
+<!-- CancelGCDMonoid -->
+<g id="node157" class="node">
+<title>CancelGCDMonoid</title>
+<ellipse fill="none" stroke="black" cx="1513.54" cy="-594" rx="98.28" ry="18"/>
+<text text-anchor="middle" x="1513.54" y="-590.3" font-family="Times,serif" font-size="14.00">CancelGCDMonoid</text>
+</g>
+<!-- CancelCMonoid&#45;&gt;CancelGCDMonoid -->
+<g id="edge261" class="edge">
+<title>CancelCMonoid&#45;&gt;CancelGCDMonoid</title>
+<path fill="none" stroke="black" d="M1323.65,-651.09C1361.18,-640 1413.96,-624.41 1454.35,-612.48"/>
+<polygon fill="black" stroke="black" points="1455.47,-615.8 1464.07,-609.61 1453.49,-609.09 1455.47,-615.8"/>
+</g>
+<!-- CancelGCDMonoid&#45;&gt;UnitlessGCDMonoid -->
+<g id="edge264" class="edge">
+<title>CancelGCDMonoid&#45;&gt;UnitlessGCDMonoid</title>
+<path fill="none" stroke="black" d="M1441.91,-581.66C1428.51,-579.67 1414.61,-577.7 1401.54,-576 1253.92,-556.83 1216.24,-558.53 1068.54,-540 1058.08,-538.69 1047.11,-537.23 1036.24,-535.74"/>
+<polygon fill="black" stroke="black" points="1036.69,-532.27 1026.3,-534.36 1035.73,-539.2 1036.69,-532.27"/>
+</g>
+<!-- GCDMonoid&#45;&gt;GCDDomain.Dec -->
+<g id="edge275" class="edge">
+<title>GCDMonoid&#45;&gt;GCDDomain.Dec</title>
+<path fill="none" stroke="black" d="M1649.3,-647.75C1648,-627.1 1642.4,-593.15 1620.54,-576 1536.21,-509.84 1212.45,-618.57 1139.54,-540 1128.66,-528.27 1133.03,-518.62 1139.54,-504 1178.46,-416.61 1214.38,-403.6 1299.54,-360 1366.74,-325.6 1392.16,-341.72 1465.54,-324 1562.08,-300.68 1673.39,-270.32 1740.03,-251.76"/>
+<polygon fill="black" stroke="black" points="1741.24,-255.06 1749.93,-249 1739.36,-248.31 1741.24,-255.06"/>
+</g>
+<!-- GCDMonoid&#45;&gt;BezoutRing -->
+<g id="edge273" class="edge">
+<title>GCDMonoid&#45;&gt;BezoutRing</title>
+<path fill="none" stroke="black" d="M1656.7,-647.86C1663.73,-627.95 1671.1,-595.36 1653.54,-576 1598.34,-515.14 1366.62,-553.35 1285.54,-540 1280.08,-539.1 1274.43,-538.03 1268.78,-536.88"/>
+<polygon fill="black" stroke="black" points="1269.21,-533.39 1258.7,-534.71 1267.74,-540.23 1269.21,-533.39"/>
+</g>
+<!-- GCDMonoid&#45;&gt;CancelGCDMonoid -->
+<g id="edge274" class="edge">
+<title>GCDMonoid&#45;&gt;CancelGCDMonoid</title>
+<path fill="none" stroke="black" d="M1620.03,-649.81C1600.7,-639.86 1575.19,-626.73 1553.98,-615.82"/>
+<polygon fill="black" stroke="black" points="1555.38,-612.6 1544.88,-611.13 1552.17,-618.82 1555.38,-612.6"/>
+</g>
+</g>
+</svg>
