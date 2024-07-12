@@ -187,7 +187,7 @@ feature_row:
   - image_path: /assets/images/ProofSearch-460x200.png
     title: "Proof Search"
     excerpt: "IntelliJ Arend provides a flexible search engine that allows to discover theorems by their signature.
-              To invoke it, press **Ctrl+Shift+P**."
+              To invoke it, press **Ctrl+Alt+P**."
     url: "/documentation/proof-search"
     id: "proof-search"
     btn_label: "Open Reference"
