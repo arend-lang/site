@@ -179,7 +179,7 @@ For example, to define a function from the empty data type you can write:
   | ()
 {% endarend %}
 
-You can often (but not always) omit the clause with an abusrd pattern completely.
+You can often (but not always) omit the clause with an absurd pattern completely.
 For example, you can define function {%ard%} absurd {%endard%} as follows:
 
 {% arend %}

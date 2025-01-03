@@ -1,6 +1,6 @@
-You need to have [JRE 11] installed on your computer to use Arend.
-You are free to choose any alternative JRE distributions such as the [Liberica JRE],
+You need to have [JDK] of version no less than 17 installed on your computer to use Arend.
+You are free to choose any alternative JDK distributions such as the [Liberica JDK],
 as long as the version fits the requirement.
 
- [JRE 11]: https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html
- [Liberica JRE]: https://bell-sw.com
+ [JDK]: https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html
+ [Liberica JDK]: https://bell-sw.com/pages/downloads/#jdk-17-lts
