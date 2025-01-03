@@ -1,22 +1,45 @@
 ---
-title: Libraries
-toc: false
+title: Arend Libraries Overview
 ---
 
-A set of Arend source files .ard and/or binary files .arc (compiled .ard files) can be arranged into an _Arend library_.
-A library can be created by creating its header file named arend.yaml in the root directory of the library. The name of
-a library is simply the name of the library's root directory, that is the parent directory of its header file. All other
-information about a library is contained inside the header file and may include or not the following:
+## Introduction
 
-* Language version can be specified by writing `langVersion: VERSION`, where `VERSION` is either a specific version of the language or a range,
-which is written as either `>= VERSION`, `<= VERSION`, or `>= VERSION_1, <= VERSION_2`.
+An **Arend library** is a collection of Arend files and Java code organized in a directory structure to support modular development and reuse.
+Libraries are the fundamental building blocks of the Arend ecosystem, allowing developers to organize their code, manage dependencies, and distribute libraries or projects.
+The Arend standard library, **arend-lib** is the primary library of the Arend ecosystem covering constructive mathematics, homotopy type theory and computer science.
 
-* Directories with library's source, test, and binary files. It can be specified by writing `sourcesDir: PATH`,
-`testsDir: PATH`, and `binariesDir: PATH` for sources, tests, and binaries respectively, where `PATH` is either
-a path relative to the library's root directory or an absolute path.
+## Structure and Components
+An Arend library typically consists of multiple `.ard` files (Arend source files) and optionally `.arc` files (compiled binaries produced by the Arend type checker).
+These files are organized into a directory structure with the following key components:
 
-* The list of names of libraries this library depends on. The list of library's dependencies can be specified by writing
-`dependencies: [NAME_1, ..., NAME_k]`, where `NAME_1`, ... `NAME_k` are names of the libraries.
+- **Root Directory**: Contains the mandatory `arend.yaml` header file, which serves as the library's manifest and configuration file.
+- **Source Directory** (`src`): Houses `.ard` files.
+- **Binaries Directory** (`bin`): Houses `.arc` files.
+- **Extensions Directory** (`ext`): Optionally contains auxiliary Java classes for metas. Metas are the Arend equivalent of tactics in Coq or Lean. The mechanism of language extensions allows any Arend library to define its own metas.
+- **Tests Directory** (`test`): Optionally contains tests for metas introduced by the library.
 
-All libraries should be put in some specific directory.
-The path to this directory can be specified either with command line option `-L` in the console application or in module settings in IntelliJ IDEA.
+## Manifest YAML file
+The `arend.yaml` file provides essential information about the library:
+- **Language Version**: Defined using `langVersion: VERSION`, where `VERSION` specifies a particular version or range (e.g., `>= VERSION`, `<= VERSION`, or `>= VERSION_1, <= VERSION_2`).
+- **Library Version**: Defined using `version: VERSION`.
+- **Content Paths**:
+  - `sourcesDir: PATH` for source files.
+  - `binariesDir: PATH` for binary files.
+  - `extensionsDir: PATH`: for library extensions (optional).
+  - `testsDir: PATH` for test files (optional).
+
+  Paths can be relative to the root directory or absolute.
+- **Extension main class** (optional): A Java class path pointing to the extension's main class implementing the `org.arend.ext.ArendExtension` interface.
+- **Dependencies**: Listed as `dependencies: [NAME_1, ..., NAME_k]`, where `NAME_1, ..., NAME_k` are the names of libraries that the library depends on.
+Notice that while Arend files within a single Arend library can depend on each other, circular dependencies between different Arend libraries are *not* allowed.
+
+## Intellij IDEA modules
+To work with Arend in Intellij IDEA, you must open or create a project containing at least one Arend library.
+The Arend plugin introduces a specialized module type which corresponds precisely to an Arend library, adding the option **Arend** into the **New Module** and **Import Module** standard dialogs of Intellij IDEA.
+The plugin ensures consistency by synchronizing the contents of the `arend.yaml` file with the information stored in the IntelliJ IDEA module settings.
+![Arend module settings window](/assets/images/ArendModuleSettings.png)
+
+## Console Application
+Arend libraries can also be built and typechecked using the console version of Arend, independent of IntelliJ IDEA.
+To be able to use multiple Arend libraries from the console, you must put them into a single directory.
+You then need to specify this directory via: `-L` command-line option in the console Arend application.
