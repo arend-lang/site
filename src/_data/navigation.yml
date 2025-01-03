@@ -17,6 +17,9 @@ about:
 documentation:
   - title: "Getting Started"
     url: getting-started
+    children:
+     - title: "Downloading"
+       url: downloading
   - title: "Language Reference"
     url: language-reference
     children:
