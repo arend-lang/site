@@ -4,7 +4,7 @@ main:
     - title: "Documentation"
       url: /documentation
     - title: "Download"
-      url: /download
+      url: /documentation/getting-started/download
     - title: "Arend Library"
       url: /arend-lib
 
@@ -17,6 +17,13 @@ about:
 documentation:
   - title: "Getting Started"
     url: getting-started
+    children:
+     - title: "Downloading Arend"
+       url: download
+     - title: "Creating first project"
+       url: started
+     - title: "Arend libraries"
+       url: libraries
   - title: "Language Reference"
     url: language-reference
     children:
@@ -101,8 +108,6 @@ documentation:
           url: sets
         - title: "Spaces and Homotopy Theory"
           url: hits
-  - title: "Libraries"
-    url: libraries
   - title: "Standard metas"
     url: standard-tactics
     children:
