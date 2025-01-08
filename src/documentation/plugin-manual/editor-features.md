@@ -73,19 +73,43 @@ This feature relies on the JLatexMath library (a fork of JMathTex), which suppor
 
 ## Current limitations
 
-1. Commutative Diagrams: These are not supported at the moment.
-2. Upper Indices in Formulas: LaTeX expressions with upper indices (e.g., `g^{-1}`) may not be processed correctly due to limitations in the Arend lexer. This issue arises because the lexer misinterprets the subexpression `{-` as the start of a block comment, since it supports nested block comments.
-   * Workaround: Add a space after the opening brace, using `g^{ -1}` instead of `g^{-1}` to render the formula correctly.
-3. Formula Alignment in Quick Documentation: The default Swing browser used by IntelliJ IDEA’s visual components does not support CSS formatting, which can lead to misaligned LaTeX formulas in quick documentation popups.
-   * Workaround: To ensure correct alignment, click the "Open in the alternative browser" link in the popup. This opens the documentation in a more modern HTML browser where LaTeX formulas are displayed properly.
+1. **Commutative Diagrams**: These are not supported at the moment.
+2. **Upper Indices in Formulas**: LaTeX expressions with upper indices (e.g., `g^{-1}`) may not be processed correctly due to limitations in the Arend lexer. This issue arises because the lexer misinterprets the subexpression `{-` as the start of a block comment, since it supports nested block comments.
+   * **Workaround**: Add a space after the opening brace, using `g^{ -1}` instead of `g^{-1}` to render the formula correctly.
+3. **Formula Alignment in Quick Documentation**: The default Swing browser used by IntelliJ IDEA’s visual components does not support CSS formatting, which can lead to misaligned LaTeX formulas in quick documentation popups.
+   * **Workaround**: To ensure correct alignment, click the "Open in the alternative browser" link in the popup. This opens the documentation in a more modern HTML browser where LaTeX formulas are displayed properly.
 
 
 # Parameters Hints
 ![Short video illustrating the usage of Parameter Hints feature](/about//intellij-features/ParameterHints.gif){: style="display: block; margin: 0 auto;" }
+Placing the cursor inside a data type or function call expression and pressing **Ctrl+P** (or **⌘P** on MacOS) activates the **Parameter Hints** feature. 
+This displays a tooltip showing the function or datatype's signature, including expected parameters (both explicit and implicit) along with their types. 
+The tooltip also highlights the parameter corresponding to the argument where the caret is positioned. 
+Moving the caret to a different argument updates the highlighted parameter accordingly. 
+When the caret is moved away from the call expression, the tooltip disappears.
+
+The **Show Parameters** feature requires the target definition to be fully type-checked, as definitions in Arend may include dynamically inferred implicit parameters that are not explicitly listed in their signatures. 
+However, a fallback mechanism is available: it tries to match the arguments of the selected expression to the parameters of the definition, even when the definition has not been type-checked 
+ (e.g., when the typechecker is in **Dumb** mode). 
+ In this case, the tooltip may display “???” in the positions where dynamically inferred implicit parameters might exist according to the language specification (even if no such parameters are actually present in the definition).
 
 # Auto-completion
-
 ![Short video illustrating the operation of code completion](/about/intellij-features/CodeCompletion.gif){: style="display: block; margin: 0 auto;" }
+
+Auto-completion is a feature that helps identify available identifiers in the current scope and to complete partially entered identifiers. 
+Also, it imports definitions from scopes that have not yet been imported. 
+The current scope is determined by the set of active imports, along with surrounding local and global declarations and variables. 
+Auto-completion can always be triggered manually using the **Ctrl+Space** (or **⌘Space** on MacOS) keystroke.
+IntelliJ IDEA will complete the selected identifier when **Enter** or **Tab** is pressed.
+
+There are four types of auto-completion in Arend:
+ - **Identifier completion**: When typing an identifier, IntelliJ IDEA displays all identifiers available in the current context that match the partially typed input. The search implemented by IntelliJ IDEA is fuzzy and supports "hump-back" matching: typing only the capital letters or key parts of a name will match the corresponding definition. For instance, typing `RC` or `id-i` will be sufficient for `RepresentationCategory` or `id-intertwining` to appear in the completion menu.
+ - **Dot completion**: After typing a dot following a namespace identifier IntelliJ IDEA shows a list of identifiers and sub-namespaces within that namespace, allowing the user to insert them after the dot.
+ - **Import completion**: After the `\import` keyword, triggered by **Ctrl+Space** (or **⌘Space** on MacOS) or typing the initial characters of an import statement, IntelliJ IDEA displays all Arend files whose names match the input. Selecting a file from the menu will insert its fully qualified name, separated by dots.
+ - **Identifier completion for unimported definitions**: If the user enters a prefix that does not match any identifier in the current scope, the IDE will search all identifiers in the Arend libraries added to the project (except those explicitly marked with `\private` keyword, which indicates that the definition should be invisible anywhere except the current file). Selecting an item from the completion menu will turn the prefix into a valid reference, automatically adding the necessary imports.
+
+Next to the currently selected identifier in the completion menu, IntelliJ IDEA displays the identifier's signature. Pressing **Ctrl+Q** (or **F1** on MacOS) within the open completion menu provides quick documentation for the selected identifier.
+
 
 # Intention actions and quick fixes
 
