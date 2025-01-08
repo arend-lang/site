@@ -24,6 +24,57 @@ documentation:
        url: started
      - title: "Arend libraries"
        url: libraries
+     - title: "Brief overview"
+       url: overview       
+  - title: "Tutorial"
+    url: tutorial
+    children:
+      - title: "Part I: Dependent Types"
+        url: PartI
+        children:
+        - title: "Basics"
+          url: synndef
+        - title: "Propositions and Proofs"
+          url: propsnproofs
+        - title: "Indexed Data Types"
+          url: datanproofs
+        - title: "Equality"
+          url: idtype
+        - title: "Proofs of Equality"
+          url: equalityex
+        - title: "Classes and Records"
+          url: records
+        - title: "Case Expression"
+          url: case
+        - title: "Universes, Induction, Specifications"
+          url: universes
+      - title: "Part II: Homotopy Type Theory"
+        url: PartII
+        children:
+        - title: "Propositions and Sets"
+          url: hprops
+        - title: "Stratified Universes and Univalence"
+          url: hom-levels
+        - title: "Basic Set Theory"
+          url: sets
+        - title: "Spaces and Homotopy Theory"
+          url: hits      
+  - title: "Standard metas"
+    url: standard-tactics
+    children:
+    - title: Unclassified metas
+      url: meta
+    - title: Paths metas
+      url: paths-meta
+    - title: Functional metas
+      url: function-meta
+    - title: Algebraic metas
+      url: algebra-meta
+    - title: Logical metas
+      url: logic-meta
+    - title: Debugging metas
+      url: debug-meta
+          
   - title: "Language Reference"
     url: language-reference
     children:
@@ -74,52 +125,17 @@ documentation:
         - title: "Box"
           url: box
       - title: "Prelude"
-        url: prelude
-  - title: "Tutorial"
-    url: tutorial
+        url: prelude  
+
+  - title: "Plugin reference"
+    url: plugin-manual
     children:
-      - title: "Part I: Dependent Types"
-        url: PartI
-        children:
-        - title: "Basics"
-          url: synndef
-        - title: "Propositions and Proofs"
-          url: propsnproofs
-        - title: "Indexed Data Types"
-          url: datanproofs
-        - title: "Equality"
-          url: idtype
-        - title: "Proofs of Equality"
-          url: equalityex
-        - title: "Classes and Records"
-          url: records
-        - title: "Case Expression"
-          url: case
-        - title: "Universes, Induction, Specifications"
-          url: universes
-      - title: "Part II: Homotopy Type Theory"
-        url: PartII
-        children:
-        - title: "Propositions and Sets"
-          url: hprops
-        - title: "Stratified Universes and Univalence"
-          url: hom-levels
-        - title: "Basic Set Theory"
-          url: sets
-        - title: "Spaces and Homotopy Theory"
-          url: hits
-  - title: "Standard metas"
-    url: standard-tactics
-    children:
-    - title: Unclassified metas
-      url: meta
-    - title: Paths metas
-      url: paths-meta
-    - title: Functional metas
-      url: function-meta
-    - title: Algebraic metas
-      url: algebra-meta
-    - title: Logical metas
-      url: logic-meta
-    - title: Debugging metas
-      url: debug-meta
+    - title: Added interface elements
+      url: elements
+    - title: Editor features
+      url: editor-features
+    - title: Navigating Arend projects
+      url: navigating
+    - title: Refactoring Arend projects
+      url: refactoring
+  
