@@ -18,7 +18,7 @@ In IntelliJ IDEA, there are three types of issues which are displayed in the **A
  - **Weak Warnings**. An olive-colored wavy underline signifies a minor issue in the code, such as an expression unnecessarily surrounded by extra parentheses.
 Hovering over the code with the wavy underline will display the error content in a pop-up panel. Placing the text cursor on a source line containing the wavy line will also display the full text of the error message in the “Current Error” section of the Arend Messages panel. Errors and warnings are also indicated by corresponding markings on the editor's scroll bar, located on the right-hand side of the file.
 
-The total number of warnings and errors for the current file is also displayed in the top-right corner of the editor. The user can navigate between errors and warnings using keyboard shortcuts: **F2** / **Shift+F2** (or **F2** / **⇧F2** on MacOS) moves to the next (or previous) piece of code with an error or warning relative to the caret's current position.
+The total number of warnings and errors for the current file is also displayed in the top-right corner of the editor. The user can navigate between errors and warnings using keyboard shortcuts: **F2** / **Shift+F2** (or **F2** / **⇧F2** on macOS) moves to the next (or previous) piece of code with an error or warning relative to the caret's current position.
 
 # Arend messages tool window
 The Arend Messages tool window serves as the primary interactive element in Arend, providing essential insight into proof goals, expected types, and error notifications. The user can access this tool window via the quick access button. Like other tool windows in IntelliJ IDEA, the Arend Messages window can be detached from its default position at the bottom and used as a floating toolbar, offering flexibility in how the user interacts with it. It can be repositioned anywhere within the IntelliJ IDEA interface or even disabled, depending on the user's workflow preferences.
@@ -29,7 +29,7 @@ The Arend Messages tool window is organized into three distinct sections, which 
  - **Current Error**: By placing the caret near a highlighted error or selecting one from the Messages Overview, this section displays the relevant error details.
 
 The user can customize how types are displayed in the **Goal’s Printing Options** menu for the **Latest Goal** and **Current Error** sections. For instance, they can choose to enable or disable the printing of implicit arguments in functions or constructors. Additionally, the user can switch on and off the display of class instances in class members, the printing of the full long name prefix of a definition, and also the printing of the universe levels of definitions (including both homotopical levels and the levels of polymorphic universes).
-The links provided in the Latest Goal and Current Error panels are interactive, allowing the user to navigate to the original definition by pressing **Ctrl+B** / **Ctrl+Left Click** (or **⌘B** / **⌘click** on MacOS). The user can also copy content from these sections.
+The links provided in the Latest Goal and Current Error panels are interactive, allowing the user to navigate to the original definition by pressing **Ctrl+B** / **Ctrl+Left Click** (or **⌘B** / **⌘click** on macOS). The user can also copy content from these sections.
 
 # Unicode symbols in Arend code and the mechanism of aliases
 ![Short video illustrating the operation of the mechanism of aliases in Arend](/about/intellij-features/Aliases.gif){: style="display: block; margin: 0 auto;" }
@@ -37,22 +37,22 @@ To enhance code readability, Arend allows the use of Unicode characters from mat
 
 Arend plugin, however, offers a partial solution to the problem of typing special symbols through the mechanism of definition aliases. This mechanism allows the on-the-fly substitution of definition names as they are being typed in Intellij IDEA, so that the user needs to manually enter a Unicode symbol-containing name only once—when defining the alias. 
 
-To use this mechanism for a definition called `defName`, the user needs to add `\alias` aliasName after the definition name. Consider, for example, the Arend’s analogue of exists tactics from Coq or Lean:
+To use this mechanism for a definition called `defName`, the user needs to add `\alias aliasName` after the definition name. Consider, for example, the Arend’s analogue of exists tactics from Coq or Lean:
 {% arend %}
 \meta Exists \alias ∃
 {% endarend %}
 
 
-When the user types the prefix of definition having an alias (e.g. the prefix of the word `Exists`), the IDE will show an auto-completion menu  where the user could choose the item `defName`. If they do so or if the user presses **Ctrl+Space** (or **⌘Space** on MacOS), the IDE will automatically replace the entered prefix with `aliasName` (in this case with the symbol “∃”). 
+When the user types the prefix of definition having an alias (e.g. the prefix of the word `Exists`), the IDE will show an auto-completion menu  where the user could choose the item `defName`. If they do so or if the user presses **Ctrl+Space** (or **⌘Space** on macOS), the IDE will automatically replace the entered prefix with `aliasName` (in this case with the symbol “∃”). 
 
 # Quick documentation, markdown and LaTeX
 ![Short video illustrating the usage of Quick Documentation feature](/about//intellij-features/QuickDocumentation.gif){: style="display: block; margin: 0 auto;" }
 
 When hovering over parts of Arend code in IntelliJ IDEA, the editor displays additional information in a popup panel. Specifically:
-- Identifier Information: Hovering over an identifier triggers a quick documentation popup, showing the identifier's declared type, its documentation, and the file it was imported from. This popup can also be opened using the keyboard shortcut **Ctrl+Q** (or **F1** on MacOS) at the current caret position.
+- Identifier Information: Hovering over an identifier triggers a quick documentation popup, showing the identifier's declared type, its documentation, and the file it was imported from. This popup can also be opened using the keyboard shortcut **Ctrl+Q** (or **F1** on macOS) at the current caret position.
 - Errors, Warnings, and Weak Warnings: Hovering over code underlined with a wavy line reveals the associated error, warning, or informational message.
 
-Pressing **Ctrl+Q** (or **F1** on MacOS) while the quick documentation popup is open will expand it into a dockable panel in the IDE sidebar. This panel will then display the documentation for any identifier the user hovers over or places the caret on.
+Pressing **Ctrl+Q** (or **F1** on macOS) while the quick documentation popup is open will expand it into a dockable panel in the IDE sidebar. This panel will then display the documentation for any identifier the user hovers over or places the caret on.
 
 The documentation for a definition should be written as a line comment or a block comment directly before the definition it refers to. 
 The comment should begin with a space followed by vertical bar symbol ‘|’ after the comment start, as shown in the example:
@@ -93,7 +93,7 @@ This feature relies on the JLatexMath library (a fork of JMathTex), which suppor
 
 # Parameters Hints
 ![Short video illustrating the usage of Parameter Hints feature](/about//intellij-features/ParameterHints.gif){: style="display: block; margin: 0 auto;" }
-Placing the cursor inside a data type or function call expression and pressing **Ctrl+P** (or **⌘P** on MacOS) activates the **Parameter Hints** feature. 
+Placing the cursor inside a data type or function call expression and pressing **Ctrl+P** (or **⌘P** on macOS) activates the **Parameter Hints** feature. 
 This displays a tooltip showing the function or datatype's signature, including expected parameters (both explicit and implicit) along with their types. 
 The tooltip also highlights the parameter corresponding to the argument where the caret is positioned. 
 Moving the caret to a different argument updates the highlighted parameter accordingly. 
@@ -110,39 +110,57 @@ However, a fallback mechanism is available: it tries to match the arguments of t
 Auto-completion is a feature that helps identify available identifiers in the current scope and to complete partially entered identifiers. 
 Also, it imports definitions from scopes that have not yet been imported. 
 The current scope is determined by the set of active imports, along with surrounding local and global declarations and variables. 
-Auto-completion can always be triggered manually using the **Ctrl+Space** (or **⌘Space** on MacOS) keystroke.
+Auto-completion can always be triggered manually using the **Ctrl+Space** (or **⌘Space** on macOS) keystroke.
 IntelliJ IDEA will complete the selected identifier when **Enter** or **Tab** is pressed.
 
 There are four types of auto-completion in Arend:
  - **Identifier completion**: When typing an identifier, IntelliJ IDEA displays all identifiers available in the current context that match the partially typed input. The search implemented by IntelliJ IDEA is fuzzy and supports "hump-back" matching: typing only the capital letters or key parts of a name will match the corresponding definition. For instance, typing `RC` or `id-i` will be sufficient for `RepresentationCategory` or `id-intertwining` to appear in the completion menu.
  - **Dot completion**: After typing a dot following a namespace identifier IntelliJ IDEA shows a list of identifiers and sub-namespaces within that namespace, allowing the user to insert them after the dot.
- - **Import completion**: After the `\import` keyword, triggered by **Ctrl+Space** (or **⌘Space** on MacOS) or typing the initial characters of an import statement, IntelliJ IDEA displays all Arend files whose names match the input. Selecting a file from the menu will insert its fully qualified name, separated by dots.
+ - **Import completion**: After the `\import` keyword, triggered by **Ctrl+Space** (or **⌘Space** on macOS) or typing the initial characters of an import statement, IntelliJ IDEA displays all Arend files whose names match the input. Selecting a file from the menu will insert its fully qualified name, separated by dots.
  - **Identifier completion for unimported definitions**: If the user enters a prefix that does not match any identifier in the current scope, the IDE will search all identifiers in the Arend libraries added to the project (except those explicitly marked with `\private` keyword, which indicates that the definition should be invisible anywhere except the current file). Selecting an item from the completion menu will turn the prefix into a valid reference, automatically adding the necessary imports.
 
-Next to the currently selected identifier in the completion menu, IntelliJ IDEA displays the identifier's signature. Pressing **Ctrl+Q** (or **F1** on MacOS) within the open completion menu provides quick documentation for the selected identifier.
-
+Next to the currently selected identifier in the completion menu, IntelliJ IDEA displays the identifier's signature. Pressing **Ctrl+Q** (or **F1** on macOS) within the open completion menu provides quick documentation for the selected identifier.
 
 # Intention actions and quick fixes
+**Quick Fixes** and **Intention Actions** are standard features in IntelliJ IDEA that provide suggestions for modifying code. When a quick fix or intention action is available at the current cursor position, a light bulb icon appears. The user can click this icon or press **Alt+Enter** (or **⌥Enter** on macOS) to view a list of available actions and apply the suggested changes.
+The main distinction between **Quick Fixes** and **Intention Actions** lies in their purpose. Quick Fixes are specifically aimed at resolving errors detected by the Arend type checker, while Intention Actions offer general improvements or suggestions not directly linked to specific errors. In the **Editor > Intentions** section of the IntelliJ IDEA settings, the user can configure which Arend intention actions are suggested, view examples of each action, and assign keyboard shortcuts.
 
 ## Replace a meta with result
+Replaces a meta with the proof term it generates. Note that the resulting proof terms can be quite large.
 
 ## Replace an expression with weak head normal form
 ![Short video illustrating Arend Normalize intention action](/about//intellij-features/NormalizeExpr.gif){: style="display: block; margin: 0 auto;" }
+Replaces a selected expression with its partially normalized version. Recall that an expression is said to be in WHNF if it is reduced to the point where it can’t be further simplified at the outermost level, but may still contain unevaluated or partially evaluated expressions within it. WHNF is a representation of terms used internally by the Arend type checker. It is used mainly for efficiency, as fully normalizing (reducing to a normal form) can be computationally expensive.
 
 ## Extract code as a function
+Moves a selected part of an expression into a separate function within the same namespace, replacing the original part with a function call. This action also generates the necessary function arguments.
 
 ## Generate function from goal
 ![Short video illustrating Generate Function intention action](/about/intellij-features/GenerateFunction.gif){: style="display: block; margin: 0 auto;" }
+This action can be invoked on an unfilled goal, replacing it with a call to an auxiliary function in the namespace of the current definition or theorem. The function's type will match the goal's type, and its arguments will include the minimal subset of context variables required for the goal.
 
 ## Replace with constructor
+This action fills an unfilled goal with the appropriate constructor. For example, a goal with a `\Pi` type will be filled with a lambda expression, a sigma type with a tuple, and an inductive type with one of its constructors (with a prompt if multiple constructors exist), etc.
 
 ## Implement fields quick fix
 ![Short video illustrating Arend implement missing field quick fix](/about//intellij-features/ImplementMissingFields.gif){: style="display: block; margin: 0 auto;" }
+When applied to an empty `\instance` statement with a specified type class, this quick fix generates a skeleton for implementing the class. It lists all fields inherited from ancestor classes that are not yet implemented or lack a default implementation.
 
 ## Implement clauses quick fix and Split pattern variable intention
 ![Short video illustrating Arend intention actions related with pattern matching](/about//intellij-features/PatternGenerator.gif){: style="display: block; margin: 0 auto;" }
+If an Arend definition or pattern-matching construct is missing some or all of its clauses, the type checker suggests adding them using this quick fix. 
+It works for both `\case`-expressions and definitions given by pattern-matching through the `\elim` or `\with` keywords.
+The **Split Pattern** action can be applied to pattern variables used in pattern-matching clauses. This action performs the following 3 steps:
+- **Type Analysis**: It determines the type of the pattern variable and identifies its associated constructors.
+- **Clause Duplication**: It creates as many copies of the current pattern-matching clause as there are constructors.
+- **Constructor Substitution**: It replaces every instance of the original pattern variable with a call to the respective constructor in each of the newly created clauses.
 
 ## Auto import quick fix
 ![Short video illustrating the Auto Import quick fix](/about//intellij-features/AutoImport.gif){: style="display: block; margin: 0 auto;" }
+If the user click on an unresolved identifier or presses **Ctrl+Space** (or **⌘Space** on macOS), this quick fix searches for definitions with this name among the imported Arend libraries. 
+If multiple matches are found, the user can choose one. 
+Once selected, the quick fix updates the identifier to a valid reference and adds the necessary `\import` directives.
 
+Additionally, several other quick fixes perform simpler tasks, such as removing unnecessary elements or making basic corrections. 
+These include adding a missing argument or class instance to a function call if the type checker can infer it, or fixing import directives in case of errors in the Arend file preamble.
 
