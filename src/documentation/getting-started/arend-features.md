@@ -1,8 +1,5 @@
 ---
-layout: single
 title: Arend Features
-sidebar:
-  nav: "about"
 toc: true
 toc_label: Arend Features
 toc_sticky: true

@@ -20,6 +20,17 @@ Hovering over the code with the wavy underline will display the error content in
 
 The total number of warnings and errors for the current file is also displayed in the top-right corner of the editor. The user can navigate between errors and warnings using keyboard shortcuts: **F2** / **Shift+F2** (or **F2** / **⇧F2** on MacOS) moves to the next (or previous) piece of code with an error or warning relative to the caret's current position.
 
+# Arend messages tool window
+The Arend Messages tool window serves as the primary interactive element in Arend, providing essential insight into proof goals, expected types, and error notifications. The user can access this tool window via the quick access button. Like other tool windows in IntelliJ IDEA, the Arend Messages window can be detached from its default position at the bottom and used as a floating toolbar, offering flexibility in how the user interacts with it. It can be repositioned anywhere within the IntelliJ IDEA interface or even disabled, depending on the user's workflow preferences.
+
+The Arend Messages tool window is organized into three distinct sections, which we will describe in order from left to right.
+ - **Messages Overview**: This section remains visible at all times and lists all messages reported by the type checker. It provides a detailed, categorized overview of errors and warnings, organized by the respective files where they occur.
+ - **Latest Goal**: When the caret is placed near an open goal, this section reveals extended goal context information, including both in-scope variables and the current goal statement.
+ - **Current Error**: By placing the caret near a highlighted error or selecting one from the Messages Overview, this section displays the relevant error details.
+
+The user can customize how types are displayed in the **Goal’s Printing Options** menu for the **Latest Goal** and **Current Error** sections. For instance, they can choose to enable or disable the printing of implicit arguments in functions or constructors. Additionally, the user can switch on and off the display of class instances in class members, the printing of the full long name prefix of a definition, and also the printing of the universe levels of definitions (including both homotopical levels and the levels of polymorphic universes).
+The links provided in the Latest Goal and Current Error panels are interactive, allowing the user to navigate to the original definition by pressing **Ctrl+B** / **Ctrl+Left Click** (or **⌘B** / **⌘click** on MacOS). The user can also copy content from these sections.
+
 # Unicode symbols in Arend code and the mechanism of aliases
 ![Short video illustrating the operation of the mechanism of aliases in Arend](/about/intellij-features/Aliases.gif){: style="display: block; margin: 0 auto;" }
 To enhance code readability, Arend allows the use of Unicode characters from math operator ranges (`2200–22FF` and `2A00–2AFF`) in identifiers of global definitions, such as functions or theorems. However, there is no way to input a special symbol in IntelliJ IDEA without the help of external tools: the user must copy and paste the symbol from the OS-provided “Character Map” app or use another OS-provided mechanism of inputting Unicode characters. 

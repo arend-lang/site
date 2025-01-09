@@ -10,7 +10,7 @@ main:
 
 about:
   - title: "Arend features"
-    url: arend-features
+    url: /documentation/getting-started/arend-features
   - title: "IntelliJ Arend features"
     url: intellij-features
 
@@ -18,6 +18,8 @@ documentation:
   - title: "Getting Started"
     url: getting-started
     children:
+     - title: "Arend features"
+       url: arend-features
      - title: "Downloading Arend"
        url: download
      - title: "Creating first project"
@@ -130,12 +132,10 @@ documentation:
   - title: "Plugin reference"
     url: plugin-manual
     children:
-    - title: Added interface elements
-      url: elements
     - title: Editor features
       url: editor-features
-    - title: Navigating Arend projects
+    - title: Navigation
       url: navigating
-    - title: Refactoring Arend projects
+    - title: Refactoring
       url: refactoring
   
