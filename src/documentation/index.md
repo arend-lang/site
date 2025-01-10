@@ -6,10 +6,10 @@ sidebar:
   nav: "documentation"
 ---
 
-* For the installation instructions, see [Getting Started](/documentation/getting-started/getting-started).
+* For the installation instructions, see [Getting Started](/documentation/getting-started).
 * [Language Reference](/documentation/language-reference) contains a description of the Arend language.
 * [Tutorial](/documentation/tutorial) contains a more gentle introduction to the Arend language.
-* [Libraries](/documentation/libraries) describes how to manage Arend libraries.
+* [Libraries](/documentation/getting-started/libraries) describes how to manage Arend libraries.
 * [Standard Extensions](/documentation/standard-tactics) explains the language extensions
   implemented in the standard library.
 * To learn how to write proofs with IntelliJ Arend IDE, see [Interactive Theorem Proving with IntelliJ Arend](intellij-arend-tutorial). 

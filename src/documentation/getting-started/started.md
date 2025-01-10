@@ -114,7 +114,7 @@ To learn more about Arend, see the [language reference](/documentation/language-
 
 # Standard Library
 
-In case you would also like to use the standard library, download it as described [here](/download#standard-library) (if you are using the IntelliJ plugin, it can be downloaded from the IDE) and add the following line to `arend.yaml`:
+In case you would also like to use the standard library, download it as described [here](/documentation/getting-started/download#standard-library) (if you are using the IntelliJ plugin, it can be downloaded from the IDE) and add the following line to `arend.yaml`:
 ```
 dependencies: [arend-lib]
 ```

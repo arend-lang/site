@@ -45,7 +45,7 @@ The links provided in the Latest Goal and Current Error panels are interactive, 
 # Collapsible code blocks
 Arend plugin enables users to collapse and expand code blocks using gutter icons positioned next to each Arend namespace or definition. By clicking these icons or using the keyboard shortcuts **Ctrl + "+"** / **Ctrl + "-"** (or **⌘ + "+"** / **⌘ + "-"** on macOS), users can toggle the visibility of code blocks in an Arend file. These blocks correspond to the inner contents of Arend classes or the nested namespaces of definitions introduced with the `\where` keyword. Similar to the breadcrumbs bar, collapsible code blocks streamline navigation within an Arend file. Furthermore, all code blocks can be expanded or collapsed simultaneously using **Shift + Ctrl + "+"** / **Shift + Ctrl + "-"** (or **⇧⌘ + "+"** / **⇧⌘ + "-"** on macOS).
 
-# Unicode symbols in Arend code and the mechanism of aliases
+# Unicode symbols and aliases
 ![Short video illustrating the operation of the mechanism of aliases in Arend](/about/intellij-features/Aliases.gif){: style="display: block; margin: 0 auto;" }
 
 To enhance code readability, Arend allows the use of Unicode characters from math operator ranges (`2200–22FF` and `2A00–2AFF`) in identifiers of global definitions, such as functions or theorems. However, there is no way to input a special symbol in IntelliJ IDEA without the help of external tools: the user must copy and paste the symbol from the OS-provided “Character Map” app or use another OS-provided mechanism of inputting Unicode characters. 

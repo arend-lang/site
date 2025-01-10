@@ -328,7 +328,7 @@ On the positive side, this approach simplifies import management and code migrat
 
 On the negative side, it creates a need for Arend’s type checker to track dependencies between individual definitions across different files and to handle potential circular dependencies between them, as these can result in inconsistent theory. 
 In Arend, circular dependencies are only allowed between recursively defined functions, and even then, only if the termination checker can detect that parameters of recursive function calls become “smaller” from one call to another call. 
-The termination checker algorithm largely follows the one outlined in A. Abel’s master’s thesis [FOETUS](https://www.cse.chalmers.se/~abela/foetus.pdf).
+The termination checker algorithm implemented in Arend largely follows the one outlined in A. Abel’s master’s thesis [FOETUS](https://www.cse.chalmers.se/~abela/foetus.pdf).
 
 # Functions, lemmas and goals
 Like in any proof assistant, the process of formal verification of a mathematical fact in Arend involves formulating definitions and proving theorems about them. Mathematical statements in Arend are introduced using either the `\func` or `\lemma` keyword. The `\lemma` keyword does not mean “lemma” in the usual mathematical sense but rather indicates that the value of the marked definition is irrelevant (see e.g. proof irrelevance) and can be discarded after typechecking. Of course, only functions residing in the `Prop` universe, i. e. mere proposition in the sense of HoTT, can be marked as `\lemma`'s. Otherwise, the syntax of the `\func`- and `\lemma`-statements is identical. In practice this means that in Arend mathematical lemmas, propositions, theorems and corollaries are all rendered using keywords `\lemma` or `\func`.

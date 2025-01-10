@@ -10,15 +10,24 @@ feature_row:
     id: "code-completion"
     btn_label: "Open Reference"
     btn_class: "btn--inverse"
-
-  - image_path: /assets/images/FindUsages-460x200.png
-    title: "Find Usages"
-    excerpt: "To find usages of the symbol at the caret, press **Alt+F7**.
-              The usages are classified by the context in which they appear."
-    url: "/documentation/plugin-manual/navigating#find-usages"
-    id: "find-usages"
+    
+  - image_path: /assets/images/Typechecking-460x200.png
+    title: "Background Incremental Typechecking"
+    excerpt: "IntelliJ Arend can typecheck definitions individially.
+              This means that it is enough to rerun the typechecker only on the last modified definition and not the whole file.
+              Also, typechecker is invoked automatically in background."
+    url: "/documentation/plugin-manual/editor-features#incremental-background-type-checking"
+    id: "typechecking"
     btn_label: "Open reference"
     btn_class: "btn--inverse"
+    
+  - image_path: /assets/images/Goals-460x200.png
+    title: "Goals"
+    excerpt: "Custom goal solvers can be used to replace goals with expressions."
+    url: "/about/intellij-features/Goals.gif"
+    id: "goals"
+    btn_label: "Show More"
+    btn_class: "btn--inverse"    
 
   - image_path: /assets/images/QuickDocumentation-460x200.png
     title: "Quick Documentation"
@@ -33,14 +42,6 @@ feature_row:
     excerpt: "Parameter hints is invoked by **Ctrl+P** and shows types of parameters of the definition near the caret."
     url: "/documentation/plugin-manual/editor-features#parameter-hints"
     id: "parameter-hints"
-    btn_label: "Open reference"
-    btn_class: "btn--inverse"
-
-  - image_path: /assets/images/ClassHierarchy-460x200.png
-    title: "Class Hierarchy"
-    excerpt: "Class hierarchy is invoked by **Ctrl+H** and shows subclasses and superclasses of the class at the caret."
-    url: "/documentation/plugin-manual/navigating#class-hierarchy"
-    id: "class-hierarchy"
     btn_label: "Open reference"
     btn_class: "btn--inverse"
 
@@ -82,26 +83,6 @@ feature_row:
     btn_label: "Open reference"
     btn_class: "btn--inverse"
 
-  - image_path: /assets/images/MoveRefactoring-460x200.png
-    title: "Move Refactoring"
-    excerpt: "IntelliJ Arend can move a declaration to another module or file.
-              It automatically fixes all references to this declaration.
-              This refactoring can also move a file to another directory."
-    url: "/documentation/plugin-manual/refactoring#move-refactoring"
-    id: "move-refactoring"
-    btn_label: "Open reference"
-    btn_class: "btn--inverse"
-
-  - image_path: /assets/images/Typechecking-460x200.png
-    title: "Background Incremental Typechecking"
-    excerpt: "IntelliJ Arend can typecheck definitions individially.
-              This means that it is enough to rerun the typechecker only on the last modified definition and not the whole file.
-              Also, typechecker is invoked automatically in background."
-    url: "/documentation/plugin-manual/editor-features#incremental-background-type-checking"
-    id: "typechecking"
-    btn_label: "Open reference"
-    btn_class: "btn--inverse"
-
   - image_path: /assets/images/ShowTypes-460x200.png
     title: "Show Types"
     excerpt: "IntelliJ Arend can show types of (sub)expressions.
@@ -131,17 +112,9 @@ feature_row:
   - image_path: /assets/images/Aliases-460x200.png
     title: "Aliases"
     excerpt: "Definitions are replaced with their aliases during completion."
-    url: "/about/intellij-features/Aliases.gif"
+    url: "/documentation/plugin-manual/editor-features#unicode-symbols-and-aliases"
     id: "aliases"
-    btn_label: "Show More"
-    btn_class: "btn--inverse"
-
-  - image_path: /assets/images/Goals-460x200.png
-    title: "Goals"
-    excerpt: "Custom goal solvers can be used to replace goals with expressions."
-    url: "/about/intellij-features/Goals.gif"
-    id: "goals"
-    btn_label: "Show More"
+    btn_label: "Open reference"
     btn_class: "btn--inverse"
   
   - image_path: /assets/images/RedundantParens-460x200.png
@@ -168,20 +141,21 @@ feature_row:
     btn_label: "Show More"
     btn_class: "btn--inverse"
 
-  - image_path: /assets/images/UnusedImports-460x200.png
-    title: "Unused Imports"
-    excerpt: "IntelliJ Arend detects and suggests to remove import statements that are not used in a module."
-    url: "/about/intellij-features/UnusedImports.gif"
-    id: "unused-imports"
-    btn_label: "Show More"
-    btn_class: "btn--inverse"
-
   - image_path: /assets/images/Revealing-460x200.png
     title: "Incremental Term Inspection"
     excerpt: "IntelliJ Arend allows to incrementally reveal hidden information about the term, which reduces visual noise."
     url: "/about/intellij-features/Reveal.gif"
     id: "revealing"
     btn_label: "Show More"
+    btn_class: "btn--inverse"
+    
+  - image_path: /assets/images/FindUsages-460x200.png
+    title: "Find Usages"
+    excerpt: "To find usages of the symbol at the caret, press **Alt+F7**.
+              The usages are classified by the context in which they appear."
+    url: "/documentation/plugin-manual/navigating#find-usages"
+    id: "find-usages"
+    btn_label: "Open reference"
     btn_class: "btn--inverse"
 
   - image_path: /assets/images/ProofSearch-460x200.png
@@ -192,29 +166,55 @@ feature_row:
     id: "proof-search"
     btn_label: "Open Reference"
     btn_class: "btn--inverse"
-
-  - image_path: /assets/images/Tracer-460x200.png
-    title: "Tracer"
-    excerpt: "Tracer allows to analyze the typechecking process of Arend terms step-by-step."
-    url: "/about/intellij-features/Tracer.mp4"
-    id: "tracer"
-    btn_label: "Show More"
-    btn_class: "btn--inverse"
-
+    
+  - image_path: /assets/images/ClassHierarchy-460x200.png
+    title: "Class Hierarchy"
+    excerpt: "Class hierarchy is invoked by **Ctrl+H** and shows subclasses and superclasses of the class at the caret."
+    url: "/documentation/plugin-manual/navigating#class-hierarchy"
+    id: "class-hierarchy"
+    btn_label: "Open reference"
+    btn_class: "btn--inverse"    
+    
   - image_path: /assets/images/ChangeSignature-460x200.png
     title: "Change signature"
     excerpt: "This refactoring can be used to modify the signature of a definition by adding or deleting parameters and changing their explicitness and types.
               It can be invoked by pressing **Ctrl+F6**."
-    url: "/about/intellij-features/ChangeSignature.gif"
+    url: "/documentation/plugin-manual/refactoring#change-signature-refactoring"
     id: "change-signature"
-    btn_label: "Show More"
+    btn_label: "Open reference"
     btn_class: "btn--inverse"
+       
+  - image_path: /assets/images/MoveRefactoring-460x200.png
+    title: "Move Refactoring"
+    excerpt: "IntelliJ Arend can move a declaration to another module or file.
+              It automatically fixes all references to this declaration.
+              This refactoring can also move a file to another directory."
+    url: "/documentation/plugin-manual/refactoring#move-refactoring"
+    id: "move-refactoring"
+    btn_label: "Open reference"
+    btn_class: "btn--inverse"
+    
+  - image_path: /assets/images/UnusedImports-460x200.png
+    title: "Unused Imports"
+    excerpt: "IntelliJ Arend detects and suggests to remove import statements that are not used in a module."
+    url: "/documentation/plugin-manual/refactoring#optimize-imports"
+    id: "unused-imports"
+    btn_label: "Open reference"
+    btn_class: "btn--inverse"    
 
   - image_path: /assets/images/LatexDoc-460x200.png
     title: "Latex documentation"
     excerpt: "Documentation may contain latex commands which are rendered in the documentation preview."
     url: "/about/intellij-features/LatexDoc.png"
     id: "latex-doc"
+    btn_label: "Show More"
+    btn_class: "btn--inverse"
+    
+  - image_path: /assets/images/Tracer-460x200.png
+    title: "Tracer"
+    excerpt: "Tracer allows to analyze the typechecking process of Arend terms step-by-step."
+    url: "/about/intellij-features/Tracer.mp4"
+    id: "tracer"
     btn_label: "Show More"
     btn_class: "btn--inverse"
 
