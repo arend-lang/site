@@ -6,16 +6,27 @@ When the user opens an Arend file located within a correctly configured Arend mo
 # Code and usages highlighting
 By default, the Arend IntelliJ IDEA plugin provides syntax highlighting for comments, built-in keywords, infix operators, string and number literals, as well as for the usages of metas and patterns in pattern-matching clauses. When the text cursor is placed on an identifier, all occurrences of that identifier in the current file are highlighted. If the identifier corresponds to a definition with an alias, all occurrences of the alias will also be highlighted.
 
-# Collapsible code blocks
-Arend plugin enables users to collapse and expand code blocks using gutter icons positioned next to each Arend namespace or definition. By clicking these icons or using the keyboard shortcuts **Ctrl + "+"** / **Ctrl + "-"** (or **⌘ + "+"** / **⌘ + "-"** on macOS), users can toggle the visibility of code blocks in an Arend file. These blocks correspond to the inner contents of Arend classes or the nested namespaces of definitions introduced with the `\where` keyword. Similar to the breadcrumbs bar, collapsible code blocks streamline navigation within an Arend file. Furthermore, all code blocks can be expanded or collapsed simultaneously using **Shift + Ctrl + "+"** / **Shift + Ctrl + "-"** (or **⇧⌘ + "+"** / **⇧⌘ + "-"** on macOS).
+# Incremental background type checking
+![Short video showing the operation of the background type checker](/about//intellij-features/Typechecking.gif){: style="display: block; margin: 0 auto;" }
+
+Under normal circumstances the Arend plugin uses the so-called "on-the-fly" (or smart) mode of type checking. In this mode, the type checker operates in a background thread, automatically reprocessing each code modification made by the user. Running the type checker in the background prevents the IDE from freezing during the process. Since the type checking can be time-consuming and may involve extensive computations, a special mechanism halts the process if it exceeds the user-defined time limit (defaulted to 5 seconds). Additionally, there is an option to disable on-the-fly inspection entirely, switching the IDE into "dumb mode." In this mode, the IDE still resolves identifiers on the fly but does not automatically perform type checking which can still be manually run via IntelliJ IDEA’s standard mechanism of run configurations.
+
+![Arend type checking settings pane](/assets/images/ArendTypecheckingMode.png){: style="display: block; margin: 0 auto;" }
+
+When a user modifies one or more definitions, the type checker selectively discards cached information related to those definitions, as well as any other definitions that depend on them, either directly or through a chain of dependencies. This ensures that unaffected parts of the code are not reprocessed, significantly speeding up the type-checking process and helping to conserve laptop battery life.
+
+
+# Dependency analysis
+The mechanism of dependency analysis in Arend ensures that type checking is performed not on a per-file basis, but for each definition individually. The outcome of type checking is displayed in the editor using IntelliJ IDEA's Gutter Icons — a set of small icons positioned on the left side of the code. When a definition or theorem is fully correct and has no unresolved goals, this fact is indicated by a green "pass" gutter icon. If a definition or theorem contains syntax or type errors, a red "error" or yellow “warning” icon appears in the gutter. The latter happens when e.g. no type-checking errors are found, but a theorem still has an unresolved goal.
 
 # Errors, warnings and weak warnings
-To display errors in Arend files, a dedicated panel called the **Arend Messages View** is provided. This panel automatically appears after the type checker is run. 
-It is divided into three sections: a list box which shows all errors found in the current file, the “Current Error” message window, and the “Latest goal” window, where the closest unresolved goal to the cursor is displayed.
-In IntelliJ IDEA, there are three types of issues which are displayed in the **Arend Messages View** and simultaneously are indicated in Arend files using wavy underline highlighting beneath the affected code:
+To display errors in Arend files, a dedicated panel called the [**Arend messages tool window**](#arend-messages-tool-window) is provided. This panel automatically appears after the type checker is run. 
+
+In IntelliJ IDEA, there are three types of issues which are displayed in the [**Arend messages tool window**](#arend-messages-tool-window) and simultaneously are indicated in Arend files using wavy underline highlighting beneath the affected code:
  - **Errors**. A red wavy underline indicates an error encountered during the processing of a definition. For example, syntax errors and type errors are marked with this highlighting.
  - **Warnings**. An orange wavy underline highlights a potential issue in the . For instance, unused variables or unresolved goals are marked with orange wavy lines.
  - **Weak Warnings**. An olive-colored wavy underline signifies a minor issue in the code, such as an expression unnecessarily surrounded by extra parentheses.
+
 Hovering over the code with the wavy underline will display the error content in a pop-up panel. Placing the text cursor on a source line containing the wavy line will also display the full text of the error message in the “Current Error” section of the Arend Messages panel. Errors and warnings are also indicated by corresponding markings on the editor's scroll bar, located on the right-hand side of the file.
 
 The total number of warnings and errors for the current file is also displayed in the top-right corner of the editor. The user can navigate between errors and warnings using keyboard shortcuts: **F2** / **Shift+F2** (or **F2** / **⇧F2** on macOS) moves to the next (or previous) piece of code with an error or warning relative to the caret's current position.
@@ -31,8 +42,12 @@ The Arend Messages tool window is organized into three distinct sections, which 
 The user can customize how types are displayed in the **Goal’s Printing Options** menu for the **Latest Goal** and **Current Error** sections. For instance, they can choose to enable or disable the printing of implicit arguments in functions or constructors. Additionally, the user can switch on and off the display of class instances in class members, the printing of the full long name prefix of a definition, and also the printing of the universe levels of definitions (including both homotopical levels and the levels of polymorphic universes).
 The links provided in the Latest Goal and Current Error panels are interactive, allowing the user to navigate to the original definition by pressing **Ctrl+B** / **Ctrl+Left Click** (or **⌘B** / **⌘click** on macOS). The user can also copy content from these sections.
 
+# Collapsible code blocks
+Arend plugin enables users to collapse and expand code blocks using gutter icons positioned next to each Arend namespace or definition. By clicking these icons or using the keyboard shortcuts **Ctrl + "+"** / **Ctrl + "-"** (or **⌘ + "+"** / **⌘ + "-"** on macOS), users can toggle the visibility of code blocks in an Arend file. These blocks correspond to the inner contents of Arend classes or the nested namespaces of definitions introduced with the `\where` keyword. Similar to the breadcrumbs bar, collapsible code blocks streamline navigation within an Arend file. Furthermore, all code blocks can be expanded or collapsed simultaneously using **Shift + Ctrl + "+"** / **Shift + Ctrl + "-"** (or **⇧⌘ + "+"** / **⇧⌘ + "-"** on macOS).
+
 # Unicode symbols in Arend code and the mechanism of aliases
 ![Short video illustrating the operation of the mechanism of aliases in Arend](/about/intellij-features/Aliases.gif){: style="display: block; margin: 0 auto;" }
+
 To enhance code readability, Arend allows the use of Unicode characters from math operator ranges (`2200–22FF` and `2A00–2AFF`) in identifiers of global definitions, such as functions or theorems. However, there is no way to input a special symbol in IntelliJ IDEA without the help of external tools: the user must copy and paste the symbol from the OS-provided “Character Map” app or use another OS-provided mechanism of inputting Unicode characters. 
 
 Arend plugin, however, offers a partial solution to the problem of typing special symbols through the mechanism of definition aliases. This mechanism allows the on-the-fly substitution of definition names as they are being typed in Intellij IDEA, so that the user needs to manually enter a Unicode symbol-containing name only once—when defining the alias. 
@@ -45,12 +60,12 @@ To use this mechanism for a definition called `defName`, the user needs to add `
 
 When the user types the prefix of definition having an alias (e.g. the prefix of the word `Exists`), the IDE will show an auto-completion menu  where the user could choose the item `defName`. If they do so or if the user presses **Ctrl+Space** (or **⌘Space** on macOS), the IDE will automatically replace the entered prefix with `aliasName` (in this case with the symbol “∃”). 
 
-# Quick documentation, markdown and LaTeX
+# Quick documentation
 ![Short video illustrating the usage of Quick Documentation feature](/about//intellij-features/QuickDocumentation.gif){: style="display: block; margin: 0 auto;" }
 
 When hovering over parts of Arend code in IntelliJ IDEA, the editor displays additional information in a popup panel. Specifically:
-- Identifier Information: Hovering over an identifier triggers a quick documentation popup, showing the identifier's declared type, its documentation, and the file it was imported from. This popup can also be opened using the keyboard shortcut **Ctrl+Q** (or **F1** on macOS) at the current caret position.
-- Errors, Warnings, and Weak Warnings: Hovering over code underlined with a wavy line reveals the associated error, warning, or informational message.
+- **Identifier Information**: Hovering over an identifier triggers a quick documentation popup, showing the identifier's declared type, its documentation, and the file it was imported from. This popup can also be opened using the keyboard shortcut **Ctrl+Q** (or **F1** on macOS) at the current caret position.
+- **Errors, Warnings, and Weak Warnings**: Hovering over code underlined with a wavy line reveals the associated error, warning, or informational message.
 
 Pressing **Ctrl+Q** (or **F1** on macOS) while the quick documentation popup is open will expand it into a dockable panel in the IDE sidebar. This panel will then display the documentation for any identifier the user hovers over or places the caret on.
 
@@ -91,8 +106,9 @@ This feature relies on the JLatexMath library (a fork of JMathTex), which suppor
    * **Workaround**: To ensure correct alignment, click the "Open in the alternative browser" link in the popup. This opens the documentation in a more modern HTML browser where LaTeX formulas are displayed properly.
 
 
-# Parameters Hints
+# Parameter Hints
 ![Short video illustrating the usage of Parameter Hints feature](/about//intellij-features/ParameterHints.gif){: style="display: block; margin: 0 auto;" }
+
 Placing the cursor inside a data type or function call expression and pressing **Ctrl+P** (or **⌘P** on macOS) activates the **Parameter Hints** feature. 
 This displays a tooltip showing the function or datatype's signature, including expected parameters (both explicit and implicit) along with their types. 
 The tooltip also highlights the parameter corresponding to the argument where the caret is positioned. 
@@ -137,6 +153,7 @@ Moves a selected part of an expression into a separate function within the same 
 
 ## Generate function from goal
 ![Short video illustrating Generate Function intention action](/about/intellij-features/GenerateFunction.gif){: style="display: block; margin: 0 auto;" }
+
 This action can be invoked on an unfilled goal, replacing it with a call to an auxiliary function in the namespace of the current definition or theorem. The function's type will match the goal's type, and its arguments will include the minimal subset of context variables required for the goal.
 
 ## Replace with constructor
@@ -144,19 +161,23 @@ This action fills an unfilled goal with the appropriate constructor. For example
 
 ## Implement fields quick fix
 ![Short video illustrating Arend implement missing field quick fix](/about//intellij-features/ImplementMissingFields.gif){: style="display: block; margin: 0 auto;" }
+
 When applied to an empty `\instance` statement with a specified type class, this quick fix generates a skeleton for implementing the class. It lists all fields inherited from ancestor classes that are not yet implemented or lack a default implementation.
 
-## Implement clauses quick fix and Split pattern variable intention
+## Pattern generators
 ![Short video illustrating Arend intention actions related with pattern matching](/about//intellij-features/PatternGenerator.gif){: style="display: block; margin: 0 auto;" }
-If an Arend definition or pattern-matching construct is missing some or all of its clauses, the type checker suggests adding them using this quick fix. 
-It works for both `\case`-expressions and definitions given by pattern-matching through the `\elim` or `\with` keywords.
-The **Split Pattern** action can be applied to pattern variables used in pattern-matching clauses. This action performs the following 3 steps:
-- **Type Analysis**: It determines the type of the pattern variable and identifies its associated constructors.
+
+If an Arend definition or pattern-matching construct is missing some or all of its clauses, the type checker suggests adding them using the **Implement missing clauses** quick fix. 
+This quick fix works for both `\case`-expressions and definitions given by pattern-matching through the `\elim` or `\with` keywords.
+
+In addition, the **Split Pattern** action can be applied to pattern variables used in pattern-matching clauses. This action performs the following 3 things:
+- **Type Analysis**: It determines the type of the pattern variable upon which it is invoked and identifies its associated constructors.
 - **Clause Duplication**: It creates as many copies of the current pattern-matching clause as there are constructors.
 - **Constructor Substitution**: It replaces every instance of the original pattern variable with a call to the respective constructor in each of the newly created clauses.
 
 ## Auto import quick fix
 ![Short video illustrating the Auto Import quick fix](/about//intellij-features/AutoImport.gif){: style="display: block; margin: 0 auto;" }
+
 If the user click on an unresolved identifier or presses **Ctrl+Space** (or **⌘Space** on macOS), this quick fix searches for definitions with this name among the imported Arend libraries. 
 If multiple matches are found, the user can choose one. 
 Once selected, the quick fix updates the identifier to a valid reference and adds the necessary `\import` directives.

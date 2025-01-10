@@ -316,6 +316,24 @@ A language extension is a Java class which is invoked during type-checking.
 This can be used to implement custom operations on the abstract syntax tree which are not supported by the language.
 They can also be used to implement various decision procedures for proof automation.
 
-The analogical feature is `macro` in Agda, elaboration reflection in Idris, and `Ltac` in Coq.
+The analogous feature is `macro` in Agda, elaboration reflection in Idris, and `Ltac` in Coq.
 
-To do this, you'll need [Arend API](https://github.com/JetBrains/Arend/releases/latest/download/Arend-api.jar) (you can also download its [sources](https://github.com/JetBrains/Arend/releases/latest/download/Arend-api-sources.jar)).
+To do this, you will need [Arend API](https://github.com/JetBrains/Arend/releases/latest/download/Arend-api.jar) (you can also download its [sources](https://github.com/JetBrains/Arend/releases/latest/download/Arend-api-sources.jar)).
+
+# Scoping
+Arend files can depend on other Arend files, and Arend also allows circular dependencies within a single Arend library (aka Intellij IDEA module of type “Arend”). 
+Furthermore, the scope of any Arend definition or theorem is not restricted to the text that follows it, but rather extends throughout the entire enclosing scope. 
+For instance, the scope of a top-level definition spans the entire Arend file to which it belongs. This behavior is similar to the scoping mechanisms found in many general-purpose programming languages and contrasts with typical proof assistants like Coq or Mizar. 
+On the positive side, this approach simplifies import management and code migration for the user. 
+
+On the negative side, it creates a need for Arend’s type checker to track dependencies between individual definitions across different files and to handle potential circular dependencies between them, as these can result in inconsistent theory. 
+In Arend, circular dependencies are only allowed between recursively defined functions, and even then, only if the termination checker can detect that parameters of recursive function calls become “smaller” from one call to another call. 
+The termination checker algorithm largely follows the one outlined in A. Abel’s master’s thesis [FOETUS](https://www.cse.chalmers.se/~abela/foetus.pdf).
+
+# Functions, lemmas and goals
+Like in any proof assistant, the process of formal verification of a mathematical fact in Arend involves formulating definitions and proving theorems about them. Mathematical statements in Arend are introduced using either the `\func` or `\lemma` keyword. The `\lemma` keyword does not mean “lemma” in the usual mathematical sense but rather indicates that the value of the marked definition is irrelevant (see e.g. proof irrelevance) and can be discarded after typechecking. Of course, only functions residing in the `Prop` universe, i. e. mere proposition in the sense of HoTT, can be marked as `\lemma`'s. Otherwise, the syntax of the `\func`- and `\lemma`-statements is identical. In practice this means that in Arend mathematical lemmas, propositions, theorems and corollaries are all rendered using keywords `\lemma` or `\func`.
+
+Like any other definition in Arend, `\lemma` or `\func` can be defined using pattern matching (with the `\elim` or `\with` keywords) or by specifying a proof term after the `=>` symbol. If a proof is incomplete or omitted, the placeholder `{?}`, commonly called an "unresolved goal", can be used to indicate this. The term "goal" refers to a part of a statement that still needs to be verified or, in terms of the Propositions-as-Types correspondence, the type of the expression that the user still needs to construct.
+
+In Arend, proof terms do not need to be fully detailed. Users can take advantage of the "inference of implicit arguments" mechanism, which allows them to omit some arguments in expressions (more concretely, the ones that can be inferred via the “inference of implicit arguments mechanism” built into the Arend type checker). Additionally, users can employ metas such as rewrite to construct particularly complicated parts of expressions. Metas should be seen as "expression-level tactics", meaning they can be seamlessly interwoven with standard Arend term constructs. In other words, unlike Coq, Arend does not have separate “proof” and “term” levels – everything (including proofs) in Arend happens on the “term” level.
+

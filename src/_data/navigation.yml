@@ -25,9 +25,9 @@ documentation:
      - title: "Creating first project"
        url: started
      - title: "Arend libraries"
-       url: libraries
-     - title: "Brief overview"
-       url: overview       
+       url: libraries     
+     - title: Short tutorial
+       url: intellij-arend-tutorial
   - title: "Tutorial"
     url: tutorial
     children:

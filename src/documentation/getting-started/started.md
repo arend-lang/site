@@ -1,11 +1,8 @@
 ---
-title: Getting Started
+title: Creating first project
 nav: started
 ---
-
-# IntelliJ Arend
-
-Let's create our first Arend project.
+In this section we briefly describe the creation of new Arend projects.
 
 * Run Intellij IDEA and choose either **Create New Project** if you are on a _Welcome screen_ or **File \| New \| Project** from the main menu if a project is open.
 * Choose **Arend** in the list on the left. If you want to use external libraries, for example, the standard library,
@@ -18,7 +15,7 @@ The standard library **arend-lib** is always available; it will be downloaded if
 You should get a new project which contains (among other files) a file `arend.yaml` and an empty source directory
 (`src` by default).
 The yaml file contains a description of the project.
-You can read more about this configuration file [here](libraries).
+You can read more about this configuration file [here](libraries#manifest-yaml-file).
 
 Now, let us write some code.
 Create a new file `Example.ard` in the source directory.
@@ -121,4 +118,4 @@ In case you would also like to use the standard library, download it as describe
 ```
 dependencies: [arend-lib]
 ```
-You can read more about this configuration file [here](libraries).
+You can read more about this configuration file [here](/documentation/getting-started/libraries#manifest-yaml-file).

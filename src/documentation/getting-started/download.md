@@ -25,7 +25,7 @@ To install it, follow the instructions below.
 * Another way to get the latest version of the plugin is by following instructions on [GitHub](https://github.com/JetBrains/intellij-arend/blob/master/README.md).
 
 You can read more about IntelliJ IDEA [here](https://www.jetbrains.com/help/idea/discover-intellij-idea.html).
-To create an Arend project, follow instructions [here](/documentation/getting-started#intellij-arend).
+To create an Arend project, follow instructions [here](/documentation/getting-started/started).
 
 ## Console Application
 
@@ -44,7 +44,7 @@ Nothing to load
 
 To see command line options, run `java -jar Arend.jar --help`.
 
-To create an Arend project, follow instructions [here](/documentation/getting-started#console-application).
+To create an Arend project, follow instructions [here](/documentation/getting-started/started).
 
 ## Standard Library
 

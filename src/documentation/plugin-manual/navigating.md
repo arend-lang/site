@@ -1,5 +1,5 @@
 ---
-title: Navigating Arend projects
+title: Navigation
 ---
 
 # Go to declaration
@@ -67,10 +67,10 @@ On the other hand, the following definitions can be found using the search patte
 \func bar (a b : Int) : a + b = b + a
 {% endarend %}
 
-The user can navigate search results using arrow keys and perform the following actions in the Proof Search Window:
-View Definition: Pressing Enter will display the definition of a selected result.
-Navigate to Location: Pressing **F4** will navigate the editor to the location of a selected definition.
-Insert in Editor: Pressing **Ctrl+Enter** (or **⌘Enter** on macOS) will insert the name selected definition into the editor.
+The user can navigate search results using arrow keys and perform the following actions in the **Proof Search** window:
+- **View Definition**: Pressing **Enter** will display the definition of a selected result.
+- **Navigate to Location**: Pressing **F4** will navigate the editor to the location of a selected definition.
+- **Insert in Editor**: Pressing **Ctrl+Enter** (or **⌘Enter** on macOS) will insert the name selected definition into the editor.
 
 ## The grammar of queries
 The grammar of **Proof Search** queries is defined as follows:
