@@ -48,7 +48,10 @@ To create an Arend project, follow instructions [here](/documentation/getting-st
 
 ## Standard Library
 
-The standard library contains a number of essential definitions and proofs, in particular, in constructive algebra and homotopy theory.
-It can be downloaded from [GitHub](https://github.com/JetBrains/arend-lib/releases/latest/download/arend-lib.zip) (if you are using the IntelliJ plugin, it can be downloaded from the IDE).
-This file should be put in some specific directory `libs` in which all Arend libraries are stored.
+The standard library `arend-lib` contains a number of essential definitions and proofs, in particular, in constructive algebra and homotopy theory.
+It can be downloaded from [GitHub](https://github.com/JetBrains/arend-lib/releases/latest/download/arend-lib.zip) 
+The downloaded file should be put in the `libs` directory in which all Arend libraries are stored (by default, this is `$HOME/.arend/libs`, where `$HOME` is the home folder.
+
+If you are using the IntelliJ plugin `arend-lib` will be downloaded automatically by the IDE once you add `arend-lib` as a dependency library in the **Module Settings** window.
+
 The path to `libs` can be specified either with command line option `-L` in the console application or in module settings in IntelliJ IDEA.
