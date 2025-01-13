@@ -1,7 +1,7 @@
 {% if include.id %}
-  {% assign feature_row = page[include.id] %}
+  {% assign feature_row = site.data[include.id] %}
 {% else %}
-  {% assign feature_row = page.feature_row %}
+  {% assign feature_row = site.data.features %}
 {% endif %}
 
 <div class="feature__wrapper">

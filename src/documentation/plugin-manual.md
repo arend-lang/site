@@ -1,8 +1,11 @@
 ---
 title: Arend plugin manual
+toc: false
 ---
 
-Poo, oi.
+{% include feature_row.html id="features" %}
+
+
 
 
        
