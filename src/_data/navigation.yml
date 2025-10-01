@@ -127,7 +127,9 @@ documentation:
         - title: "Box"
           url: box
       - title: "Prelude"
-        url: prelude  
+        url: prelude
+      - title: "Termination checker"
+        url: term-checker
 
   - title: "Plugin reference"
     url: plugin-manual
