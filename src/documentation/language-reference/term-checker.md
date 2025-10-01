@@ -10,7 +10,7 @@ The need for termination checking in Arend stems from two main problems:
 2. Any system based on dependent type theory would become inconsistent if it allowed nonterminating functions like
 
 {% arend %}
-   \func foo : Nat => foo zero
+   \func foo : Nat => suc foo
 {% endarend %}
 
    If such a function were permitted, one could derive `False` (for example, deducing it from `suc (foo) = foo`). 
