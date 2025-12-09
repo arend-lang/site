@@ -15,7 +15,10 @@ The need for termination checking in Arend stems from two main problems:
 
    If such a function were permitted, one could derive `False` (for example, deducing it from `suc (foo) = foo`). 
 
-The version of the termination checker used in Arend is heavily inspired by the **FOETUS** termination checker described by A. Abel in his [master’s thesis](https://arxiv.org/abs/2407.06924) (with some enhancements and optimizations).
+   The Arend termination checker relies on the following two sufficient criteria for termination:
+
+ - the existence of a **termination order** in the style of Abels' FOETUS, see [this paper](https://arxiv.org/abs/2407.06924);
+ - the **size-change termination principle** of Lee, Jones, and Ben-Amram, see [this paper](https://doi.org/10.1145/360204.360210).
 
 This page outlines the main steps of Arend’s termination checking algorithm and is intended as a guide for users who encounter termination issues in their Arend code.
 
@@ -31,7 +34,7 @@ Since Arend does not allow coinductive or nested inductive types, recursion in f
   - **vertices** correspond to functions/theorems,
   - **edges** correspond to calls. 
     (If function `f` calls function `g` twice in its implementation, then 2 separate edges are constructed.)
-- Every **strongly connected component** of this graph then is analyzed on the next stage of the termination checking algorithm.
+- Every **strongly connected component** (SCC) of this graph then is analyzed on the next stage of the termination checking algorithm.
 
 In particular, if a function/theorem is defined recursively and does not rely on mutual recursion, the resulting graph has only one vertex, and the number of loops on that vertex is the number of different recursive calls inside its body.
 
@@ -39,7 +42,7 @@ In particular, if a function/theorem is defined recursively and does not rely on
 
 ## 2. Preparation of Call Matrices
 Once a graph of recursion is found, the next step is to analyze how the arguments evolve in recursive calls. 
-This is encoded in **call matrices**, a key concept borrowed from Abel’s FOETUS framework.
+This information is encoded by means of **call matrices**.
 
 ### The set of comparison results
 
@@ -51,7 +54,7 @@ Denote by R the set {"**?**", "**=**", "**<**"}. This set encodes possible compa
 
 ### Call matrices in Arend’s termination checker
 
-After a strongly connected directed graph of calls is constructed, the Arend typechecker assigns a call matrix to each call (i.e. each edge of the graph).
+After a strongly connected directed graph of calls is constructed, the termination checker assigns a call matrix to each call (i.e. each edge of the graph).
 
 The algorithm responsible for this is run during the **type checking** phase. 
 During this phase it makes no distinction between explicit and implicit parameters: all function arguments are already inferred, and expressions are normalized with implicit parameters filled in.
@@ -61,44 +64,128 @@ For clarity, we assume that all parameters and arguments of functions are explic
 Let:
 
 - *f* have parameters x<sub>1</sub>, ..., x<sub>n</sub>, 
+
 - *g* have parameters y<sub>1</sub>, ..., y<sub>m</sub>.
 
-Suppose that, after normalization and deduction of implicit arguments, the body of *f* contains a call *G = g z<sub>1</sub> ... z<sub>s</sub>*, where each *z*<sub>*j*</sub> is an expression referring to parameters *x*<sub>*1*</sub>, ..., *x*<sub>*n*</sub> and pattern variables introduced by eliminating *x*<sub>*i*</sub>.
-
+Suppose that, after normalization and deduction of implicit arguments, the body of *f* contains a call *G = g z<sub>1</sub> ... z<sub>s</sub>*, 
+ where each *z*<sub>*j*</sub> is an expression referring to parameters *x*<sub>*1*</sub>, ..., *x*<sub>*n*</sub> and pattern variables introduced by eliminating *x*<sub>*i*</sub>.
 To this call we associate a call matrix *C = C(G)* of dimension *n × m*:
 
 - **Rows** correspond to parameters of the caller *f* (*n* rows). 
+
 - **Columns** correspond to parameters of the callee *g* (*m* columns). 
 
-The entry *C*<sub>*ij*</sub> in row *i*, column *j* describes how the caller’s parameter *x*<sub>*i*</sub> relates to the argument *z*<sub>*j*</sub> (which is the argument for the callee’s parameter *y*<sub>*j*</sub>).
+Each matrix entry *C*<sub>*ij*</sub> belongs to *R*.
+Conceptually, it expresses how the argument *z*<sub>*j*</sub> relates to the caller’s parameter *x*<sub>*i*</sub>.
+
+To begin, each parameter *x*<sub>1</sub>, …, *x*<sub>*n*</sub> of *f* is assigned a **pattern** *P*<sub>*i*</sub>.
+This pattern represents the form of the parameter *x*<sub>*i*</sub> in the current elimination clause of *f*.
+If the call *G* appears outside any elimination clause, then *P*<sub>*i*</sub> is simply the variable pattern *x*<sub>*i*</sub>.
+
+The termination checker tracks variable elimination **only** inside function bodies defined with `\elim` or `\with`.
+These elimination constructs may occur only at the **top level** of a function or theorem definition.
+As a result, nested elimination blocks do not arise, and the patterns *P*<sub>*i*</sub> never need to be computed by repeated pattern substitution.
+
+The exact value of *C*<sub>*ij*</sub> now computed from *P*<sub>*i*</sub> and *z*<sub>*j*</sub> according to the set of rules described below.
+
+First of all, if the *j*-th parameter of *g* is not supplied (i.e. *j > s*), then set *C*<sub>*ij*</sub> = "**?**". 
+
+In what follows assume *j ≤ s*.
+
+If the pattern for *x*<sub>*i*</sub> is a variable (i.e. *P*<sub>*i*</sub> is just *x*<sub>*i*</sub>), then 
+*C*<sub>*ij*</sub> = "**=**" if *z*<sub>*j*</sub> is exactly a reference to *x*<sub>*i*</sub>, otherwise, *C*<sub>*ij*</sub> = "**?**".
+
+Now suppose *P*<sub>*i*</sub>= c *q*<sub>*1*</sub>, ... *q*<sub>*k*</sub> is a constructor pattern of some data type *D* with subpatterns *q*<sub>*r*</sub>.
 
 ---
 
-### Computing entries
+#### Exact match
 
-The value of each matrix entry *C*<sub>*ij*</sub> is one of "**<**", "**=**", or "**?**".
-It is computed according to the following list of rules:
+First, the checker attempts to match the argument *z*<sub>*j*</sub> directly against the whole constructor pattern *P*<sub>*i*</sub>:
 
-1. **Missing argument**: If the *j*-th parameter of *g* is not supplied (i.e. *j > s*), then *C*<sub>*ij*</sub> = "**?**".
+- If *z*<sub>*j*</sub> is a call to the same constructor *c* and all its arguments match the subpatterns
+  *q*<sub>*1*</sub>, ..., *q*<sub>*k*</sub> (recursively using the same rules), then *C*<sub>*ij*</sub> = "**=**".
 
-2. **Direct identity**: If *z*<sub>*j*</sub> is a reference to a variable *x*<sub>*i*</sub>, then *C*<sub>*ij*</sub> = "**=**".
-
-3. **Eliminated variable**: If *z*<sub>*j*</sub> is a reference to a pattern variable obtained from *x*<sub>*i*</sub> by elimination in a `\elim` or `\with` statement, then 
-   *C*<sub>*ij*</sub> = "**<**".
-
-4. **Application**: If *z*<sub>*j*</sub> is an application expression `a b`, compute *C*<sub>*ij*</sub> as if *z*<sub>*j*</sub> were just `a`. (Intuitively, applying an argument never makes the term “larger,” so only the head matters.)
-
-5. **Projection or field accessor**: If *z*<sub>*j*</sub> is a sigma projection `a.1`, `a.2` or a field accessor `a.foo`, compute *C*<sub>*ij*</sub> as if *z*<sub>*j*</sub> were just `a`.
-
-6. **At-expression**: If *z*<sub>*j*</sub> = `p @ a`, compute *C*<sub>*ij*</sub> as if *z*<sub>*j*</sub> were just `a`.
-
-7. **Otherwise**: If none of the above apply then 
-   *C*<sub>*ij*</sub> = "**?**".
+More precisely, if the list of constructor arguments of *z*<sub>*j*</sub> matches the list of subpatterns, and
+all component comparisons return "**=**", the whole comparison returns "**=**".
+If some component returns "**<**", the whole comparison returns "**<**".
+If some component returns "**?**" or there are too few arguments, the result is "**?**".
 
 ---
 
-Notice that for each column *j*, there is at most one row *i* such that *C*<sub>*ij*</sub> *≠* "**?**". 
-Intuitively, every argument *z*<sub>*j*</sub> is related to at most one caller parameter.
+#### Match with a subpattern
+
+If *P*<sub>*i*</sub> is a constructor pattern, the checker also attempts to check if *z*<sub>*j*</sub> matches some subpattern of *P*<sub>*i*</sub>.
+
+For each subpattern *q*<sub>*r*</sub> of *P*<sub>*i*</sub>, with type *T*<sub>*r*</sub>, the checker attempts the following procedure:
+
+1. **Strip off applications from** *z*<sub>*j*</sub> **expression until it becomes a plain constructor call**
+
+   Starting from *e*<sub>*0*</sub> := *z*<sub>*j*</sub>, the algorithm performs following simplifications:
+
+   - if *e* is an application *e' u*, replace it by its function part *e'*;
+   - if *e* is a Σ-projection or field projection *e'.n* or *e'.foo*,
+     replace it by *e'*;
+   - if *e* is a path “at” expression *p @ a*, replace it by the path argument *a*;
+   - otherwise, stop.
+
+   The checker records the sequence of eliminators that were performed in a list, denote it *E*.
+
+2. **Replay the eliminations on the type of subpattern**
+
+   Starting from the type *T*<sub>*r*</sub> of the subpattern *q*<sub>*r*</sub>, the checker applies
+   eliminators recorded in the list *E* *backwards*:
+
+   - For a Π-eliminator, it requires *T* to be a Π-type and moves to its codomain
+     (or the Π-type with the first parameter removed, in the case of multiple parameters).
+   - For a Σ-eliminator selecting component *n*, it requires *T* to be a Σ-type
+     and moves to the type of the *n*-th component.
+   - For a path eliminator (coming from a *p @ a* expression), it requires *T* to be
+     a path type and moves to the underlying “family” type.
+   - For a class-field eliminator selecting field *f*, it requires *T* to be a
+     record/class type and moves to the type of the field *f* (with the appropriate
+     “this” substitution). Arrays are normalized at this point so that their class
+     representation is visible.
+
+   If at any step the current type does not have the expected form, the procedure aborts
+   for this subpattern *q*<sub>*r*</sub>.
+
+3. **Check recursion**
+
+   After replaying all eliminations, suppose the resulting type is *T'*.
+
+   - If *T'* is a data call which is a **recursive occurrence of D** (or of one of its
+     mutually recursive relatives), then *e* is considered a recursive subterm of the
+     original argument corresponding to *q*<sub>*r*</sub> and the procedure goes to the next step.
+     
+   - Otherwise, the procedure for this subpattern aborts.
+
+4. **Compare the "stripped-off" expression with the subpattern**
+
+   If *T'* is recursive for *D* as above, we recursively compare *e* with *q*<sub>*r*</sub>.
+
+   - If the comparison result is either "**=**" or "**<**", then we conclude that
+     *z*<sub>*j*</sub> is strictly smaller than *P*<sub>*i*</sub> and set *C*<sub>*ij*</sub> = "**<**".
+    
+
+If this procedure fails for all subpatterns *q*<sub>*r*</sub>,
+ then the checker cannot establish any comparison results, and it sets *C*<sub>*ij*</sub> = "**?**".
+
+---
+
+#### Special case: arrays
+
+In constructor patterns for arrays, the **length** component is not considered a recursive
+argument, whereas the “tail” (the third component) is.
+
+In terms of the algorithm above, this means:
+
+- when comparing the arguments of a `::` pattern against the subpatterns, the checker
+  **skips the length component** when looking for a structural descent; only the
+  element and tail components are candidates for producing a "**<**" result.
+
+Formally, when matching a call to `::` with 3 subpatterns, the comparison loop over
+arguments/subpatterns starts from index 1 (element) rather than 0 (length).
 
 ---
 
@@ -124,7 +211,51 @@ This means that the call matrix is filled **component-wise**, rather than treati
 
 ---
 
-## 3. The Call Graph and its completion
+## 3. Termination criterion 1: existence of a termination order
+
+This criterion is only tried if the strong connected component in the call graph consists of only vertex, i.e. one deals with a recursive function and not with mutual recursion.
+Otherwise this step is skipped and Termination criterion 2 is tried, see below.
+
+Let *f(x*<sub>*1*</sub>, ... ,*x*<sub>*n*</sub>*)* be a function that makes *m* different recursive calls to itself. 
+Each call is represented by an *n × n* call matrix *c*<sup>*1*</sup>, ..., *c*<sup>*m*</sup>.
+
+We say that *f* admits a (lexicographic) **termination order** if there exists a sequence of parameter indices *i*<sub>*1*</sub>, *i*<sub>*2*</sub>, ..., *i*<sub>*s*</sub>, where 1 ≤ i<sub>*k*</sub> ≤ n such that the following conditions hold:
+1. For every call *c*<sup>*j*</sup>, the diagonal entry *c*<sup>*j*</sup><sub>i<sub>1</sub>, i<sub>1</sub></sub> is either “**<**” or “**=**”.
+   - Let *I*<sub>*1*</sub> be the set of all *j* for which *c*<sup>*j*</sup><sub>i<sub>1</sub>, i<sub>1</sub></sub> = “**=**”.
+
+2. Restrict attention to calls with indices in *I*<sub>*1*</sub>. For each *j* ∊ *I*<sub>*1*</sub>, 
+   the diagonal entry *c*<sup>*j*</sup><sub>i<sub>2</sub>, i<sub>2</sub></sub> is required to be either “**<**” or “**=**”. 
+   - Let *I*<sub>*2*</sub> be the those *j* from *I*<sub>*1*</sub> for which *c*<sup>*j*</sup><sub>i<sub>2</sub>, i<sub>2</sub></sub> = “**=**”.
+
+3. Continue in the same way: at stage *k*, look only at calls indexed by *I*<sub>*k-1*</sub>. 
+   For each such call, the diagonal entry at position *i*<sub>*k*</sub> must be "**<**" or "**=**", 
+   and define *I*<sub>*k*</sub> as those with "**=**".
+
+4. In the end *I*<sub>*s*</sub> is empty, i.e. at the last chosen parameter all remaining calls decrease strictly.
+
+The question of whether *f* admits a termination order can be restated more compactly in terms of matrices:
+
+- For each call matrix *c*<sup>*j*</sup>, keep only its diagonal entries and discard the rest.  
+- Collect these diagonals into an *m × n* matrix, where each row corresponds to the diagonal of one call matrix.  
+
+A termination order for *f* exists **iff** the columns of this combined matrix can be reordered so that it takes the following staircase form (where “`*`” denotes an arbitrary entry):
+
+```
+<   *   *   *
+<   *   *   *
+=   <   *   *
+=   <   *   *
+=   =   <   *
+    .....
+```
+---
+
+It is clear that a function that admits a termination order is guaranteed to terminate. Indeed, every recursive call strictly decreases its arguments in a fixed lexicographic order: the first parameter where a difference appears becomes smaller, while all earlier ones remain unchanged. Since each parameter is drawn from a well-founded domain (e.g. inductive type), and the lexicographic product of well-founded orders is itself well-founded, infinite descent is impossible, so the recursion must eventually stop.
+
+If termination criterion 1 succeeds, the Arend termination checker will accept the one-vertex SCC and will not do anything else.
+Otherwise, it would try to compute the completion of the call graph and will try to check if Termination Criterion 2 holds.
+
+## 4. The Call Graph and its completion
 
 At this stage, we have constructed a **call graph**:
 
@@ -184,6 +315,30 @@ In categorical language the completed call graph is the subcategory generated by
 
 ---
 
+### Current limitations: performance constraints
+
+Calculation of the call graph completion is potentially a heavy computation.
+
+Suppose we have a recursive function on 9 arguments
+
+*f* (*x*<sub>*1*</sub>, *x*<sub>*2*</sub>, ..., *x*_<sub>*9*</sub>)
+
+and it makes two different kinds of self-calls:
+
+1. **Cyclic permutation (A)**
+
+   The function calls itself by rotating the arguments in a 9-cycle: *f* (*x*<sub>*9*</sub>, *x*<sub>*1*</sub>, ..., *x*_<sub>*8*</sub>)
+
+2. **Swap of the first two arguments (B)**
+
+  The function calls itself by swapping only the first two parameters, leaving the others unchanged: *f* (*x*<sub>*2*</sub>, *x*<sub>*1*</sub>, ..., *x*_<sub>*9*</sub>)
+
+Together, these two kinds of recursive calls generate a subgroup of the symmetric group *S*<sub>*9*</sub>: the 9-cycle and the transposition generate **all** permutations of the 9 arguments. From the point of view of size-change termination, this means that completing the call graph (or closing the size-change graphs under composition) can produce a large number of distinct permutations.
+
+For this reason the Arend termination checker will stop the computation of the completion and will reject the SCC as nonterminating if at least 100 different loops are generated at least on one call graph vertex.
+
+---
+
 ### Visualizing the call graph
 
 In Arend, recursive functions/theorems are marked with ![a special](/assets/images/complexRecursion.svg) icon in the gutter. 
@@ -193,47 +348,13 @@ In Arend, recursive functions/theorems are marked with ![a special](/assets/imag
 - Clicking an edge of the graph displays its call matrix. 
 - A **Before/After completion** checkbox switches between showing the call graph *before* and *after* the completion operation.
 
-## 4 Analysis of loops
+## 5. Termination criterion 2: size-change principle
+The final step of the algorithm is to apply the **size-change termination principle** to the calculated completed call graph.
 
-### The model case
+For each vertex *v* in the SCC component, we inspect the resulting **idempotent** matrices labeling a loop at *v* of the completed call graph.
 
-Let *f(x*<sub>*1*</sub>, ... ,*x*<sub>*n*</sub>*)* be a function that makes *m* different recursive calls to itself. 
-Each call is represented by an *n × n* call matrix *c*<sup>*1*</sup>, ..., *c*<sup>*m*</sup>.
+The component is accepted if in every idempotent call matrix *M* labeling a loop there is a (“**<**”) on some diagonal entry.
 
-We say that *f* admits a (lexicographic) **termination order** if there exists a sequence of parameter indices *i*<sub>*1*</sub>, *i*<sub>*2*</sub>, ..., *i*<sub>*s*</sub>, where 1 ≤ i<sub>*k*</sub> ≤ n such that the following conditions hold:
-1. For every call *c*<sup>*j*</sup>, the diagonal entry *c*<sup>*j*</sup><sub>i<sub>1</sub>, i<sub>1</sub></sub> is either “**<**” or “**=**”.
-   - Let *I*<sub>*1*</sub> be the set of all *j* for which *c*<sup>*j*</sup><sub>i<sub>1</sub>, i<sub>1</sub></sub> = “**=**”.
-
-2. Restrict attention to calls with indices in *I*<sub>*1*</sub>. For each *j* ∊ *I*<sub>*1*</sub>, 
-   the diagonal entry *c*<sup>*j*</sup><sub>i<sub>2</sub>, i<sub>2</sub></sub> is required to be either “**<**” or “**=**”. 
-   - Let *I*<sub>*2*</sub> be the those *j* from *I*<sub>*1*</sub> for which *c*<sup>*j*</sup><sub>i<sub>2</sub>, i<sub>2</sub></sub> = “**=**”.
-
-3. Continue in the same way: at stage *k*, look only at calls indexed by *I*<sub>*k-1*</sub>. 
-   For each such call, the diagonal entry at position *i*<sub>*k*</sub> must be "**<**" or "**=**", 
-   and define *I*<sub>*k*</sub> as those with "**=**".
-
-4. In the end *I*<sub>*s*</sub> is empty, i.e. at the last chosen parameter all remaining calls decrease strictly.
-
-The question of whether *f* admits a termination order can be restated more compactly in terms of matrices:
-
-- For each call matrix *c*<sup>*j*</sup>, keep only its diagonal entries and discard the rest.  
-- Collect these diagonals into an *m × n* matrix, where each row corresponds to the diagonal of one call matrix.  
-
-A termination order for *f* exists **iff** the columns of this combined matrix can be reordered so that it takes the following staircase form (where “`*`” denotes an arbitrary entry):
-
-```
-<   *   *   *
-<   *   *   *
-=   <   *   *
-=   <   *   *
-=   =   <   *
-    .....
-```
----
-
-It is clear that a function that admits a termination order is guaranteed to terminate. Indeed, every recursive call strictly decreases its arguments in a fixed lexicographic order: the first parameter where a difference appears becomes smaller, while all earlier ones remain unchanged. Since each parameter is drawn from a well-founded domain (e.g. inductive type), and the lexicographic product of well-founded orders is itself well-founded, infinite descent is impossible, so the recursion must eventually stop.
-
-
-### The general case
-
-Once the completed call graph has been constructed, Arend's termination checker keeps only loops at each vertex of the call graph and discards all other edges. Intuitively, this makes sense since only self-cycles can sustain infinite recursion. For every vertex, the Arend termination checker then attempts to find a termination order in the sense formulated above. If every function in the strongly connected component admits termination order, the whole component of calls is accepted; otherwise, the checker reports a termination error.
+Intution behind this sufficient condition is the following.
+Every infinite call sequence generates an idempotent loop matrix eventually (essentially, this follows from the pigeonhole principle).
+If every idempotent matrix contains a **<** somewhere, then some parameter position experiences infinitely many decreases along each infinite sequence of calls, which guarantees termination.
