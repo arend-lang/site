@@ -17,7 +17,7 @@ The need for termination checking in Arend stems from two main problems:
 
    The Arend termination checker relies on the following two sufficient criteria for termination:
 
- - the existence of a **termination order** in the style of Abels' FOETUS, see [this paper](https://arxiv.org/abs/2407.06924);
+ - the existence of a **termination order** in the style of A. Abel's FOETUS, see [this paper](https://arxiv.org/abs/2407.06924);
  - the **size-change termination principle** of Lee, Jones, and Ben-Amram, see [this paper](https://doi.org/10.1145/360204.360210).
 
 This page outlines the main steps of Arend’s termination checking algorithm and is intended as a guide for users who encounter termination issues in their Arend code.
