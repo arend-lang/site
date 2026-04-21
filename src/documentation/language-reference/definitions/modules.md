@@ -2,7 +2,7 @@
 title: Modules
 ---
 
-Every top-level definition is visible throughout the file it is contained, the order of definitions does not matter.
+Every top-level definition is visible throughout the file it is contained in, the order of definitions does not matter.
 The module system allows you to provide definitions in other namespaces.
 
 ## Modules
@@ -98,10 +98,10 @@ The {%ard%} \open {%endard%} command affects all definitions in the current scop
 {% endarend %}
 
 The command {%ard%} \open M (def_1, ... def_n) {%endard%} adds only definitions {%ard%} def_1, ... def_n {%endard%} to the current scope.
-Other definitions must be refered to by their full names.
+Other definitions must be referred to by their full names.
 
 The command {%ard%} \open M \hiding (def_1, ... def_n) {%endard%} adds all the definitions of {%ard%} M {%endard%} except for {%ard%} def_1, ... def_n {%endard%}.
-These definitions still can be refered to by their full names.
+These definitions still can be referred to by their full names.
 
 The command {%ard%} \open M (def_1 \as def_1', ... def_n \as def_n') {%endard%} adds definitions {%ard%} def_1, ... def_n {%endard%} under the names {%ard%} def_1', ... def_n' {%endard%}, respectively.
 

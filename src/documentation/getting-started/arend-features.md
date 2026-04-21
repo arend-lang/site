@@ -21,7 +21,7 @@ but they can be used as types of cells in the definition of a higher inductive t
 
 A path in a type {%ard%} A {%endard%} between points {%ard%} a, a' : A {%endard%} is a function {%ard%} f : I -> A {%endard%} such that {%ard%} f left == a {%endard%} and {%ard%} f right == a' {%endard%} (we use "==" to denote the definitional equality).
 The type of paths is denoted {%ard%} a = a' {%endard%}.
-To get a path from a function and vice verse, we can use the following functions:
+To get a path from a function and vice versa, we can use the following functions:
 
 {% arend %}
 path (f : I -> A) : f left = f right
@@ -44,7 +44,7 @@ For example, we can define the function that applies a map to a path as follows:
   => path (\lam i => f (p @ i))
 {% endarend %}
 
-This function is strictly functorial, that is we have equalities {%ard%} pmap id p == p {%endard%}
+This function is strictly functorial, that is, we have equalities {%ard%} pmap id p == p {%endard%}
 and {%ard%} pmap (\lam x => g (f x)) p == pmap g (pmap f p) {%endard%}.
 
 It is also easy to _prove_ functional extensionality:
@@ -76,7 +76,7 @@ The syntax of such constructors is the same as the syntax of functions defined b
 
 We can also attach cells of even higher dimensions.
 For example, the 2-dimensional sphere can be defined as the data type with one point {%ard%} base2 {%endard%} and one 2-dimensional constructor {%ard%} loop2 {%endard%} attached to this point.
-Since the boundary of 2-dimensional cube consists of four 1-dimensional cubes, we need to specify four conditions on constructor {%ard%} loop2 {%endard%}:
+Since the boundary of a 2-dimensional cube consists of four 1-dimensional cubes, we need to specify four conditions on constructor {%ard%} loop2 {%endard%}:
 
 {% arend %}
 \data S2
@@ -132,12 +132,12 @@ If {%ard%} P x {%endard%} is a proposition, to define a function {%ard%} \Pi (x 
 it is enough to specify it for the constructor {%ard%} in~ {%endard%}.
 This becomes even more useful when {%ard%} P {%endard%} depends on several elements of the quotient.
 For example, if we have 3 elements {%ard%} x, y, z : Quotient A R {%endard%} (which is defined as a higher inductive type with 3 constructors),
-then to prove some property about them, we need to consider only one case (since its the only 0-dimensional one) instead of nine.
+then to prove some property about them, we need to consider only one case (since it's the only 0-dimensional one) instead of nine.
 
 # Class System
 
 Arend has records and classes.
-Classes are just records with additional functionality, which makes them into a haskell-style type classes.
+Classes are just records with additional functionality, which makes them into haskell-style type classes.
 
 ## Inheritance
 
@@ -202,7 +202,7 @@ So, the following two definitions of pointed sets are actually equivalent:
 The reason why Arend does not have record parameters is because it has anonymous extensions instead.
 An anonymous extension of a record {%ard%} R {%endard%} is an expression of the form {%ard%} R { | f_1 => e_1 ... | f_n => e_n } {%endard%},
 where {%ard%} f_1, ... f_n {%endard%} are fields of {%ard%} R {%endard%} and {%ard%} e_1, ... e_n {%endard%} are expressions of the corresponding types.
-Such an expression is the same as a records which extends {%ard%} R {%endard%} and implements specified fields, but we do not have to define this record separately.
+Such an expression is the same as a record which extends {%ard%} R {%endard%} and implements specified fields, but we do not have to define this record separately.
 The anonymous extension described above can also be written as {%ard%} R e_1 ... e_n {%endard%}.
 In this case, fields are implemented in the same order they were defined in the record.
 
@@ -253,7 +253,7 @@ For example, we can prove that {%ard%} Nat {%endard%} is an instance of the clas
 
 # Universe Levels
 
-Arend has a hieararchy of universes parameterized by two natural number.
+Arend has a hierarchy of universes parameterized by two natural numbers.
 The first parameter corresponds to the usual (predicative) level of the universe.
 The second parameter corresponds to the homotopy level of types in this universe.
 The universe of level (p,h) is written as {%ard%} \h-Type p{%endard%}.
@@ -264,7 +264,7 @@ Levels cannot be added with each other, but we have the successor function {%ard
 There is also the largest homotopy level {%ard%} \oo {%endard%}, which corresponds to untruncated types.
 
 The universe {%ard%} \h-Type p {%endard%} belongs to the universe {%ard%} \\(h+1)-Type (p+1) {%endard%}.
-Universes are cummulative: if {%ard%} A : \h-Type p {%endard%}, then {%ard%} A : \h'-Type p' {%endard%} for all h' and p' greater than or equal to h and p, respectively.
+Universes are cumulative: if {%ard%} A : \h-Type p {%endard%}, then {%ard%} A : \h'-Type p' {%endard%} for all h' and p' greater than or equal to h and p, respectively.
 
 ## Homotopy Levels
 
@@ -276,7 +276,7 @@ but we do not have to carry around proofs that some type belongs to some homotop
 ## The Universe of Propositions
 
 The smallest universe is {%ard%} \Prop {%endard%}, the universe of propositions.
-This universe is impredicative, that is it does not have the predicative level.
+This universe is impredicative, that is, it does not have the predicative level.
 Thus, if {%ard%} A {%endard%} is a set of any predicative level, then {%ard%} a = {A} a' {%endard%} belongs to {%ard%} \Prop {%endard%}.
 Also, if {%ard%} B a {%endard%} belongs to {%ard%} \Prop {%endard%}, then this is also true for {%ard%} \Pi (a : A) -> B a {%endard%} regardless of levels of {%ard%} A {%endard%}.
 
@@ -331,9 +331,9 @@ In Arend, circular dependencies are only allowed between recursively defined fun
 The termination checker algorithm implemented in Arend largely follows the one outlined in A. Abel’s master’s thesis [FOETUS](https://www.cse.chalmers.se/~abela/foetus.pdf).
 
 # Functions, lemmas and goals
-Like in any proof assistant, the process of formal verification of a mathematical fact in Arend involves formulating definitions and proving theorems about them. Mathematical statements in Arend are introduced using either the `\func` or `\lemma` keyword. The `\lemma` keyword does not mean “lemma” in the usual mathematical sense but rather indicates that the value of the marked definition is irrelevant (see e.g. proof irrelevance) and can be discarded after typechecking. Of course, only functions residing in the `Prop` universe, i. e. mere proposition in the sense of HoTT, can be marked as `\lemma`'s. Otherwise, the syntax of the `\func`- and `\lemma`-statements is identical. In practice this means that in Arend mathematical lemmas, propositions, theorems and corollaries are all rendered using keywords `\lemma` or `\func`.
+Like in any proof assistant, the process of formal verification of a mathematical fact in Arend involves formulating definitions and proving theorems about them. Mathematical statements in Arend are introduced using either the `\func` or `\lemma` keyword. The `\lemma` keyword does not mean “lemma” in the usual mathematical sense but rather indicates that the value of the marked definition is irrelevant (see e.g. proof irrelevance) and can be discarded after typechecking. Of course, only functions residing in the `Prop` universe, i. e. mere propositions in the sense of HoTT, can be marked as `\lemma`'s. Otherwise, the syntax of the `\func`- and `\lemma`-statements is identical. In practice this means that in Arend mathematical lemmas, propositions, theorems and corollaries are all rendered using keywords `\lemma` or `\func`.
 
 Like any other definition in Arend, `\lemma` or `\func` can be defined using pattern matching (with the `\elim` or `\with` keywords) or by specifying a proof term after the `=>` symbol. If a proof is incomplete or omitted, the placeholder `{?}`, commonly called an "unresolved goal", can be used to indicate this. The term "goal" refers to a part of a statement that still needs to be verified or, in terms of the Propositions-as-Types correspondence, the type of the expression that the user still needs to construct.
 
-In Arend, proof terms do not need to be fully detailed. Users can take advantage of the "inference of implicit arguments" mechanism, which allows them to omit some arguments in expressions (more concretely, the ones that can be inferred via the “inference of implicit arguments mechanism” built into the Arend type checker). Additionally, users can employ metas such as rewrite to construct particularly complicated parts of expressions. Metas should be seen as "term-level tactics", meaning they can be seamlessly interwoven with standard Arend term constructs. In other words, unlike Coq, Arend does not have separate “proof mode”.
+In Arend, proof terms do not need to be fully detailed. Users can take advantage of the "inference of implicit arguments" mechanism, which allows them to omit some arguments in expressions (more concretely, the ones that can be inferred via the “inference of implicit arguments mechanism” built into the Arend type checker). Additionally, users can employ metas such as rewrite to construct particularly complicated parts of expressions. Metas should be seen as "term-level tactics", meaning they can be seamlessly interwoven with standard Arend term constructs. In other words, unlike Coq, Arend does not have a separate “proof mode”.
 

@@ -16,7 +16,7 @@ For example, we can define the following data types:
 
 The type of {%ard%} Empty {%endard%} is inferred to {%ard%} \Prop {%endard%}, which is the right universe for the type.
 However, this is not as easy for the type {%ard%} Dec P {%endard%}: the type of {%ard%} Dec P {%endard%} is inferred to {%ard%} \Set0 {%endard%},
-whereas it can be proven that {%ard%} Dec P {%endard%} is (-1)-type.
+whereas it can be proven that {%ard%} Dec P {%endard%} is a (-1)-type.
 {%ard%} Dec {%endard%} can be placed in {%ard%} \Prop {%endard%} by writing the proof, that any two elements of this type are equal, in the {%ard%} \where {%endard%} block of {%ard%} Dec {%endard%}.
 The proof must be written in the corresponding function, starting with keywords {%ard%} \use \level {%endard%} instead of {%ard%} \func {%endard%}:
 
@@ -73,7 +73,7 @@ some clauses can be omitted if {%ard%} A {%endard%} belongs to an appropriate un
 If it is not, but there is a proof that it has the required homotopy level, then the keyword {%ard%} \level {%endard%} can be used to
 convince the typechecker that some clauses can be omitted.
 For example, if {%ard%} Trunc {%endard%} is a propositional truncation with constructor {%ard%} inT : A -> Trunc A {%endard%}, {%ard%} A {%endard%} and {%ard%} B {%endard%} are types,
-{%ard%} g : A -> B {%endard%} is function, and {%ard%} p : \Pi (x y : B) -> x = y {%endard%}, then the function, extending {%ard%} g {%endard%} to {%ard%} Trunc A {%endard%} can be defined simply as follows:
+{%ard%} g : A -> B {%endard%} is a function, and {%ard%} p : \Pi (x y : B) -> x = y {%endard%}, then the function, extending {%ard%} g {%endard%} to {%ard%} Trunc A {%endard%} can be defined simply as follows:
 
 {% arend %}
 \func f (t : Trunc A) : \level B p
@@ -90,7 +90,7 @@ Similarly, the keyword {%ard%} \level {%endard%} can be used in case expressions
 
 ## Use level for functions
 
-If a {%ard%} \use \level {%endard%} function defined for some function {%ard%} f {%endard%}, this does not change the definition of {%ard%} f {%endard%} at all.
+If a {%ard%} \use \level {%endard%} function is defined for some function {%ard%} f {%endard%}, this does not change the definition of {%ard%} f {%endard%} at all.
 So, in this case, {%ard%} \use \level {%endard%} is just a syntactic sugar.
 If some function {%ard%} f {%endard%} is defined with a {%ard%} \use \level {%endard%} annotation, this does not change the type of {%ard%} f {%endard%},
 but it will be treated as a type in a lower universe in situations described in [Level of a type](#level-of-a-type).

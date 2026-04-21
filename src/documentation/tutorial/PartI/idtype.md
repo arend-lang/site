@@ -127,7 +127,7 @@ pointwise, then they are equal functions. Our definition of equality allows us t
 {%endarend%}
 
 This useful principle is unprovable in many other intensional dependently typed theories. In such theories function extensionality
-can be introduced as an axiom, that is as a function without implementation, however adding new axioms worsens computational properties
+can be introduced as an axiom, that is as a function without implementation; however, adding new axioms worsens computational properties
 of the theory. For example, if we add the axiom of excluded middle {%ard%}lem{%endard%}, then we can define a constant
 {%ard%}ugly_num : Nat{%endard%} that does not evaluate to any concrete natural number:
 
@@ -254,8 +254,8 @@ since such {%ard%}T{%endard%} cannot be defined neither recursively nor inductiv
   | right => Empty
 {%endarend%}
 
-**Exercise 13:** Prove that {%ard%}0{%endard%} does not equal to {%ard%}suc x{%endard%}.
+**Exercise 13:** Prove that {%ard%}0{%endard%} does not equal {%ard%}suc x{%endard%}.
 {: .notice--info}
 
-**Exercise 14:** Prove that {%ard%}fac{%endard%} does not equal to {%ard%}suc{%endard%}.
+**Exercise 14:** Prove that {%ard%}fac{%endard%} does not equal {%ard%}suc{%endard%}.
 {: .notice--info}

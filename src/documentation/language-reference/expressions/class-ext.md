@@ -11,7 +11,7 @@ An expression of the form {%ard%} C e_1 ... e_n {%endard%} is equivalent to {%ar
 
 The expression {%ard%} C {} {%endard%} is equivalent to {%ard%} C {%endard%}.
 An expression of the form {%ard%} C { I } {%endard%} is a subtype of {%ard%} C' { I' } {%endard%} if and only if {%ard%} C {%endard%} is a subclass of {%ard%} C' {%endard%} and {%ard%} I' {%endard%} is a subset of {%ard%} I {%endard%}.
-The expression {%ard%} \new C { I } {%endard%} is an instance of type {%ard%} C { I } {%endard%}, which is a subtype {%ard%} C {%endard%}.
+The expression {%ard%} \new C { I } {%endard%} is an instance of type {%ard%} C { I } {%endard%}, which is a subtype of {%ard%} C {%endard%}.
 Thus, you can use this expression to create an element of type {%ard%} C {%endard%}.
 
 ## New expression

@@ -3,7 +3,7 @@ title: Arend Libraries
 ---
 An **Arend library** is a collection of Arend files and Java code organized in a directory structure to support modular development and reuse.
 Libraries are the fundamental building blocks of the Arend ecosystem, allowing developers to organize their code, manage dependencies, and distribute libraries or projects.
-The Arend standard library, [**arend-lib**](/arend-lib) is the primary library of the Arend ecosystem covering constructive mathematics, homotopy type theory and computer science.
+The Arend standard library, [**arend-lib**](/arend-lib), is the primary library of the Arend ecosystem covering constructive mathematics, homotopy type theory and computer science.
 
 ## Structure and Components
 An Arend library typically consists of multiple `.ard` files (Arend source files) and optionally `.arc` files (compiled binaries produced by the Arend type checker).
@@ -39,4 +39,4 @@ The plugin ensures consistency by synchronizing the contents of the `arend.yaml`
 ## Console Application
 Arend libraries can also be built and typechecked using the console version of Arend, independent of IntelliJ IDEA.
 To be able to use multiple Arend libraries from the console, you must put them into a single directory.
-You then need to specify this directory via: `-L` command-line option in the console Arend application.
+You then need to specify this directory via the `-L` command-line option in the console Arend application.

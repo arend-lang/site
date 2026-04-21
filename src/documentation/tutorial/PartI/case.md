@@ -11,7 +11,7 @@ In this module we discuss three themes.
 
 Firstly, we discuss case expressions and alternatives to them in the form of the helper
 functions. We also compare {%ard%}\case{%endard%} to {%ard%}\elim{%endard%}, point
-out at peculiarities of using case expressions in a dependently typed language and
+out peculiarities of using case expressions in a dependently typed language and
 explain pattern matching on {%ard%}idp{%endard%} in {%ard%}\case{%endard%}.
 
 Secondly, we explain a technique of _views_, allowing to define custom pattern matching
@@ -51,7 +51,7 @@ we could introduce a helper function, defined by pattern matching, and invoke it
 {%endarend%}
 
 Actually, every usage of case expression can be replaced in this way with an invocation of a helper function. 
-It is just sometimes more convenient to use short case expressions instead of introducing countless
+It is just sometimes more convenient to use short case expressions instead of introducing a countless
 amount of helpers.
 
 **Exercise 1:** Implement any sorting algorithm using \case for pattern matching on the result of comparison of elements
@@ -99,11 +99,11 @@ way to do it, but we would like to show how it can be proven with {%ard%}\case{%
 Here we specified explicitly the return type of the case expression by writing 
 {%ard%}\return b = not (not b){%endard%} before the keyword {%ard%}\with{%endard%}. We do this because
 this return type of {%ard%}\case{%endard%} depends on the expression {%ard%}p a{%endard%} that we match
-on. In order to describe the dependence, we introduce new bound variable {%ard%}b{%endard%} by
+on. In order to describe the dependence, we introduce a new bound variable {%ard%}b{%endard%} by
 writing {%ard%}\as b{%endard%} just after the expression {%ard%}p a{%endard%}.
 
 In every clause we should return an expression, whose type is the expression obtained from the one written
-after {%ard%}\return{%endard%} by substituting the corresponding pattern. In example above we have:
+after {%ard%}\return{%endard%} by substituting the corresponding pattern. In the example above we have:
 
 {%arend%}
 | true => idp -- here we should return expression of type true = not (not true)
@@ -229,7 +229,7 @@ on the original expression {%ard%}e{%endard%} and on {%ard%}idp{%endard%} with e
 \func baz {A : \Type} (B : Bool -> \Type) (p : A -> Bool) (a : A) (pt : B true) (pf : B false) : B (p a) =>
     -- Not only the return type can be specified explicitly, but also 
     -- the type of expressions we do matching on.
-    -- And we can use variables bounded in \as.
+    -- And we can use variables bound in \as.
     \case p a \as b, idp : b = p a \with {
       | true, q => transport B q pt -- here q : true = p a
       | false, q => transport B q pf -- here q : false = p a
@@ -347,7 +347,7 @@ For example, we can define the following predicate {%ard%}P : Nat -> \Type{%enda
 the statement "Turing machine with number n halts at the input n". A simpler example -- the predicate on pairs of
 functions {%ard%}Nat -> Nat{%endard%}, saying that they are equal.
 
-An example of decidable predicate:
+An example of a decidable predicate:
 
 {%arend%}
 \func suc/=0 {n : Nat} (p : suc n = 0) : Empty => transport (\lam n => \case n \with { | 0 => Empty | suc _ => Unit }) p unit
@@ -420,7 +420,7 @@ Let us define an instance for the type of natural numbers:
 \func test2 : (0 == 1) = false => idp
 {%endarend%}
 
-**Exercise 6:** Prove that if equality of elements of a type {%ard%}A{%endard%} is decidable, then equality of elements if {%ard%}List A{%endard%} is
+**Exercise 6:** Prove that if equality of elements of a type {%ard%}A{%endard%} is decidable, then equality of elements of {%ard%}List A{%endard%} is
 also decidable.
 {: .notice--info}
 

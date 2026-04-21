@@ -190,14 +190,14 @@ The empty type {%ard%}Empty{%endard%} is the proposition "False":
 \func Empty-isProp : isProp Empty => \lam x y => absurd x
 {%endarend%}
 
-The product (conjunction) of propositions is proposition:
+The product (conjunction) of propositions is a proposition:
 
 {%arend%}
 \func Sigma-isProp {A B : \Type} (pA : isProp A) (pB : isProp B)
   : isProp (\Sigma A B) => \lam p q => prodEq p q (pA p.1 q.1) (pB p.2 q.2)
 {%endarend%}
 
-The function type (implication) between propositions is proposition:
+The function type (implication) between propositions is a proposition:
 
 {%arend%}
 \func funcExt {A : \Type} (B : A -> \Type) (f g : \Pi (x : A) -> B x)
@@ -224,7 +224,7 @@ However, the logic of propositions is not closed in general under sum types
 sigma types {%ard%}\Sigma (x : A) (B x){%endard%} (Curry-Howard existential quantifier)
 and the equality type.
 
-<!-- TODO: prove the nagation or leave as exercise -->
+<!-- TODO: prove the negation or leave as exercise -->
 {%arend%}
 \func Either-isProp {A B : \Type} (pA : isProp A) (pB : isProp B)
    : isProp (Either A B) =>
@@ -303,7 +303,7 @@ without a proof.
 {%endarend%}
 
 **Exercise 8:** Prove that if {%ard%}A{%endard%} embeds in {%ard%}B{%endard%} and 
-{%ard%}B{%endard%} is a proposition, then {%ard%}A{%endard%} is proposition.
+{%ard%}B{%endard%} is a proposition, then {%ard%}A{%endard%} is a proposition.
 {: .notice--info}
 
 # Sets
@@ -319,7 +319,7 @@ called _sets_.
 \func equality-isProp {A : \Type} (p : isSet A) (a a' : A) : isProp (a = a') => p a a'
 {%endarend%}
 
-This can be interated further: we may consider types {%ard%}A{%endard%} such that 
+This can be iterated further: we may consider types {%ard%}A{%endard%} such that 
 {%ard%}a=a'{%endard%} are sets for all {%ard%}a a' : A{%endard%} and so on. Define
 the _homotopy level_ of a type inductively as follows:
 
@@ -423,8 +423,8 @@ equality.
 
 # Groupoid structure on types
 
-We conclude with description of a structure that characterizes types of higher homotopy levels. 
-The types of homotopy level 1, or 1-types for short, have structure of what is called a _groupoid_:
+We conclude with a description of a structure that characterizes types of higher homotopy levels. 
+The types of homotopy level 1, or 1-types for short, have the structure of what is called a _groupoid_:
 
 {%arend%}
 \func isGpd (A : \Type) => \Pi (x y : A) -> isSet (x = y)
@@ -432,7 +432,7 @@ The types of homotopy level 1, or 1-types for short, have structure of what is c
 
 A groupoid is a categorical generalization of the notion of a group: it is a category, where
 every morphism is invertible. In particular, all endomorphisms
-of any object in a groupoid is a group with composition as the group operation. In the groupoid
+of any object in a groupoid form a group with composition as the group operation. In the groupoid
 of a 1-type {%ard%}A{%endard%} the set of morphisms between objects {%ard%}x y : A{%endard%} is given
 by elements of {%ard%}x=y{%endard%}. The identity morphism is {%ard%}idp{%endard%} and the composition
 is given by transitivity {%ard%}*>{%endard%} of equality, which turns out to be in this case a nontrivial
@@ -444,7 +444,7 @@ function rather than mere implication:
   | idp => p
 {%endarend%}
 
-For example, the universe {%ard%}\Set{%endard%} of sets is 1-type and {%ard%}*>{%endard%} in this case
+For example, the universe {%ard%}\Set{%endard%} of sets is a 1-type and {%ard%}*>{%endard%} in this case
 defines the composition of bijections between sets.
 
 We can prove that {%ard%}*>{%endard%} and {%ard%}idp{%endard%} satisfy the required properties:

@@ -5,7 +5,7 @@ title: Definitions
 Arend supports the following kinds of definitions: [functions](functions), [data](data), [records](records), [classes](classes), [instances](classes#instances), and [coercions](coercion).
 Every definition has a name which must be a valid identifier as described in [Lexical structure](../lexical-structure#identifiers).
 
-Definitions can be referred by _defcall_ expressions.
+Definitions can be referred to by _defcall_ expressions.
 If {%ard%} def {%endard%} is a name of a definition, defcall is an expression of the form:
 {%ard%} def e_1 ... e_n {%endard%}, where {%ard%} e_1, ..., e_n {%endard%} are expressions.
 Expressions {%ard%} e_1, ..., e_n {%endard%} are called arguments of the defcall.

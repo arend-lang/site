@@ -18,7 +18,7 @@ Examples:
 # `random`
 
 Returns a random number as an integer literal.
-It can take some arguments which specifies the returned random number.
+It can take some arguments which specify the returned random number.
 
 Examples:
 

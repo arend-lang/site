@@ -51,7 +51,7 @@ IntelliJ Arend provides highlighting for the queries, so syntax errors will be e
 
 ## Parameters and result type
 
-If there is an `->` in a query (i.e. it has several `and_pattern`s), then the rightmost `and_pattern` will be matched with the codomain of the definition, and the rest patterns delimited by `->` will be matched with the domain parameters of the definition.
+If there is an `->` in a query (i.e. it has several `and_pattern`s), then the rightmost `and_pattern` will be matched with the codomain of the definition, and the rest of the patterns delimited by `->` will be matched with the domain parameters of the definition.
 
 {%arend%}
 -- The pattern is `Foo -> Bar`
@@ -84,7 +84,7 @@ Certainly, it is possible to use `\and` in patterns for parameters:
 \func foo (e : \Sigma (List Nat) Bool) : 1 = 1 -- matched
 {%endarend%}
 
-There is a difference between `Nat -> Bool -> _` and `Nat \and Bool -> _`: the former will match all definitions that have (not necessarily distinct) parameters mentioning `Nat` and `Bool`, while the latter requires the existence of a parameter, that mentions `Nat` _and_ `Bool` at the same time.
+There is a difference between `Nat -> Bool -> _` and `Nat \and Bool -> _`: the former will match all definitions that have (not necessarily distinct) parameters mentioning `Nat` and `Bool`, while the latter requires the existence of a parameter that mentions `Nat` _and_ `Bool` at the same time.
 
 ## Restricting namespaces
 
@@ -100,7 +100,7 @@ An `app_pattern` resembles an application of a function. It can represent a tree
 \func f : List (foo (bar baz) true) -- matched
 {%endarend%}
 
-It is possible to specify a subsequence of a module path for the identifier. Also note, that IntelliJ Arend provides code completion for the queries.
+It is possible to specify a subsequence of a module path for the identifier. Also note that IntelliJ Arend provides code completion for the queries.
 {%arend%}
 \module Foo \where \func foo : Nat
 \module Bar \where \func foo : Nat

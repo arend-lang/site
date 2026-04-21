@@ -22,7 +22,7 @@ sidebar:
 - [Zulip](https://arend-lang.zulipchat.com/)
 
 We welcome questions about the Arend language, the IntelliJ Arend plugin,
-the libraries and this website there.
+the libraries, and this website there.
 
 ## Videos
 

@@ -144,7 +144,7 @@ where either {%ard%} e {%endard%} or {%ard%} e' {%endard%} is a variable bound i
 # coe and coe2
 
 Function {%ard%} coe {%endard%} is an eliminator for the interval type.
-For every type over the interval, it allows to transport elements from the fiber over {%ard%} left {%endard%} to the fiber over an
+For every type over the interval, it allows one to transport elements from the fiber over {%ard%} left {%endard%} to the fiber over an
 arbitrary point.
 It can be used to prove that {%ard%} I {%endard%} is contractible and that {%ard%} = {%endard%} satisfies the rules for
 ordinary identity types.
@@ -155,7 +155,7 @@ coe (\lam x => A) a i => a
 {% endarend %}
 if {%ard%} x {%endard%} is not free in {%ard%} A {%endard%}.
 
-Function {%ard%} coe2 {%endard%} is a generalization of {%ard%} coe {%endard%}, which allows to transport elements between any two fibers of a type
+Function {%ard%} coe2 {%endard%} is a generalization of {%ard%} coe {%endard%}, which allows one to transport elements between any two fibers of a type
 over the interval.
 
 # iso

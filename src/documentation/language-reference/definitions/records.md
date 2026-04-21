@@ -185,7 +185,7 @@ In order to access these fields, fully qualified names should be used:
 
 ## This
 
-Every field of a record {%ard%} R {%endard%} has additional implicit parameter of type {%ard%} R {%endard%}, which can be referred to with the keyword {%ard%} \this {%endard%}:
+Every field of a record {%ard%} R {%endard%} has an additional implicit parameter of type {%ard%} R {%endard%}, which can be referred to with the keyword {%ard%} \this {%endard%}:
 
 {% arend %}
 \record R (X : \Type) (t : X -> X)
@@ -212,7 +212,7 @@ A function or a data type can be put inside a record definition:
 }
 {% endarend %}
 
-Such a definition will have an addition implicit parameter of type {%ard%} R {%endard%}.
+Such a definition will have an additional implicit parameter of type {%ard%} R {%endard%}.
 Thus, the code above is equivalent to the following one:
 
 {% arend %}
@@ -278,7 +278,7 @@ An instance of {%ard%} S {%endard%} can be created as usual or the implementatio
 \func test2 : inst2.f = 0 => idp
 {% endarend %}
 
-Defaullt implementations can be defined by pattern matching as usual:
+Default implementations can be defined by pattern matching as usual:
 
 {% arend %}
 \record R

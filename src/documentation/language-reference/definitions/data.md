@@ -118,7 +118,7 @@ is not valid as its result type {%ard%} Nat {%endard%} is of homotopy level of a
 Two other functions {%ard%} existsSuc {%endard%} and {%ard%} existsEq {%endard%} in the example above are correct as 
 their result types, {%ard%} Exists Nat (\lam n => suc n = 4) {%endard%} and {%ard%} 0 = 0 {%endard%} respectively, are propositions.
 
-If the universe of the resulting type is greater than the universe of the data type, it is still possible to define a function by pattern matching on it if the resulting type is _provably_ belongs to the universe of the data type.
+If the universe of the resulting type is greater than the universe of the data type, it is still possible to define a function by pattern matching on it if the resulting type _provably_ belongs to the universe of the data type.
 This can be done with keyword [\level](level#level-of-a-type).
 In this case, the function should be declared as [\sfunc](functions#sfunc) since truncated data types are [squashed](level#squashed-data-types).
 
@@ -129,7 +129,7 @@ Thus, this is simply a syntactic sugar that allows to define functions over a tr
 
 Two or more data types can be mutually recursive.
 This is called _induction-induction_.
-Just as simply inductive definitions, inductive-inductive definitions also must satisfy a strict positivity condition.
+Just as simple inductive definitions, inductive-inductive definitions also must satisfy a strict positivity condition.
 Namely, recursive calls to the definition itself and to other recursive definitions may occur only in strictly positive
 positions.
 
@@ -153,7 +153,7 @@ Such a data type can be defined by 'pattern matching':
 
 The general syntax is similar to the syntax of functions defined by [pattern matching](functions#pattern-matching).
 Either {%ard%} \elim vars {%endard%} or {%ard%} \with {%endard%} constructs can be used with the only difference that 
-{%ard%} \elim vars {%endard%} allows to match on a proper subset of parameters of data type.
+{%ard%} \elim vars {%endard%} allows to match on a proper subset of parameters of a data type.
 
 {% arend %}
 \data D p_1 ... p_n \with
@@ -192,5 +192,5 @@ This definition is equivalent to the previous one.
 ## Constructor synonyms
 
 A constructor synonym is a function defined with keyword {%ard%} \cons {%endard%}.
-Such a function cannot be defined by pattern matching and it must consists only of constructors of data types.
+Such a function cannot be defined by pattern matching and it must consist only of constructors of data types.
 It can be used in patterns as a synonym for its right hand side.

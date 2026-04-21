@@ -8,7 +8,7 @@ with dependent Pi types, as the type of types cannot contain itself, Arend conta
 _predicative level_ of the universe. Informally, the universe {%ard%} \Type0 {%endard%} contains all types that do not refer to universes
 in their definition, the universe {%ard%} \Type1 {%endard%} contains all types in {%ard%} \Type0 {%endard%} together with those types that
 refer to {%ard%} \Type0 {%endard%} and no other universes in their definitions, and so on. This is not precise, since, for instance, 
-the universe {%ard%} \Type n {%endard%} contains also some data types, classes and records that refer to {%ard%} \Type m {%endard%}, where n ≤ m, in types of parameters.
+the universe {%ard%} \Type n {%endard%} also contains some data types, classes and records that refer to {%ard%} \Type m {%endard%}, where n ≤ m, in types of parameters.
 See section on universe placement rules below for more precise statements and details.  
  
 Note that the hierarchy of 
@@ -23,7 +23,7 @@ if {%ard%} B : \Prop {%endard%}, then the type {%ard%} \Pi (x : \Prop) -> B {%en
 
 The universe {%ard%} \Prop {%endard%} is not proof irrelevant, but some elements of propositions are computationally equal.
 If {%ard%} A : \Prop {%endard%} and {%ard%} a, a' : A {%endard%} are such that they never evaluate to a constructor, then they are computationally equal.
-For example, if the type is an empty data type, then this is true for any pair of its elements, so they always be computationally equal.
+For example, if the type is an empty data type, then this is true for any pair of its elements, so they will always be computationally equal.
 
 Universes with h equal to ∞ are represented in the syntax as {%ard%} \oo-Type p {%endard%}. The homotopy level can also be 
 specified after the predicative level: {%ard%} \Type p h {%endard%} is equivalent to {%ard%} \h-Type p {%endard%}.   
@@ -82,7 +82,7 @@ Level arguments for a definition with multiple level parameters can be specified
 \func example => func \levels (1,2,3) (2,1) Nat Nat
 {% endarend %}
 
-If level parameters are not explicitly declared for a definition, they will be inhereted from definitions that appear in parameters if all of them have the same levels.
+If level parameters are not explicitly declared for a definition, they will be inherited from definitions that appear in parameters if all of them have the same levels.
 
 ## Global level declarations
 

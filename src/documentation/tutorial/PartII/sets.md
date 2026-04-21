@@ -10,10 +10,10 @@ The source code for the exercises: [PartII/SetsEx.ard](https://github.com/arend-
 The types, which are sets according to the view adopted in the last modules, behave like sets in set theory.
 This means that many theorems of set theory can be proven for the sets in this sense. 
 
-For example, we can prove the Cantor's theorem saying that the cardinality of a set {%ard%}X{%endard%} is 
+For example, we can prove Cantor's theorem saying that the cardinality of a set {%ard%}X{%endard%} is 
 strictly less than the cardinality of the set of its subsets {%ard%}X -> \Prop{%endard%}.
 
-The assertion that the cardinality is less (not necessarily strictly) means that there exists injection 
+The assertion that the cardinality is less (not necessarily strictly) means that there exists an injection 
 of {%ard%}X{%endard%} into {%ard%}X -> \Prop{%endard%}. Clearly, the equality predicate 
 {%ard%}(=) : X -> (X -> \Prop){%endard%} is an injection.
 
@@ -28,7 +28,7 @@ there exists a bijection between them, is not provable without excluded middle.
 
 # Surjections, injections and bijections
 
-We have already seen the definitions of injection and surjections, but let us briefly recall it. 
+We have already seen the definitions of injections and surjections, but let us briefly recall them. 
 Note that the definition of surjection requires the propositional truncation.
 
 {%arend%}
@@ -80,13 +80,13 @@ is a conjunction of injectivity and surjectivity.
     Prove that if {%ard%}g `o` f{%endard%} is surjective, then {%ard%}g{%endard%} is also surjective.
 {: .notice--info}
 
-**Exercise 4:** Prove the Cantor's theorem.
+**Exercise 4:** Prove Cantor's theorem.
 {: .notice--info}
 
 
 # A definition of Int, datatypes with conditions
 
-Here we introduce a useful construct for data definitions, which allows quotioning
+Here we introduce a useful construct for data definitions, which allows quotienting
 or, in other words, gluing, and apply it to the definition of the type {%ard%}Int{%endard%}
 of integers.
 
@@ -200,8 +200,8 @@ we can write:
    | in~ a => b
 {%endarend%}
 
-An important of example of quotient set -- the set of rational numbers, which is defined
-as the set of pairs of natural numbers quotioned by the equivalence relation ~ such that
+An important example of a quotient set -- the set of rational numbers, which is defined
+as the set of pairs of natural numbers quotiented by the equivalence relation ~ such that
 {%ard%}(n, m) ~ (n', m'){%endard%} iff {%ard%}n * m' = n' * m{%endard%}.
 
 We can define the quotient set as a datatype with conditions: we simply add

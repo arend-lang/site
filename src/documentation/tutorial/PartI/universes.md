@@ -149,7 +149,7 @@ implemented since {%ard%}fmap{%endard%} also refers to {%ard%}\Type \lp{%endard%
 \func test10 : \Type (\suc \lp) => Functor \lp Maybe
 {%endarend%}
 
-**Exercise 1:** Calculate levels in each of the the invocations of {%ard%}id''{%endard%} below.
+**Exercise 1:** Calculate levels in each of the invocations of {%ard%}id''{%endard%} below.
 Specify explicitly result types for all idTest*.
 {: .notice--info}
 {%arend%}
@@ -239,7 +239,7 @@ Let us define a custom universe containing some custom set of types:
   | arr Type Type
 {%endarend%}
 
-The type {%ard%}Type{%endard%} can be thought of as a type contains codes of types. We should also define a
+The type {%ard%}Type{%endard%} can be thought of as a type that contains codes of types. We should also define a
 function that realizes them as actual types:
 
 {%arend%}
@@ -447,7 +447,7 @@ We can consider three cases instead of two and define {%ard%} IsSorted {%endard%
   | cons x (cons y _ \as xs) => cons-sorted (x <= y) (IsSorted xs)
 {%endarend%}
 
-It turns out that this definition is not very convenient because we need to consider more cases when proof things about sorted list.
+It turns out that this definition is not very convenient because we need to consider more cases when proving things about sorted lists.
 There is another option: we can define the {%ard%} head {%endard%} that returns some default value when the list is empty:
 {%arend%}
 \func head {A : \Type} (def : A) (xs : List A) : A \elim xs
@@ -466,7 +466,7 @@ If {%ard%} xs {%endard%} is not empty, then condition {%ard%} x <= head x xs {%e
 If {%ard%} xs {%endard%} is empty, then condition {%ard%} x <= head x xs {%endard%} is always true by reflexivity of {%ard%} <= {%endard%}.
 
 The rest of the proof is straightforward.
-We formulate an obvious lemma about {%ard%} insert {%endard%} function and prove the required property by induction:
+We formulate an obvious lemma about the {%ard%} insert {%endard%} function and prove the required property by induction:
 {%arend%}
 \func sort-sorted {A : TotalPreorder} (xs : List A) : IsSorted (sort xs) \elim xs
   | nil => nil-sorted

@@ -46,7 +46,7 @@ To formulate more complicated propositions, we need to define various logical co
 Let us begin with the implication.
 If {%ard%} P -> Q {%endard%} is true, then the truth of {%ard%} P {%endard%} implies the truth of {%ard%} Q {%endard%}.
 Thus, we can think of a proof of {%ard%} P -> Q {%endard%} as a function that transforms a proof of {%ard%} P {%endard%} into a proof of {%ard%} Q {%endard%}.
-That is, the type corresponding to the implications is the type of functions {%ard%} P -> Q {%endard%}!
+That is, the type corresponding to the implication is the type of functions {%ard%} P -> Q {%endard%}!
 
 We already can prove various propositional tautologies.
 For example, the identity function proves that {%ard%} P -> P {%endard%} holds for every proposition {%ard%} P {%endard%}.
@@ -163,7 +163,7 @@ as the proposition True (type {%ard%}Unit{%endard%}) and {%ard%}false : Bool{%en
 {%endarend%}
 
 Now let us prove some statements about the two-element type {%ard%}Bool{%endard%} defined earlier.
-We formulate some properties of {%ard%}Bool{%endard%}, expressable in terms of equality predicate for {%ard%}Bool{%endard%}:
+We formulate some properties of {%ard%}Bool{%endard%}, expressible in terms of the equality predicate for {%ard%}Bool{%endard%}:
 
 {%arend%}
 \func \infix 4 == (x y : Bool) : Bool
@@ -186,7 +186,7 @@ For example, propositions {%ard%}T (x == x){%endard%} and {%ard%}T (not (not x) 
 {%endarend%}
 
 In both cases in both proofs we simply return {%ard%}unit{%endard%}. Note that we cannot return {%ard%}unit{%endard%} without case analysis since
-both {%ard%}T (not (not x) == x){%endard%} and {%ard%}T (x == x){%endard%} do not evalute to {%ard%}Unit{%endard%}. The following code does not typecheck:
+both {%ard%}T (not (not x) == x){%endard%} and {%ard%}T (x == x){%endard%} do not evaluate to {%ard%}Unit{%endard%}. The following code does not typecheck:
 
 {%arend%}
 \func not-isInvolution' (x : Bool) : T (not (not x) == x) => unit
@@ -212,7 +212,7 @@ Let us also prove something involving quantification. For example, the statement
 \func lemma (x : Bool) : \Sigma (y : Bool) (T (x == y)) => (x, ==-refl x)
 {%endarend%}
 
-The following is a proof of rather awkward statement "if every {%ard%}x : Bool{%endard%} equals itself, then {%ard%}true : Bool{%endard%}
+The following is a proof of a rather awkward statement "if every {%ard%}x : Bool{%endard%} equals itself, then {%ard%}true : Bool{%endard%}
 equals {%ard%}true : Bool{%endard%}":
 
 {%arend%}
@@ -222,7 +222,7 @@ equals {%ard%}true : Bool{%endard%}":
 # Identity type
 
 The way how we defined equality {%ard%}=={%endard%} for {%ard%}Bool{%endard%} above is not actually satisfactory. Its definition
-is specific for {%ard%}Bool{%endard%}, we need to make analogous definitions for all other types and each time prove, say, that it is
+is specific to {%ard%}Bool{%endard%}; we need to make analogous definitions for all other types and each time prove, say, that it is
 an equivalence relation. 
 
 Instead, we define an identity type for all types at once. Its definition is located in Prelude (type {%ard%}Path{%endard%} and its
@@ -248,5 +248,5 @@ And as before, we cannot prove false statements:
 **Exercise 12:** Prove associativity of `and` and `or`.
 {: .notice--info}
 
-**Exercise 13:** Prove that 2 * 2 equals to 4.
+**Exercise 13:** Prove that 2 * 2 equals 4.
 {: .notice--info}

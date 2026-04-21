@@ -24,7 +24,7 @@ To display errors in Arend files, a dedicated panel called the [**Arend messages
 
 In IntelliJ IDEA, there are three types of issues which are displayed in the [**Arend messages tool window**](#arend-messages-tool-window) and simultaneously are indicated in Arend files using wavy underline highlighting beneath the affected code:
  - **Errors**. A red wavy underline indicates an error encountered during the processing of a definition. For example, syntax errors and type errors are marked with this highlighting.
- - **Warnings**. An orange wavy underline highlights a potential issue in the . For instance, unused variables or unresolved goals are marked with orange wavy lines.
+ - **Warnings**. An orange wavy underline highlights a potential issue in the code. For instance, unused variables or unresolved goals are marked with orange wavy lines.
  - **Weak Warnings**. An olive-colored wavy underline signifies a minor issue in the code, such as an expression unnecessarily surrounded by extra parentheses.
 
 Hovering over the code with the wavy underline will display the error content in a pop-up panel. Placing the text cursor on a source line containing the wavy line will also display the full text of the error message in the “Current Error” section of the Arend Messages panel. Errors and warnings are also indicated by corresponding markings on the editor's scroll bar, located on the right-hand side of the file.
@@ -58,7 +58,7 @@ To use this mechanism for a definition called `defName`, the user needs to add `
 {% endarend %}
 
 
-When the user types the prefix of definition having an alias (e.g. the prefix of the word `Exists`), the IDE will show an auto-completion menu  where the user could choose the item `defName`. If they do so or if the user presses **Ctrl+Space** (or **⌘Space** on macOS), the IDE will automatically replace the entered prefix with `aliasName` (in this case with the symbol “∃”). 
+When the user types the prefix of a definition having an alias (e.g. the prefix of the word `Exists`), the IDE will show an auto-completion menu where the user could choose the item `defName`. If they do so or if the user presses **Ctrl+Space** (or **⌘Space** on macOS), the IDE will automatically replace the entered prefix with `aliasName` (in this case with the symbol “∃”). 
 
 # Quick documentation
 ![Short video illustrating the usage of Quick Documentation feature](/about//intellij-features/QuickDocumentation.gif){: style="display: block; margin: 0 auto;" }
@@ -70,7 +70,7 @@ When hovering over parts of Arend code in IntelliJ IDEA, the editor displays add
 Pressing **Ctrl+Q** (or **F1** on macOS) while the quick documentation popup is open will expand it into a dockable panel in the IDE sidebar. This panel will then display the documentation for any identifier the user hovers over or places the caret on.
 
 The documentation for a definition should be written as a line comment or a block comment directly before the definition it refers to. 
-The comment should begin with a space followed by vertical bar symbol ‘|’ after the comment start, as shown in the example:
+The comment should begin with a space followed by the vertical bar symbol ‘|’ after the comment start, as shown in the example:
 
 {% arend %}
 -- | ``Meets x y`` is the type of elements which are meets of {x} and {y}.
@@ -91,7 +91,7 @@ Header2
 {% endarend %}
 
 - **Block quotes**: Created by adding `>` before the quoted text.
-- **Multi-level** lists: Indented by two spaces for each nesting level. Each list item should start either with an item number of symbol `+` or `-`.
+- **Multi-level** lists: Indented by two spaces for each nesting level. Each list item should start either with an item number or symbol `+` or `-`.
 - **LaTeX Formulas**: The user can insert LaTeX formulas by enclosing the formula in `$...$` for inline formulas or `$$...$$` for centered, block-level formulas. 
 This feature relies on the JLatexMath library (a fork of JMathTex), which supports a subset of LaTeX functionality similar to that provided by MathJax, used on sites like MathOverflow.
 
@@ -123,7 +123,7 @@ However, a fallback mechanism is available: it tries to match the arguments of t
 # Auto-completion
 ![Short video illustrating the operation of code completion](/about/intellij-features/CodeCompletion.gif){: style="display: block; margin: 0 auto;" }
 
-Auto-completion is a feature that helps identify available identifiers in the current scope and to complete partially entered identifiers. 
+Auto-completion is a feature that helps identify available identifiers in the current scope and complete partially entered identifiers. 
 Also, it imports definitions from scopes that have not yet been imported. 
 The current scope is determined by the set of active imports, along with surrounding local and global declarations and variables. 
 Auto-completion can always be triggered manually using the **Ctrl+Space** (or **⌘Space** on macOS) keystroke.
@@ -178,7 +178,7 @@ In addition, the **Split Pattern** action can be applied to pattern variables us
 ## Auto import quick fix
 ![Short video illustrating the Auto Import quick fix](/about//intellij-features/AutoImport.gif){: style="display: block; margin: 0 auto;" }
 
-If the user click on an unresolved identifier or presses **Ctrl+Space** (or **⌘Space** on macOS), this quick fix searches for definitions with this name among the imported Arend libraries. 
+If the user clicks on an unresolved identifier or presses **Ctrl+Space** (or **⌘Space** on macOS), this quick fix searches for definitions with this name among the imported Arend libraries. 
 If multiple matches are found, the user can choose one. 
 Once selected, the quick fix updates the identifier to a valid reference and adds the necessary `\import` directives.
 

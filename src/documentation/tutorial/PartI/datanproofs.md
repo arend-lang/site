@@ -15,7 +15,7 @@ them.
 We discuss two more examples of proofs: we prove that {%ard%}reverse{%endard%} is an involution and that {%ard%}+ : Nat -> Nat -> Nat{%endard%}
 is associative. 
 
-Next, we turn to a several examples of data types. For a given type {%ard%}A{%endard%}, we exhibit two possible definitions of the type
+Next, we turn to several examples of data types. For a given type {%ard%}A{%endard%}, we exhibit two possible definitions of the type
 of fixed length vectors of elements of {%ard%}A{%endard%}, one of which is based on _data types with constructor patterns_. We conclude with a
 discussion of possible definitions of the type of all finite sets.
 
@@ -76,10 +76,10 @@ Below we prove that {%ard%}reverse{%endard%} is an involution.
 
 # Examples of proofs: +-assoc and reverse-isInvolution
  
-If you try to prove {%ard%}reverse (reverse xs) = xs{%endard%} directly by induction, then you will stuck at proving the equality 
-{%ard%}rev nil (rev (cons x nil) xs) = cons x xs{%endard%}, because induction hypothesis is too weak. The statement should be strengthened in
-order to make induction hypothesis stronger. Namely, we should prove a more general property of {%ard%}reverse.rev{%endard%} and conclude
-that {%ard%}reverse{%endard%} is involution as a consequence:
+If you try to prove {%ard%}reverse (reverse xs) = xs{%endard%} directly by induction, then you will get stuck at proving the equality 
+{%ard%}rev nil (rev (cons x nil) xs) = cons x xs{%endard%}, because the induction hypothesis is too weak. The statement should be strengthened in
+order to make the induction hypothesis stronger. Namely, we should prove a more general property of {%ard%}reverse.rev{%endard%} and conclude
+that {%ard%}reverse{%endard%} is an involution as a consequence:
 
 {%arend%}
 \func reverse-isInvolutive {A : \Type} (xs : List A) : reverse (reverse xs) = xs => rev-isInv nil xs
@@ -155,9 +155,9 @@ make definitions like {%ard%}Vec{%endard%} much more convenient to work with tha
 
 Below we use double recursion on {%ard%}n{%endard%} and {%ard%}xs{%endard%} to define the 
 function {%ard%}first{%endard%} that returns the first element of a vector and the function
-{%ard%}append{%endard%} that appends a vector to other vector. Note that the output of
+{%ard%}append{%endard%} that appends a vector to another vector. Note that the output of
 {%ard%}first{%endard%} is not defined for the empty vector. This is typically resolved
-by using {%ard%}Maybe{%endard%} data type as codomain:
+by using the {%ard%}Maybe{%endard%} data type as codomain:
 
 {%arend%}
 \data Maybe (A : \Type) | nothing | just A
@@ -180,7 +180,7 @@ by using {%ard%}Maybe{%endard%} data type as codomain:
 **Exercise 4:** Implement function 'zipWith' for 'vec' and 'Vec'. The function must take lists of equal lengths.
 {: .notice--info}
 
-Implicit arguments in Arend make possible to define rather useless function that computes the length of a vector:
+Implicit arguments in Arend make it possible to define a rather useless function that computes the length of a vector:
 
 {%arend%}
 \func length {A : \Type} {n : Nat} (xs : Vec A n) => n
@@ -188,7 +188,7 @@ Implicit arguments in Arend make possible to define rather useless function that
 
 # Finite sets, lookup
 
-There are several variants of definition of a type of finite sets as well. For example,
+There are several variants of the definition of a type of finite sets as well. For example,
 one can define it as a subtype of {%ard%}Nat{%endard%}:
 
 {%arend%}

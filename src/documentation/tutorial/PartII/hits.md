@@ -20,7 +20,7 @@ One way to think about these types is as being generated not only by usual const
 _path-constructors_. The corresponding elimination principles are called _higher recursion/induction_.
 
 Under the types-are-spaces view one can prove various theorems from homotopy theory. As an example, we discuss
-type-theoretic version of the classical proof that the fundamental group of the circle is isomorphic to integers.
+a type-theoretic version of the classical proof that the fundamental group of the circle is isomorphic to integers.
 We also discuss the Eilenberg-Maclane spaces and equivalence between the category of connected pointed 1-types and
 the category of groups.
 
@@ -182,7 +182,7 @@ Below, while proving theorems about the fundamental group, we will see that this
 
 In the module [Equality](/documentation/tutorial/PartI/idtype) we showed how the equality type of a 1-type {%ard%}X{%endard%} gives rise to
 a groupoid structure on {%ard%}X{%endard%}. This is precisely the groupoid of paths in the space {%ard%}X{%endard%}:
-morphisms between points {%ard%}x : X{%endard%} and {%ard%}y : Y{%endard%} are paths between {%ard%}x{%endard%} and {%ard%}y{%endard%}.
+morphisms between points {%ard%}x : X{%endard%} and {%ard%}y : X{%endard%} are paths between {%ard%}x{%endard%} and {%ard%}y{%endard%}.
 In particular, the loops {%ard%}x = x{%endard%} at a point {%ard%}x : X{%endard%} form a group with composition as the group operation.
 This group {%ard%}pi1(X, x){%endard%} is called _the fundamental group_ of {%ard%}X{%endard%}. In the Arend standard library the 
 corresponding instance of the class {%ard%}Group{%endard%} is called {%ard%}Aut{%endard%}.
@@ -204,10 +204,10 @@ corresponding instance of the class {%ard%}Group{%endard%} is called {%ard%}Aut{
 \func pi1Mult {X : \1-Type} {x : X} (a b : pi1-1 X x) => a * b
 {%endarend%}
 
-Assume {%ard%}X{%endard%} is connected, that is for all pairs {%ard%}x y : X{%endard%} the proposition {%ard%}TruncP (x = y){%endard%} holds,
+Assume {%ard%}X{%endard%} is connected, that is, for all pairs {%ard%}x y : X{%endard%} the proposition {%ard%}TruncP (x = y){%endard%} holds,
 where {%ard%}TruncP{%endard%} is the propositional truncation.
-It is easy to see, that the definition {%ard%}pi1(X, x){%endard%} does not depend on {%ard%}x{%endard%} in the sense that
-the groups {%ard%}pi1-1(X, x){%endard%} for different choice of {%ard%}x{%endard%} are isomorphic.
+It is easy to see that the definition {%ard%}pi1(X, x){%endard%} does not depend on {%ard%}x{%endard%} in the sense that
+the groups {%ard%}pi1-1(X, x){%endard%} for different choices of {%ard%}x{%endard%} are isomorphic.
 This group assigned to a space is one of the simplest examples of an algebraic invariant of a space: the fundamental groups of homotopy equivalent
 spaces are isomorphic.
 
@@ -251,7 +251,7 @@ Let us now consider an example of a calculation of the fundamental group. We wil
 {%ard%}(base1 = base1) = Int{%endard%}, where {%ard%}Sphere1{%endard%} is {%ard%}Circle{%endard%} and {%ard%}base1{%endard%} is {%ard%}base{%endard%}
 in the notation we used above. This implies that {%ard%}pi1 Sphere1 base1 = Int{%endard%} as well as that {%ard%}Sphere1{%endard%} is 1-type.
 
-The type-theoretic proof of {%ard%}(base1 = base1) = Int{%endard%} follows quite closely the classical homotopy-theoretic proof. First note, that
+The type-theoretic proof of {%ard%}(base1 = base1) = Int{%endard%} follows quite closely the classical homotopy-theoretic proof. First note that
 it is very easy to construct a "winding" homomorphism from the group {%ard%}Int{%endard%} to the group {%ard%}base1 = base1{%endard%}, which sends the generator
 {%ard%}1{%endard%} to the generator {%ard%}path loop{%endard%}:
 
@@ -263,7 +263,7 @@ it is very easy to construct a "winding" homomorphism from the group {%ard%}Int{
 {%endarend%}
  
 In order to construct the inverse map we will need to define a fibration over the circle, called the _universal cover_.
-This amouts to constructing a specific dependent type, which we denote as {%ard%}code{%endard%}.
+This amounts to constructing a specific dependent type, which we denote as {%ard%}code{%endard%}.
  
 Geometrically the universal cover of the circle is a winding of the real line over the circle and
 can be visualized as a helix. Note that {%ard%}code x{%endard%} would be the fiber over {%ard%}x{%endard%} and {%ard%}\Sigma (x : Sphere1) (code x){%endard%}
@@ -276,7 +276,7 @@ This gives us a map from loops {%ard%}base1 = base1{%endard%} to points in the f
 We can identify the fiber with {%ard%}Int{%endard%} so that the map becomes a homomorphism of groups: simply set {%ard%}code base1 ==> Int{%endard%}
 and define {%ard%}code (loop i){%endard%} in such a way that transporting of {%ard%}n{%endard%} along {%ard%}path loop{%endard%} results in 
 {%ard%}n + 1{%endard%}. The latter can be easily done by means of employing nontrivial structure of equality of types given by {%ard%}iso{%endard%}
-and univalence: mutually inverse automorphisms {%ard%}isuc{%endard%} (which is {%ard%}(+1){%endard%}) and {%ard%}ipred{%endard%}(which is {%ard%}(-1){%endard%}) of
+and univalence: mutually inverse automorphisms {%ard%}isuc{%endard%} (which is {%ard%}(+1){%endard%}) and {%ard%}ipred{%endard%} (which is {%ard%}(-1){%endard%}) of
 {%ard%}Int{%endard%} define a loop on {%ard%}Int{%endard%}, which we can use!
 
 {%arend%}
@@ -300,7 +300,7 @@ one endpoint fixed at {%ard%}base1{%endard%}. The equivalence of fibers over {%a
 
 We have already defined the map {%ard%}encode{%endard%} from path fibration to universal cover. The inverse function 
 {%ard%}decode (x : Sphere1) : code x -> base1 = x{%endard%} can be defined using the higher induction principle for the circle, which we described above.
-The full definition of  {%ard%}decode{%endard%} as well as the proofs {%ard%}encode_decode{%endard%}, {%ard%}decode_encode{%endard%} that
+The full definition of {%ard%}decode{%endard%} as well as the proofs {%ard%}encode_decode{%endard%}, {%ard%}decode_encode{%endard%} that
 {%ard%}encode{%endard%} and {%ard%}decode{%endard%} are mutually inverse are technical, we omit them here. The rest of the proof can be found in the
 Arend standard library.
 

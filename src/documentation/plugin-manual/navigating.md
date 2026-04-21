@@ -17,7 +17,7 @@ This bar shows the file path, namespaces, sections, and the current declaration 
 The **Find Usages** command can be invoked by either right-clicking on an identifier and selecting Find Usages, or by placing the cursor on the identifier and pressing **Alt+Shift+7** (or **⌥F7** on macOS). This command locates all occurrences of the identifier within the specified scope, organizes them by the type of usage and the containing file, and also displays a brief snippet of the surrounding code.
 
 # Project-wide text search/replacement
-The **Find in Files** command **Ctrl+Shift+F** (or **⇧⌘F** on macOS) and **Replace in Files** command **Ctrl+Shift+R** (or **⇧⌘R** on macOS) provide effective tools for searching and replacing text within an Arend project. As the user types, matching entries are displayed and organized by the files in which they are found. By selecting a result, the user is directed to the corresponding location in the code. The search can be refined using various options available as icons adjacent to the search field, such as **Match Case**, **Match Whole Word**, or **Use Regex**. Additionally, file name masks can be applied to impose further conditions on file names or to restrict the search to a specific directory
+The **Find in Files** command **Ctrl+Shift+F** (or **⇧⌘F** on macOS) and **Replace in Files** command **Ctrl+Shift+R** (or **⇧⌘R** on macOS) provide effective tools for searching and replacing text within an Arend project. As the user types, matching entries are displayed and organized by the files in which they are found. By selecting a result, the user is directed to the corresponding location in the code. The search can be refined using various options available as icons adjacent to the search field, such as **Match Case**, **Match Whole Word**, or **Use Regex**. Additionally, file name masks can be applied to impose further conditions on file names or to restrict the search to a specific directory.
 
 # Go to Class/File/Symbol
 Pressing **Ctrl+N** (or **⌘O** on macOS) (resp. **Ctrl+Alt+Shift+N** or **⌥⌘O** on macOS) opens the **Go to** window in IntelliJ IDEA, which can also be accessed via the Navigate menu. In the **Class** or **Symbol** tab, typing a name displays all matching classes or Arend definitions within the selected scope, which by default includes all Arend libraries added to the project. The Arend plugin also adds a special **Arend Files** tab to this window limiting the search to files with the `.ard` extension.
@@ -46,7 +46,7 @@ This functionality, called **Proof Search** is comparable to the Search vernacul
 
 The user needs to type a query pattern in the input field. 
 **Proof Search** then lists all definitions whose parameter or result types contain a subexpression matching the specified pattern.
-In the simplest case this pattern consists of a single reference to an Arend definition and the **Proof Search** lists all definitions mentioning this identifier in their parameters or result type (notice that a theorem’s statement does count as a result type due to Curry--Howard correspondence).
+In the simplest case this pattern consists of a single reference to an Arend definition and the **Proof Search** lists all definitions mentioning this identifier in their parameters or result type (notice that a theorem’s statement does count as a result type due to the Curry--Howard correspondence).
 
 For example, the following definitions can be found using the pattern List:
 
@@ -70,7 +70,7 @@ On the other hand, the following definitions can be found using the search patte
 The user can navigate search results using arrow keys and perform the following actions in the **Proof Search** window:
 - **View Definition**: Pressing **Enter** will display the definition of a selected result.
 - **Navigate to Location**: Pressing **F4** will navigate the editor to the location of a selected definition.
-- **Insert in Editor**: Pressing **Ctrl+Enter** (or **⌘Enter** on macOS) will insert the name selected definition into the editor.
+- **Insert in Editor**: Pressing **Ctrl+Enter** (or **⌘Enter** on macOS) will insert the name of the selected definition into the editor.
 
 ## The grammar of queries
 The grammar of **Proof Search** queries is defined as follows:

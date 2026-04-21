@@ -26,7 +26,7 @@ keywords {%ard%}\func{%endard%} and {%ard%}\data{%endard%} respectively.
 Numerals, if they occur in terms, are always interpreted as elements of types {%ard%}Nat{%endard%} or {%ard%}Int{%endard%}:
 non-negative numerals are of type {%ard%}Nat{%endard%}, negative numerals are of type {%ard%}Int{%endard%}.
 
-Arend allows considerable amount of freedom in the choice of identifiers. With a few exceptions, names of definitions, variables
+Arend allows a considerable amount of freedom in the choice of identifiers. With a few exceptions, names of definitions, variables
 etc may contain upper or lower case letters, digits and characters from the list `~!@#$%^&*-+=<>?/|[]:_`.
 
 # Functions
@@ -133,7 +133,7 @@ Any binary operator, even if it was not declared as infix, can be used in infix 
 -}
 {%endarend%}
 
-Any infix operator can also be used in the prefix from:
+Any infix operator can also be used in the prefix form:
 
 {%arend%}
 \func \infix 6 %% (x y : Nat) => x
@@ -278,9 +278,9 @@ of natural numbers. The type of binary natural numbers can be defined as follows
 Efficiency-wise this definition is obviously much better. However, it is much less convenient for proofs by
 induction, than the definition of {%ard%}Nat{%endard%} above. And actually the type {%ard%}Nat{%endard%} from Prelude
 is efficient as well, because actual implementations of arithmetic operations differ from those above and
-efficiently hard coded in ad hoc way.
+efficiently hard coded in an ad hoc way.
 
-**Exercise 2:** Define the function 'if', which takes a boolean value b and two elements of an arbitrary type A and return the first element when b equals to true and the second one otherwise.
+**Exercise 2:** Define the function 'if', which takes a boolean value b and two elements of an arbitrary type A and returns the first element when b equals true and the second one otherwise.
 {: .notice--info}
 
 **Exercise 3:** Define \|\| via 'if'. 
@@ -310,7 +310,7 @@ cannot be Turing complete, because typechecking becomes undecidable in this case
  
 Intensional Martin-Löf type theory avoids this kind of issues by ensuring that all definable functions are total, that is
 their evaluation terminates on every input.
-It is thus typical for theorem provers, that have Martin-Lof type theory in the core of their type system, to require
+It is thus typical for theorem provers, that have Martin-Löf type theory in the core of their type system, to require
 all functions to terminate and all recursive functions to be defined by _structural recursion_. And this also
 applies to Arend.
 
@@ -325,8 +325,8 @@ There are two problems with this definition. Firstly, evaluation of {%ard%}div x
 Secondly, the recursion is not structural. Structural recursion requires arguments of recursive calls to be 
 structurally simpler than the original argument.
 
-A recursive function can often be turned into structurally recursive function by introducing additional parameter, which decreases 
-with the increase of the level of recursive calls. Initial value of this parameter can be set to an upper bound to the
+A recursive function can often be turned into a structurally recursive function by introducing an additional parameter, which decreases 
+with the increase of the level of recursive calls. The initial value of this parameter can be set to an upper bound to the
 number of recursive steps: 
 {%arend%}
 \func div (x y : Nat) => div' x x y
@@ -357,14 +357,14 @@ function can be stated as follows:
 {%endarend%}
 
 The type {%ard%} \Pi (a : A) -> B {%endard%} is the type of dependent functions, which generalizes the type of ordinary functions {%ard%} A -> B {%endard%}.
-The codomain of a dependent function may vary dependening on the argument.
-For example, the type {%ard%} \Pi (b : Bool) -> if b Nat Bool {%endard%} is the type of functions which accept an argument of type {%ard%} Bool {%endard%} and return either a natural number or a boolean value, depending its argument.
+The codomain of a dependent function may vary depending on the argument.
+For example, the type {%ard%} \Pi (b : Bool) -> if b Nat Bool {%endard%} is the type of functions which accept an argument of type {%ard%} Bool {%endard%} and return either a natural number or a boolean value, depending on its argument.
 If we pass {%ard%} true {%endard%} to such a function, it returns an element of {%ard%} Nat {%endard%}; otherwise, it returns an element of {%ard%} Bool {%endard%}.
 
 The type {%ard%} \Pi (A : \Type) (a : A) -> A {%endard%} can be equivalently written as {%ard%} \Pi (A : \Type) -> A -> A {%endard%} since its codomain does not depend on the second argument.
 This is the type of functions which accept a type {%ard%} A {%endard%} and return a function of type {%ard%} A -> A {%endard%}.
 
-Note that {%ard%}\Type{%endard%} is not a type of _all_ types: the famous Girard's paradox states that intensional Martin-Lof's
+Note that {%ard%}\Type{%endard%} is not a type of _all_ types: the famous Girard's paradox states that intensional Martin-Löf's
 type theory is inconsistent with the type of all types.
 This problem is solved with a hierarchy of universes, which will be discussed [later](universes).
 Fortunately, the user does not need to care about these levels for the most part.
@@ -406,7 +406,7 @@ In this case the inference algorithm will fail to infer {%ard%}n{%endard%} from 
 {%ard%}example' pp{%endard%}, where {%ard%}pp : 8 = 3{%endard%}, the algorithm will not infer that {%ard%}n{%endard%}
 is {%ard%}4{%endard%}.
 
-On the other hand, the algorithm will be able infer {%ard%}n{%endard%} and {%ard%}m{%endard%} in the following example:
+On the other hand, the algorithm will be able to infer {%ard%}n{%endard%} and {%ard%}m{%endard%} in the following example:
 
 {%arend%}
 \func example'' {n m : Nat} (p : suc n = m) => 0
@@ -471,7 +471,7 @@ Let us give a few examples of dependent {%ard%}\Sigma{%endard%}-types:
   In particular, pairs {%ard%}(true,7){%endard%} and {%ard%}(false,true){%endard%} belong to this type, but pairs {%ard%}(false,7){%endard%} and {%ard%}(true,true){%endard%} do not.
 * We will see that, for every pair of natural numbers {%ard%}n,m : Nat{%endard%}, there is a type {%ard%}n < m{%endard%} of proofs that one of them is less than the other.
   Then we can define the type {%ard%}\Sigma (n : Nat) (n <= 10){%endard%} which consists of natural numbers less than {%ard%}10{%endard%}.
-  To be more precise, it consists of pairs {%ard%}(n,p){%endard%}, where {%ard%}n{%endard%} is a natural number and {%ard%}p{%endard%} is a proof that it less than {%ard%}10{%endard%}.
+  To be more precise, it consists of pairs {%ard%}(n,p){%endard%}, where {%ard%}n{%endard%} is a natural number and {%ard%}p{%endard%} is a proof that it is less than {%ard%}10{%endard%}.
 * More interesting example -- the type {%ard%}\Sigma (n : Nat) (\Sigma (k : Nat) (n = k * k)){%endard%} of natural numbers {%ard%}n{%endard%}
   that are full squares: its elements are pairs {%ard%}(n, p){%endard%}, where {%ard%}n{%endard%} is a natural number and 
   {%ard%}p : \Sigma (k : Nat) (n = k * k){%endard%} is a proof that {%ard%}n{%endard%} is a square. 
@@ -483,7 +483,7 @@ to {%ard%}x{%endard%}.
 
 # Type synonyms
 
-There is no need for type synonyms in dependently types language since we can simply define a function returning the type,
+There is no need for type synonyms in a dependently typed language since we can simply define a function returning the type,
 synonym of which is being defined:
 
 {%arend%}
@@ -503,7 +503,7 @@ is attached to the whole definition, not to a particular clause:
 {%endarend%}
 
 Definitions in {%ard%}\where{%endard%} block in almost all respects behave just as normal definitions. The only difference is that
-it has different namespace:
+it has a different namespace:
 
 {%arend%}  
 \func gTest => f.g
@@ -579,7 +579,7 @@ In case there are clashes between names of definitions in different modules, the
 \module M5 \where {
     \open M2 \hiding (t') -- open all definitions except for t'
     \open M3 (t \as M3_t) -- open just t and rename it to M3_t
-    \open M4 \using (t \as M4_t) -- open all definition and rename t to M4_t
+    \open M4 \using (t \as M4_t) -- open all definitions and rename t to M4_t
     \func t'' => (M3_t, M4_t, t', t, functionModule, functionModule.f1, functionModule.f2, functionModule.f3)
     \func t''' => (t'', M2.t'', M4.t'') 
 	-- t'' in the current module clashes with t'' from M2 and M4,

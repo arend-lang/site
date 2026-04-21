@@ -102,7 +102,7 @@ Simplifies certain equalities. It expects one argument and the type of this argu
 * If the goal is {%ard%} coe (\lam i => \Pi (x : A) -> B x i) f right a = b' {%endard%}, then the subgoal is {%ard%} coe (B a) (f a) right = b {%endard%}.
 * If the goal is {%ard%} coe (\lam i => \Pi (x : A) -> B x i) f right = g' {%endard%}, then the subgoal is {%ard%} \Pi (a : A) -> coe (B a) (f a) right = g a {%endard%}.
 * If the goal is {%ard%} coe (\lam i => A i -> B i) f right = g' {%endard%}, then the subgoal is {%ard%} \Pi (a : A left) -> coe B (f a) right = g (coe A a right) {%endard%}.
-* If the type under {%ard%} coe {%endard%} is a higher-order non-dependent function type, {%ard%} simp_co {%endard%}e simplifies it recursively.
+* If the type under {%ard%} coe {%endard%} is a higher-order non-dependent function type, {%ard%} simp_coe {%endard%} simplifies it recursively.
 * If the goal is {%ard%} (coe (\lam i => \Sigma (x_1 : A_1 i) ... (x_n : A_n i) ...) t right).n = b' {%endard%}, then the subgoal is {%ard%} coe A_n t.n right = b {%endard%}.
 * If the goal is {%ard%} coe (\lam i => \Sigma (x_1 : A_1) ... (x_n : A_n) (B_{n+1} i) ... (B_k i)) t right = s' {%endard%}, then the subgoal is a \Sigma type consisting of equalities as specified above ignoring fields in \Prop.
 * If the type under {%ard%} coe {%endard%} is a record, then {%ard%} simp_coe {%endard%} works similarly to the case of \Sigma types. The copattern matching syntax as in {ext} is also supported.

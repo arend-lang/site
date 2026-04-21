@@ -63,7 +63,7 @@ In the example above, parameters {%ard%} x1 {%endard%} and {%ard%} x2 {%endard%}
 parameters {%ard%} y1 {%endard%}, {%ard%} y2 {%endard%}, and {%ard%} y3 {%endard%} may appear in {%ard%} A3 {%endard%}, and all of the parameters may appear in {%ard%} B {%endard%}.
 
 If a parameter is never used, its name can be replaced with {%ard%} _ {%endard%}.
-Such a name cannot be refered to, so this simply indicated that this parameter is ignored.
+Such a name cannot be referred to, so this simply indicates that this parameter is ignored.
 
 ## Strict parameters
 
@@ -99,7 +99,7 @@ We can ask typechecker to try to infer an explicit parameter by writing {%ard%} 
 
 In the example above, the typechecker will try to infer the argument corresponding to {%ard%} x {%endard%}.
 Actually, the expression {%ard%} _ {%endard%} can be written anywhere at all.
-The typechecker infers the omitted expression only if there is a unique solutions to the inference problem 
+The typechecker infers the omitted expression only if there is a unique solution to the inference problem 
  (i. e. there is only one expression with which {%ard%} _ {%endard%} can be replaced so that the surrounding definition typechecks correctly).
 
 Finally, if the typechecker cannot infer an implicit argument, it can be specified explicitly by writing {%ard%} {e} {%endard%}.

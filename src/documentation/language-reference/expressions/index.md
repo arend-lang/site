@@ -20,7 +20,7 @@ If there is no {%ard%} e' {%endard%} such that {%ard%} e => e' {%endard%}, we wi
 If {%ard%} e {%endard%} reduces to {%ard%} e' {%endard%} and {%ard%} e' {%endard%} is a normal form, we will say that {%ard%} e' {%endard%} is a _normal form_ of {%ard%} e {%endard%} and that {%ard%} e {%endard%} _evaluates_ to {%ard%} e' {%endard%}.
 Every expression has a unique normal form.
 
-The relation {%ard%} => {%endard%} is a meta-relation on the set of expressions of the language, that is you cannot refer to it explicitly in the language.
+The relation {%ard%} => {%endard%} is a meta-relation on the set of expressions of the language, that is, you cannot refer to it explicitly in the language.
 This relation is used by the typechecker to compare expressions.
 The typechecker never compares expressions directly.
 To compare expressions {%ard%} e_1 {%endard%} and {%ard%} e_2 {%endard%}, it first evaluates their normal forms and then compares them.
@@ -49,7 +49,7 @@ In this expression, {%ard%} e {%endard%} must have type {%ard%} E {%endard%} and
 
 A _defcall_ is an expression of the form {%ard%} f a_1 ... a_n {%endard%}, where {%ard%} f {%endard%} is the name of a definition with n parameters
 and {%ard%} a_1, ..., a_n {%endard%} are expressions. Note that classes and records do not have parameters and any defcall in this
-case is of the form {%ard%} f {%endard%}. Expression of the form {%ard%} f a_1 ... a_n {%endard%}, where {%ard%} f {%endard%} is the name of a class, are _class
+case is of the form {%ard%} f {%endard%}. Expressions of the form {%ard%} f a_1 ... a_n {%endard%}, where {%ard%} f {%endard%} is the name of a class, are _class
 extensions_, see [Class extensions](class-ext) for details.
 
 Defcall expressions have the following properties: 

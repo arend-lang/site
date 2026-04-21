@@ -15,7 +15,7 @@ Similar to other languages supported by IntelliJ IDEA, the Arend plugin provides
  - Press **Alt+Enter** (or **⌥Enter** on macOS) to trigger the action and remove it.
 
 ## Limitations
-The **Optimize Imports** tool requires the file upon which it is invoked to be fully type checked  to produce fully accurate results.
+The **Optimize Imports** tool requires the file upon which it is invoked to be fully type checked to produce fully accurate results.
 In particular, the type checker must be in the **Smart** mode.
 This limitation exists because, in Arend, an `\import` directive might still be necessary even if there are no explicit references to the contents of the imported file. 
 For example, a file may export a class instance which is used implicitly via the [instance inference mechanism](/documentation/language-reference/definitions/classes#instances).

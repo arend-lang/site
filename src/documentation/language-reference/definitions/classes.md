@@ -19,7 +19,7 @@ Let us consider an example:
 
 It is allowed to write {%ard%} x : S {%endard%} instead of {%ard%} x : S.E {%endard%} since {%ard%} S {%endard%} is implicitly coerced to an element of type {%ard%} \Set {%endard%}, that is {%ard%} S.E {%endard%}.
 
-In case a parameter of a definition has type, which is an [extension](../expressions/class-ext) {%ard%} C { ... } {%endard%} of {%ard%} C {%endard%},
+In case a parameter of a definition has a type which is an [extension](../expressions/class-ext) {%ard%} C { ... } {%endard%} of {%ard%} C {%endard%},
 it is marked as a _local instance_ of class {%ard%} C {%endard%}. Implicit parameter {%ard%} \this {%endard%} of a field of class {%ard%} C {%endard%} is also a local instance. 
 
 If a parameter {%ard%} p : C { ... } {%endard%} of a definition {%ard%} f {%endard%} is a local instance, then the corresponding implicit argument of {%ard%} f {%endard%} can be inferred by the instance inference algorithm.

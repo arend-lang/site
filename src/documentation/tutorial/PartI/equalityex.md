@@ -52,7 +52,7 @@ The commutativity can now be proved as follows:
 
 # Equational reasoning, proof of +-comm rewritten
 
-There is one clever trick that allows to write sequences of equality proofs joining by transitivity in a
+There is one clever trick that allows to write sequences of equality proofs joined by transitivity in a
 more readable form. Namely, one can define operators {%ard%}`==<`{%endard%}, {%ard%}`>==`{%endard%} and
 {%ard%}`qed`{%endard%} such that it is possible to write instead of a chain of equality proofs 
 {%ard%}p1 `*>` ... `*>` pn{%endard%} an extended chain {%ard%}a1 `==<` p1 `>==` a2 `==<` p2 `>==` a3 ... `qed {%endard%},
@@ -130,7 +130,7 @@ fixed and equal to {%ard%}a{%endard%} in the definition above, then we obtain _K
     (b : B idp)
     (p : a = a) : B p => {?}
 {%endarend%}
-This eliminator equivalent to the statement that every element of {%ard%}a = a{%endard%} is {%ard%}idp{%endard%}. 
+This eliminator is equivalent to the statement that every element of {%ard%}a = a{%endard%} is {%ard%}idp{%endard%}. 
 It may seem natural at first sight to add it as an axiom then to simplify things by making proofs of equalities
 unique (as it implies that {%ard%}p = p'{%endard%} for any {%ard%}p, p' : a = a'{%endard%}), but actually it is
 important that these proofs are _not unique_. This issue will be discussed later. <!-- TODO: ref to Part II -->
@@ -298,10 +298,10 @@ But this is not the only way to characterize {%ard%}LessOrEq{%endard%}. For exam
 {: .notice--info}
 
 **Exercise 5:** Define reflexive and transitive closure of a relation.
-That is {%ard%}ReflTransClosure R{%endard%} -- is the minimal reflexive and transitive relation containing {%ard%}R{%endard%}.
+That is, {%ard%}ReflTransClosure R{%endard%} is the minimal reflexive and transitive relation containing {%ard%}R{%endard%}.
 {: .notice--info}
 
-**Exercise 6:** Prove that if {%ard%}R{%endard%} is already reflexive and transitive then {%ard%}ReflTransClosure R{%endard%}
+**Exercise 6:** Prove that if {%ard%}R{%endard%} is already reflexive and transitive, then {%ard%}ReflTransClosure R{%endard%}
 is equivalent to {%ard%}R{%endard%}.
 {: .notice--info}
 

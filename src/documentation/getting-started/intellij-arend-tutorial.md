@@ -6,7 +6,7 @@ has_videos: true
 This tutorial has two goals:
 
 * Show how to prove a simple theorem in Arend.
-* Demonstrate the features of IntelliJ Arend that speed-up theorem proving, make it more convenient and truly interactive.
+* Demonstrate the features of IntelliJ Arend that speed up theorem proving, make it more convenient and truly interactive.
 
 Before getting started, make sure you have [installed IntelliJ Arend and created a new project](/documentation/getting-started/started). 
 Here we use Arend 1.7 and IntelliJ Arend 2021.3.2.
@@ -26,7 +26,7 @@ We start by pattern matching on {%ard%} k {%endard%}:
 As we type, we notice that the IDE provides completion for keywords like {%ard%} \elim {%endard%}. 
 The completion is also available for definitions even if they are not imported to the current file. We will see this later.
 
-Another feature of the IDE we see here is background typechecking: as we finish typing, IDE typechecks the definition and shows that it has an error. 
+Another feature of the IDE we see here is background typechecking: as we finish typing, the IDE typechecks the definition and shows that it has an error. 
 This process is incremental; only the last modified definition is re-typechecked.
 
 The error tells us that we need to consider {%ard%} 0 {%endard%} and {%ard%} suc n {%endard%} patterns when matching {%ard%} Nat {%endard%}. 
@@ -61,7 +61,7 @@ When we remove a goal from the file, the goal view is cleared.
 To prevent this, we use **Pin** which will hold the contents of the view until we press it again.
 
 Secondly, in spite of {%ard%} pmap {%endard%} being defined in some external module, it is suggested by the completion. 
-And when we select the completion item, IDE inserts a corresponding import in our file. 
+And when we select the completion item, the IDE inserts a corresponding import in our file. 
 This feature is called “Auto Import”, and thanks to it we do not need to memorize import paths or ever type them manually.
 
 Let's examine the {%ard%} pmap {%endard%} function in a bit more detail:
@@ -74,7 +74,7 @@ The IDE provides a number of tools that help to learn more about declarations li
 * **Navigate \| Declaration or Usage** brings us to the place where the function is declared. 
 Here we can check out how exactly {%ard%} pmap {%endard%} is defined.
 * **External Libraries** in the **Project View** allows us to browse the standard library. 
-Aside from {%ard%} Paths.ard {%endard%} that contains {%ard%} pmap {%endard%} we see a lot of modules that could be useful for our proofs.
+Aside from {%ard%} Paths.ard {%endard%} that contains {%ard%} pmap {%endard%}, we see a lot of modules that could be useful for our proofs.
 * **Find usages** shows all the places where the function is used. We see that {%ard%} pmap {%endard%} is used quite extensively in the standard library.
 
 The signature of {%ard%} pmap {%endard%} tells us that we need to pass 2 explicit arguments: a function that will be applied to both sides of the equation, and the equation itself.
@@ -85,11 +85,11 @@ The function we need to provide should basically subtract 1 from a natural numbe
 
 {% include video.html src="/assets/intellij-arend-tutorial/fill-subtract-function.mp4" %}
 
-As the first step, we create a lambda function. Again, IDE helps us here by providing the **Replace with constructor** context action. 
+As the first step, we create a lambda function. Again, the IDE helps us here by providing the **Replace with constructor** context action. 
 This action is suggested because our goal has the type {%ard%} Nat -> Nat {%endard%} and the IDE knows the only constructor for such a type is lambda. 
 Then, we use the quick-fix to generate patterns that we have already seen before. And this actually finishes our proof!
 
-Before we finish, let's do a bit of clean-up. To give auto generated variables better names, we can use the **Rename** feature:
+Before we finish, let's do a bit of clean-up. To give auto-generated variables better names, we can use the **Rename** feature:
 
 {% include video.html src="/assets/intellij-arend-tutorial/rename.mp4" %}
 

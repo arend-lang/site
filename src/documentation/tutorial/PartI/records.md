@@ -307,7 +307,7 @@ Thus the type of the classifying field is often {%ard%}\Type{%endard%} or {%ard%
 Classifying fields significantly affect the behavior of the instance inference algorithm. Basically, in case there are no local instances, the algorithm
 searches for a first appropriate global instance (appropriate in the sense that its classifying field coincides with some expected type). 
 
-Note, that the type of a class field is determined in the same way as in case of records. For example, for {%ard%}*{%endard%}:
+Note that the type of a class field is determined in the same way as in the case of records. For example, for {%ard%}*{%endard%}:
 
 {%arend%}
 * {M : Monoid} (x y : M.A) : M.A
@@ -361,12 +361,12 @@ an element of type {%ard%}\Type{%endard%} is expected:
 \func CF-coerce (M : Monoid) (x : M) => x
 {%endarend%}
 
-This kind of substitutions are called _coercions_, we say that a class can be coerced to its classifying field. The mechanism
-of coercions in Arend allows also to define coercions between data types, classes and records. In order to be able to use
+These kinds of substitutions are called _coercions_, we say that a class can be coerced to its classifying field. The mechanism
+of coercions in Arend also allows to define coercions between data types, classes and records. In order to be able to use
 elements of type {%ard%}A{%endard%}, where elements of type {%ard%}B{%endard%} are expected, one should define a function
 {%ard%}f : A -> B{%endard%} in the {%ard%}\where{%endard%}-block of either {%ard%}A{%endard%} or {%ard%}B{%endard%} as a coercion
 by using keywords {%ard%}\use \coerce{%endard%}. Elements {%ard%}a{%endard%} of type {%ard%}A{%endard%} will then be replaced
-with {%ard%}f a{%endard%} if they are used in a context, where {%ard%}B{%endard%} expected.
+with {%ard%}f a{%endard%} if they are used in a context where {%ard%}B{%endard%} is expected.
 
 Consider the following example:
 
@@ -564,7 +564,7 @@ The example above can be rewritten as follows:
 }
 {%endarend%}
 
-Since {%ard%} Map {%endard%} is a class without classifying fields, the system will infer the first available instance of this class whenever one the functions above is invoked:
+Since {%ard%} Map {%endard%} is a class without classifying fields, the system will infer the first available instance of this class whenever one of the functions above is invoked:
 {%arend%}
 \func isInj+isSur<=>isBij (m : Map) : \Sigma (isBij -> \Sigma isInj isSur) (\Sigma isInj isSur -> isBij)
   => ((\lam p => (isBij=>isInj p, isBij=>isInj p)), (\lam p => isInj+isSur=>isBij p.1 p.2))

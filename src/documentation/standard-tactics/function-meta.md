@@ -4,12 +4,12 @@ title: \module Function.Meta
 
 # `$` and `#`
 
-These metas are analogical to Haskell's `$` operator
+These metas are analogous to Haskell's `$` operator
 (`$` is right-associative and `#` is left-associative), but they also work with implicit arguments.
 
  [defined meta]: /documentation/language-reference/definitions/metas
 
-Also, it's also possible to define `$` as a [defined meta]:
+It's also possible to define `$` as a [defined meta]:
 
 {% arend %}
 \meta \infixr 0 $ f a => f a
@@ -24,6 +24,6 @@ There are two ways to invoke this meta:
 
 + {%ard%} repeat {n} f x {%endard%} -- it reduces to `x` if `n` is `0` and
   {%ard%} repeat {x} f (f x) {%endard%} if `n` is `suc x`.
-+ {%ard%} repeat f x {%endard%} -- it tries to typecheck `f x`, and if it fails, return `x`,
-  otherwise return {%ard%} f (repeat f x) {%endard%}.
++ {%ard%} repeat f x {%endard%} -- it tries to typecheck `f x`, and if it fails, returns `x`,
+  otherwise returns {%ard%} f (repeat f x) {%endard%}.
   + In this case, `f` has to be a meta.

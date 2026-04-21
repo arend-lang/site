@@ -1,5 +1,5 @@
 ---
-title: Creating first project
+title: Creating a first project
 nav: started
 ---
 In this section we briefly describe the creation of new Arend projects.
@@ -10,7 +10,7 @@ you can set up the path to a directory with these libraries in the field **Path 
 Available libraries will be displayed in the list on the right.
 To add them to the project, move them to the left list.
 The standard library **arend-lib** is always available; it will be downloaded if the file is missing.
-* Click **Next**. In the successive step set up the name of the project and the path to it and click **Finish**.
+* Click **Next**. In the successive step, set up the name of the project and the path to it and click **Finish**.
 
 You should get a new project which contains (among other files) a file `arend.yaml` and an empty source directory
 (`src` by default).

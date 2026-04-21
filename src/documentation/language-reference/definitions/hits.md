@@ -12,7 +12,7 @@ type can be defined by means of _conditions_ in data definitions.
 If {%ard%} con {%endard%} is a constructor of an inductive type {%ard%} D {%endard%}, then an expression of the form
 {%ard%} con a_1 ... a_n {%endard%} does not reduce any further unless the definition of {%ard%} D {%endard%} contains _conditions_ on {%ard%} con {%endard%}.
 A condition on a constructor is a rule that says how such an expression might be reduced.
-For example, one can define integers as a data type with two constructors: one for positive, and one for negative integers, and a condition on the second constructor telling positive and negative zero have to be computationally equal:
+For example, one can define integers as a data type with two constructors: one for positive, and one for negative integers, and a condition on the second constructor telling that positive and negative zero have to be computationally equal:
 
 {% arend %}
 \data Int

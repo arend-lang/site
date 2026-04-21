@@ -116,16 +116,16 @@ it can be used in {%ard%} e {%endard%} and it will have type {%ard%} T {%endard%
   In this case, the right hand side {%ard%} => e_i {%endard%} of the clause in which such a pattern appears must be omitted.
 
 Also, a constructor or a tuple pattern may be an _as-pattern_.
-This means that there might be an expressions of the form {%ard%} \as x : E {%endard%} after the pattern, where {%ard%} x {%endard%} is a variable and {%ard%} E {%endard%} is its type which can be omitted.
+This means that there might be an expression of the form {%ard%} \as x : E {%endard%} after the pattern, where {%ard%} x {%endard%} is a variable and {%ard%} E {%endard%} is its type which can be omitted.
 Then {%ard%} x {%endard%} is equivalent to this pattern.
 
 Now, let us discuss how expressions of the form {%ard%} f a_1 ... a_n {%endard%} evaluate (see [Expressions](../expressions#evaluation) for the definition of the reduction and evaluation relations).
 Let {%ard%} E {%endard%} be equal to {%ard%} f a_1 ... a_n {%endard%}.
 To reduce this expression, we first evaluate expressions {%ard%} a_1, ... a_n {%endard%} and match them with the patterns in the definition of {%ard%} f {%endard%} left to right, top to bottom.
-If all patterns {%ard%} p^i_1, ... p^i_n {%endard%} matches with {%ard%} a_1, ... a_n {%endard%} for some _i_, then {%ard%} E {%endard%} reduces to {%ard%} e_i[b_1/y_1, ... b_k/y_k] {%endard%},
+If all patterns {%ard%} p^i_1, ... p^i_n {%endard%} match with {%ard%} a_1, ... a_n {%endard%} for some _i_, then {%ard%} E {%endard%} reduces to {%ard%} e_i[b_1/y_1, ... b_k/y_k] {%endard%},
 where {%ard%} y_1, ... y_k {%endard%} are variables that appear in {%ard%} p^i_1, ... p^i_n {%endard%} and {%ard%} b_1, ... b_k {%endard%} are subexpressions of {%ard%} a_1, ... a_n {%endard%} corresponding to these variables.
 If some argument cannot be matched with a pattern {%ard%} con s_1 ... s_m {%endard%} because it is of the form {%ard%} con' ... {%endard%} for some constructor {%ard%} con' {%endard%} different from {%ard%} con {%endard%},
-then the evaluator skips the clause with this patterns and tries the next one.
+then the evaluator skips the clause with these patterns and tries the next one.
 If some argument cannot be matched with a pattern because it is not a constructor, then {%ard%} E {%endard%} does not reduce.
 If none of the clauses match with arguments, then {%ard%} E {%endard%} also does not reduce.
 Variables and patterns of the form {%ard%} (s_1, ... s_m) {%endard%} match with any expression.
@@ -257,7 +257,7 @@ then a function can also be defined by _copattern matching_, which has the follo
 {% endarend %}
 
 where a _coclause_ is a pair consisting of a field {%ard%} g {%endard%} of {%ard%} C {%endard%} and an expression {%ard%} e {%endard%} written {%ard%} g => e {%endard%}.
-Such a function has the same semantics as a definition of an instance, that is it is equivalent to the following definition:
+Such a function has the same semantics as a definition of an instance, that is, it is equivalent to the following definition:
 
 {% arend %}
 \func f (x_1 : A_1) ... (x_n : A_n) => \new C {
@@ -303,7 +303,7 @@ Axioms are defined with the keyword {%ard%} \axiom {%endard%}.
 Functions defined as {%ard%} \sfunc {%endard%} do not evaluate just as lemmas, but it is possible to evaluate such functions by using keyword {%ard%} \eval {%endard%}.
 Let `f` be an ordinary function and let {%ard%} a_1, ... a_n {%endard%} be arguments such that expression {%ard%} f a_1 ... a_n {%endard%} evaluates to `e`.
 If `f` is defined as {%ard%} \sfunc {%endard%}, then this expression won't evaluate, but expression {%ard%} \eval f a_1 ... a_n {%endard%} evaluates to `e`.
-To prove that {%ard%} f a_1 ... a_n {%endard%} equals to {%ard%} \eval f a_1 ... a_n {%endard%}, you can use keyword {%ard%} \peval {%endard%}.
+To prove that {%ard%} f a_1 ... a_n {%endard%} is equal to {%ard%} \eval f a_1 ... a_n {%endard%}, you can use keyword {%ard%} \peval {%endard%}.
 Expression {%ard%} \peval f a_1 ... a_n {%endard%} has type {%ard%} f a_1 ... a_n = \eval f a_1 ... a_n {%endard%}.
 
 Note that it is necessary to use {%ard%} \sfunc {%endard%} [in some cases](level#squashed-data-types).

@@ -127,7 +127,7 @@ There are two equivalent ways to refer to the universe of sets: as {%ard%}\Set{%
 For every predicative level n the universe {%ard%}\Set n{%endard%} is the same as {%ard%}\0-Type n{%endard%}.
 The universe of propositions, however, can only be referred to as {%ard%}\Prop{%endard%}, it is not allowed to write
 {%ard%}\\(-1)-Type{%endard%}. The universe {%ard%}\Prop{%endard%} is slightly aside since it is impredicative, that is
-it does not have predicative level.
+it does not have a predicative level.
 
 The universes form a hierarchy according to the following rule: {%ard%}A : \Type n m{%endard%} implies 
 {%ard%}A : \Type (n+1) (m+1){%endard%}. In particular, {%ard%}A : \Prop{%endard%} implies {%ard%}A : \Type n m{%endard%}.
@@ -209,7 +209,7 @@ principle. Recall, that in this way we can define, say, Church-style natural num
 -- ...
 {%endarend%}
 
-In case of the propositional translation we have the following:
+In case of the propositional truncation we have the following:
 
 {%arend%}
 \func Trunc' (A : \Type) : \Prop => \Pi (X : \Prop) -> (A -> X) -> X
@@ -298,7 +298,7 @@ image of a function:
 \func image {A B : \Type} (f : A -> B) => \Sigma (b : B) (Trunc (\Sigma (a : A) (f a = b)))
 {%endarend%}
 
-Note that the definition if the image without truncation is not correct:
+Note that the definition of the image without truncation is not correct:
 
 {%arend%}
 \func image' {A B : \Type} (f : A -> B) => \Sigma (b : B) (\Sigma (a : A) (f a = b))
@@ -307,9 +307,9 @@ Note that the definition if the image without truncation is not correct:
 -- image' {Nat} {\Sigma} (\lam _ => ()) == Nat
 {%endarend%}
 
-**Exercise 5:** A type {%ard%}C{%endard%} is called cogenerator if for every sets {%ard%}A{%endard%} and {%ard%}B{%endard%}
+**Exercise 5:** A type {%ard%}C{%endard%} is called a cogenerator if for all sets {%ard%}A{%endard%} and {%ard%}B{%endard%}
  and all functions {%ard%}f,g : A -> B{%endard%} whenever {%ard%}h `o` f = h `o` g{%endard%} holds for all {%ard%}h : B -> C{%endard%},
- then {%ard%}f = g{%endard%}. Prove that {%ard%}\Prop{%endard%} is cogenerator.
+ then {%ard%}f = g{%endard%}. Prove that {%ard%}\Prop{%endard%} is a cogenerator.
 {: .notice--info}
 
 
@@ -381,7 +381,7 @@ holds by reflexivity:
 The property {%ard%}equivalence=>equality{%endard%} does not still fully characterize equalities
 between types: the type {%ard%}A = B{%endard%} should be equivalent to the type {%ard%}Equiv A B{%endard%}.
 The computational rule for {%ard%}iso{%endard%} mentioned above allows to prove that 
-the composition of {%ard%}equivalence=>equality{%endard%} and  {%ard%}equality=>equivalence{%endard%}
+the composition of {%ard%}equivalence=>equality{%endard%} and {%ard%}equality=>equivalence{%endard%}
 equals the identity on {%ard%}Equiv A B{%endard%}.
 It is also possible to prove, although a bit less straightforwardly, that the opposite composition of the
 maps gives the identity on {%ard%}A = B{%endard%}. This principle is called _the univalence axiom_ or
@@ -400,7 +400,7 @@ just _univalence_. We simply assume it as an axiom, although it is possible to p
 Let {%ard%}P : (A -> B) -> \Type{%endard%} be a predicate on functions. Assume 
 {%ard%}f g : A -> B{%endard%} are two functions, which are equal pointwise. Because
 of function extensionality we know that such functions are equal and therefore
-whenever if we prove {%ard%}P f{%endard%} we will obtain also a proof of {%ard%}P g{%endard%}
+whenever we prove {%ard%}P f{%endard%} we will obtain also a proof of {%ard%}P g{%endard%}
 for free.
 
 Because of the univalence the analogous property holds for types: if we prove that a proposition 

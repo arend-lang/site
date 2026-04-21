@@ -11,7 +11,7 @@ Meta {%ard%} using {%endard%}, {%ard%} usingOnly {%endard%}, and {%ard%} hiding 
   that adds {%ard%} e_1, ... e_n {%endard%} to the context it uses.
 + {%ard%} usingOnly (e_1, ... e_n) e {%endard%} replaces the context with {%ard%} e_1, ... e_n {%endard%} before checking {%ard%} e {%endard%}.
   {%ard%} usingOnly (e_1, ... e_n) {%endard%} is sometimes used in other context-manipulating metas,
-  that replaces the context is uses with {%ard%} e_1, ... e_n {%endard%}.
+  that replaces the context it uses with {%ard%} e_1, ... e_n {%endard%}.
 + {%ard%} hiding (e_1, ... e_n) e {%endard%} hides local bindings {%ard%} e_1, ... e_n {%endard%} from the context before checking {%ard%} e {%endard%}.
   {%ard%} hiding (e_1, ... e_n) {%endard%} is sometimes used in other context-manipulating metas,
   that hides {%ard%} e_1, ... e_n {%endard%} from the context it uses.
@@ -20,7 +20,7 @@ Meta {%ard%} using {%endard%}, {%ard%} usingOnly {%endard%}, and {%ard%} hiding 
 
 {%ard%} cases args default {%endard%} works just like {%ard%} mcases args default {%endard%}, but does not search for {%ard%} \case {%endard%} expressions or definition invocations.
 Each argument has a set of parameters that can be configured.
-Parameters are specified after keyword 'arg' which is written after the argument.
+Parameters are specified after the keyword 'arg' which is written after the argument.
 Available parameters are 'addPath' and 'name'.
 The latter can be used to specify the name of the argument which can be used in types of subsequent arguments.
 The type of an argument is specified as either {%ard%} e : E {%endard%} or {%ard%} e arg parameters : E {%endard%}.
@@ -29,7 +29,7 @@ That is, {%ard%} cases (e arg addPath) {%endard%} is equivalent to {%ard%} cases
 
 # mcases
 
-{%ard%} mcases {def} args default \with { ... } {%endard%} finds all invocations of definition {%ard%} def {%endard%} in the expected type and generate a {%ard%} \case {%endard%} expression that matches arguments of those invocations.
+{%ard%} mcases {def} args default \with { ... } {%endard%} finds all invocations of definition {%ard%} def {%endard%} in the expected type and generates a {%ard%} \case {%endard%} expression that matches arguments of those invocations.
 It matches only those arguments which are matched in {%ard%} def {%endard%}.
 If the explicit argument is omitted, then {%ard%} mcases {%endard%} searches for {%ard%} \case {%endard%} expressions instead of definition invocations.
 {%ard%} default {%endard%} is an optional argument which is used as a default result for missing clauses.
@@ -51,17 +51,17 @@ For example,
 # unfold
 
 {%ard%} unfold (f_1, ... f_n) e {%endard%} unfolds functions {%ard%} f_1, ... f_n {%endard%} in the expected type before type-checking of {%ard%} e {%endard%} and returns {%ard%} e {%endard%} itself.
-If the first argument is omitted, it unfold all fields.
-If the expected type is unknown, it unfolds these function in the result type of {%ard%} e {%endard%}.
+If the first argument is omitted, it unfolds all fields.
+If the expected type is unknown, it unfolds these functions in the result type of {%ard%} e {%endard%}.
 
 # unfold_let
 
-{%ard%} unfold_let {%endard%} unfolds {%ard%} \let {%endard%} expressions
+{%ard%} unfold_let {%endard%} unfolds {%ard%} \let {%endard%} expressions.
 
 # assumption
 
 {%ard%} assumption {%endard%} searches for a proof in the context. It tries variables that are declared later first.
-{%ard%} assumption {n} {%endard%} returns the n-th variables from the context counting from the end.
+{%ard%} assumption {n} {%endard%} returns the n-th variable from the context counting from the end.
 {%ard%} assumption {n} a1 ... ak {%endard%} applies n-th variable from the context to arguments a1, ... ak.
 
 # in
@@ -73,4 +73,4 @@ This meta is usually used with {%ard%} f {%endard%} being a meta such as {%ard%}
 # defaultImpl
 
 {%ard%} defaultImpl C F E {%endard%} returns the default implementation of field {%ard%} F {%endard%} in class {%ard%} C {%endard%} applied to expression {%ard%} E {%endard%}.
-The third argument can be omitted, in which case either {%ard%} \this {%endard%} or {%ard%} _ {%endard%} will be used instead,
+The third argument can be omitted, in which case either {%ard%} \this {%endard%} or {%ard%} _ {%endard%} will be used instead.
