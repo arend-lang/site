@@ -133,7 +133,7 @@ of the theory. For example, if we add the axiom of excluded middle {%ard%}lem{%e
 
 {%arend%}
 \func lem : \Pi (X : \Type) -> Either X (X -> Empty) => {?}
-\func ugly_num : Nat => \case lem Nat \with { | Left => 0 | Right => 1 }
+\func ugly_num : Nat => \case lem Nat \with { | inl _ => 0 | inr _ => 1 }
 {%endarend%}
 
 **Exercise 6:** Prove that {%ard%}(\lam x => not (not x)) = (\lam x => x){%endard%}.
