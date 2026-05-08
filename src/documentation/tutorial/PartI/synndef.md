@@ -519,6 +519,18 @@ Alternatively, one can use {%ard%}\let{%endard%}, which is, however, limited and
     \in x + y * y
 {%endarend%}
 
+Arend also has a sister keyword {%ard%}\have{%endard%}, identical in syntax to {%ard%}\let{%endard%} but with two differences: a {%ard%}\have{%endard%}-bound variable does *not* unfold inside the body, and it is not allowed to occur free in the inferred result type. Both restrictions reflect the same intent: {%ard%}\have{%endard%} declares "this binding is just a name for a proof — its value should not affect typing of the body."
+
+{%arend%}
+-- This typechecks: \let unfolds x to 0 inside the body.
+\func letEx => \let | x => 0 \in (idp : x = 0)
+
+-- This does NOT typecheck: \have keeps x opaque, so x = 0 is unprovable.
+-- \func haveEx => \have | x => 0 \in (idp : x = 0)
+{%endarend%}
+
+In practice, {%ard%}\have{%endard%} is the right choice when destructuring a proof you do not intend to compute with. Beyond this brief introduction, see the section [\have in the Language Reference](/documentation/language-reference/expressions/let#have) for details.
+
 Definitions in Arend can be grouped in _modules_:
 
 {%arend%}
@@ -599,3 +611,5 @@ everything that {%ard%}\open{%endard%} does, all the constructs for {%ard%}\open
 -- if you want to make file visible, but do not want to make \open, you can write the following:
 \import TestDir.Test2()
 {%endarend%}
+
+In later chapters we will use a number of standard library extensions called *metas* — surface-syntax shortcuts that expand into ordinary kernel terms. These live in modules {%ard%}Meta{%endard%}, {%ard%}Paths.Meta{%endard%}, {%ard%}Function.Meta{%endard%}, {%ard%}Algebra.Meta{%endard%}, {%ard%}Logic.Meta{%endard%}; the corresponding {%ard%}\import{%endard%} lines appear in each chapter where a meta is first used. The dedicated chapter [Standard metas for equality](metas-equality) introduces the most common ones.

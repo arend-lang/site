@@ -1,4 +1,5 @@
 require 'rly'
+require 'cgi'
 
 class ArendLexer < Rly::Lex
   start_char = '~!@#\$%\^&\*\-\+=<>\?/\|\[\]:a-zA-Z_|\u005D\u2200-\u22FF'
@@ -6,12 +7,12 @@ class ArendLexer < Rly::Lex
   id = "[#{start_char}][#{start_char}0-9']*"
 
   token(:COMMENT, /\-\- .*|\{-([^-]|-+[^}])*-\}/) do |tok|
-    tok.value = "<span class=\'c\'>#{tok.value}</span>"
+    tok.value = "<span class=\'c\'>#{CGI.escapeHTML(tok.value)}</span>"
     tok
   end
 
-  token(:OPERATOR, /(=>|@|==|=|\+|\*|\$)'*|->|:|,|\||`#{id}`?/) do |tok|
-    tok.value = "<span class=\'o\'>#{tok.value}</span>"
+  token(:OPERATOR, /(==<|>==|\*>|=>|@|==|=|\+|\*|\$)'*|->|:|,|\||`#{id}`?/) do |tok|
+    tok.value = "<span class=\'o\'>#{CGI.escapeHTML(tok.value)}</span>"
     tok
   end
 
@@ -21,11 +22,14 @@ class ArendLexer < Rly::Lex
   end
 
   token(:GOAL, /\{\?(#{id})?\}/) do |tok|
-    tok.value = "<span class=\'g\'>#{tok.value}</span>"
+    tok.value = "<span class=\'g\'>#{CGI.escapeHTML(tok.value)}</span>"
     tok
   end
 
-  token(:ID, /#{id}/)
+  token(:ID, /#{id}/) do |tok|
+    tok.value = CGI.escapeHTML(tok.value)
+    tok
+  end
 
   token(:PROP, /\\Prop/) do |tok|
     tok.value = "<span class=\'kt\'>#{tok.value}</span>"
@@ -80,7 +84,7 @@ class ArendInlineHighlighter < Liquid::Block
   def render(context)
     lexer = ArendLexer.new(super(context).strip)
     s = StringIO.new
-    s << "<span class=\"inl-highlight\">"
+    s << "<span class=\"inl-highlight\" markdown=\"0\">"
     while tok = lexer.next do
       s << tok.value
     end

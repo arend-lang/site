@@ -44,12 +44,16 @@ documentation:
           url: idtype
         - title: "Proofs of Equality"
           url: equalityex
+        - title: "Standard Metas for Equality"
+          url: metas-equality
         - title: "Classes and Records"
           url: records
         - title: "Case Expression"
           url: case
         - title: "Universes, Induction, Specifications"
           url: universes
+        - title: "Algebraic Metas"
+          url: metas-algebra
       - title: "Part II: Homotopy Type Theory"
         url: PartII
         children:

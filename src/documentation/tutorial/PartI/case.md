@@ -462,3 +462,79 @@ Let us define the conversion functions:
 \func dbd {A : \Type} (P : \Sigma (P : A -> \Type) (DecPred P)) : (FromBoolToDec (FromDecToBool P)).1 <-> P.1 => {?}
 {%endarend%}
 
+# Mechanizing case analysis: cases and mcases
+
+The {%ard%}\case e \as e', \return T[e'] \with{%endard%} idiom and the double-match-with-{%ard%}idp{%endard%} trick from the previous sections are common enough that the standard library provides metas to mechanize them. They live in the {%ard%}Meta{%endard%} module:
+
+{%arend%}
+\import Meta -- cases, mcases
+{%endarend%}
+
+## cases: multi-scrutinee \case in one expression
+
+{%ard%}cases (e_1, e_2, ..., e_n) \with { ... }{%endard%} is a {%ard%}\case{%endard%} on multiple scrutinees, written without the {%ard%}\with{%endard%}-around-each-scrutinee boilerplate. The {%ard%}bar{%endard%} proof we wrote earlier becomes:
+
+{%arend%}
+\func bar-cases {A : \Type} (p q : A -> Bool) (a : A) (s : q a = not (p a))
+              : not (q a) = p a
+  => cases (p a, q a, s) \with {
+    | true, true, s' => inv s'
+    | true, false, _ => idp
+    | false, true, _ => idp
+    | false, false, s' => inv s'
+  }
+{%endarend%}
+
+## arg addPath: the double-match-with-idp idiom, automated
+
+When you need to remember the connection between a scrutinee and its matched value — the case where we previously wrote {%ard%}\case e \as b, idp : b = e \with{%endard%} — {%ard%}cases{%endard%} provides {%ard%}arg addPath{%endard%}. The annotation {%ard%}cases (e arg addPath){%endard%} matches on {%ard%}e{%endard%} and adds an extra {%ard%}idp{%endard%} argument carrying the equality between {%ard%}e{%endard%} and the matched pattern.
+
+In simple cases, the dependent return type is also handled automatically — you do not even need to use the path argument:
+
+{%arend%}
+\func baz-cases {A : \Type} (B : Bool -> \Type) (p : A -> Bool) (a : A)
+                (pt : B true) (pf : B false) : B (p a)
+  => cases (p a arg addPath) \with {
+    | true,  q => pt
+    | false, q => pf
+  }
+{%endarend%}
+
+Compare to the original {%ard%}baz{%endard%} proof using {%ard%}transport{%endard%} and the manual {%ard%}idp{%endard%}-pattern: the {%ard%}cases{%endard%} version trades two {%ard%}transport B q{%endard%}-calls for the seamless dependent rewriting that the meta performs internally.
+
+## mcases: matching a \case already in the goal
+
+Often the expected type contains a {%ard%}\case{%endard%} you did not write — typically because some function in the goal is itself defined by {%ard%}\case{%endard%}, and instead of unfolding, the typechecker leaves the {%ard%}\case{%endard%} expression in place. {%ard%}mcases {f}{%endard%} discovers all invocations of {%ard%}f{%endard%} in the expected type and synthesizes a {%ard%}\case{%endard%}-expression matching exactly the arguments {%ard%}f{%endard%} matches on.
+
+{%arend%}
+\func f (n : Nat) : Nat
+  | 0 => 5
+  | suc _ => 5
+
+\func test-f (n : Nat) : f n = 5
+  => mcases {f} \with {
+    | 0 => idp
+    | suc _ => idp
+  }
+{%endarend%}
+
+Without {%ard%}mcases{%endard%}, this proof would require a manual {%ard%}\case n \with{%endard%}-block that mirrors {%ard%}f{%endard%}'s clauses by hand. With {%ard%}mcases{%endard%}, you supply only the right-hand sides.
+
+If you omit the explicit argument, {%ard%}mcases \with { ... }{%endard%} searches for {%ard%}\case{%endard%}-expressions instead of definition invocations:
+
+{%arend%}
+\func test-from-case (n : Nat)
+                   : (\case n \with { | 0 => 1 | suc _ => 1 }) = 1
+  => mcases \with {
+    | 0 => idp
+    | suc _ => idp
+  }
+{%endarend%}
+
+For finer control, {%ard%}mcases {(f, k)}{%endard%} targets only the k-th occurrence of {%ard%}f{%endard%} (1-indexed); {%ard%}mcases {f, g}{%endard%} matches on multiple definitions at once. See [Standard Metas / mcases](/documentation/standard-tactics/meta#mcases) for the full grammar.
+
+**Exercise 9:** Take the {%ard%}filter-lem{%endard%} proof from earlier in this chapter, which uses a verbose {%ard%}\case p x \as b \return ... \with{%endard%}, and rewrite it using {%ard%}cases (p x arg addPath){%endard%}.
+{: .notice--info}
+
+**Exercise 10:** Define a function {%ard%}f : Nat -> Nat -> Nat{%endard%} by pattern-matching with the same constant value (say, {%ard%}0{%endard%}) on every clause. Prove {%ard%}\Pi (n m : Nat) -> f n m = 0{%endard%} using {%ard%}mcases {f}{%endard%}.
+{: .notice--info}

@@ -616,4 +616,55 @@ Define {%ard%}\instance{%endard%} of this class for {%ard%}Maybe{%endard%}.
   | state' (S -> \Sigma S A)
 {%endarend%}
 
+# linarith: a meta that uses class instances
 
+Class instance inference makes one of the most powerful metas in the standard library work — {%ard%}linarith{%endard%}, which discharges goals involving linear arithmetic over an ordered ring or semiring. The meta does not know about {%ard%}Nat{%endard%} specifically; it operates on whatever {%ard%}LinearlyOrderedSemiring{%endard%} or {%ard%}OrderedRing{%endard%} instance is in scope, and uses the algebraic structure those classes guarantee. This is a good moment to introduce it: now that you understand instance inference, you can read what {%ard%}linarith{%endard%} dispatches on.
+
+The meta is provided by {%ard%}\import Algebra.Meta{%endard%}. Examples on {%ard%}Nat{%endard%}:
+
+{%arend%}
+\import Algebra.Meta
+\import Algebra.StrictlyOrdered
+\import Arith.Nat
+
+\lemma nat-1 {a b : Nat} : 0 <= a Nat.+ b => linarith
+
+\lemma nat-2 {a : Nat} : 0 < suc a => linarith
+
+\lemma nat-3 {a b : Nat} (p : a Nat.+ b < b) : Empty => linarith
+{%endarend%}
+
+{%ard%}linarith{%endard%} reads hypotheses from the local context automatically — you do not list them explicitly. It combines them via [Fourier–Motzkin elimination](https://en.wikipedia.org/wiki/Fourier%E2%80%93Motzkin_elimination):
+
+{%arend%}
+\lemma combine {a b c : Nat} (p : a <= b) (q : b Nat.+ c <= a) : c = 0
+  => linarith
+{%endarend%}
+
+The same syntax works on any {%ard%}LinearlyOrderedSemiring{%endard%}; the meta's choice of solver is driven by the inferred instance:
+
+{%arend%}
+\lemma generic {R : LinearlyOrderedSemiring} {a b c : R}
+               (p : a <= b) (q : b + c <= a) : c <= 0
+  => linarith
+{%endarend%}
+
+This is structurally identical to the {%ard%}Nat{%endard%} version above; what changes is which class instance gets supplied, and {%ard%}linarith{%endard%} adapts accordingly.
+
+What {%ard%}linarith{%endard%} cannot do: anything nonlinear. Goals involving products of variables, exponentiation, or non-monotone functions are out of scope:
+
+{%arend%}
+-- Does not typecheck — multiplication of variables is nonlinear:
+-- \lemma nonlinear {a b : Nat} : a Nat.* b = b Nat.* a => linarith
+{%endarend%}
+
+For nonlinear algebraic goals, see the {%ard%}equation{%endard%} and {%ard%}simplify{%endard%} metas in [Algebraic Metas](metas-algebra).
+
+**Exercise 7:** Prove the following one-liners using {%ard%}linarith{%endard%}: (a) {%ard%}\Pi {a b : Nat} -> 0 <= a Nat.+ b{%endard%}, (b) {%ard%}\Pi {a b c : Nat} -> a <= b -> b Nat.+ c <= a -> c = 0{%endard%}, (c) {%ard%}\Pi {a : Nat} -> a < a -> Empty{%endard%}.
+{: .notice--info}
+
+**Exercise 8:** Prove {%ard%}\Pi {R : LinearlyOrderedSemiring} {a b c : R} -> a <= b + c -> b + 2 * c <= 0 -> 2 * a <= b{%endard%} using {%ard%}linarith{%endard%}. Note that the same syntax works regardless of which {%ard%}R{%endard%} the caller supplies — the meta dispatches on the inferred instance.
+{: .notice--info}
+
+**Exercise 9:** Investigate the boundary: try to prove {%ard%}\Pi {a b : Nat} -> a Nat.* b = b Nat.* a{%endard%} with {%ard%}linarith{%endard%} and explain in a comment why it fails.
+{: .notice--info}
