@@ -35,7 +35,8 @@ all propositions in {%ard%}\Type{%endard%}. We denote the latter universe as {%a
 By definition {%ard%}\Prop{%endard%} embeds into {%ard%}PropInType{%endard%}. Firstly,
 {%ard%}\Prop{%endard%} is a subuniverse of {%ard%}\Type{%endard%}, that is 
 {%ard%}P : \Prop{%endard%} implies {%ard%}P : \Type{%endard%}. Secondly, every {%ard%}P : \Prop{%endard%}
-is a proposition by an axiom {%ard%}Path.inProp P{%endard%} located in Prelude.
+is a proposition: for any {%ard%}a a' : P{%endard%} the standard library provides
+{%ard%}prop-pi : a = a'{%endard%} (from the {%ard%}Logic{%endard%} module of `arend-lib`).
 
 The construction of a function in the opposite direction from {%ard%}PropInType{%endard%} to
 {%ard%}\Prop{%endard%} is also simple, but requires an additional language construct 
@@ -98,11 +99,11 @@ of {%ard%}\Type n{%endard%}. Denote {%ard%}\Sigma (A : \Type) (isSet A){%endard%
 Let us construct a function from {%ard%}\Set{%endard%} to {%ard%}SetInType{%endard%}. Such a construction relies on 
 the following property of the universe {%ard%}\Set{%endard%}: for every set {%ard%}A{%endard%}
 in {%ard%}\Set{%endard%} its equality type lies in the universe {%ard%}\Prop{%endard%}. We can thus 
-use {%ard%}Path.inProp{%endard%} to prove {%ard%}isSet A{%endard%} for sets in {%ard%}\Set{%endard%}:
+use {%ard%}prop-pi{%endard%} to prove {%ard%}isSet A{%endard%} for sets in {%ard%}\Set{%endard%}:
 
 {%arend%}
-\func Set-to-SetInType (A : \Set \lp) : \Sigma (A : \Type \lp) (isSet A) =>
-       (A, \lam x y => Path.inProp {x = y})
+\func Set-to-SetInType.{l} (A : \Set l) : \Sigma (X : \Type l) (isSet X) =>
+       (A, \lam (x y : A) (p q : x = y) => prop-pi)
 {%endarend%}
 
 The inverse function can be constructed with the use of {%ard%}\use \level{%endard%} in the similar way as the function
@@ -111,16 +112,19 @@ The inverse function can be constructed with the use of {%ard%}\use \level{%enda
  
 # Universes \n-Type
 
-Universes {%ard%}\Prop{%endard%} and {%ard%}\Set{%endard%} are particular instances of universes of all types of 
-a given homotopy level. In general, we have a hierarchy {%ard%}\n-Type{%endard%} of universes parameterized by
-homotopy level n. The homotopy level can be specified as the second argument to {%ard%}\Type{%endard%} (after 
-predicative level) or before {%ard%}Type{%endard%}:
+Universes {%ard%}\Prop{%endard%} and {%ard%}\Set{%endard%} are particular instances of universes collecting
+all types of a given homotopy level. In general, for every natural number {%ard%}n{%endard%} there is a universe
+{%ard%}\n-Type{%endard%} of all types of homotopy level {%ard%}n{%endard%}.
+
+Unlike the predicative level, the homotopy level is _not_ an argument of {%ard%}\Type{%endard%}: the universe
+{%ard%}\Type{%endard%} is the _untruncated_ universe (it contains types of arbitrary homotopy level) and is
+parameterized only by the predicative level. Each truncated universe has its own keyword {%ard%}\n-Type{%endard%},
+which is in turn parameterized by a predicative level:
 
 {%arend%}
-\func bak => \Type 30 66
-\func bak' => \66-Type 30
--- With predicative level omitted.
-\func bak'' => \66-Type
+\func aType => \Type 30      -- untruncated types, predicative level 30
+\func aSet  => \Set 30       -- sets (homotopy level 0), predicative level 30
+\func a66   => \66-Type 30   -- types of homotopy level 66, predicative level 30
 {%endarend%}
 
 There are two equivalent ways to refer to the universe of sets: as {%ard%}\Set{%endard%} or as {%ard%}\0-Type{%endard%}. 
@@ -129,14 +133,32 @@ The universe of propositions, however, can only be referred to as {%ard%}\Prop{%
 {%ard%}\\(-1)-Type{%endard%}. The universe {%ard%}\Prop{%endard%} is slightly aside since it is impredicative, that is
 it does not have a predicative level.
 
-The universes form a hierarchy according to the following rule: {%ard%}A : \Type n m{%endard%} implies 
-{%ard%}A : \Type (n+1) (m+1){%endard%}. In particular, {%ard%}A : \Prop{%endard%} implies {%ard%}A : \Type n m{%endard%}.
+Just like {%ard%}\Type{%endard%}, a truncated universe must be given a predicative level: writing bare
+{%ard%}\Set{%endard%} or {%ard%}\66-Type{%endard%} (with the level omitted) is an error, "Infinite level is not
+allowed here". Supply a concrete level, as in {%ard%}\Set 0{%endard%}, or, to make a definition polymorphic in
+the level, declare a level parameter and use it: {%ard%}\func f.{l} => \Set l{%endard%}.
 
-Recall the definition of {%ard%}hasLevel{%endard%} from the previous module:
+The universes form a hierarchy along two _independent_ axes:
+
+* Predicative: {%ard%}A : \k-Type n{%endard%} implies {%ard%}A : \k-Type (n+1){%endard%} (and, for the untruncated
+  universe, {%ard%}A : \Type n{%endard%} implies {%ard%}A : \Type (n+1){%endard%}).
+* Homotopy: {%ard%}A : \k-Type n{%endard%} implies {%ard%}A : \\(k+1)-Type n{%endard%} — a type of homotopy level
+  {%ard%}k{%endard%} is also of homotopy level {%ard%}k+1{%endard%}. In particular {%ard%}A : \Prop{%endard%} implies
+  {%ard%}A : \Set n{%endard%}, which in turn implies {%ard%}A : \Type n{%endard%}.
 
 {%arend%}
--- The predicate saying "A has level suc-l - 1"
-\func hasLevel (A : \Type) (suc-l : Nat) : \Type \elim suc-l
+\func predicative {A : \Type 0} : \Type 1 => A     -- raise the predicative level
+\func propIsSet {A : \Prop} : \Set 0 => A          -- a proposition is a set
+\func setIs1Type {A : \Set 0} : \1-Type 0 => A     -- a set is a 1-type
+{%endarend%}
+
+Recall the definition of {%ard%}hasLevel{%endard%} from the previous module (the predicate saying that
+{%ard%}A{%endard%} has homotopy level {%ard%}suc-l - 1{%endard%}). Since it is parameterized by a type
+{%ard%}A : \Type l{%endard%} of an arbitrary predicative level, it now carries an explicit level parameter
+{%ard%}l{%endard%}:
+
+{%arend%}
+\func hasLevel.{l} (A : \Type l) (suc-l : Nat) : \Type l \elim suc-l
   | 0 => isProp A
   | suc suc-l => \Pi (x y : A) -> (x = y) `hasLevel` suc-l
 {%endarend%}
@@ -145,11 +167,13 @@ For any natural number n>0, the equivalence between {%ard%}\\(n-1)-Type{%endard%
 {%ard%}\Sigma (A : \Type) (A `hasLevel` n){%endard%} can be constructed in the same way as for
 {%ard%}\Set{%endard%}.
 
-The computation of homotopy levels of types is in many respects similar to the computation of predicative
-levels. However, there are two important distinctions of homotopy levels. Firstly, the level of {%ard%}\Pi{%endard%} is equal
-to the level of its codomain: if {%ard%}A : \Type n m{%endard%} and {%ard%}B : A -> \Type n' m'{%endard%}, then 
-{%ard%}(\Pi (x : A) -> B x) : \Type (\max n n') m'{%endard%}. Secondly, if {%ard%}A : \\(n+1)-Type{%endard%},
-then {%ard%}a=a' : \n-Type{%endard%} for all {%ard%}a a' : A{%endard%}.
+The _predicative_ level of a compound type (a {%ard%}\Pi{%endard%}-type, a {%ard%}\Sigma{%endard%}-type, a data
+or a record) is computed just as for {%ard%}\Type{%endard%} — it is the maximum of the predicative levels of the
+components. The _homotopy_ level is what distinguishes the truncated universes and follows two rules. Firstly, the
+homotopy level of {%ard%}\Pi{%endard%} is the homotopy level of its codomain: if {%ard%}B x : \k-Type{%endard%} for
+all {%ard%}x{%endard%}, then {%ard%}(\Pi (x : A) -> B x) : \k-Type{%endard%}, regardless of the homotopy level of
+{%ard%}A{%endard%}. Secondly, if {%ard%}A : \\(n+1)-Type{%endard%}, then {%ard%}a=a' : \n-Type{%endard%} for all
+{%ard%}a a' : A{%endard%} — equality lowers the homotopy level by one.
 
 # Truncated data, propositional truncation
 
@@ -165,7 +189,7 @@ _propositional truncation_, is a truncated data:
   | trunc A
 
 -- Example: 'Trunc Nat'.
-\func truncNat : trunc 0 = trunc 1 => Path.inProp (trunc 0) (trunc 1)
+\func truncNat : trunc 0 = trunc 1 => prop-pi
 
 -- We can prove the negation of "Empty is nonempty".
 \func Trunc-Empty (t : Trunc Empty) : Empty \elim t
@@ -202,7 +226,7 @@ Note that we can alternatively define the propositional truncation as a function
 principle. Recall, that in this way we can define, say, Church-style natural numbers:
 
 {%arend%}
-\func Nat-church => \Pi (X : \Type) -> (X -> X) -> X -> X
+\func Nat-church => \Pi (X : \Type0) -> (X -> X) -> X -> X
 
 \func zero-church : Nat-church => \lam X f x => x
 \func one-church : Nat-church => \lam X f x => f x
@@ -234,7 +258,7 @@ if it has at most one constructor and types of all the parameters of the constru
 For functions defined by pattern matching the minimal appropriate universe is inferred:
 
 {%arend%}
-\func T' (b : Bool) : \Type
+\func T' (b : Bool) : \Prop
   | true => \Sigma
   | false => Empty
 
@@ -349,15 +373,15 @@ term "equivalence" instead while talking about arbitrary types.
 We can easily prove that if two types are equal, then they are equivalent:
 
 {%arend%}
-\func equality=>equivalence (A B : \Type) (p : A = B) : Equiv A B =>
-  transport (Equiv A) p (\lam x => x, \lam x => x, \lam x => idp, \lam x => idp)
+\func equality=>equivalence.{l} (A B : \Type l) (p : A = B) : Equiv A B =>
+  transport (\lam X => Equiv A X) p (\lam x => x, \lam x => x, \lam x => idp, \lam x => idp)
 {%endarend%}
 
 The function {%ard%}iso{%endard%} postulated in Prelude says that the converse is also
 true:
 
 {%arend%}
-\func equivalence=>equality (A B : \Type) (e : Equiv A B) : A = B =>
+\func equivalence=>equality.{l} (A B : \Type l) (e : Equiv A B) : A = B =>
   path (iso e.1 e.2 e.3 e.4)
 {%endarend%}
 
@@ -373,7 +397,7 @@ We have the rule {%ard%}coe (iso f g p q) a right ==> f a{%endard%}, which impli
 holds by reflexivity:
  
 {%arend%}
-\func test (A B : \Type) (e : Equiv A B)
+\func test.{l} (A B : \Type l) (e : Equiv A B)
   : transport (\lam X => X) (equivalence=>equality A B e) = e.1
   => idp
 {%endarend%}
@@ -420,8 +444,8 @@ we immediately conclude that all countable sets are also decidable.
 
 \func isCountable (X : \Type) => Equiv Nat X
 
-\func countableDecEq (X : \Type) (p : isCountable X) : DecEq X =>
-  transport DecEq (equivalence=>equality Nat X p) NatDecEq
+\func countableDecEq.{l} (X : \Type l) (p : isCountable X) : DecEq X =>
+  transport (\lam Y => DecEq Y) (equivalence=>equality Nat X p) NatDecEq
 {%endarend%}
 
 In this particular case there exist alternative proofs without univalence, however
@@ -437,7 +461,7 @@ two propositions {%ard%}A{%endard%} and {%ard%}B{%endard%} are logically equival
 
 {%arend%}
 \func propExt {A B : \Prop} (f : A -> B) (g : B -> A) : A = B =>
-  equivalence=>equality A B (f, g, \lam x => Path.inProp _ _, \lam y => Path.inProp _ _)
+  equivalence=>equality A B (f, g, \lam x => prop-pi, \lam y => prop-pi)
 {%endarend%} 
 
 Another consequence of univalence is that the universe {%ard%}\Prop{%endard%} is a set.
@@ -461,7 +485,9 @@ and {%ard%}not{%endard%}:
 
 \func true/=false (p : true = false) : Empty => absurd (transport T p ())
 
-\func Set-isNotSet (p : isSet \Set) : Empty =>
+-- NB: originally stated for \Set. Since `equivalence=>equality` produces a \Type-path,
+-- we state it for \Type 0 (the same univalence argument shows it is not a set).
+\func Set-isNotSet (p : isSet (\Type 0)) : Empty =>
   \let 
   -- We first prove equality between 'idp' and 
   -- the equality, corresponding to 'not'.

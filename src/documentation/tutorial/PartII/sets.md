@@ -62,7 +62,7 @@ is a conjunction of injectivity and surjectivity.
 \func isBij->isSur {A B : \Set} (f : A -> B) (p : isBij f) : isSur f => \lam b => in (p.1 b, p.3 b)
 
 \func sigmaEq' {A : \Type} (B : A -> \Prop) (t1 t2 : \Sigma (x : A) (B x)) (p : t1.1 = t2.1)
-  => sigmaEq B t1 t2 p (Path.inProp _ _)
+  => sigmaEq B t1 t2 p prop-pi
 
 \func isInj+isSur->isBij {A B : \Set} (f : A -> B) (ip : isInj f) (sp : isSur f) : isBij f
   => \let t (b : B) => Trunc.extract (sp b) (\lam t1 t2 => sigmaEq' (\lam a => f a = b) t1 t2 (ip t1.1 t2.1 (t1.2 *> sym t2.2)))

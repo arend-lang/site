@@ -331,7 +331,7 @@ The predicate {%ard%}hasLevel A suc-l{%endard%}, saying that {%ard%}A{%endard%} 
 {%ard%}suc-l - 1{%endard%}, can be defined as follows:
 
 {%arend%}
-\func hasLevel (A : \Type) (suc-l : Nat) : \Type \elim suc-l
+\func hasLevel.{l} (A : \Type l) (suc-l : Nat) : \Type l \elim suc-l
   | 0 => isProp A
   | suc suc-l => \Pi (x y : A) -> (x = y) `hasLevel` suc-l
 {%endarend%}

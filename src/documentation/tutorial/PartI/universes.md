@@ -31,47 +31,51 @@ of lower predicative level i < n.
 \func tt : \Type2 => \Type0 -> \Type1
 {%endarend%}
 
-In order to see how {%ard%}\Type{%endard%} works let us consider a polymorphic definition:
+In order to see how {%ard%}\Type{%endard%} works let us consider a definition parameterized by a type:
 
 {%arend%}
 \func id (A : \Type) (a : A) => a
 {%endarend%}
 
-This definition is implicitly polymorphic by the level of the universe of {%ard%}A{%endard%}, that is
-it has an implicit parameter {%ard%}\lp{%endard%} for the level. The function {%ard%}id{%endard%} above
-can equivalently be defined as follows:
+When {%ard%}\Type{%endard%} is written without an explicit level, it denotes the universe with the
+_infinite_ predicative level, that is the universe that contains {%ard%}\Type n{%endard%} for every
+{%ard%}n{%endard%}. So the parameter {%ard%}A{%endard%} above ranges over this single infinite universe,
+which is convenient when we do not care about the level. Note that the infinite {%ard%}\Type{%endard%} is
+not itself a small type, hence it is not a member of any {%ard%}\Type n{%endard%} (in particular, not of
+itself); this is exactly what rules out contradictory circular definitions. For the same reason a
+definition such as {%ard%}\func bad : \Type => \Type{%endard%} is not allowed.
+
+Thus {%ard%}id{%endard%} above is _not_ polymorphic in the level. To make a definition genuinely
+polymorphic in the predicative level, we declare one or more named _level parameters_ right after its
+name using the syntax {%ard%}.{...}{%endard%}, and refer to them in universes such as {%ard%}\Type l{%endard%}:
 
 {%arend%}
-\func id (A : \Type \lp) (a : A) => a
+\func id.{l} (A : \Type l) (a : A) => a
 {%endarend%}
 
-Whenever we use {%ard%}\Type{%endard%} without explicit level, the typechecker infers the minimal appropriate
-level. Consider the following example:
+Now {%ard%}id{%endard%} has a level parameter {%ard%}l{%endard%} and works uniformly for every predicative
+level. Level polymorphism is always explicit: a definition is polymorphic in the predicative level only if it
+declares a level parameter.
+
+The level of a universe is one higher than the level of its elements: {%ard%}\Type l : \Type (\suc l){%endard%},
+and {%ard%}n = \suc l{%endard%} is minimal such that {%ard%}\Type l : \Type n{%endard%}. So a function that
+returns the universe {%ard%}\Type l{%endard%} has result type {%ard%}\Type (\suc l){%endard%}:
 
 {%arend%}
-\func type : \Type => \Type
-{%endarend%}
-
-The typechecker will infer the level {%ard%}\lp{%endard%} for {%ard%}\Type{%endard%} in the body of the function
-{%ard%}type{%endard%}. Consequently, the typechecker infers {%ard%}\suc \lp{%endard%} for the level of the universe
-in the result type of {%ard%}type{%endard%} since {%ard%}n = \suc \lp{%endard%} is minimal such that 
-{%ard%}\Type \lp : \Type n{%endard%}. Thus, the function {%ard%}type{%endard%} can be equivalently rewritten
-as follows:
-
-{%arend%}
-\func type : \Type (\suc \lp) => \Type \lp
+\func type.{l} : \Type (\suc l) => \Type l
 {%endarend%}
 
 There are two operations that allow to form level expressions out of atomic ones: {%ard%}\suc l{%endard%} and
-{%ard%}\max l1 l2{%endard%}. Atomic ones, as we have seen, are just nonnegative numerals and polymorphic parameters
-{%ard%}\lp{%endard%}. Therefore any level expression is either equivalent to a constant or to an expression of the form
-{%ard%}\max (\lp + c) c'{%endard%}, where {%ard%}c, c'{%endard%} are constants and {%ard%}\lp + c{%endard%} is 
-the c-fold {%ard%}\suc{%endard%} applied to {%ard%}\lp{%endard%}.
+{%ard%}\max l1 l2{%endard%}. Atomic level expressions are just nonnegative numerals and level parameters (such
+as {%ard%}l{%endard%} above). Therefore any level expression built from a single parameter {%ard%}l{%endard%} is
+either equivalent to a constant or to an expression of the form {%ard%}\max (l + c) c'{%endard%}, where
+{%ard%}c, c'{%endard%} are constants and {%ard%}l + c{%endard%} is the c-fold {%ard%}\suc{%endard%} applied to
+{%ard%}l{%endard%}.
 
 The level of a Pi-type or other type forming construction is the maximal level among all types contained in this construction:
 
 {%arend%}
-\func test0 : \Type (\max (\suc (\suc \lp)) 4) => \Type (\max \lp 3) -> \Type (\suc \lp)
+\func test0.{l} : \Type (\max (\suc (\suc l)) 4) => \Type (\max l 3) -> \Type (\suc l)
 {%endarend%}
 
 We now illustrate the behaviour of universes and polymorphic definitions through a bunch of examples:
@@ -80,86 +84,84 @@ We now illustrate the behaviour of universes and polymorphic definitions through
 \func test1 => id Nat 0
 \func test2 => id \Type0 Nat
 \func test3 => id (\Type0 -> \Type1) (\lam X => X)
-\func test4 => id _ id
-\func test4' => id (\Pi (A : \Type) -> A -> A) id
+\func test4.{l} => id (\Pi (A : \Type l) -> A -> A) id
 {%endarend%}
 
-While invoking a definition it is possible to specify the value for its polymorphic level parameter {%ard%}\lp{%endard%}.
-In case the value is not a numeral, it can be passed as an ordinary first parameter:
+When invoking a definition it is possible to specify the values of its level parameters explicitly, again with
+the {%ard%}.{...}{%endard%} syntax. The arguments are level expressions, listed in the order in which the
+parameters were declared:
 
 {%arend%}
-\func test5 => id (\suc \lp) (\Type \lp) Nat
+\func test5.{l} => id.{\suc l} (\Type l) Nat
+\func test6 => id.{2} \Type1 \Type0
 {%endarend%}
 
-Alternatively, it can be done using the construct {%ard%}\levels p h{%endard%}, where {%ard%}p{%endard%} is the level
-(we ignore {%ard%}h{%endard%} for now). It is useful when the value is a numeral.
+(The older ways of passing a level — positionally as an ordinary first argument, or via the {%ard%}\levels p h{%endard%}
+construct — no longer exist. Homotopy levels have been removed, so a level argument is now a single predicative level.)
 
-{%arend%}
-\func test5' => id (\levels (\suc \lp) _) (\Type \lp) Nat
-\func test6 => id (\levels 2 _) \Type1 \Type0
-{%endarend%}
-
-In case a definition is invoked without explicit specification for the value of its level, the level will be inferred
-by the typechecker. In most cases there is no need to specify the level explicitly.
+In case a definition is invoked without explicit specification for the values of its levels, they will be inferred
+by the typechecker. In most cases there is no need to specify them explicitly.
 
 The level of the universe of a data definition is the maximum among the levels of parameters of its constructors.
 Levels of parameters of the definition do not matter. 
 
 {%arend%}
-\data Magma (A : \Type)
+\data Magma.{l} (A : \Type l)
   | con (A -> A -> A)
 
-\data MagmaEx (A : \Type) (B : \Type5)
+\data MagmaEx.{l} (A : \Type l) (B : \Type5)
   | con (A -> A -> A)
 
-\func test7 : \Type \lp => MagmaEx \lp Nat \Type4
+\func test7.{l} : \Type l => MagmaEx.{l} Nat \Type4
 {%endarend%}
 
 The level of a class or a record is determined by its _non-implemented_ fields and parameters (recall that parameters are
 just fields). For example, consider the definition of Magma as a class:
 
 {%arend%}
-\class Magma (A : \Type)
+\class Magma.{l} (A : \Type l)
   | \infixl 6 ** : A -> A -> A
 {%endarend%}
 
-The level of {%ard%}Magma \lp{%endard%} is {%ard%}\Type (\suc \lp){%endard%} since the definition of {%ard%}Magma \lp{%endard%}
-contains {%ard%}\Type \lp{%endard%}. But the level of {%ard%}Magma \lp Nat{%endard%} is just {%ard%}\Type0{%endard%} since
-non-implemented fields of {%ard%}Magma \lp Nat{%endard%} do not contain universes.
+The level of {%ard%}Magma.{l}{%endard%} is {%ard%}\Type (\suc l){%endard%} since the definition of {%ard%}Magma.{l}{%endard%}
+contains {%ard%}\Type l{%endard%}. Once the field {%ard%}A{%endard%} is implemented, that universe disappears from the
+non-implemented fields and the level drops by one: {%ard%}Magma.{l} Nat{%endard%} lives in {%ard%}\Type l{%endard%}
+(for instance {%ard%}Magma.{5} Nat : \Type5{%endard%}).
 
 {%arend%}
-\func test8 : \Type (\suc \lp) => Magma \lp
+\func test8.{l} : \Type (\suc l) => Magma.{l}
 
-\func test9 : \Type \lp => Magma \lp Nat
+\func test9.{l} : \Type l => Magma.{l} Nat
 {%endarend%}
 
-Consider one more example, the class {%ard%}Functor{%endard%} of functors:
+Consider one more example, the class {%ard%}Functor{%endard%} of functors. Unlike {%ard%}\Type{%endard%}, the universe
+{%ard%}\Set{%endard%} cannot be used with the infinite level, so it always requires an explicit predicative level:
 
 {%arend%}
-\class Functor (F : \Set -> \Set) -- \Set is almost the same as \Type, we will discuss the difference later
-  | fmap {A B : \Set} : (A -> B) -> F A -> F B
+\class Functor.{l} (F : \Set l -> \Set l) -- \Set is almost the same as \Type, we will discuss the difference later
+  | fmap {A B : \Set l} : (A -> B) -> F A -> F B
 {%endarend%}
 
-The level of {%ard%}Functor{%endard%} will be {%ard%}\Type (\suc \lp){%endard%} even if the field {%ard%}F{%endard%} is
-implemented since {%ard%}fmap{%endard%} also refers to {%ard%}\Type \lp{%endard%}.
+The level of {%ard%}Functor.{l}{%endard%} will be {%ard%}\Type (\suc l){%endard%} even if the field {%ard%}F{%endard%} is
+implemented since {%ard%}fmap{%endard%} also refers to {%ard%}\Set l{%endard%}.
 
 {%arend%}
-\data Maybe (A : \Type) | nothing | just A
+\data Maybe.{l} (A : \Set l) | nothing | just A
 
-\func test10 : \Type (\suc \lp) => Functor \lp Maybe
+\func test10.{l} : \Type (\suc l) => Functor.{l} Maybe
 {%endarend%}
 
-**Exercise 1:** Calculate levels in each of the invocations of {%ard%}id''{%endard%} below.
-Specify explicitly result types for all idTest*.
+**Exercise 1:** Calculate the levels in each of the invocations of {%ard%}id''{%endard%} below.
+Specify explicitly the result types for all idTest* (giving a result type also pins down the levels).
 {: .notice--info}
 {%arend%}
-\func id'' {A : \Type} (a : A) => a
+\func id''.{l} {A : \Type l} (a : A) => a
 
 \func idTest1 => id'' (id'' id)
 \func idTest2 => id'' Maybe
 \func idTest3 => id'' Functor
 \func idTest4 => id'' (Functor Maybe)
-\func idTest5 (f : \Pi {A B : \Set} -> (A -> B) -> Maybe A -> Maybe B) => id'' (Functor Maybe f)
+\func idTest5.{l} (f : \Pi {A B : \Set l} -> (A -> B) -> Maybe A -> Maybe B) => id'' (Functor Maybe f)
 {%endarend%}
 
 

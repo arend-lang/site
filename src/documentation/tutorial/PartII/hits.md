@@ -92,7 +92,7 @@ between {%ard%}north{%endard%} and {%ard%}south{%endard%}: {%ard%}merid a left =
 The spheres can now be defined inductively as follows:
 
 {%arend%}
-\func Sphere (n : Nat) : \Type \lp \oo
+\func Sphere (n : Nat) : \Type0
     | 0 => Susp Empty
     | suc n => Susp (Sphere n)
 {%endarend%}
@@ -359,7 +359,7 @@ are mutually inverse.
 We can now define {%ard%}code{%endard%} on {%ard%}base{%endard%} and {%ard%}loop g i{%endard%}:
 
 {%arend%}
-\func code {G : Group} (x : K1 G) : \Type \lp \oo \elim x
+\func code {G : Group.{u}} (x : K1 G) : \Set u \elim x
   | base => G
   | loop g j => Equiv-to-= (rightMulEquiv g) @ j 
              -- 'Equiv-to-=' is essentially 'iso'.
@@ -377,7 +377,7 @@ such filling out of a proof that {%ard%}code{%endard%} preserves the relation {%
   : (Equiv-to-= (rightMulEquiv g)) *> (Equiv-to-= (rightMulEquiv g')) = (Equiv-to-= (rightMulEquiv (g * g')))
 => {?}
 
-\func code {G : Group} (x : K1 G) : \Type \lp \oo \elim x
+\func code {G : Group.{u}} (x : K1 G) : \Set u \elim x
   | base => G
   | loop g j => Equiv-to-= (rightMulEquiv g) @ j 
   | relation g g' i j => Cube2.map (Equiv-to-= (rightMulEquiv g)) (Equiv-to-= (rightMulEquiv (g * g'))) idp (Equiv-to-= (rightMulEquiv g'))
