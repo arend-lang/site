@@ -25,7 +25,7 @@ The proof must be written in the corresponding function, starting with keywords 
 \data Dec (P : \Prop) | yes P | no (P -> Empty)
   \where
     \use \level isProp {P : \Prop} (d1 d2 : Dec P) : d1 = d2
-      | yes x1, yes x2 => path (\lam i => yes (Path.inProp x1 x2 @ i))
+      | yes x1, yes x2 => path (\lam i => yes (prop-pi @ i))
       | yes x1, no e2 => \case e2 x1 \with {}
       | no e1, yes x2 => \case e1 x2 \with {}
       | no e1, no e2 => path (\lam i => no (\lam x => (\case e1 x \return e1 x = e2 x \with {}) @ i))
@@ -39,7 +39,7 @@ That is, it must prove {%ard%} ofHLevel (D p_1 ... p_k) n {%endard%} for some co
 where {%ard%} D {%endard%} is the data type (or the function, or the class), {%ard%} p_1, ... p_k {%endard%} are its parameters (or fields), and {%ard%} ofHLevel {%endard%} is defined as follows:
 
 {% arend %}
-\func \infix 2 ofHLevel_-1+ (A : \Type) (n : Nat) : \Type \elim n
+\func \infix 2 ofHLevel_-1+.{l} (A : \Type l) (n : Nat) : \Type l \elim n
   | 0 => \Pi (a a' : A) -> a = a'
   | suc n => \Pi (a a' : A) -> (a = a') ofHLevel_-1+ n
 {% endarend %}
