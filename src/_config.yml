@@ -7,6 +7,15 @@ github_username: arend-lang
 
 theme: minimal-mistakes-jekyll
 
+# The minimal-mistakes theme (and its vendored susy/breakpoint/magnific-popup
+# libraries) still use SCSS patterns that Dart Sass now deprecates (@import,
+# global built-in functions, `/` division). These are upstream, not our code,
+# so silence the dependency noise to keep real warnings visible.
+sass:
+  quiet_deps: true
+  silence_deprecations:
+    - import
+
 paginate: 5
 
 author:
