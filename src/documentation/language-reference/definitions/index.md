@@ -40,19 +40,24 @@ This means that its defcalls are parsed as infix notations even without `` ` ` `
 An infix operator is defined by specifying one of keywords {%ard%} \infixl {%endard%}, {%ard%} \infixr {%endard%}, {%ard%} \infix {%endard%} before the name of operator.
 These keywords have the same syntax and semantics as keywords {%ard%} \fixl {%endard%}, {%ard%} \fixr {%endard%}, and {%ard%} \fix {%endard%}, which are described above.
 
-An infix operator can be used in the prefix form as an ordinary definition.
-For example, if the function {%ard%} + {%endard%} is defined as {%ard%} \infixl 6 + {%endard%}, then it is allowed to write either {%ard%} + 1 2 {%endard%} or {%ard%} 1 + 2 {%endard%}; 
-these expressions are equivalent.
+An infix operator cannot be applied in the prefix form.
+For example, if the function {%ard%} + {%endard%} is defined as {%ard%} \infixl 6 + {%endard%}, then {%ard%} + 1 2 {%endard%} is _not_ the application
+of {%ard%} + {%endard%} to {%ard%} 1 {%endard%} and {%ard%} 2 {%endard%}.
+An infix operator applied to a single argument is a right section instead (see below), so all the arguments that follow the operator
+are taken as one argument expression: {%ard%} + 1 2 {%endard%} is parsed as the right section of {%ard%} + {%endard%} applied to {%ard%} 1 2 {%endard%},
+which is an error since {%ard%} 1 {%endard%} is not a function.
+To use an infix operator as an ordinary definition, enclose its name in parentheses:
+{%ard%} (+) 1 2 {%endard%} is equivalent to {%ard%} 1 + 2 {%endard%}.
 
-Finally, if {%ard%} f {%endard%} is an infix operator or an operator surrounded with `` ` ` ``, then it is allowed to write {%ard%} e f {%endard%} and
-this is equivalent to {%ard%} f e {%endard%}.
-For example, the function that adds {%ard%} 1 {%endard%} to its argument can be written either as {%ard%} 1 + {%endard%} or as {%ard%} + 1 {%endard%}.
-The result of application of the first function to {%ard%} 2 {%endard%} is {%ard%} 1 + 2 {%endard%}, the result of application of the second one to {%ard%} 2 {%endard%}
-is {%ard%} + 1 2 {%endard%}, and as noted before these expressions are equivalent.
+If {%ard%} f {%endard%} is an infix operator or an operator surrounded with `` ` ` ``, then it is allowed to write {%ard%} e f {%endard%},
+which applies {%ard%} f {%endard%} to {%ard%} e {%endard%} as its first argument.
+If {%ard%} f {%endard%} expects a single argument, this is equivalent to {%ard%} f e {%endard%};
+if {%ard%} f {%endard%} is a binary operator, the result is a left section as described below.
 
-As noted above, it is possible to use a left section of an operator, that is {%ard%} x + {%endard%} is equivalent to {%ard%} \lam y => x + y {%endard%}.
-It is also possible to use right sections:
-if a postfix notation is applied to an argument from the right as in {%ard%} `+ y {%endard%}, then such an expression is equivalent to {%ard%} \lam x => x + y {%endard%}.
+Thus, it is possible to use a left section of an operator, that is {%ard%} x + {%endard%} is equivalent to {%ard%} \lam y => x + y {%endard%}.
+Right sections can be written in two ways.
+Either a postfix notation is applied to an argument from the right, as in {%ard%} `+ y {%endard%}, or the operator itself is applied
+to a single argument, as in {%ard%} + y {%endard%}; both expressions are equivalent to {%ard%} \lam x => x + y {%endard%}.
 
 ## Aliases
 
