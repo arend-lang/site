@@ -14,6 +14,18 @@ sidebar:
   implemented in the standard library.
 * To learn how to write proofs with IntelliJ Arend IDE, see [Interactive Theorem Proving with IntelliJ Arend](intellij-arend-tutorial). 
 
+## Papers
+
+* [Theorem prover Arend](/assets/lang-paper.pdf) by Fedor Part, Valery Isaev, and Sergey Sinchuk
+  is a self-contained exposition of the prover: the type theory it is based on, the features of the
+  language, the IntelliJ Arend plugin and the command-line interface, and the contents of arend-lib.
+* [(Co)condition hits the Path](https://arxiv.org/pdf/2405.12994) by Tesla Zhang and Valery Isaev
+  introduces conditions and coconditions, extensions of inductive types and records that generalize
+  the cubical syntax of higher inductive types and the cubical path type respectively.
+* [A Constructive Approach to Complete Spaces](https://arxiv.org/pdf/2412.20835) by Valery Isaev
+  introduces cover spaces, a constructive generalization of metric and uniform spaces, and studies
+  their reflective subcategory of complete spaces and its relation to locales.
+
 ## Forums
 
 - [Google Groups](https://groups.google.com/forum/#!forum/arend-lang)

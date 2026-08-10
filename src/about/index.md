@@ -9,6 +9,9 @@ sidebar:
 
 {% include about-arend.md place="Arend Features" %}
 
+The paper [Theorem prover Arend](/assets/lang-paper.pdf) gives a detailed exposition of the underlying type theory,
+the features of the language, the IntelliJ Arend plugin, and the standard library.
+
 ## IntelliJ Arend
 
 IntelliJ Arend is a plugin for [IntelliJ IDEA](https://www.jetbrains.com/idea/) that turns it into a full-fledged IDE for the Arend language.
