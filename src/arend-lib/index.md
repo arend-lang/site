@@ -9,4 +9,4 @@ sidebar:
 
  * v1.10: [Full index](v1.10.0/arend-html-files/Base.html), [Class graph](/assets/images/BaseSet-v1.10.0.svg)
  * v1.11: [Full index](v1.11.0/arend-html-files/Base.html), [Class graph](/assets/images/Classes-BaseSet-Precat-SetHom-SubSet-v1.11.0.svg)
- * v1.12: [Full index](v1.12.0/arend-html-files/Base.html)
+ * v1.12: [Full index](v1.12.0/arend-html-files/Base.html), [Class graph](/assets/images/Classes-BaseSet-Precat-SetHom-SubSet-v1.12.0.svg)
